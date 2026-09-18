@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="applyStyle.xsl"?>
+<!DOCTYPE TEI SYSTEM "./lib/tei_all.dtd" >
+
+
+
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    
+    <teiHeader>
+        ...
+    </teiHeader>
+    
+    <text>
+        <body>
+        </body>
+    </text>
+
+</TEI>

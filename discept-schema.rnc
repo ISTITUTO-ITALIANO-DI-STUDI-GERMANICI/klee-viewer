@@ -1,0 +1,114 @@
+default namespace = "http://himeros.eu/euporia"
+
+start =
+  element annotations {
+    element div {
+      attribute n { xsd:integer },
+      element page {
+        element facsimile { (text | num)+ },
+        element numbZone { (text | num | textSeq)+ },
+        element mrgTextZoneUp { (text | line)+ }?,
+        (element graphZoneFig { (text | figId)+ }
+         | element mainZone {
+             (line
+              | element openPar { text }
+              | element sectionHeading {
+                  level,
+                  element sectionType { seg },
+                  line
+                })*,
+             (element hdLineMargin { (text | level | line)+ }
+              | element placeholder { (text | operation)+ })?
+           }
+         | element mrgTextZoneOut {
+             (text
+              | line
+              | element expl { (text | line)+ })+
+           }
+         | element musicZone {
+             (text
+              | element musicId { text })+
+           })+
+      }?,
+      element apparatoFigure {
+        (text
+         | element apparatoFigureItem {
+             (text
+              | figId
+              | element label {
+                  (text
+                   | element labeltext {
+                       (text
+                        | line_app
+                        | element refSeries {
+                            element refItem { xsd:NMTOKEN }
+                          })+
+                     })+
+                }
+              | element textinfig { (text | line_app)+ })+
+           })+
+      }?
+    }+
+  }
+num = element num { xsd:integer }
+textSeq =
+  element textSeq {
+    (seg
+     | element punct { text })*
+  }
+line =
+  element line {
+    (operation
+     | textSeq
+     | element underlined { (text | operation | textSeq)+ })+
+  }
+level = element level { text }
+seg =
+  element seg {
+    (text
+     | operation
+     | element prefix { text }
+     | element suffix { text })+
+  }
+operation =
+  element operation {
+    (pencilDeletion
+     | phiDel
+     | element pencil { (text | textSeq)+ }
+     | element phiAdd { (text | textSeq)+ })?,
+    element substitution {
+      element subspencilDeletion { (text | textSeq)+ }?,
+      pencilAddition?,
+      deletion?,
+      element replace { (text | textSeq)+ }?
+    }?,
+    (deletion
+     | pencilAddition
+     | element addition {
+         (text | deletion | pencilDeletion | textSeq)+
+       }
+     | element subspencilAddition { (text | textSeq)+ })?
+  }
+figId = element figId { text }
+line_app = element line_app { (operation_app | textSeqinfig)+ }
+phiDel = element phiDel { (text | textSeq)+ }
+pencilDeletion = element pencilDeletion { (text | textSeq)+ }
+pencilAddition = element pencilAddition { (text | phiDel | textSeq)+ }
+deletion = element deletion { (text | textSeq)+ }
+textSeqinfig =
+  element textSeqinfig {
+    (element punctinfig { text }
+     | element seginfig {
+         (text
+          | operation_app
+          | element prefix_app { text }
+          | element suffix_app { text })+
+       })+
+  }
+operation_app =
+  element operation_app {
+    element addition_app { (text | textSeqinfig)+ }
+    | element deletion_app { (text | textSeqinfig)+ }
+    | element phiAdd_app { (text | textSeqinfig)+ }
+    | element underlined_app { (text | textSeqinfig)+ }
+  }

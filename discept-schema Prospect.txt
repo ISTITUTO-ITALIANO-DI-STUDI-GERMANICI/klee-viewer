@@ -1,0 +1,138 @@
+default namespace = "http://himeros.eu/euporia"
+
+start =
+  element annotations {                                             // Root del documento (<text type="annotations"><body>...</body></text>)
+
+    element div {                                                   // Blocco di testo (idealmente una pagina) (<div>)
+
+      attribute n { xsd:integer },                                  // Il numero d'ordine del div (@n)
+
+      element page {                                                // La pagina vera e propria (<pb ... /> = page beginning)
+        element facsimile { (text | num)+ },                        // L'ID della pagina              ((@facs)
+        element numbZone { (text | num | textSeq)+ },               // Un generico campo numerico      (@n)
+        element mrgTextZoneUp { (text | line)+ }?,                  // Blocco di testo presente nel margine superiore della pagina (<note place="top">...</note>)
+        (element graphZoneFig { (text | figId)+ }                   // Area della pagina in cui si allega una figura
+         | element mainZone {                                       // Blocco testuale (<ab>...</ab>)
+             (line                                                  // Contenuto della riga (<lb /> ...)
+              | element openPar { text }                            // Simbolo di inizio paragrafo (<p> ... </p>)
+              | element sectionHeading {                            // Intestazione (<head>...</head>)
+                  level,                                            // Livello di heading (# = h1, # # = h2, ...) (<h1><h2><h3><h4><h5><h6>) (??)
+                  element sectionType { seg },                      // Tipo di sezione (Tipo, parte, lezione, unità, ...) (@type)
+                  line                                              // Contenuto della riga (<lb /> ...)
+                })*,
+             (element hdLineMargin { (text | level | line)+ }       // Blocco di testo formattato come un Heading presente nel margine inferiore della pagina (un <h4>)
+              | element placeholder { (text | operation)+ })?       // Aree contrassegnate in cui vi sono dei brevissimi appunti al volo sul testo (Correggere, prendere, da fare, ecc)
+           }
+         | element mrgTextZoneOut {                                 // Blocco di testo presente nel margine inferiore della pagina (<note place="bottom">...</note>)
+             (text
+              | line
+              | element expl { (text | line)+ })+                   // Spiegazione a fondo pagina (<note place="bottom" type="explication">...</note>)
+           }
+         | element musicZone {                                      // Area del testo con collegamento a una risorsa musicale (<ref type="audio" target="#musicId" xml:id="" />)
+             (text
+              | element musicId { text })+                          // L'ID della risorsa musicale (l'ID del brano in @target)
+           })+
+      }?,
+
+      element apparatoFigure {                                    // Immagine di supporto alla codifica (il sorgente) (<figure>...</figure>)
+        (text
+         | element apparatoFigureItem {                           // Una singola immagine all'interno dell'apparatoFigure (<surface>...</surface>)
+             (text
+              | figId                                             // L'ID della figura (@xml:id di <surface>)
+              | element label {                                   // La didascalia della figura (<figDesc>...</figDesc>)
+                  (text
+                   | element labeltext {                          // Il corpo della didascalia (<ab type="caption">...</ab>)
+                       (text
+                        | line_app                                // Una linea di didascalia all'interno dell'apparato (<lb>)
+                        | element refSeries {                     // Una serie di numerazione delle figure (<ref type="figure">...</ref>)
+                            element refItem { xsd:NMTOKEN }       // Il numero della figura (sempre <ref></ref> ?)
+                          })+
+                     })+
+                }
+              | element textinfig { (text | line_app)+ })+        // Il testo all'interno della figura (<text>...</text>)
+           })+
+      }?
+    }+
+  }
+
+num = element num { xsd:integer }                                 // Valore numerico (@n="num")
+
+textSeq =                                                         // Sequenza testuale (<ab type="sequence">...</ab>)
+  element textSeq {
+    (seg                                                          // Segmento del testo (va bene <w> o si può mantenere <seg>)
+     | element punct { text })*                                   // Segno di punteggiatura (<pc>)
+  }
+
+line =
+  element line {                                                  // Linea di testo (<lb>...</lb>) 
+    (operation                                                    // Operazione (aggiunta/cancellazione/...)
+     | textSeq
+     | element underlined { (text | operation | textSeq)+ })+     // Sottolineato (testo, operazione, sequenza): <hi/add/del/... rend="underline(?)">
+  }
+
+level = element level { text }                                    // Livello dell'heading (n # = <hn>). Ad esempio: <level># # #</level> -> <h3></h3>
+
+seg =                                                             // Parola <w>
+  element seg {
+    (text
+     | operation
+     | element prefix { text }                                    // Il prefisso si indica con <m type="prefix"></m>, mentre il suffisso <m type="suffix"></m>
+     | element suffix { text })+                                  // Con <m> si indica un morfema grammaticale
+  }
+
+operation =
+
+  element operation {                                             // Operazione di modifica successiva
+    (pencilDeletion                                               // Cancellazione a matita. Per indicare l'utilizzo della matita si può applicare <handNote medium="pencil"> all'interno di <physDesc>...<handDesc>...</handDesc></physDesc>.
+                                                                  // Si definisce con un @xml:id specificando si tratta di una matita e poi viene richiamata con l'attributo @hand.
+     | phiDel                                                     // Tag con all'interno la parola cancellata (per mezzo di opportuni simboli quali >--/ per indicare lunghezza, direzione, ecc)
+     | element pencil { (text | textSeq)+ }                       // Testo a matita (<handNote xml:id="..." medium="pencil">)
+     | element phiAdd { (text | textSeq)+ })?,                    // Testo che viene aggiunto in un secondo momento (<add></add>)
+
+    element substitution {                                        // Sostituzione di testo (<choice><sic>...</sic><corr>...</corr></choice>)
+      element subspencilDeletion { (text | textSeq)+ }?,          // Il testo da sostituire cancellato a matita (<sic hand="#">...</sic>)
+      pencilAddition?,                                            // Testo aggiunto a matita durante una sostituzione (<add hand="#">...</add>)
+      deletion?,                                                  // Cancellazione di un segmento di testo (<del hand="#">...</del>)
+      element replace { (text | textSeq)+ }?                      // Testo che viene sostituito al posto della cancellazione (<corr hand="#">...</corr>)
+    }?,
+
+    (deletion                                                     // Cancellazione di un segmento di testo
+     | pencilAddition                                             // Testo aggiunto a matita durante una sostituzione
+     | element addition {                                         // Operazione di aggiunta
+         (text | deletion | pencilDeletion | textSeq)+
+       }
+     | element subspencilAddition { (text | textSeq)+ })?         // Testo aggiunto in un secondo momento a matita
+
+  }
+
+figId = element figId { text }                                    // L'ID della figura
+
+line_app = element line_app { (operation_app | textSeqinfig)+ }   // Una linea all'interno della figura
+
+phiDel = element phiDel { (text | textSeq)+ }                     // Tag con all'interno la parola cancellata (per mezzo di opportuni simboli quali >--/ per indicare lunghezza, direzione, ecc)
+
+pencilDeletion = element pencilDeletion { (text | textSeq)+ }     // Cancellazione a matita (<sic hand="#">...</sic>)
+
+pencilAddition = element pencilAddition { (text | phiDel | textSeq)+ }  // Testo aggiunto a matita durante una sostituzione (<corr hand="#">...</corr>). <sic> e <corr> dovranno essere all'interno di un <choice>.
+
+deletion = element deletion { (text | textSeq)+ }                 // Testo cancellato (<del>...</del>)
+
+textSeqinfig =
+
+  element textSeqinfig {                                          // Sequenza di testo all'interno di una figura
+    (element punctinfig { text }                                  // Segno di punteggiatura dentro la figura
+     | element seginfig {                                         // Segmento di testo dentro la figura
+         (text                                                    
+          | operation_app
+          | element prefix_app { text }                           // Porzione di testo aggiunta prima di una operation (<m type="prefix"></m>)
+          | element suffix_app { text })+                         // Porzione di testo aggiunta dopo una operation (<m type="suffix"></m>)
+       })+
+  }
+
+operation_app =
+  element operation_app {                                        // Una generica modifica all'interno di una figura
+    element addition_app { (text | textSeqinfig)+ }              // Del testo aggiunto in figura in un secondo momento (<add> o <corr> dipende)
+    | element deletion_app { (text | textSeqinfig)+ }            // Del testo cancellato dalla figura (<del> o <sic> dipende)
+    | element phiAdd_app { (text | textSeqinfig)+ }              // Tag con all'interno la parola aggiunta
+    | element underlined_app { (text | textSeqinfig)+ }          // Del testo sottolineato sulla figura
+  }
