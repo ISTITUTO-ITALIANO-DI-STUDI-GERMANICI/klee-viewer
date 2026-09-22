@@ -623,6 +623,18 @@
     <xsl:apply-templates mode="fig"/>
   </xsl:template>
   
+  <xsl:template match="addition_app" mode="fig">
+    <add><xsl:apply-templates mode="fig"/></add>
+  </xsl:template>
+  
+  <xsl:template match="deletion_app" mode="fig">
+    <sic><xsl:apply-templates mode="fig"/></sic>
+  </xsl:template>
+  
+  <xsl:template match="phiAdd_app" mode="fig">
+    <supplied><xsl:apply-templates mode="fig"/></supplied>
+  </xsl:template>
+  
   <xsl:template match="underlined | underlined_app" mode="fig">
     <hi rend="underline">
       <xsl:apply-templates

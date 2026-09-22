@@ -9504,8 +9504,10 @@
                            <w>die</w>
                            <w>quantitative</w>
                            <w>Darstellung</w>
-                           <w>sich</w> +{ <w>auf</w>
-                           <w>B</w> } <w>in</w>
+                           <w>sich</w>
+                           <add>+{ <w>auf</w>
+                              <w>B</w> } </add>
+                           <w>in</w>
                            <w>den</w>
                            <w>Verticalstrichen</w>
                            <w>für</w>
