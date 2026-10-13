@@ -4,9 +4,10 @@
   xmlns:alto="http://www.loc.gov/standards/alto/ns-v4#"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:kf="http://klee-viewer/functions"
+  xmlns:tei="http://www.tei-c.org/ns/1.0"
   version="2.0"
   xpath-default-namespace="http://himeros.eu/euporia"
-  exclude-result-prefixes="alto kf">
+  exclude-result-prefixes="alto kf tei">
   
   <xsl:output method="xml" encoding="UTF-8" indent="yes" omit-xml-declaration="no" />
   
@@ -78,6 +79,190 @@
     <xsl:sequence select="if (exists($heights)) then kf:median($heights) else 0"/>
   </xsl:function>
 
+    <!-- TextLines of the main text column only (margins, music, graphics excluded) -->
+  <xsl:function name="kf:main-lines" as="element(alto:TextLine)*">
+    <xsl:param name="altoDoc"/>
+
+    <xsl:variable name="tagIds"
+      select="$altoDoc//alto:OtherTag[@LABEL = 'MainZone']/@ID"/>
+
+    <xsl:sequence
+      select="$altoDoc//alto:TextBlock[
+        tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds
+      ]//alto:TextLine"/>
+  </xsl:function>
+
+  <!-- Bounding box (x0, y0, x1, y1) of the first block of figure #ordinal; empty if missing -->
+
+  <xsl:function name="kf:fig-box" as="xs:double*">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+
+    <xsl:variable name="tagIds"
+      select="$altoDoc//alto:OtherTag[
+          @LABEL = concat('GraphicZone:figure#', $ordinal)
+        ]/@ID"/>
+
+    <xsl:variable name="blocks"
+      select="$altoDoc//alto:TextBlock[
+          tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds
+        ]"/>
+
+    <xsl:if test="exists($blocks)">
+      <xsl:sequence select="(
+          min(for $b in $blocks return xs:double($b/@HPOS)),
+          min(for $b in $blocks return xs:double($b/@VPOS)),
+          max(for $b in $blocks return
+              xs:double($b/@HPOS) + xs:double($b/@WIDTH)),
+          max(for $b in $blocks return
+              xs:double($b/@VPOS) + xs:double($b/@HEIGHT))
+        )"/>
+    </xsl:if>
+  </xsl:function>
+
+  <!-- Two figures form a row when they share a horizontal band (>= 50% of the
+       smaller height), are mostly side by side (b on the right of a, bbox overlap
+       <= 40% of the smaller width) and no text line sits between them. -->
+  <xsl:function name="kf:fig-same-row" as="xs:boolean">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="a" as="xs:integer"/>
+    <xsl:param name="b" as="xs:integer"/>
+    <xsl:variable name="ba" select="kf:fig-box($altoDoc, $a)"/>
+    <xsl:variable name="bb" select="kf:fig-box($altoDoc, $b)"/>
+    <xsl:choose>
+      <xsl:when test="empty($ba) or empty($bb)">
+        <xsl:sequence select="false()"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="y0" select="max(($ba[2], $bb[2]))"/>
+        <xsl:variable name="y1" select="min(($ba[4], $bb[4]))"/>
+        <xsl:variable name="wMin" select="min(($ba[3] - $ba[1], $bb[3] - $bb[1]))"/>
+        <xsl:variable name="hMin" select="min(($ba[4] - $ba[2], $bb[4] - $bb[2]))"/>
+        <xsl:variable name="between" select="kf:main-lines($altoDoc)[
+            min((xs:double(@VPOS) + xs:double(@HEIGHT), $y1)) - max((xs:double(@VPOS), $y0))
+              ge 0.5 * min((xs:double(@HEIGHT), $y1 - $y0))
+            and xs:double(@HPOS) + xs:double(@WIDTH) div 2 gt $ba[3]
+            and xs:double(@HPOS) + xs:double(@WIDTH) div 2 lt $bb[1]]"/>
+        <xsl:sequence select="
+          $y1 - $y0 ge 0.5 * $hMin
+          and $bb[1] ge $ba[1]
+          and $ba[3] - $bb[1] le 0.4 * $wMin
+          and empty($between)"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
+  <!-- 'row-start' / 'row-next' if the figure belongs to a row, '' otherwise -->
+  <xsl:function name="kf:fig-row" as="xs:string">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:variable name="hasPrev" select="kf:fig-same-row($altoDoc, $ordinal - 1, $ordinal)"/>
+    <xsl:variable name="hasNext" select="kf:fig-same-row($altoDoc, $ordinal, $ordinal + 1)"/>
+    <xsl:sequence select="if ($hasPrev) then 'row-next' else if ($hasNext) then 'row-start' else ''"/>
+  </xsl:function>
+
+  <!-- Layout of a standalone figure, decided from the text lines sharing its band.
+       Each line counts as left/right of the figure according to its horizontal centre.
+         no text beside / text overlapping / wider than half the column -> block
+         small figure with text on its left                            -> inline
+         text only on the right                                        -> float-left
+         text only on the left                                         -> float-right -->
+
+  <xsl:function name="kf:fig-side" as="xs:string">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+
+    <xsl:variable name="box"
+      select="kf:fig-box($altoDoc, $ordinal)"/>
+
+    <xsl:choose>
+      <xsl:when test="empty($box)">
+        <xsl:sequence select="'block'"/>
+      </xsl:when>
+
+      <xsl:otherwise>
+        <xsl:variable name="fx0" select="$box[1]"/>
+        <xsl:variable name="fy0" select="$box[2]"/>
+        <xsl:variable name="fx1" select="$box[3]"/>
+        <xsl:variable name="fy1" select="$box[4]"/>
+
+        <xsl:variable name="fw" select="$fx1 - $fx0"/>
+        <xsl:variable name="fh" select="$fy1 - $fy0"/>
+        <xsl:variable name="mlh"
+          select="kf:median-line-height($altoDoc)"/>
+
+        <xsl:variable name="beside"
+          select="kf:main-lines($altoDoc)[
+              min((
+                  xs:double(@VPOS) + xs:double(@HEIGHT),
+                  $fy1
+                )) - max((
+                  xs:double(@VPOS),
+                  $fy0
+                ))
+              ge 0.5 * min((xs:double(@HEIGHT), $fh))
+            ]"/>
+
+        <xsl:variable name="left"
+          select="$beside[
+              xs:double(@HPOS) + xs:double(@WIDTH) div 2 le $fx0
+            ]"/>
+
+        <xsl:variable name="right"
+          select="$beside[
+              xs:double(@HPOS) + xs:double(@WIDTH) div 2 ge $fx1
+            ]"/>
+
+        <xsl:variable name="clash"
+          select="$beside except ($left | $right)"/>
+
+        <xsl:choose>
+          <xsl:when test="empty($beside)">
+            <xsl:sequence select="'block'"/>
+          </xsl:when>
+
+          <xsl:when test="exists($clash)">
+            <xsl:sequence select="'block'"/>
+          </xsl:when>
+
+          <xsl:when test="$fw ge 0.82 * kf:content-width($altoDoc)">
+            <xsl:sequence select="'block'"/>
+          </xsl:when>
+
+          <xsl:when test="$fh le 1.5 * $mlh and
+            (exists($left) or exists($right))">
+            <xsl:sequence select="'inline'"/>
+          </xsl:when>
+
+          <xsl:when test="exists($left) and exists($right)">
+            <xsl:sequence select="'block'"/>
+          </xsl:when>
+
+          <xsl:when test="exists($left)">
+            <xsl:sequence select="'float-right'"/>
+          </xsl:when>
+
+          <xsl:when test="exists($right)">
+            <xsl:sequence select="'float-left'"/>
+          </xsl:when>
+
+          <xsl:otherwise>
+            <xsl:sequence select="'block'"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
+  <!-- The <l> an inline figure must be attached to: the line right before it
+       (or the last line of the preceding <ab>) -->
+  <xsl:function name="kf:host-line" as="element()?">
+    <xsl:param name="fig" as="element()"/>
+    <xsl:variable name="p"
+      select="$fig/preceding-sibling::*[not(self::tei:figure[@rend = 'inline'])][1]"/>
+    <xsl:sequence select="($p/self::tei:l, $p/self::tei:ab/tei:l[last()])[1]"/>
+  </xsl:function>
+
   <!-- We define a particular ALTO zone from an eScriptorium XML -->
   <xsl:template name="alto-zone">
     <xsl:param name="zoneId"/>
@@ -118,6 +303,28 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+  <!-- attach-inline: identity copy, except inline figures are moved into their host line -->
+  <xsl:template match="node() | @*" mode="attach-inline">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()" mode="attach-inline"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="tei:l" mode="attach-inline">
+    <xsl:variable name="me" select="."/>
+    <!-- figures are siblings of the <ab>, not of its last <l> -->
+    <xsl:variable name="anchor"
+      select="if (parent::tei:ab and empty(following-sibling::tei:l)) then parent::tei:ab else ."/>
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates select="node()" mode="attach-inline"/>
+      <xsl:copy-of select="$anchor/following-sibling::tei:figure[@rend = 'inline'][kf:host-line(.) is $me]"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- already emitted inside the host line: drop the standalone copy -->
+  <xsl:template match="tei:figure[@rend = 'inline'][exists(kf:host-line(.))]" mode="attach-inline"/>
   
   <xsl:template match="/">
     
@@ -266,8 +473,12 @@
             <xsl:variable name="flatBody">
               <xsl:apply-templates/>
             </xsl:variable>
+            <!-- Move inline figures into the end of the preceding line -->
+            <xsl:variable name="withInline">
+              <xsl:apply-templates select="$flatBody/node()" mode="attach-inline"/>
+            </xsl:variable>
             <xsl:call-template name="nest-headings">
-              <xsl:with-param name="nodes" select="$flatBody/node()"/>
+              <xsl:with-param name="nodes" select="$withInline/node()"/>
             </xsl:call-template>
           </body>
         </text>
@@ -482,57 +693,23 @@
   </xsl:template>
   
   <!-- Figures -->
-  
+
   <xsl:template match="graphZoneFig">
     <xsl:variable name="fid" select="normalize-space(replace(figId, '\s+', ''))"/>
     <xsl:variable name="item" select="key('fig-by-id', $fid)"/>
     <xsl:variable name="pageNum" select="normalize-space(ancestor::page[1]/facsimile/num)"/>
     <xsl:variable name="figOrdinal" select="count(preceding-sibling::graphZoneFig) + 1"/>
-    
-    <!-- Load the ALTO source for this page to inspect figure geometry -->
+
     <xsl:variable name="altoPath" select="concat('data/', $pageNum, '.xml')"/>
     <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
-    
-    <!-- Classify layout: float-left / float-right / block -->
-    <xsl:variable name="figRend">
-      <xsl:if test="$altoDoc">
-        <xsl:variable name="tagId"
-          select="$altoDoc//alto:OtherTag[@LABEL = concat('GraphicZone:figure#', $figOrdinal)]/@ID"/>
-        <!-- NOTE: takes the first physical block if the figure spans several -->
-        <xsl:variable name="figBlock" select="($altoDoc//alto:TextBlock[@TAGREFS = $tagId])[1]"/>
-        <xsl:if test="$figBlock">
-          <xsl:variable name="pageWidth" select="xs:integer($altoDoc//alto:Page/@WIDTH)"/>
-          <xsl:variable name="fHPOS" select="xs:integer($figBlock/@HPOS)"/>
-          <xsl:variable name="fWIDTH" select="xs:integer($figBlock/@WIDTH)"/>
-          <xsl:variable name="fHEIGHT" select="xs:integer($figBlock/@HEIGHT)"/>
-          <xsl:variable name="widthRatio" select="$fWIDTH div $pageWidth"/>
-          <!-- Same column frame used for the surface's contentUlx/contentWidth,
-               so figure classification is consistent with figure positioning. -->
-          <xsl:variable name="contentUlx" select="kf:content-ulx($altoDoc)"/>
-          <xsl:variable name="contentWidth" select="kf:content-width($altoDoc)"/>
-          <xsl:variable name="medianLineHeight" select="kf:median-line-height($altoDoc)"/>
-          <xsl:variable name="hRatio" select="if ($medianLineHeight gt 0) then $fHEIGHT div $medianLineHeight else 0"/>
-          
-          <xsl:choose>
-            <!-- Large figures (wide or tall relative to the column/line) are always block -->
-            <xsl:when test="$widthRatio gt 0.5 or $hRatio gt 4">block</xsl:when>
-            <!-- Small, line-height-scale figures sit inline with the text -->
-            <xsl:when test="$hRatio gt 0 and $hRatio lt 0.7 and $fWIDTH lt (0.5 * $contentWidth)">inline</xsl:when>
-            <!-- Figures poking outside the column extent float to whichever side they're on -->
-            <xsl:when test="($fHPOS + $fWIDTH) lt $contentUlx or $fHPOS gt ($contentUlx + $contentWidth)">
-              <xsl:value-of select="if ($fHPOS + ($fWIDTH idiv 2) lt ($pageWidth idiv 2))
-                  then 'float-left' else 'float-right'"/>
-            </xsl:when>
-            <xsl:otherwise>block</xsl:otherwise>
-          </xsl:choose>
-        </xsl:if>
-      </xsl:if>
-    </xsl:variable>
-    
-    <figure facs="#zone_f{$pageNum}_fig{$figOrdinal}">
-      <xsl:if test="normalize-space($figRend) != ''">
-        <xsl:attribute name="rend" select="normalize-space($figRend)"/>
-      </xsl:if>
+
+    <!-- row-start / row-next (side by side), else inline / float-left / float-right / block -->
+    <xsl:variable name="figRend" as="xs:string" select="
+      if (not($altoDoc)) then 'block'
+      else if (kf:fig-row($altoDoc, $figOrdinal) != '') then kf:fig-row($altoDoc, $figOrdinal)
+      else kf:fig-side($altoDoc, $figOrdinal)"/>
+
+    <figure facs="#zone_f{$pageNum}_fig{$figOrdinal}" rend="{$figRend}">
       <xsl:if test="$item/label">
         <head rend="italic">
           <xsl:apply-templates select="$item/label" mode="fig"/>
