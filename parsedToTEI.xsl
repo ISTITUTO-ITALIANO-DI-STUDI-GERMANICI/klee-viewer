@@ -49,7 +49,8 @@
   <xsl:function name="kf:column-blocks" as="element(alto:TextBlock)*">
     <xsl:param name="altoDoc"/>
     <xsl:variable name="mainZoneTagIds" select="$altoDoc//alto:OtherTag[@LABEL = 'MainZone']/@ID"/>
-    <xsl:variable name="blocks" select="$altoDoc//alto:TextBlock[@TAGREFS = $mainZoneTagIds]"/>
+    <xsl:variable name="blocks"
+      select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $mainZoneTagIds]"/>
     <xsl:variable name="widths" select="for $b in $blocks return xs:double($b/@WIDTH)"/>
     <xsl:variable name="maxW" select="if (exists($widths)) then max($widths) else 0"/>
     <xsl:sequence select="$blocks[xs:double(@WIDTH) ge 0.5 * $maxW]"/>
@@ -141,12 +142,15 @@
         <xsl:variable name="between" select="kf:main-lines($altoDoc)[
             min((xs:double(@VPOS) + xs:double(@HEIGHT), $y1)) - max((xs:double(@VPOS), $y0))
               ge 0.5 * min((xs:double(@HEIGHT), $y1 - $y0))
-            and xs:double(@HPOS) + xs:double(@WIDTH) div 2 gt $ba[3]
-            and xs:double(@HPOS) + xs:double(@WIDTH) div 2 lt $bb[1]]"/>
+            and (xs:double(@HPOS) + xs:double(@WIDTH)) div 2 gt $ba[3]
+            and (xs:double(@HPOS) + xs:double(@WIDTH)) div 2 lt $bb[1]]"/>
         <xsl:sequence select="
           $y1 - $y0 ge 0.5 * $hMin
           and $bb[1] ge $ba[1]
           and $ba[3] - $bb[1] le 0.4 * $wMin
+          and $bb[3] - $ba[1] le kf:content-width($altoDoc)
+          and $ba[1] ge kf:content-ulx($altoDoc)
+          and $bb[3] le kf:content-ulx($altoDoc) + kf:content-width($altoDoc)
           and empty($between)"/>
       </xsl:otherwise>
     </xsl:choose>
@@ -205,12 +209,12 @@
 
         <xsl:variable name="left"
           select="$beside[
-              xs:double(@HPOS) + xs:double(@WIDTH) div 2 le $fx0
+              (xs:double(@HPOS) + xs:double(@WIDTH)) div 2 le $fx0
             ]"/>
 
         <xsl:variable name="right"
           select="$beside[
-              xs:double(@HPOS) + xs:double(@WIDTH) div 2 ge $fx1
+              (xs:double(@HPOS) + xs:double(@WIDTH)) div 2 ge $fx1
             ]"/>
 
         <xsl:variable name="clash"
@@ -230,6 +234,7 @@
           </xsl:when>
 
           <xsl:when test="$fh le 1.5 * $mlh and
+            $fw le 0.15 * kf:content-width($altoDoc) and
             (exists($left) or exists($right))">
             <xsl:sequence select="'inline'"/>
           </xsl:when>
@@ -265,23 +270,33 @@
 
   <!-- We define a particular ALTO zone from an eScriptorium XML -->
   <xsl:template name="alto-zone">
-    <xsl:param name="zoneId"/>
+    <xsl:param name="zoneId" as="xs:string"/>
+    <xsl:param name="blocks" as="element(alto:TextBlock)*" select="."/>
+    <xsl:variable name="x0" select="min(for $b in $blocks return xs:double($b/@HPOS))"/>
+    <xsl:variable name="y0" select="min(for $b in $blocks return xs:double($b/@VPOS))"/>
+    <xsl:variable name="x1" select="max(for $b in $blocks return xs:double($b/@HPOS) + xs:double($b/@WIDTH))"/>
+    <xsl:variable name="y1" select="max(for $b in $blocks return xs:double($b/@VPOS) + xs:double($b/@HEIGHT))"/>
     <zone>
       <xsl:attribute name="xml:id"><xsl:value-of select="$zoneId"/></xsl:attribute>
-      <xsl:attribute name="ulx"><xsl:value-of select="@HPOS"/></xsl:attribute>
-      <xsl:attribute name="uly"><xsl:value-of select="@VPOS"/></xsl:attribute>
-      <xsl:attribute name="lrx"><xsl:value-of select="xs:integer(@HPOS) + xs:integer(@WIDTH)"/></xsl:attribute>
-      <xsl:attribute name="lry"><xsl:value-of select="xs:integer(@VPOS) + xs:integer(@HEIGHT)"/></xsl:attribute>
+      <xsl:attribute name="ulx"><xsl:value-of select="format-number($x0, '0')"/></xsl:attribute>
+      <xsl:attribute name="uly"><xsl:value-of select="format-number($y0, '0')"/></xsl:attribute>
+      <xsl:attribute name="lrx"><xsl:value-of select="format-number($x1, '0')"/></xsl:attribute>
+      <xsl:attribute name="lry"><xsl:value-of select="format-number($y1, '0')"/></xsl:attribute>
       <xsl:attribute name="points">
-        <xsl:variable name="coords"
-          select="tokenize(normalize-space(alto:Shape/alto:Polygon/@POINTS), '\s+')"/>
-        <xsl:for-each select="1 to (count($coords) div 2)">
-          <xsl:variable name="i" select="."/>
-          <xsl:if test="$i gt 1">
-            <xsl:text> </xsl:text>
-          </xsl:if>
-          <xsl:value-of select="concat($coords[2 * $i - 1], ',', $coords[2 * $i])"/>
-        </xsl:for-each>
+        <xsl:choose>
+          <xsl:when test="count($blocks) = 1">
+            <xsl:variable name="coords"
+              select="tokenize(normalize-space($blocks[1]/alto:Shape/alto:Polygon/@POINTS), '\s+')"/>
+            <xsl:for-each select="1 to (count($coords) idiv 2)">
+              <xsl:variable name="i" select="."/>
+              <xsl:if test="$i gt 1"><xsl:text> </xsl:text></xsl:if>
+              <xsl:value-of select="concat($coords[2 * $i - 1], ',', $coords[2 * $i])"/>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="concat($x0, ',', $y0, ' ', $x1, ',', $y0, ' ', $x1, ',', $y1, ' ', $x0, ',', $y1)"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:attribute>
     </zone>
   </xsl:template>
@@ -397,17 +412,8 @@
                  (MainZone/BT8 blocks), used to position figures relative to the
                  written column instead of the full scanned page width. -->
             <xsl:variable name="mainZoneTagIds" select="$altoDoc//alto:OtherTag[@LABEL = 'MainZone']/@ID"/>
-            <xsl:variable name="mainZoneBlocks" select="$altoDoc//alto:TextBlock[@TAGREFS = $mainZoneTagIds]"/>
-            <!-- Exclude short annotation-like blocks (e.g. a lone "do" ditto mark)
-                 that are much narrower than the page's actual text column. -->
-            <xsl:variable name="mainZoneWidths" select="for $b in $mainZoneBlocks return xs:double($b/@WIDTH)"/>
-            <xsl:variable name="maxMainZoneWidth" select="if (exists($mainZoneWidths)) then max($mainZoneWidths) else 0"/>
-            <xsl:variable name="columnBlocks" select="$mainZoneBlocks[xs:double(@WIDTH) ge 0.5 * $maxMainZoneWidth]"/>
-            <xsl:variable name="mainZoneLefts" select="for $b in $columnBlocks return xs:double($b/@HPOS)"/>
-            <xsl:variable name="mainZoneRights" select="for $b in $columnBlocks return xs:double($b/@HPOS) + xs:double($b/@WIDTH)"/>
-            <xsl:variable name="contentUlx" select="if (exists($mainZoneLefts)) then kf:median($mainZoneLefts) else 0"/>
-            <xsl:variable name="contentRight" select="if (exists($mainZoneRights)) then kf:median($mainZoneRights) else xs:double($altoDoc//alto:Page/@WIDTH)"/>
-            <xsl:variable name="contentWidth" select="$contentRight - $contentUlx"/>
+            <xsl:variable name="contentUlx" select="kf:content-ulx($altoDoc)"/>
+            <xsl:variable name="contentWidth" select="kf:content-width($altoDoc)"/>
             <surface>
               <xsl:attribute name="xml:id">
                 <xsl:value-of select="concat('f', $fid)" />
@@ -416,7 +422,7 @@
               <xsl:attribute name="uly">0</xsl:attribute>
               <xsl:attribute name="lrx"><xsl:value-of select="$altoDoc//alto:Page/@WIDTH"/></xsl:attribute>
               <xsl:attribute name="lry"><xsl:value-of select="$altoDoc//alto:Page/@HEIGHT"/></xsl:attribute>
-              <xsl:if test="$altoDoc">
+              <xsl:if test="$altoDoc and $contentWidth gt 0">
                 <xsl:attribute name="contentUlx"><xsl:value-of select="format-number($contentUlx, '0')"/></xsl:attribute>
                 <xsl:attribute name="contentWidth"><xsl:value-of select="format-number($contentWidth, '0')"/></xsl:attribute>
               </xsl:if>
@@ -430,29 +436,27 @@
                 <xsl:for-each select="$altoDoc//alto:OtherTag[@LABEL = 'MusicZone']">
                   <xsl:variable name="tagId" select="@ID"/>
                   <xsl:variable name="musicOrdinal" select="position()"/>
-                  <xsl:for-each select="$altoDoc//alto:TextBlock[@TAGREFS = $tagId]">
+                  <xsl:variable name="blocks"
+                    select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                  <xsl:if test="exists($blocks)">
                     <xsl:call-template name="alto-zone">
                       <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_music', $musicOrdinal)"/>
+                      <xsl:with-param name="blocks" select="$blocks"/>
                     </xsl:call-template>
-                  </xsl:for-each>
+                  </xsl:if>
                 </xsl:for-each>
                 <xsl:for-each select="$altoDoc//alto:OtherTag[matches(@LABEL, '^GraphicZone:figure#\d+$')]">
                   <xsl:variable name="tagId" select="@ID"/>
                   <xsl:variable name="figOrdinal"
                     select="xs:integer(replace(@LABEL, '^GraphicZone:figure#(\d+)$', '$1'))"/>
-                  <xsl:for-each select="$altoDoc//alto:TextBlock[@TAGREFS = $tagId]">
-                    <xsl:variable name="blockPos" select="position()"/>
-                    <xsl:variable name="blockCount" select="last()"/>
+                  <xsl:variable name="blocks"
+                    select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                  <xsl:if test="exists($blocks)">
                     <xsl:call-template name="alto-zone">
-                      <xsl:with-param name="zoneId">
-                        <xsl:value-of select="concat('zone_f', $fid, '_fig', $figOrdinal)"/>
-                        <!-- append a suffix only if this figure tag maps to more than one physical block -->
-                        <xsl:if test="$blockCount gt 1">
-                          <xsl:value-of select="concat('_', $blockPos)"/>
-                        </xsl:if>
-                      </xsl:with-param>
+                      <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_fig', $figOrdinal)"/>
+                      <xsl:with-param name="blocks" select="$blocks"/>
                     </xsl:call-template>
-                  </xsl:for-each>
+                  </xsl:if>
                 </xsl:for-each>
               </xsl:if>
             </surface>

@@ -695,18 +695,12 @@
                   lrx="1133"
                   lry="587"
                   points="593,432 593,579 965,585 1112,587 1133,436"/>
-            <zone xml:id="zone_f83070_fig2_1"
-                  ulx="910"
-                  uly="959"
-                  lrx="1473"
-                  lry="1129"
-                  points="910,959 916,1129 1468,1121 1473,965"/>
-            <zone xml:id="zone_f83070_fig2_2"
+            <zone xml:id="zone_f83070_fig2"
                   ulx="9"
-                  uly="1517"
+                  uly="959"
                   lrx="1759"
                   lry="1986"
-                  points="9,1930 9,1986 1213,1965 1231,1900 1754,1919 1759,1527 1719,1517 1719,1518 1726,1873 1223,1874 1195,1933"/>
+                  points="9,959 1759,959 1759,1986 9,1986"/>
          </surface>
          <surface xml:id="f83071"
                   ulx="0"
@@ -2544,10 +2538,10 @@
                         <w>Natur</w>
                         <pc type="period" float="left" force="strong">.</pc>
                         <pc type="bracketClose" float="left" force="inter">)</pc>
-                        <figure facs="#zone_f83049_fig2" rend="inline"/>
-                        <figure facs="#zone_f83049_fig3" rend="inline"/>
                      </l>
                   </ab>
+                  <figure facs="#zone_f83049_fig2" rend="float-right"/>
+                  <figure facs="#zone_f83049_fig3" rend="inline"/>
                   <ab n="1">
                      <l n="6">
                         <w>Setze</w>
@@ -3024,7 +3018,7 @@
                         <w>fig</w>
                         <w>5</w>
                      </l>
-                     <figure facs="#zone_f83052_fig2" rend="row-start">
+                     <figure facs="#zone_f83052_fig2" rend="block">
                         <head rend="italic"> 5a  </head>
                      </figure>
                      <l n="3">
@@ -3033,7 +3027,7 @@
                            <w>a</w>
                         </add>
                      </l>
-                     <figure facs="#zone_f83052_fig3" rend="row-next">
+                     <figure facs="#zone_f83052_fig3" rend="block">
                         <head rend="italic">
                            <w>fig</w> 6 .  </head>
                      </figure>
@@ -3845,6 +3839,200 @@
                            <w>Divergenz</w>
                         </l>
                      </label>
+                     <figure facs="#zone_f83057_fig1" rend="block">
+                        <head rend="italic">
+                           <w>fig</w>
+                           <pc type="period" float="left" force="strong">.</pc>4 .  </head>
+                     </figure>
+                     <ab n="1">
+                        <l n="3">
+                           <w>Der</w>
+                           <w>wesentliche</w>
+                           <w>Unterschied</w>
+                           <w>dieses</w>
+                           <w>neuen</w>
+                           <w>Gebildes</w>
+                        </l>
+                        <l n="4">
+                           <w>zu</w>
+                           <w>den</w>
+                           <w>vorangegangenen</w>
+                           <w>Beispielen</w>
+                           <w>von</w>
+                           <w>Convergenz</w>
+                        </l>
+                        <l n="5">
+                           <w>illustriert</w>
+                           <w>sich</w>
+                           <w>am</w>
+                           <w>besten</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>wenn</w>
+                           <w>wir</w>
+                           <w>uns</w>
+                           <w>z</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>B</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>jede</w>
+                        </l>
+                        <l n="6">
+                           <w>Linie</w>
+                           <w>als</w>
+                           <w>Weg</w>
+                           <w>eines</w>
+                           <w>Menschen</w>
+                           <w>denken</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Man<del rend="strikethrough">n</del>
+                           </w>
+                           <w>kann</w>
+                        </l>
+                        <l n="7">
+                           <w>bei</w>
+                           <w>den</w>
+                           <w>vorigen</w>
+                           <w>Beispielen</w>
+                           <w>von</w>
+                           <w>Freundschaft</w>
+                           <w>sprechen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                        <l n="8">
+                           <w>man</w>
+                           <w>kommt</w>
+                           <w>nicht</w>
+                           <w>auseinander</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Bei</w>
+                           <w>diesem</w>
+                           <w>neuen</w>
+                        </l>
+                        <l n="9">
+                           <w>divergenten</w>
+                           <w>Beispiel</w>
+                           <w>aber</w>
+                           <w>sehn</w>
+                           <w>wir</w>
+                           <choice>
+                              <sic>
+                                 <w>unsern</w>
+                              </sic>
+                              <corr>
+                                 <w>den</w>
+                              </corr>
+                           </choice>
+                           <w>Nebenmen -</w>
+                        </l>
+                        <l n="10">
+                           <w>schen</w>
+                           <w>nur</w>
+                           <w>einmal</w>
+                           <w>kurz</w>
+                           <w>über</w>
+                           <w>unsern</w>
+                           <w>Weg</w>
+                           <w>laufen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                        <l n="11">
+                           <w>bei</w>
+                           <w>dem</w>
+                           <w>Punkte</w>
+                           <w>D</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <trailer rend="bold" type="pause">
+                        <pc type="punct" force="inter">*</pc>
+                     </trailer>
+                     <label type="margin" place="left" rend="margin-head margin-left" n="4">
+                        <l n="13">
+                           <w>Perspective</w>
+                        </l>
+                     </label>
+                     <figure facs="#zone_f83057_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 5  </head>
+                     </figure>
+                     <ab n="1">
+                        <l n="14">
+                           <w>Stellen</w>
+                           <w>wir</w>
+                           <w>uns</w>
+                           <w>darunter</w>
+                           <add>
+                              <pc type="bracketOpen" float="right" force="inter">(</pc>
+                              <w>fig</w>
+                              <pc type="period" float="left" force="strong">.</pc>
+                              <w>5</w>
+                              <pc type="bracketClose" float="left" force="inter">)</pc>
+                           </add>
+                           <w>Eisenbahn -</w>
+                        </l>
+                        <l n="15">
+                           <w>schienen</w>
+                           <w>vor</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Das</w>
+                           <w>hat</w>
+                           <w>nun</w>
+                           <w>etwas</w>
+                           <w>sehr</w>
+                        </l>
+                        <l n="16">
+                           <w>irreführendes</w>
+                           <pc type="quest" float="left" force="strong">?</pc>
+                           <w>Denn</w>
+                           <w>diese</w>
+                           <w>Linien</w>
+                        </l>
+                        <l n="17">
+                           <w>sind</w>
+                           <w>doch</w>
+                           <w>wahrhaftig</w>
+                           <w>divergent</w>
+                           <w>genug</w>
+                           <pc type="exclam" float="left" force="strong">!</pc>
+                        </l>
+                        <l n="18">
+                           <w>Eisenbahnschienen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>die</w>
+                           <w>sich</w>
+                           <w>im<supplied>m</supplied>er</w>
+                        </l>
+                        <l n="19">
+                           <w>mehr</w>
+                           <w>voneinander</w>
+                           <w>entfernen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                        <l n="20">
+                           <w>das</w>
+                           <w>gibt</w>
+                           <w>ja</w>
+                           <w>die</w>
+                           <w>schönste</w>
+                           <w>Entgleisung</w>
+                        </l>
+                        <l n="21">
+                           <w>Oder</w>
+                           <w>wenn</w>
+                           <w>man</w>
+                           <w>die</w>
+                           <w>entgegen -</w>
+                        </l>
+                        <l n="22">
+                           <w>gesetzte</w>
+                           <w>Richtung</w>
+                           <w>annimmt</w>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83057_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 6  </head>
+                     </figure>
                      <pb n="15" facs="83058.jpg"/>
                      <figure facs="#zone_f83058_fig1" rend="float-left">
                         <head rend="italic">
@@ -3941,9 +4129,9 @@
                            <w>Be<add>we</add>gung</w>
                            <w>von</w>
                            <w>Punkten</w>
-                           <figure facs="#zone_f83058_fig2" rend="inline"/>
                         </l>
                      </ab>
+                     <figure facs="#zone_f83058_fig2" rend="float-right"/>
                      <l n="10">
                         <w>zu</w>
                         <w>Linien</w>
@@ -4040,7 +4228,7 @@
                            <pc type="exclam" float="left" force="strong">!</pc>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83058_fig5" rend="row-start">
+                     <figure facs="#zone_f83058_fig5" rend="float-left">
                         <head rend="italic">
                            <w>fig</w> 7  </head>
                      </figure>
@@ -4096,7 +4284,7 @@
                         <w>Parallelen</w>
                         <w>Linien</w>
                      </l>
-                     <figure facs="#zone_f83058_fig6" rend="row-next"/>
+                     <figure facs="#zone_f83058_fig6" rend="block"/>
                      <pb n="16" facs="83059.jpg"/>
                      <l n="1">
                         <w>und</w>
@@ -4145,8 +4333,8 @@
                         <w>die</w>
                         <w>bei</w>
                      </l>
-                     <figure facs="#zone_f83060_fig1" rend="row-start"/>
-                     <figure facs="#zone_f83060_fig2" rend="row-next"/>
+                     <figure facs="#zone_f83060_fig1" rend="float-left"/>
+                     <figure facs="#zone_f83060_fig2" rend="block"/>
                      <l n="3">
                         <w>fig</w>
                         <w>11</w>
@@ -4172,7 +4360,7 @@
                         <w>Winkel</w>
                         <pc type="bracketClose" float="left" force="inter">)</pc>
                      </l>
-                     <figure facs="#zone_f83060_fig3" rend="float-left"/>
+                     <figure facs="#zone_f83060_fig3" rend="block"/>
                      <l n="7">
                         <w>und</w>
                         <add>
@@ -4213,7 +4401,7 @@
                         </l>
                      </label>
                      <pb n="18" facs="83061.jpg"/>
-                     <figure facs="#zone_f83061_fig1" rend="float-left">
+                     <figure facs="#zone_f83061_fig1" rend="block">
                         <head rend="italic">
                            <w>fig</w> 14  </head>
                      </figure>
@@ -4392,7 +4580,7 @@
                            <w>Fläche</w>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83062_fig2" rend="block"/>
+                     <figure facs="#zone_f83062_fig2" rend="float-right"/>
                      <l n="4">
                         <w>bleibt</w>
                         <w>die</w>
@@ -5976,7 +6164,7 @@
                         <w>so</w>
                         <pc type="colon" float="left" force="weak">:</pc>
                      </l>
-                     <figure facs="#zone_f83074_fig1" rend="block">
+                     <figure facs="#zone_f83074_fig1" rend="row-start">
                         <head rend="italic">
                            <w>fig</w> 13  </head>
                      </figure>
@@ -5991,7 +6179,7 @@
                         <w>so</w>
                         <pc type="colon" float="left" force="weak">:</pc>
                      </l>
-                     <figure facs="#zone_f83074_fig2" rend="float-right">
+                     <figure facs="#zone_f83074_fig2" rend="row-next">
                         <head rend="italic"> 13a  </head>
                      </figure>
                      <ab n="1">
@@ -6942,7 +7130,7 @@
                            </l>
                         </ab>
                         <pb n="37" facs="83080.jpg"/>
-                        <figure facs="#zone_f83080_fig1" rend="float-left">
+                        <figure facs="#zone_f83080_fig1" rend="block">
                            <head rend="italic">
                               <w>Fig</w> 26  </head>
                         </figure>
@@ -7113,11 +7301,11 @@
                               <pc type="bracketClose" float="left" force="inter">)</pc>
                            </l>
                         </ab>
-                        <figure facs="#zone_f83080_fig3" rend="row-start">
+                        <figure facs="#zone_f83080_fig3" rend="block">
                            <head rend="italic">
                               <w>fig</w> 27  </head>
                         </figure>
-                        <figure facs="#zone_f83080_fig4" rend="row-next">
+                        <figure facs="#zone_f83080_fig4" rend="block">
                            <head rend="italic">
                               <w>fig</w> 28  </head>
                         </figure>
@@ -7403,14 +7591,14 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <figure facs="#zone_f83081_fig3" rend="float-left">
+                        <figure facs="#zone_f83081_fig3" rend="row-start">
                            <head rend="italic">
                               <w>fig</w> 31  </head>
                         </figure>
                         <trailer rend="bold" type="pause">
                            <pc type="punct" force="inter">*</pc>
                         </trailer>
-                        <figure facs="#zone_f83081_fig4" rend="float-right">
+                        <figure facs="#zone_f83081_fig4" rend="row-next">
                            <head rend="italic"> 31a  </head>
                         </figure>
                         <pb n="39" facs="83082.jpg"/>
@@ -8747,11 +8935,11 @@
                         <w>entsteht</w>
                         <pc type="period" float="left" force="strong">.</pc>
                      </l>
-                     <figure facs="#zone_f83089_fig2" rend="float-left"/>
+                     <figure facs="#zone_f83089_fig2" rend="row-start"/>
                      <l n="6">
                         <w>oder</w>
                      </l>
-                     <figure facs="#zone_f83089_fig3" rend="float-right"/>
+                     <figure facs="#zone_f83089_fig3" rend="row-next"/>
                      <ab n="1">
                         <l n="7">
                            <w>Diese</w>
@@ -8777,11 +8965,11 @@
                      <trailer rend="bold" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
-                     <figure facs="#zone_f83089_fig4" rend="row-start">
+                     <figure facs="#zone_f83089_fig4" rend="block">
                         <head rend="italic">
                            <w>fig</w> 7a  </head>
                      </figure>
-                     <figure facs="#zone_f83089_fig5" rend="row-next">
+                     <figure facs="#zone_f83089_fig5" rend="block">
                         <head rend="italic">
                            <w>fig</w>
                            <pc type="period" float="left" force="strong">.</pc>8  </head>
@@ -9181,7 +9369,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83092_fig1" rend="row-start">
+                     <figure facs="#zone_f83092_fig1" rend="block">
                         <head rend="italic">
                            <w>fig</w> 9 .  </head>
                         <figDesc>
@@ -9197,7 +9385,7 @@
                            </hi>
                         </figDesc>
                      </figure>
-                     <figure facs="#zone_f83092_fig2" rend="row-next">
+                     <figure facs="#zone_f83092_fig2" rend="block">
                         <head rend="italic">
                            <w>fig</w>
                            <pc type="period" float="left" force="strong">.</pc>10  </head>
@@ -9237,7 +9425,7 @@
                            </hi>
                         </figDesc>
                      </figure>
-                     <figure facs="#zone_f83092_fig4" rend="row-start">
+                     <figure facs="#zone_f83092_fig4" rend="block">
                         <head rend="italic">
                            <w>fig</w>
                            <pc type="period" float="left" force="strong">.</pc>12 .  </head>
@@ -9263,7 +9451,7 @@
                            <pc type="bracketClose" float="left" force="inter">)</pc>
                         </figDesc>
                      </figure>
-                     <figure facs="#zone_f83092_fig5" rend="row-next">
+                     <figure facs="#zone_f83092_fig5" rend="block">
                         <head rend="italic">
                            <w>fig</w> 13 .  </head>
                         <figDesc>
@@ -9494,11 +9682,11 @@
                            <w>Taktbild</w>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83094_fig8" rend="row-start">
+                     <figure facs="#zone_f83094_fig8" rend="block">
                         <head rend="italic">
                            <w>fig</w> 20  </head>
                      </figure>
-                     <figure facs="#zone_f83094_fig9" rend="row-next">
+                     <figure facs="#zone_f83094_fig9" rend="block">
                         <head rend="italic">
                            <w>fig</w>
                            <pc type="period" float="left" force="strong">.</pc>20a  </head>
