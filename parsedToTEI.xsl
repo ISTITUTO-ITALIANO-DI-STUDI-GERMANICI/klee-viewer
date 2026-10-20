@@ -8,16 +8,16 @@
   version="2.0"
   xpath-default-namespace="http://himeros.eu/euporia"
   exclude-result-prefixes="alto kf tei">
-  
+
   <xsl:output method="xml" encoding="UTF-8" indent="yes" omit-xml-declaration="no" />
-  
+
   <xsl:strip-space elements="*"/>
   <xsl:param name="lang" select="'und'"/>
-  
+
   <xsl:key name="fig-by-id"
     match="apparatoFigureItem"
     use="normalize-space(replace(figId, '\s+', ''))"/>
-  
+
   <!-- Median of a numeric sequence: used to derive a per-page "content frame"
        (typical left/right edge of the main text column) that is robust to a
        single outlier block (e.g. a label/annotation reaching the page edge),
@@ -59,7 +59,9 @@
   <xsl:function name="kf:content-ulx" as="xs:double">
     <xsl:param name="altoDoc"/>
     <xsl:variable name="lefts" select="for $b in kf:column-blocks($altoDoc) return xs:double($b/@HPOS)"/>
-    <xsl:sequence select="if (exists($lefts)) then kf:median($lefts) else 0"/>
+    <!-- min, not median: blocks wrapped around a float start further right and
+         can outnumber the full-width ones -->
+    <xsl:sequence select="if (exists($lefts)) then min($lefts) else 0"/>
   </xsl:function>
 
   <xsl:function name="kf:content-width" as="xs:double">
@@ -67,7 +69,7 @@
     <xsl:variable name="blocks" select="kf:column-blocks($altoDoc)"/>
     <xsl:variable name="lefts" select="for $b in $blocks return xs:double($b/@HPOS)"/>
     <xsl:variable name="rights" select="for $b in $blocks return xs:double($b/@HPOS) + xs:double($b/@WIDTH)"/>
-    <xsl:variable name="ulx" select="if (exists($lefts)) then kf:median($lefts) else 0"/>
+    <xsl:variable name="ulx" select="if (exists($lefts)) then min($lefts) else 0"/>
     <xsl:variable name="right" select="if (exists($rights)) then kf:median($rights) else xs:double($altoDoc//alto:Page/@WIDTH)"/>
     <xsl:sequence select="$right - $ulx"/>
   </xsl:function>
@@ -80,7 +82,85 @@
     <xsl:sequence select="if (exists($heights)) then kf:median($heights) else 0"/>
   </xsl:function>
 
-    <!-- TextLines of the main text column only (margins, music, graphics excluded) -->
+  <!-- Typical width in ALTO px of one character of the transcribed text
+       (median of line width / characters over the column lines of >= 12 chars).
+       Figures are sized in units of this, so they keep the manuscript's
+       proportion to the letters. 0 when the page has too few lines. -->
+  <xsl:function name="kf:char-width" as="xs:double">
+    <xsl:param name="altoDoc"/>
+    <xsl:variable name="ratios" select="
+      for $l in kf:column-blocks($altoDoc)//alto:TextLine,
+        $len in string-length(normalize-space(string-join($l/alto:String/@CONTENT, ' ')))
+      return if ($len ge 12) then xs:double($l/@WIDTH) div $len else ()"/>
+    <xsl:sequence select="if (count($ratios) ge 3) then kf:median($ratios) else 0"/>
+  </xsl:function>
+
+  <!-- Horizontal extent (min, max) of a polygon (flat x1,y1,x2,y2,... sequence)
+       inside the band y0..y1; empty if the polygon does not reach the band. -->
+  <xsl:function name="kf:poly-x-range" as="xs:double*">
+    <xsl:param name="poly" as="xs:double*"/>
+    <xsl:param name="y0" as="xs:double"/>
+    <xsl:param name="y1" as="xs:double"/>
+    <xsl:variable name="n" select="count($poly) idiv 2"/>
+    <xsl:variable name="xs" as="xs:double*" select="
+      for $i in 1 to $n,
+        $j in (if ($i eq $n) then 1 else $i + 1),
+        $xa in $poly[2 * $i - 1], $ya in $poly[2 * $i],
+        $xb in $poly[2 * $j - 1], $yb in $poly[2 * $j],
+        $lo in min(($ya, $yb)), $hi in max(($ya, $yb))
+      return
+        if ($hi lt $y0 or $lo gt $y1) then ()
+        else if ($ya eq $yb) then ($xa, $xb)
+        else for $y in (max(($lo, $y0)), min(($hi, $y1)))
+          return $xa + ($y - $ya) div ($yb - $ya) * ($xb - $xa)"/>
+    <xsl:sequence select="if (exists($xs)) then (min($xs), max($xs)) else ()"/>
+  </xsl:function>
+
+  <!-- Outline of figure #ordinal as flat x,y pairs: the ALTO polygon when the zone is
+       a single block, otherwise its bounding rectangle (same rule as alto-zone). -->
+  <xsl:function name="kf:fig-poly" as="xs:double*">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:variable name="tagIds"
+      select="$altoDoc//alto:OtherTag[@LABEL = concat('GraphicZone:figure#', $ordinal)]/@ID"/>
+    <xsl:variable name="blocks"
+      select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds]"/>
+    <xsl:variable name="b" select="kf:fig-box($altoDoc, $ordinal)"/>
+    <xsl:choose>
+      <xsl:when test="count($blocks) eq 1 and $blocks/alto:Shape/alto:Polygon/@POINTS">
+        <xsl:sequence select="for $t in tokenize(normalize-space($blocks/alto:Shape/alto:Polygon/@POINTS), '\s+') return xs:double($t)"/>
+      </xsl:when>
+      <xsl:when test="exists($b)">
+        <xsl:sequence select="($b[1], $b[2], $b[3], $b[2], $b[3], $b[4], $b[1], $b[4])"/>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:function>
+
+  <!-- Side of a text line relative to a figure outline, within the band they share:
+       'none' (not beside it), 'left', 'right', or 'clash' (the text overlaps the drawing).
+       The outline is used, not its bounding box, so text tucked into a notch of the
+       zone counts as beside it. $tol (about one letter) absorbs sloppy line boxes. -->
+  <xsl:function name="kf:line-side" as="xs:string">
+    <xsl:param name="line" as="element(alto:TextLine)"/>
+    <xsl:param name="poly" as="xs:double*"/>
+    <xsl:param name="fy0" as="xs:double"/>
+    <xsl:param name="fy1" as="xs:double"/>
+    <xsl:param name="tol" as="xs:double"/>
+    <xsl:variable name="ly0" select="xs:double($line/@VPOS)"/>
+    <xsl:variable name="lh" select="xs:double($line/@HEIGHT)"/>
+    <xsl:variable name="b0" select="max(($ly0, $fy0))"/>
+    <xsl:variable name="b1" select="min(($ly0 + $lh, $fy1))"/>
+    <xsl:variable name="xr" select="kf:poly-x-range($poly, $b0, $b1)"/>
+    <xsl:variable name="lx0" select="xs:double($line/@HPOS)"/>
+    <xsl:variable name="lx1" select="$lx0 + xs:double($line/@WIDTH)"/>
+    <xsl:sequence select="
+      if ($b1 - $b0 lt 0.5 * min(($lh, $fy1 - $fy0)) or empty($xr)) then 'none'
+      else if ($lx0 ge $xr[2] - $tol) then 'right'
+      else if ($lx1 le $xr[1] + $tol) then 'left'
+      else 'clash'"/>
+  </xsl:function>
+
+  <!-- TextLines of the main text column only (margins, music, graphics excluded) -->
   <xsl:function name="kf:main-lines" as="element(alto:TextLine)*">
     <xsl:param name="altoDoc"/>
 
@@ -89,8 +169,8 @@
 
     <xsl:sequence
       select="$altoDoc//alto:TextBlock[
-        tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds
-      ]//alto:TextLine"/>
+          tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds
+        ]//alto:TextLine"/>
   </xsl:function>
 
   <!-- Bounding box (x0, y0, x1, y1) of the first block of figure #ordinal; empty if missing -->
@@ -141,9 +221,9 @@
         <xsl:variable name="hMin" select="min(($ba[4] - $ba[2], $bb[4] - $bb[2]))"/>
         <xsl:variable name="between" select="kf:main-lines($altoDoc)[
             min((xs:double(@VPOS) + xs:double(@HEIGHT), $y1)) - max((xs:double(@VPOS), $y0))
-              ge 0.5 * min((xs:double(@HEIGHT), $y1 - $y0))
-            and (xs:double(@HPOS) + xs:double(@WIDTH)) div 2 gt $ba[3]
-            and (xs:double(@HPOS) + xs:double(@WIDTH)) div 2 lt $bb[1]]"/>
+            ge 0.5 * min((xs:double(@HEIGHT), $y1 - $y0))
+            and xs:double(@HPOS) + xs:double(@WIDTH) div 2 gt $ba[3]
+            and xs:double(@HPOS) + xs:double(@WIDTH) div 2 lt $bb[1]]"/>
         <xsl:sequence select="
           $y1 - $y0 ge 0.5 * $hMin
           and $bb[1] ge $ba[1]
@@ -167,76 +247,73 @@
 
   <!-- Layout of a standalone figure, decided from the text lines sharing its band.
        Each line counts as left/right of the figure according to its horizontal centre.
-         no text beside / text overlapping / wider than half the column -> block
-         small figure with text on its left                            -> inline
-         text only on the right                                        -> float-left
-         text only on the left                                         -> float-right -->
+       no text beside / text overlapping / wider than half the column -> block
+       small figure with text on its left                            -> inline
+       text only on the right                                        -> float-left
+       text only on the left                                         -> float-right -->
 
   <xsl:function name="kf:fig-side" as="xs:string">
     <xsl:param name="altoDoc"/>
     <xsl:param name="ordinal" as="xs:integer"/>
 
-    <xsl:variable name="box"
-      select="kf:fig-box($altoDoc, $ordinal)"/>
+    <xsl:variable name="box" select="kf:fig-box($altoDoc, $ordinal)"/>
 
     <xsl:choose>
       <xsl:when test="empty($box)">
         <xsl:sequence select="'block'"/>
       </xsl:when>
-
       <xsl:otherwise>
         <xsl:variable name="fx0" select="$box[1]"/>
         <xsl:variable name="fy0" select="$box[2]"/>
         <xsl:variable name="fx1" select="$box[3]"/>
         <xsl:variable name="fy1" select="$box[4]"/>
-
         <xsl:variable name="fw" select="$fx1 - $fx0"/>
         <xsl:variable name="fh" select="$fy1 - $fy0"/>
-        <xsl:variable name="mlh"
-          select="kf:median-line-height($altoDoc)"/>
+        <xsl:variable name="mlh" select="kf:median-line-height($altoDoc)"/>
+        <xsl:variable name="cw" select="kf:content-width($altoDoc)"/>
+        <xsl:variable name="chw" select="kf:char-width($altoDoc)"/>
+        <xsl:variable name="tol" select="if ($chw gt 0) then $chw else 0.02 * $cw"/>
+        <xsl:variable name="poly" select="kf:fig-poly($altoDoc, $ordinal)"/>
 
-        <xsl:variable name="beside"
-          select="kf:main-lines($altoDoc)[
-              min((
-                  xs:double(@VPOS) + xs:double(@HEIGHT),
-                  $fy1
-                )) - max((
-                  xs:double(@VPOS),
-                  $fy0
-                ))
-              ge 0.5 * min((xs:double(@HEIGHT), $fh))
-            ]"/>
-
-        <xsl:variable name="left"
-          select="$beside[
-              (xs:double(@HPOS) + xs:double(@WIDTH)) div 2 le $fx0
-            ]"/>
-
-        <xsl:variable name="right"
-          select="$beside[
-              (xs:double(@HPOS) + xs:double(@WIDTH)) div 2 ge $fx1
-            ]"/>
-
-        <xsl:variable name="clash"
-          select="$beside except ($left | $right)"/>
+        <xsl:variable name="sides" as="element()*">
+          <xsl:for-each select="kf:main-lines($altoDoc)">
+            <xsl:variable name="s" select="kf:line-side(., $poly, $fy0, $fy1, $tol)"/>
+            <xsl:if test="$s ne 'none'">
+              <l side="{$s}" x0="{@HPOS}" x1="{xs:double(@HPOS) + xs:double(@WIDTH)}"
+                 ov="{min((xs:double(@VPOS) + xs:double(@HEIGHT), $fy1)) - max((xs:double(@VPOS), $fy0))}"/>
+            </xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="left" select="$sides[@side = 'left']"/>
+        <xsl:variable name="right" select="$sides[@side = 'right']"/>
+        <xsl:variable name="clash" select="$sides[@side = 'clash']"/>
+        <!-- share of the figure's height that has text beside it -->
+        <xsl:variable name="coverage"
+          select="min((1, sum(for $x in ($left, $right) return xs:double($x/@ov)) div $fh))"/>
+        <!-- characters spanned by figure + text beside it: must fit the narrowest column -->
+        <xsl:variable name="maxChars" select="78"/>
+        <xsl:variable name="spanRight"
+          select="if (exists($right)) then max(for $x in $right return xs:double($x/@x1)) - $fx0 else 0"/>
+        <xsl:variable name="spanLeft"
+          select="if (exists($left)) then $fx1 - min(for $x in $left return xs:double($x/@x0)) else 0"/>
 
         <xsl:choose>
-          <xsl:when test="empty($beside)">
+          <xsl:when test="empty($sides)">
             <xsl:sequence select="'block'"/>
+          </xsl:when>
+
+          <!-- small sign sitting in a line: the line may span it (clash) -->
+          <xsl:when test="$fh le 1.5 * $mlh and $fw le 0.15 * $cw
+            and (every $c in $clash satisfies (xs:double($c/@x0) le $fx0 and xs:double($c/@x1) ge $fx1))">
+            <xsl:sequence select="'inline'"/>
           </xsl:when>
 
           <xsl:when test="exists($clash)">
             <xsl:sequence select="'block'"/>
           </xsl:when>
 
-          <xsl:when test="$fw ge 0.82 * kf:content-width($altoDoc)">
+          <xsl:when test="$fw ge 0.82 * $cw or $coverage lt 0.4">
             <xsl:sequence select="'block'"/>
-          </xsl:when>
-
-          <xsl:when test="$fh le 1.5 * $mlh and
-            $fw le 0.15 * kf:content-width($altoDoc) and
-            (exists($left) or exists($right))">
-            <xsl:sequence select="'inline'"/>
           </xsl:when>
 
           <xsl:when test="exists($left) and exists($right)">
@@ -244,15 +321,11 @@
           </xsl:when>
 
           <xsl:when test="exists($left)">
-            <xsl:sequence select="'float-right'"/>
-          </xsl:when>
-
-          <xsl:when test="exists($right)">
-            <xsl:sequence select="'float-left'"/>
+            <xsl:sequence select="if ($chw gt 0 and $spanLeft div $chw gt $maxChars) then 'block' else 'float-right'"/>
           </xsl:when>
 
           <xsl:otherwise>
-            <xsl:sequence select="'block'"/>
+            <xsl:sequence select="if ($chw gt 0 and $spanRight div $chw gt $maxChars) then 'block' else 'float-left'"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:otherwise>
@@ -300,18 +373,18 @@
       </xsl:attribute>
     </zone>
   </xsl:template>
-  
+
   <!-- This template manages margin text positioning -->
   <xsl:template name="margin-place">
     <xsl:param name="pageNum" as="xs:integer"/>
     <xsl:param name="inner" as="xs:boolean" select="false()"/>
-    
+
     <xsl:choose>
       <!-- Outer page: if even page go left, else right -->
       <xsl:when test="not($inner)">
         <xsl:value-of select="if ($pageNum mod 2 = 0) then 'left' else 'right'"/>
       </xsl:when>
-      
+
       <!-- Inner page: swap positions -->
       <xsl:otherwise>
         <xsl:value-of select="if ($pageNum mod 2 = 0) then 'right' else 'left'"/>
@@ -340,13 +413,13 @@
 
   <!-- already emitted inside the host line: drop the standalone copy -->
   <xsl:template match="tei:figure[@rend = 'inline'][exists(kf:host-line(.))]" mode="attach-inline"/>
-  
+
   <xsl:template match="/">
-    
+
     <xsl:processing-instruction name="teipublisher">odd="klee.odd" template="klee2.html" view="page" media="web print epub"</xsl:processing-instruction>
-    
+
     <TEI version="3.3.0">
-      
+
       <!-- teiHeader corpus -->
       <teiHeader>
         <fileDesc>
@@ -365,10 +438,10 @@
         </encodingDesc>
         <profileDesc/>
       </teiHeader>
-      
+
       <!-- Empty standOff before TEI children -->
       <standOff/>
-      
+
       <!-- TEI Language child -->
       <TEI version="3.3.0">
         <teiHeader>
@@ -425,6 +498,9 @@
               <xsl:if test="$altoDoc and $contentWidth gt 0">
                 <xsl:attribute name="contentUlx"><xsl:value-of select="format-number($contentUlx, '0')"/></xsl:attribute>
                 <xsl:attribute name="contentWidth"><xsl:value-of select="format-number($contentWidth, '0')"/></xsl:attribute>
+                <xsl:if test="kf:char-width($altoDoc) gt 0">
+                  <xsl:attribute name="charWidth"><xsl:value-of select="format-number(kf:char-width($altoDoc), '0.##')"/></xsl:attribute>
+                </xsl:if>
               </xsl:if>
               <graphic>
                 <xsl:attribute name="url">
@@ -487,10 +563,10 @@
           </body>
         </text>
       </TEI>
-      
+
     </TEI>
   </xsl:template>
-  
+
   <!-- Cleaning from Euporia symbols -->
   <xsl:template match="
     deletion/text()           |
@@ -510,21 +586,21 @@
     mrgTextZoneOut/text()     |
     expl/text()
                   "/>
-  
+
   <xsl:template match="text()">
     <xsl:value-of select="."/>
   </xsl:template>
-  
+
   <xsl:template match="
     apparatoFigure |
     placeholder" />
-  
+
   <!-- Managing punctuation -->
-  
+
   <xsl:template name="render-punct">
     <xsl:param name="char"/>
     <xsl:param name="mode" select="''"/>
-    
+
     <pc>
       <!-- Which type of punctuation -->
       <xsl:attribute name="type">
@@ -545,7 +621,7 @@
           <xsl:otherwise>punct</xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
-      
+
       <!-- Where it joins -->
       <xsl:if test="$char != '*'">
         <xsl:attribute name="float">
@@ -556,7 +632,7 @@
           </xsl:choose>
         </xsl:attribute>
       </xsl:if>
-      
+
       <!-- How strong it is -->
       <xsl:attribute name="force">
         <xsl:choose>
@@ -566,13 +642,13 @@
           <xsl:otherwise>inter</xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
-      
+
       <xsl:value-of select="$char"/>
-      
+
     </pc>
-    
+
   </xsl:template>
-  
+
   <!-- Main structure -->
   <xsl:template match="*[local-name()='div']">
     <!-- The source div is just a per-scan grouping (one per <page>); real
@@ -580,7 +656,7 @@
          simply flatten through here instead of emitting a div ourselves. -->
     <xsl:apply-templates/>
   </xsl:template>
-  
+
   <!--
        Turns the flat sequence of <head>/<pb>/<ab>/... produced above into
        properly nested <div>s, one per section, with the section <head> as
@@ -588,13 +664,13 @@
   -->
   <xsl:template name="nest-headings">
     <xsl:param name="nodes" as="node()*"/>
-    
+
     <!-- If I want to exclude margin headings, just add "[not(@type = 'margin')]" 
          in the select below (after [local-name() = 'head']) -->
     <xsl:variable name="headLevels"
       select="for $h in $nodes[local-name() = 'head']
         return xs:integer($h/@n)"/>
-    
+
     <xsl:choose>
       <xsl:when test="empty($headLevels)">
         <xsl:sequence select="$nodes"/>
@@ -649,7 +725,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template match="page">
     <pb>
       <xsl:attribute name="n">
@@ -670,7 +746,7 @@
         <xsl:text>.jpg</xsl:text>
       </xsl:attribute>
     </pb>
-    
+
     <xsl:apply-templates select="node()[
         self::mainZone
         or self::graphZoneFig
@@ -680,7 +756,7 @@
         or self::apparatoFigure
       ]"/>
   </xsl:template>
-  
+
   <xsl:template match="mainZone">
     <xsl:for-each-group select="*" group-starting-with="openPar | sectionHeading">
       <xsl:choose>
@@ -695,7 +771,7 @@
       </xsl:choose>
     </xsl:for-each-group>
   </xsl:template>
-  
+
   <!-- Figures -->
 
   <xsl:template match="graphZoneFig">
@@ -726,35 +802,35 @@
       </xsl:if>
     </figure>
   </xsl:template>
-  
+
   <xsl:template match="musicZone">
     <xsl:variable name="pageNum" select="normalize-space(ancestor::page[1]/facsimile/num)"/>
     <xsl:variable name="musicOrdinal" select="count(preceding-sibling::musicZone) + 1"/>
-    
+
     <figure type="music" facs="#zone_f{$pageNum}_music{$musicOrdinal}">
       <head><xsl:value-of select="normalize-space(musicId)"/></head>
     </figure>
   </xsl:template>
-  
+
   <xsl:template match="text()" mode="fig">
     <xsl:value-of select="."/>
   </xsl:template>
-  
+
   <xsl:template match="line_app" mode="fig">
     <xsl:apply-templates mode="fig"/>
   </xsl:template>
-  
+
   <xsl:template match="text()[normalize-space(.) = '|']" mode="fig">
     <lb />
   </xsl:template>
-  
+
   <xsl:template match="seginfig" mode="fig">
     <w>
       <xsl:value-of select="normalize-space(.)"/>
     </w>
     <xsl:text> </xsl:text>
   </xsl:template>
-  
+
   <xsl:template match="punctinfig" mode="fig">
     <xsl:variable name="char" select="normalize-space(.)"/>
     <xsl:call-template name="render-punct">
@@ -762,32 +838,32 @@
       <xsl:with-param name="mode" select="'fig'"/>
     </xsl:call-template>
   </xsl:template>
-  
+
   <xsl:template match="textSeqinfig" mode="fig">
     <xsl:apply-templates mode="fig"/>
   </xsl:template>
-  
+
   <xsl:template match="label" mode="fig">
     <xsl:call-template name="strip-outer-brackets">
       <xsl:with-param name="nodes" select="node()"/>
     </xsl:call-template>
   </xsl:template>
-  
+
   <xsl:template match="textinfig" mode="fig">
     <xsl:call-template name="strip-outer-brackets">
       <xsl:with-param name="nodes" select="node()"/>
     </xsl:call-template>
   </xsl:template>
-  
+
   <xsl:template name="strip-outer-brackets">
     <xsl:param name="nodes"/>
     <xsl:for-each select="$nodes">
       <xsl:variable name="isFirst" select="position() = 1"/>
       <xsl:variable name="isLast" select="position() = last()"/>
       <xsl:choose>
-        
+
         <xsl:when test="($isFirst or $isLast) and self::punctinfig and normalize-space(.) = ('(', ')', '[', ']')"/>
-        
+
         <xsl:when test="self::text() and ($isFirst or $isLast)">
           <xsl:variable name="v1" select="if ($isFirst) then replace(., '^(\s*)[\(\[]', '$1') else ."/>
           <xsl:variable name="v2" select="if ($isLast) then replace($v1, '[\)\]](\s*)$', '$1') else $v1"/>
@@ -799,23 +875,23 @@
       </xsl:choose>
     </xsl:for-each>
   </xsl:template>
-  
+
   <xsl:template match="operation_app" mode="fig">
     <xsl:apply-templates mode="fig"/>
   </xsl:template>
-  
+
   <xsl:template match="addition_app" mode="fig">
     <add><xsl:apply-templates mode="fig"/></add>
   </xsl:template>
-  
+
   <xsl:template match="deletion_app" mode="fig">
     <sic><xsl:apply-templates mode="fig"/></sic>
   </xsl:template>
-  
+
   <xsl:template match="phiAdd_app" mode="fig">
     <supplied><xsl:apply-templates mode="fig"/></supplied>
   </xsl:template>
-  
+
   <xsl:template match="underlined | underlined_app" mode="fig">
     <hi rend="underline">
       <xsl:apply-templates
@@ -823,19 +899,19 @@
         mode="fig"/>
     </hi>
   </xsl:template>
-  
+
   <!-- End figures -->
-  
+
   <xsl:template match="sectionHeading">
     <xsl:variable name="level" select="string-length(translate(level, ' ', ''))"/>
     <xsl:variable name="type"  select="lower-case(normalize-space(sectionType/seg))"/>
-    
+
     <!-- First <seg> ID in document order inside <line>, only if level 1 and type is PART -->
     <xsl:variable name="firstSegId"
       select="if ($level = 1 and $type = 'part')
           then generate-id((line//*[local-name()='seg'])[1])
         else ''"/>
-    
+
     <xsl:choose>
       <xsl:when test="$type = 'pause'">
         <trailer rend="bold" type="pause">
@@ -853,7 +929,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template match="hdLineMargin">
     <!-- Navigate to get page number -->
     <xsl:variable name="pageNum"
@@ -864,13 +940,13 @@
               ancestor::page[1]/numbZone//seg[matches(normalize-space(.), '^\d+$')][1]
             )
         )"/>
-    
+
     <xsl:variable name="marginPlace">
       <xsl:call-template name="margin-place">
         <xsl:with-param name="pageNum" select="$pageNum"/>
       </xsl:call-template>
     </xsl:variable>
-    
+
     <!-- Intentionally NOT <head>: a TOC walker that collects every <head>
          descendant (not just a div's first child) would otherwise still
          list these margin titles as flat, unnested entries. <label> is
@@ -884,7 +960,7 @@
       <xsl:apply-templates select="line"/>
     </label>
   </xsl:template>
-  
+
   <xsl:template match="line">
     <l>
       <xsl:attribute name="n">
@@ -893,23 +969,23 @@
       <xsl:apply-templates/>
     </l>
   </xsl:template>
-  
+
   <xsl:template match="textSeq">
     <xsl:apply-templates/>
   </xsl:template>
-  
+
   <xsl:template match="mrgTextZoneLow">
     <ab type="margin" place="lower" rend="margin-lower">
       <xsl:apply-templates/>
     </ab>
   </xsl:template>
-  
+
   <xsl:template match="mrgTextZoneUp">
     <ab type="margin" place="upper" rend="margin-upper">
       <xsl:apply-templates/>
     </ab>
   </xsl:template>
-  
+
   <xsl:template match="mrgTextZoneIn">
     <!-- Navigate to get page number -->
     <xsl:variable name="pageNum"
@@ -920,7 +996,7 @@
               ancestor::page[1]/numbZone//seg[matches(normalize-space(.), '^\d+$')][1]
             )
         )"/>
-    
+
     <!-- Get the right place basing on position (inner is true) -->
     <xsl:variable name="marginPlace">
       <xsl:call-template name="margin-place">
@@ -932,7 +1008,7 @@
       <xsl:apply-templates/>
     </ab>
   </xsl:template>
-  
+
   <xsl:template match="mrgTextZoneOut">
     <!-- Navigate to get page number -->
     <xsl:variable name="pageNum"
@@ -943,7 +1019,7 @@
               ancestor::page[1]/numbZone//seg[matches(normalize-space(.), '^\d+$')][1]
             )
         )"/>
-    
+
     <!-- Get the right place basing on position (inner is false = outer position) -->
     <xsl:variable name="marginPlace">
       <xsl:call-template name="margin-place">
@@ -955,7 +1031,7 @@
       <xsl:apply-templates/>
     </ab>
   </xsl:template>
-  
+
   <!-- expl = explication-->
   <xsl:template match="expl">
     <note type="explication">
@@ -965,7 +1041,7 @@
       <xsl:apply-templates select="line[position() > 1]"/>
     </note>
   </xsl:template>
-  
+
   <!--
        Word-part dispatcher.
        A <seg> that contains a prefix/suffix (prefix, prefix_app, suffix,
@@ -975,7 +1051,7 @@
   -->
   <xsl:template match="*[local-name()='seg'][prefix or prefix_app or suffix or suffix_app]" priority="1">
     <xsl:param name="firstSegId" tunnel="yes" select="''"/>
-    
+
     <!-- Usually the editorial operation (deletion, pencilAddition, etc.) wraps a
          single word-fragment (e.g. one letter), which is meant to be fused with
          the prefix/suffix into one word. Sometimes, though, it wraps a *sequence*
@@ -983,9 +1059,9 @@
          child) -->
     <xsl:variable name="multiTextSeq"
       select="(.//*[local-name()='textSeq'][count(*[local-name()='seg']) > 1])[1]"/>
-    
+
     <xsl:choose>
-      
+
       <!-- Regular case: single word-fragment glued to prefix and/or suffix -->
       <xsl:when test="not($multiTextSeq)">
         <w>
@@ -995,7 +1071,7 @@
           <xsl:apply-templates mode="wordpart"/>
         </w>
       </xsl:when>
-      
+
       <!-- Split case: several words inside the operation; only the boundary
            word (first if there's a prefix, last if there's a suffix) fuses
            with the prefix/suffix text. The others become their own <w>. -->
@@ -1017,10 +1093,10 @@
           </w>
         </xsl:for-each>
       </xsl:otherwise>
-      
+
     </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template match="*[local-name()='seg']">
     <xsl:param name="firstSegId" tunnel="yes" select="''"/>
     <xsl:choose>
@@ -1037,103 +1113,103 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template match="punct">
     <xsl:variable name="char" select="normalize-space(.)"/>
     <xsl:call-template name="render-punct">
       <xsl:with-param name="char" select="$char"/>
     </xsl:call-template>
   </xsl:template>
-  
+
   <xsl:template match="prefix | prefix_app">
     <xsl:variable name="clean" select="normalize-space(replace(., '\^', ''))"/>
     <xsl:if test="$clean != ''">
       <w type="prefix"><xsl:value-of select="$clean"/></w>
     </xsl:if>
   </xsl:template>
-  
+
   <xsl:template match="suffix | suffix_app">
     <xsl:variable name="clean" select="normalize-space(replace(., '\^', ''))"/>
     <xsl:if test="$clean != ''">
       <w type="suffix"><xsl:value-of select="$clean"/></w>
     </xsl:if>
   </xsl:template>
-  
+
   <xsl:template match="substitution">
     <choice><xsl:apply-templates/></choice>
   </xsl:template>
-  
+
   <xsl:template match="deletion">
     <sic><xsl:apply-templates/></sic>
   </xsl:template>
-  
+
   <xsl:template match="replace">
     <corr><xsl:apply-templates/></corr>
   </xsl:template>
-  
+
   <xsl:template match="subspencilDeletion | pencilDeletion">
     <sic hand="#pencil"><xsl:apply-templates/></sic>
   </xsl:template>
-  
+
   <xsl:template match="subspencilAddition | pencilAddition">
     <add hand="#pencil"><xsl:apply-templates/></add>
   </xsl:template>
-  
+
   <xsl:template match="pencil">
     <hi hand="#pencil"><xsl:apply-templates/></hi>
   </xsl:template>
-  
+
   <xsl:template match="addition">
     <add><xsl:apply-templates/></add>
   </xsl:template>
-  
+
   <xsl:template match="phiDel">
     <del rend="strikethrough"><xsl:apply-templates/></del>
   </xsl:template>
-  
+
   <xsl:template match="phiAdd">
     <supplied>
       <xsl:apply-templates/>
     </supplied>
   </xsl:template>
-  
+
   <xsl:template match="phiSub">
     <choice>
       <xsl:apply-templates/>
     </choice>
   </xsl:template>
-  
+
   <xsl:template match="underlined | underlined_app">
     <hi rend="underline">
       <xsl:apply-templates select="node()[not(self::text()[normalize-space(.) = '_'])]"/>
     </hi>
   </xsl:template>
-  
+
   <!-- mode="wordpart"                                               -->
   <!-- Used inside a single interrupted word (see seg dispatcher     -->
   <!-- above). All templates here stay INLINE -->
-  
+
   <!-- prefix/suffix become plain text, not their own <w> -->
-  
+
   <xsl:template match="prefix | prefix_app" mode="wordpart">
     <xsl:param name="includePrefix" tunnel="yes" select="true()"/>
     <xsl:if test="$includePrefix">
       <xsl:value-of select="normalize-space(replace(., '\^', ''))"/>
     </xsl:if>
   </xsl:template>
-  
+
   <xsl:template match="suffix | suffix_app" mode="wordpart">
     <xsl:param name="includeSuffix" tunnel="yes" select="true()"/>
     <xsl:if test="$includeSuffix">
       <xsl:value-of select="normalize-space(replace(., '\^', ''))"/>
     </xsl:if>
   </xsl:template>
-  
+
   <!-- structural wrappers: just pass through -->
   <xsl:template match="operation | textSeq" mode="wordpart">
     <xsl:apply-templates mode="wordpart"/>
   </xsl:template>
-  
+
   <!-- nested seg (e.g. <seg>h </seg> inside textSeq): plain text only.
        When $onlySegId is set (split-word mode) and this seg is one of
        several sibling <seg> words, only the targeted sibling renders -
@@ -1154,57 +1230,57 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template match="substitution" mode="wordpart">
     <choice><xsl:apply-templates mode="wordpart"/></choice>
   </xsl:template>
-  
+
   <xsl:template match="deletion" mode="wordpart">
     <sic><xsl:apply-templates mode="wordpart"/></sic>
   </xsl:template>
-  
+
   <xsl:template match="replace" mode="wordpart">
     <corr><xsl:apply-templates mode="wordpart"/></corr>
   </xsl:template>
-  
+
   <xsl:template match="subspencilDeletion | pencilDeletion" mode="wordpart">
     <sic hand="#pencil"><xsl:apply-templates mode="wordpart"/></sic>
   </xsl:template>
-  
+
   <xsl:template match="subspencilAddition | pencilAddition" mode="wordpart">
     <add hand="#pencil"><xsl:apply-templates mode="wordpart"/></add>
   </xsl:template>
-  
+
   <xsl:template match="pencil" mode="wordpart">
     <hi hand="#pencil"><xsl:apply-templates mode="wordpart"/></hi>
   </xsl:template>
-  
+
   <xsl:template match="addition" mode="wordpart">
     <add><xsl:apply-templates mode="wordpart"/></add>
   </xsl:template>
-  
+
   <xsl:template match="phiDel" mode="wordpart">
     <del rend="strikethrough"><xsl:apply-templates mode="wordpart"/></del>
   </xsl:template>
-  
+
   <xsl:template match="phiAdd" mode="wordpart">
     <supplied>
       <xsl:apply-templates mode="wordpart"/>
     </supplied>
   </xsl:template>
-  
+
   <xsl:template match="phiSub" mode="wordpart">
     <choice>
       <xsl:apply-templates mode="wordpart"/>
     </choice>
   </xsl:template>
-  
+
   <xsl:template match="underlined | underlined_app" mode="wordpart">
     <hi rend="underline">
       <xsl:apply-templates mode="wordpart" select="node()[not(self::text()[normalize-space(.) = '_'])]"/>
     </hi>
   </xsl:template>
-  
+
   <!-- strip the same Euporia editorial-symbol text nodes in wordpart mode -->
   <xsl:template match="
     deletion/text()           |
@@ -1219,10 +1295,10 @@
     phiAdd/text()             |
     operation/text()          |
     substitution/text()" mode="wordpart"/>
-  
+
   <!-- fallback: plain text nodes pass through verbatim -->
   <xsl:template match="text()" mode="wordpart">
     <xsl:value-of select="replace(., '\s+', ' ')"/>
   </xsl:template>
-  
+
 </xsl:stylesheet>

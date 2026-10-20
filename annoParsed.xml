@@ -3241,9 +3241,280 @@
                         <textSeq>
                             <seg>genz </seg>
                         </textSeq>
-                    </line>] </hdLineMargin>
+                    </line>] 
+ 
+ </hdLineMargin>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Wir </seg>
+                        <seg>beschäftigten </seg>
+                        <seg>uns </seg>
+                        <seg>vor </seg>
+                        <seg>14 </seg>
+                        <seg>Tagen </seg>
+                    </textSeq>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <seg>unter </seg>
+                                <seg>anderem </seg>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <seg>mit </seg>
+                        <seg>der </seg>
+                        <seg>freien </seg>
+                        <seg>Linie </seg>
+                        <punct>. </punct>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Ich </seg>
+                        <seg>wählte </seg>
+                        <seg>als </seg>
+                        <seg>Beispiel </seg>
+                        <seg>einen </seg>
+                        <seg>Typ </seg>
+                        <punct>, </punct>
+                        <seg>der </seg>
+                        <seg>einem </seg>
+                        <seg>in </seg>
+                        <seg>sich </seg>
+                        <seg>ruhenden </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Gange </seg>
+                        <seg>ohne </seg>
+                        <seg>ausgesprochenen </seg>
+                        <seg>Zweck </seg>
+                        <punct>, </punct>
+                        <seg>ohne </seg>
+                        <seg>ausgesprochenes </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Ziel </seg>
+                        <seg>entsprach </seg>
+                        <punct>. </punct>
+                    </textSeq>
+ </line>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Die </seg>
+                        <seg>Linie </seg>
+                        <seg>hatte </seg>
+                        <seg>etwas </seg>
+                        <seg>in </seg>
+                        <seg>sich </seg>
+                        <seg>ruhendes </seg>
+                        <punct>, </punct>
+                        <seg>harmoni - </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>sches </seg>
+                        <seg>und </seg>
+                        <seg>hätte </seg>
+                        <seg>als </seg>
+                        <seg>Thema </seg>
+                        <seg>zu </seg>
+                        <seg>einer </seg>
+                        <seg>Composition </seg>
+                        <seg>eher </seg>
+                        <seg>nach </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>einer </seg>
+                        <seg>Ausführung </seg>
+                        <seg>mit </seg>
+                        <seg>begleitenden </seg>
+                        <seg>Formen </seg>
+                        <seg>verlangt </seg>
+                        <punct>, </punct>
+                        <seg>und </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>hätte </seg>
+                        <seg>dann </seg>
+                        <seg>
+                            <prefix>etwa ^ </prefix>
+                            <operation>
+                                <deletion>–{ <textSeq>
+                                        <seg>s </seg>
+                                    </textSeq>} </deletion>
+                            </operation>
+                        </seg>
+                        <seg>der </seg>
+                        <seg>volkstümlichen </seg>
+                        <seg>Liedform </seg>
+                        <seg>in </seg>
+                        <seg>der </seg>
+                        <seg>Musik </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>eher </seg>
+                        <seg>entsprochen </seg>
+                        <punct>, </punct>
+                        <seg>als </seg>
+                        <seg>einer </seg>
+                        <seg>kunstvolleren </seg>
+                        <seg>Form </seg>
+                        <punct>. </punct>
+                    </textSeq>
+ </line>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Es </seg>
+                        <seg>gesellten </seg>
+                        <seg>sich </seg>
+                        <seg>denn </seg>
+                        <seg>auch </seg>
+                        <seg>nur </seg>
+                        <seg>Begleitformen </seg>
+                        <seg>oder </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Ersatzformen </seg>
+                        <seg>zu </seg>
+                        <seg>der </seg>
+                        <seg>in </seg>
+                        <seg>sich </seg>
+                        <seg>ruhenden </seg>
+                        <seg>Linie </seg>
+                        <punct>, </punct>
+                    </textSeq>
+ </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>13 _ 1 </figId>)] 
+ </graphZoneFig>
+            <mainZone>
+                <line>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <seg>Begleitformen </seg>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <seg>teils </seg>
+                    </textSeq>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <punct>( </punct>
+                                <seg>fig </seg>
+                                <seg>1 </seg>
+                                <punct>) </punct>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <seg>absolut </seg>
+                        <seg>convergierenden </seg>
+                        <seg>Charakters </seg>
+                        <punct>, </punct>
+                        <seg>oder </seg>
+                    </textSeq>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <seg>fig </seg>
+                                <seg>2 </seg>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <seg>effectiv </seg>
+                        <seg>convergieren - </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>den </seg>
+                        <seg>Charakters </seg>
+                    </textSeq>
+ </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>13 _ 2 </figId>)] 
+ </graphZoneFig>
+            <graphZoneFig>[FIGURE ( <figId>13 _ 3 </figId>)] 
+ </graphZoneFig>
+            <mainZone>
+                <line>
+                    <textSeq>
+                        <seg>oder </seg>
+                        <punct>( </punct>
+                        <seg>3 </seg>
+                        <punct>) </punct>
+                        <seg>effectiv </seg>
+                        <seg>convergierender </seg>
+                        <seg>Natur </seg>
+                        <punct>, </punct>
+                        <seg>unter </seg>
+                        <seg>Wahrung </seg>
+                        <seg>der </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Selbständigkeit </seg>
+                        <seg>der </seg>
+                        <seg>begleitenden </seg>
+                        <seg>Linie </seg>
+                        <punct>. </punct>
+                        <seg>Etwa </seg>
+                        <seg>dem </seg>
+                        <seg>Gang </seg>
+                        <seg>eines </seg>
+                    </textSeq>
+ </line>
             </mainZone>
         </page>
+        <apparatoFigure>=====
+ <apparatoFigureItem>
+                <figId>13 _ 1 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>1 </refItem>
+                        </refSeries>. </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>13 _ 2 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>3 </refItem>
+                        </refSeries>. </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>13 _ 3 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>2 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+ </apparatoFigureItem>===== </apparatoFigure>
     </div>
     <div n="17">
         <page>
@@ -3982,9 +4253,189 @@
                         <textSeq>
                             <seg>rung </seg>
                         </textSeq>
-                    </line>] </hdLineMargin>
+                    </line>] 
+ 
+ </hdLineMargin>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>16 _ 1 </figId>)] 
+ 
+ </graphZoneFig>
+            <mainZone>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Räumlich </seg>
+                        <seg>dargestellt </seg>
+                        <punct>, </punct>
+                        <seg>sieht </seg>
+                        <seg>
+                            <prefix>diese ^ </prefix>
+                            <operation>
+                                <addition>+{ <textSeq>
+                                        <seg>s </seg>
+                                    </textSeq>} </addition>
+                            </operation>
+                        </seg>
+                    </textSeq>
+                    <operation>
+                        <substitution>
+                            <deletion>–{ <textSeq>
+                                    <seg>Darstellung </seg>
+                                </textSeq>} </deletion>
+                            <replace>/ { <textSeq>
+                                    <seg>graphische </seg>
+                                    <seg>Bild </seg>
+                                </textSeq>} </replace>
+                        </substitution>
+                    </operation>
+                    <textSeq>
+                        <seg>jedoch </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>wesentlich </seg>
+                        <seg>anders </seg>
+                        <seg>aus </seg>
+                        <punct>. </punct>
+                        <seg>Die </seg>
+                        <seg>Abstände </seg>
+                        <seg>der </seg>
+                        <seg>Schwellen </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>vergrössern </seg>
+                        <seg>sich </seg>
+                        <punct>, </punct>
+                        <seg>wie </seg>
+                        <seg>die </seg>
+                        <seg>meisten </seg>
+                        <seg>Europäer </seg>
+                        <seg>wissen </seg>
+                        <punct>, </punct>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>zusehends </seg>
+                        <seg>nach </seg>
+                        <seg>vorn </seg>
+                    </textSeq>
+ 
+ </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>16 _ 2 </figId>)] 
+ 
+ </graphZoneFig>
+            <graphZoneFig>[FIGURE ( <figId>16 _ 3 </figId>)] 
+ </graphZoneFig>
+            <mainZone>
+                <line>
+                    <textSeq>
+                        <seg>Die </seg>
+                        <seg>Front </seg>
+                        <seg>der </seg>
+                        <seg>Lokomotive </seg>
+                        <seg>steht </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>zu </seg>
+                        <seg>der </seg>
+                        <seg>zwischen </seg>
+                        <seg>den </seg>
+                        <seg>Schienen </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>liegenden </seg>
+                        <seg>Fläche </seg>
+                        <seg>in </seg>
+                        <seg>einem </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>rechten </seg>
+                        <seg>Winkel </seg>
+                        <punct>. </punct>
+                        <punct>( </punct>
+                        <seg>Wir </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>haben </seg>
+                        <seg>somit </seg>
+                        <seg>gleich </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>zu </seg>
+                        <seg>Anfang </seg>
+                        <seg>die </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>grösste </seg>
+                        <seg>räumliche </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Höhe </seg>
+                        <seg>proiciert </seg>
+                        <punct>. </punct>
+                        <punct>) </punct>
+                    </textSeq>
+ 
+ </line>
             </mainZone>
         </page>
+        <apparatoFigure>=====
+ <apparatoFigureItem>
+                <figId>16 _ 1 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>8 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>16 _ 2 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                                <seginfig>8 </seginfig>
+                                <punctinfig>. </punctinfig>
+                                <seginfig>a </seginfig>
+                                <punctinfig>. </punctinfig>
+                            </textSeqinfig>
+                        </line_app>
+                    </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>16 _ 3 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>9 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+ </apparatoFigureItem>===== </apparatoFigure>
     </div>
     <div n="20">
         <page>
@@ -4125,9 +4576,155 @@
                         <textSeq>
                             <seg>gradierung </seg>
                         </textSeq>
-                    </line>] </hdLineMargin>
+                    </line>] 
+ 
+ </hdLineMargin>
+                <line>
+                    <textSeq>
+                        <seg>Gehen </seg>
+                        <seg>wir </seg>
+                        <seg>noch </seg>
+                        <seg>einmal </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>von </seg>
+                        <seg>der </seg>
+                        <seg>Vorstellung </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>der </seg>
+                        <seg>Schienen </seg>
+                        <seg>aus </seg>
+                        <punct>, </punct>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>beschränken </seg>
+                        <seg>uns </seg>
+                        <seg>aber </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>auf </seg>
+                        <seg>eine </seg>
+                    </textSeq>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <seg>ganz </seg>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <seg>zurückliegende </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>und </seg>
+                        <seg>auf </seg>
+                        <seg>eine </seg>
+                        <seg>nächst - </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>liegende </seg>
+                        <seg>Schwelle </seg>
+                        <punct>, </punct>
+                        <seg>also </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>nur </seg>
+                        <seg>auf </seg>
+                        <seg>zwei </seg>
+                        <seg>Schwellen </seg>
+                        <punct>. </punct>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Diese </seg>
+                        <seg>beiden </seg>
+                        <seg>Schwellen </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>teilen </seg>
+                        <seg>wir </seg>
+                        <seg>in </seg>
+                        <seg>gleichviele </seg>
+                        <seg>gleiche </seg>
+                        <seg>Teile </seg>
+                        <punct>, </punct>
+                        <seg>hier </seg>
+                        <seg>z </seg>
+                        <punct>. </punct>
+                        <seg>B </seg>
+                        <punct>. </punct>
+                        <seg>an </seg>
+                        <seg>drei </seg>
+                        <seg>Stellen </seg>
+                    </textSeq>
+ 
+ </line>
             </mainZone>
         </page>
+        <apparatoFigure>=====
+ <apparatoFigureItem>
+                <figId>17 _ 1 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>10 </refItem>
+                        </refSeries>. </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>17 _ 2 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>11 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>17 _ 3 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>12 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>17 _ 4 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>13 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+ </apparatoFigureItem>===== </apparatoFigure>
     </div>
     <div n="21">
         <page>
@@ -9882,9 +10479,258 @@
                         <textSeq>
                             <seg>Structur </seg>
                         </textSeq>
-                    </line>] </hdLineMargin>
+                    </line>] 
+ </hdLineMargin>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Das </seg>
+                        <seg>letz </seg>
+                    </textSeq>
+                    <operation>
+                        <phiAdd>+/ <textSeq>
+                                <punct>/ </punct>
+                                <seg>t </seg>
+                            </textSeq>// </phiAdd>
+                    </operation>
+                    <textSeq>
+                        <seg>e </seg>
+                        <seg>Mal </seg>
+                        <seg>hat </seg>
+                        <seg>sich </seg>
+                        <seg>der </seg>
+                        <seg>Gegensatz </seg>
+                        <seg>zwischen </seg>
+                        <seg>komposi - </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>tionelle </seg>
+                    </textSeq>
+                    <operation>
+                        <substitution>
+                            <deletion>–{ <textSeq>
+                                    <seg>r </seg>
+                                </textSeq>} </deletion>
+                            <replace>/ { <textSeq>
+                                    <seg>n </seg>
+                                </textSeq>} </replace>
+                        </substitution>
+                    </operation>
+                    <textSeq>
+                        <seg>und </seg>
+                        <seg>structurale </seg>
+                    </textSeq>
+                    <operation>
+                        <substitution>
+                            <deletion>–{ <textSeq>
+                                    <seg>r </seg>
+                                </textSeq>} </deletion>
+                            <replace>/ { <textSeq>
+                                    <seg>n </seg>
+                                </textSeq>} </replace>
+                        </substitution>
+                    </operation>
+                    <textSeq>
+                        <seg>Charakteren </seg>
+                        <seg>gezeigt </seg>
+                    </textSeq>
+ </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>42 _ 1 </figId>)] </graphZoneFig>
+            <mainZone>
+                <line>
+                    <textSeq>
+                        <seg>Structurale </seg>
+                        <seg>Rhythmen </seg>
+                        <seg>von </seg>
+                        <seg>niedrig - </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>stem </seg>
+                        <seg>Entwicklungsgrad </seg>
+                        <seg>traten </seg>
+                        <seg>in </seg>
+                        <seg>Erscheinung </seg>
+                        <punct>, </punct>
+                        <seg>die </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>ihren </seg>
+                        <seg>Zahlenmässigen </seg>
+                        <seg>mässigen </seg>
+                        <seg>Ausdruck </seg>
+                        <seg>in </seg>
+                        <seg>der </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Summierung </seg>
+                        <seg>reiner </seg>
+                        <seg>Einheiten </seg>
+                        <seg>finden </seg>
+                        <punct>: </punct>
+                    </textSeq>
+ </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>42 _ 2 </figId>)] 
+ </graphZoneFig>
+            <mainZone>
+                <line>
+                    <textSeq>
+                        <seg>und </seg>
+                    </textSeq>
+ </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>42 _ 3 </figId>)] 
+ </graphZoneFig>
+            <mainZone>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Addition </seg>
+                        <seg>von </seg>
+                        <seg>reinen </seg>
+                        <seg>Einheiten </seg>
+                        <seg>nach </seg>
+                        <seg>einer </seg>
+                        <seg>linearen </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Richtung </seg>
+                    </textSeq>
+ </line>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Eine </seg>
+                        <seg>Kreuzung </seg>
+                        <seg>der </seg>
+                        <seg>beiden </seg>
+                        <seg>Richtungen </seg>
+                        <seg>bringt </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>dieses </seg>
+                        <seg>neue </seg>
+                        <seg>structurale </seg>
+                        <seg>Bild </seg>
+                        <seg>hervor </seg>
+                        <punct>: </punct>
+                    </textSeq>
+ </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>42 _ 4 </figId>)] </graphZoneFig>
+            <mainZone>
+                <line>
+                    <textSeq>
+                        <seg>welches </seg>
+                        <seg>als </seg>
+                        <seg>Addition </seg>
+                        <seg>von </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Einheiten </seg>
+                        <seg>in </seg>
+                        <seg>der </seg>
+                        <seg>Richtung </seg>
+                        <seg>zweier </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Dimensionen </seg>
+                        <seg>bezeichnet </seg>
+                        <seg>werden </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>kann </seg>
+                        <punct>. </punct>
+                        <seg>Dieses </seg>
+                        <seg>Bild </seg>
+                        <punct>, </punct>
+                        <seg>obwohl </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>durch </seg>
+                        <seg>seine </seg>
+                        <seg>zweidimensionale </seg>
+                    </textSeq>
+ </line>
+                <line>
+                    <textSeq>
+                        <seg>Richtung </seg>
+                    </textSeq>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <seg>erweitert </seg>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <punct>, </punct>
+                        <seg>steht </seg>
+                        <seg>immer </seg>
+                        <seg>noch </seg>
+                    </textSeq>
+ 
+ </line>
             </mainZone>
         </page>
+        <apparatoFigure>=====
+ <apparatoFigureItem>
+                <figId>42 _ 1 </figId>: 
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>42 _ 2 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>1 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>42 _ 3 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>2 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+ </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>42 _ 4 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>3 </refItem>
+                        </refSeries>. </labeltext>] </label>
+ </apparatoFigureItem>===== </apparatoFigure>
     </div>
     <div n="46">
         <page>

@@ -57,7 +57,8 @@
                   lrx="1900"
                   lry="2406"
                   contentUlx="15"
-                  contentWidth="1875">
+                  contentWidth="1875"
+                  charWidth="32">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83044.jpg"/>
          </surface>
          <surface xml:id="f83045"
@@ -66,7 +67,8 @@
                   lrx="1888"
                   lry="2450"
                   contentUlx="229"
-                  contentWidth="1643">
+                  contentWidth="1643"
+                  charWidth="39.01">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83045.jpg"/>
          </surface>
          <surface xml:id="f83046"
@@ -75,7 +77,8 @@
                   lrx="1900"
                   lry="2395"
                   contentUlx="15"
-                  contentWidth="1720">
+                  contentWidth="1720"
+                  charWidth="37.08">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83046.jpg"/>
          </surface>
          <surface xml:id="f83047"
@@ -84,7 +87,8 @@
                   lrx="1936"
                   lry="2436"
                   contentUlx="228"
-                  contentWidth="1708">
+                  contentWidth="1708"
+                  charWidth="37.25">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83047.jpg"/>
          </surface>
          <surface xml:id="f83048"
@@ -93,7 +97,8 @@
                   lrx="1900"
                   lry="2438"
                   contentUlx="5"
-                  contentWidth="1716">
+                  contentWidth="1716"
+                  charWidth="40.39">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83048.jpg"/>
          </surface>
          <surface xml:id="f83049"
@@ -101,8 +106,9 @@
                   uly="0"
                   lrx="1928"
                   lry="2452"
-                  contentUlx="218"
-                  contentWidth="1654">
+                  contentUlx="204"
+                  contentWidth="1668"
+                  charWidth="34.6">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83049.jpg"/>
             <zone xml:id="zone_f83049_fig1"
                   ulx="29"
@@ -141,7 +147,8 @@
                   lrx="1888"
                   lry="2425"
                   contentUlx="45"
-                  contentWidth="1664">
+                  contentWidth="1664"
+                  charWidth="34.26">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83050.jpg"/>
          </surface>
          <surface xml:id="f83051"
@@ -150,7 +157,8 @@
                   lrx="1924"
                   lry="2460"
                   contentUlx="233"
-                  contentWidth="1691">
+                  contentWidth="1691"
+                  charWidth="34.02">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83051.jpg"/>
             <zone xml:id="zone_f83051_fig1"
                   ulx="9"
@@ -182,8 +190,9 @@
                   uly="0"
                   lrx="1906"
                   lry="2414"
-                  contentUlx="60"
-                  contentWidth="1450">
+                  contentUlx="57"
+                  contentWidth="1453"
+                  charWidth="31.44">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83052.jpg"/>
             <zone xml:id="zone_f83052_music1"
                   ulx="1505"
@@ -233,8 +242,9 @@
                   uly="0"
                   lrx="1931"
                   lry="2443"
-                  contentUlx="297"
-                  contentWidth="1569">
+                  contentUlx="285"
+                  contentWidth="1581"
+                  charWidth="31.81">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83053.jpg"/>
             <zone xml:id="zone_f83053_fig1"
                   ulx="0"
@@ -260,8 +270,9 @@
                   uly="0"
                   lrx="1900"
                   lry="2413"
-                  contentUlx="26"
-                  contentWidth="1708">
+                  contentUlx="22"
+                  contentWidth="1713"
+                  charWidth="31.35">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83054.jpg"/>
             <zone xml:id="zone_f83054_fig1"
                   ulx="261"
@@ -275,8 +286,9 @@
                   uly="0"
                   lrx="1940"
                   lry="2452"
-                  contentUlx="228"
-                  contentWidth="1609">
+                  contentUlx="203"
+                  contentWidth="1634"
+                  charWidth="35.49">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83055.jpg"/>
             <zone xml:id="zone_f83055_fig1"
                   ulx="739"
@@ -296,8 +308,9 @@
                   uly="0"
                   lrx="1900"
                   lry="2440"
-                  contentUlx="25"
-                  contentWidth="1643">
+                  contentUlx="11"
+                  contentWidth="1657"
+                  charWidth="25.58">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83056.jpg"/>
             <zone xml:id="zone_f83056_fig1"
                   ulx="273"
@@ -324,7 +337,8 @@
                   lrx="1920"
                   lry="2452"
                   contentUlx="261"
-                  contentWidth="1646">
+                  contentWidth="1646"
+                  charWidth="28.67">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83057.jpg"/>
             <zone xml:id="zone_f83057_fig1"
                   ulx="287"
@@ -350,8 +364,9 @@
                   uly="0"
                   lrx="1894"
                   lry="2413"
-                  contentUlx="60"
-                  contentWidth="1645">
+                  contentUlx="40"
+                  contentWidth="1665"
+                  charWidth="30.39">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83058.jpg"/>
             <zone xml:id="zone_f83058_fig1"
                   ulx="26"
@@ -395,8 +410,9 @@
                   uly="0"
                   lrx="1925"
                   lry="2451"
-                  contentUlx="268"
-                  contentWidth="1599">
+                  contentUlx="262"
+                  contentWidth="1605"
+                  charWidth="27.33">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83059.jpg"/>
             <zone xml:id="zone_f83059_fig1"
                   ulx="691"
@@ -422,8 +438,9 @@
                   uly="0"
                   lrx="1886"
                   lry="2431"
-                  contentUlx="81"
-                  contentWidth="1600">
+                  contentUlx="56"
+                  contentWidth="1625"
+                  charWidth="22.97">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83060.jpg"/>
             <zone xml:id="zone_f83060_fig1"
                   ulx="14"
@@ -455,8 +472,9 @@
                   uly="0"
                   lrx="1918"
                   lry="2463"
-                  contentUlx="261"
-                  contentWidth="1608">
+                  contentUlx="254"
+                  contentWidth="1615"
+                  charWidth="24.69">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83061.jpg"/>
             <zone xml:id="zone_f83061_fig1"
                   ulx="226"
@@ -482,8 +500,9 @@
                   uly="0"
                   lrx="1894"
                   lry="2413"
-                  contentUlx="83"
-                  contentWidth="1498">
+                  contentUlx="15"
+                  contentWidth="1566"
+                  charWidth="24.15">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83062.jpg"/>
             <zone xml:id="zone_f83062_fig1"
                   ulx="289"
@@ -522,7 +541,8 @@
                   lrx="1919"
                   lry="2443"
                   contentUlx="228"
-                  contentWidth="1657">
+                  contentWidth="1657"
+                  charWidth="26.13">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83063.jpg"/>
             <zone xml:id="zone_f83063_fig1"
                   ulx="412"
@@ -543,7 +563,8 @@
                   lrx="1906"
                   lry="2413"
                   contentUlx="15"
-                  contentWidth="1720">
+                  contentWidth="1720"
+                  charWidth="26.67">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83064.jpg"/>
             <zone xml:id="zone_f83064_fig1"
                   ulx="209"
@@ -564,7 +585,8 @@
                   lrx="1931"
                   lry="2456"
                   contentUlx="146"
-                  contentWidth="1785">
+                  contentWidth="1785"
+                  charWidth="25.3">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83065.jpg"/>
             <zone xml:id="zone_f83065_fig1"
                   ulx="70"
@@ -596,8 +618,9 @@
                   uly="0"
                   lrx="1900"
                   lry="2408"
-                  contentUlx="70"
-                  contentWidth="1580">
+                  contentUlx="57"
+                  contentWidth="1592"
+                  charWidth="27.12">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83066.jpg"/>
             <zone xml:id="zone_f83066_fig1"
                   ulx="586"
@@ -618,7 +641,8 @@
                   lrx="1925"
                   lry="2450"
                   contentUlx="185"
-                  contentWidth="1672">
+                  contentWidth="1672"
+                  charWidth="25.06">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83067.jpg"/>
             <zone xml:id="zone_f83067_fig1"
                   ulx="43"
@@ -644,8 +668,9 @@
                   uly="0"
                   lrx="1894"
                   lry="2425"
-                  contentUlx="69"
-                  contentWidth="1616">
+                  contentUlx="65"
+                  contentWidth="1620"
+                  charWidth="22.13">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83068.jpg"/>
             <zone xml:id="zone_f83068_fig1"
                   ulx="663"
@@ -678,7 +703,8 @@
                   lrx="1900"
                   lry="2456"
                   contentUlx="205"
-                  contentWidth="1634">
+                  contentWidth="1634"
+                  charWidth="19.02">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83069.jpg"/>
          </surface>
          <surface xml:id="f83070"
@@ -686,8 +712,9 @@
                   uly="0"
                   lrx="1892"
                   lry="2425"
-                  contentUlx="16"
-                  contentWidth="1688">
+                  contentUlx="7"
+                  contentWidth="1697"
+                  charWidth="30.45">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83070.jpg"/>
             <zone xml:id="zone_f83070_fig1"
                   ulx="593"
@@ -707,8 +734,9 @@
                   uly="0"
                   lrx="1906"
                   lry="2444"
-                  contentUlx="282"
-                  contentWidth="1605">
+                  contentUlx="280"
+                  contentWidth="1607"
+                  charWidth="30.76">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83071.jpg"/>
             <zone xml:id="zone_f83071_fig1"
                   ulx="315"
@@ -741,7 +769,8 @@
                   lrx="1869"
                   lry="2401"
                   contentUlx="31"
-                  contentWidth="1737">
+                  contentWidth="1737"
+                  charWidth="27.84">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83072.jpg"/>
             <zone xml:id="zone_f83072_fig1"
                   ulx="495"
@@ -755,8 +784,9 @@
                   uly="0"
                   lrx="1912"
                   lry="2436"
-                  contentUlx="200"
-                  contentWidth="1436">
+                  contentUlx="147"
+                  contentWidth="1489"
+                  charWidth="29.88">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83073.jpg"/>
             <zone xml:id="zone_f83073_fig1"
                   ulx="807"
@@ -800,8 +830,9 @@
                   uly="0"
                   lrx="1882"
                   lry="2420"
-                  contentUlx="23"
-                  contentWidth="1547">
+                  contentUlx="20"
+                  contentWidth="1550"
+                  charWidth="27.59">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83074.jpg"/>
             <zone xml:id="zone_f83074_fig1"
                   ulx="409"
@@ -851,8 +882,9 @@
                   uly="0"
                   lrx="1888"
                   lry="2445"
-                  contentUlx="200"
-                  contentWidth="1664">
+                  contentUlx="80"
+                  contentWidth="1784"
+                  charWidth="28.25">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83075.jpg"/>
             <zone xml:id="zone_f83075_fig1"
                   ulx="511"
@@ -872,8 +904,9 @@
                   uly="0"
                   lrx="1880"
                   lry="2431"
-                  contentUlx="28"
-                  contentWidth="1620">
+                  contentUlx="5"
+                  contentWidth="1643"
+                  charWidth="25.13">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83076.jpg"/>
             <zone xml:id="zone_f83076_fig1"
                   ulx="132"
@@ -912,7 +945,8 @@
                   lrx="1881"
                   lry="2444"
                   contentUlx="244"
-                  contentWidth="1527">
+                  contentWidth="1527"
+                  charWidth="29.48">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83077.jpg"/>
             <zone xml:id="zone_f83077_fig1"
                   ulx="242"
@@ -933,7 +967,8 @@
                   lrx="1888"
                   lry="2413"
                   contentUlx="45"
-                  contentWidth="1830">
+                  contentWidth="1830"
+                  charWidth="29.9">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83078.jpg"/>
             <zone xml:id="zone_f83078_fig1"
                   ulx="99"
@@ -947,8 +982,9 @@
                   uly="0"
                   lrx="1912"
                   lry="2413"
-                  contentUlx="578"
-                  contentWidth="1334">
+                  contentUlx="268"
+                  contentWidth="1644"
+                  charWidth="28.32">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83079.jpg"/>
             <zone xml:id="zone_f83079_fig1"
                   ulx="264"
@@ -962,8 +998,9 @@
                   uly="0"
                   lrx="1900"
                   lry="2436"
-                  contentUlx="61"
-                  contentWidth="1657">
+                  contentUlx="48"
+                  contentWidth="1670"
+                  charWidth="27.64">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83080.jpg"/>
             <zone xml:id="zone_f83080_fig1"
                   ulx="43"
@@ -995,8 +1032,9 @@
                   uly="0"
                   lrx="1892"
                   lry="2452"
-                  contentUlx="238"
-                  contentWidth="1613">
+                  contentUlx="201"
+                  contentWidth="1650"
+                  charWidth="28.69">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83081.jpg"/>
             <zone xml:id="zone_f83081_fig1"
                   ulx="631"
@@ -1028,8 +1066,9 @@
                   uly="0"
                   lrx="1888"
                   lry="2424"
-                  contentUlx="58"
-                  contentWidth="1564">
+                  contentUlx="35"
+                  contentWidth="1586"
+                  charWidth="25.17">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83082.jpg"/>
             <zone xml:id="zone_f83082_fig1"
                   ulx="376"
@@ -1056,7 +1095,8 @@
                   lrx="1906"
                   lry="2419"
                   contentUlx="252"
-                  contentWidth="1613">
+                  contentWidth="1613"
+                  charWidth="26">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83083.jpg"/>
          </surface>
          <surface xml:id="f83084"
@@ -1065,7 +1105,8 @@
                   lrx="1863"
                   lry="2437"
                   contentUlx="20"
-                  contentWidth="1605">
+                  contentWidth="1605"
+                  charWidth="28.6">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83084.jpg"/>
          </surface>
          <surface xml:id="f83085"
@@ -1073,8 +1114,9 @@
                   uly="0"
                   lrx="1896"
                   lry="2460"
-                  contentUlx="263"
-                  contentWidth="1608">
+                  contentUlx="249"
+                  contentWidth="1622"
+                  charWidth="28.38">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83085.jpg"/>
             <zone xml:id="zone_f83085_fig1"
                   ulx="311"
@@ -1106,8 +1148,9 @@
                   uly="0"
                   lrx="1916"
                   lry="2436"
-                  contentUlx="32"
-                  contentWidth="1674">
+                  contentUlx="26"
+                  contentWidth="1680"
+                  charWidth="28.15">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83086.jpg"/>
             <zone xml:id="zone_f83086_fig1"
                   ulx="26"
@@ -1128,7 +1171,8 @@
                   lrx="1906"
                   lry="2438"
                   contentUlx="202"
-                  contentWidth="1704">
+                  contentWidth="1704"
+                  charWidth="25.02">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83087.jpg"/>
             <zone xml:id="zone_f83087_fig1"
                   ulx="1"
@@ -1148,8 +1192,9 @@
                   uly="0"
                   lrx="1900"
                   lry="2436"
-                  contentUlx="20"
-                  contentWidth="1542">
+                  contentUlx="0"
+                  contentWidth="1562"
+                  charWidth="23.24">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83088.jpg"/>
             <zone xml:id="zone_f83088_fig1"
                   ulx="12"
@@ -1169,8 +1214,9 @@
                   uly="0"
                   lrx="1913"
                   lry="2438"
-                  contentUlx="261"
-                  contentWidth="1468">
+                  contentUlx="153"
+                  contentWidth="1576"
+                  charWidth="26.05">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83089.jpg"/>
             <zone xml:id="zone_f83089_fig1"
                   ulx="287"
@@ -1209,7 +1255,8 @@
                   lrx="1904"
                   lry="2436"
                   contentUlx="58"
-                  contentWidth="1756">
+                  contentWidth="1756"
+                  charWidth="29.11">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83090.jpg"/>
             <zone xml:id="zone_f83090_fig1"
                   ulx="265"
@@ -1235,8 +1282,9 @@
                   uly="0"
                   lrx="1900"
                   lry="2419"
-                  contentUlx="250"
-                  contentWidth="1562">
+                  contentUlx="239"
+                  contentWidth="1573"
+                  charWidth="27.61">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83091.jpg"/>
          </surface>
          <surface xml:id="f83092"
@@ -1245,7 +1293,8 @@
                   lrx="1944"
                   lry="2431"
                   contentUlx="61"
-                  contentWidth="1746">
+                  contentWidth="1746"
+                  charWidth="30.16">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83092.jpg"/>
             <zone xml:id="zone_f83092_fig1"
                   ulx="3"
@@ -1289,8 +1338,9 @@
                   uly="0"
                   lrx="1944"
                   lry="2450"
-                  contentUlx="270"
-                  contentWidth="1583">
+                  contentUlx="266"
+                  contentWidth="1588"
+                  charWidth="26.25">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83093.jpg"/>
             <zone xml:id="zone_f83093_fig1"
                   ulx="503"
@@ -1346,8 +1396,9 @@
                   uly="0"
                   lrx="1925"
                   lry="2389"
-                  contentUlx="398"
-                  contentWidth="1253">
+                  contentUlx="91"
+                  contentWidth="1560"
+                  charWidth="24.77">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83094.jpg"/>
             <zone xml:id="zone_f83094_fig1"
                   ulx="295"
@@ -1416,7 +1467,8 @@
                   lrx="1888"
                   lry="2460"
                   contentUlx="263"
-                  contentWidth="1569">
+                  contentWidth="1569"
+                  charWidth="26.92">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83095.jpg"/>
             <zone xml:id="zone_f83095_fig1"
                   ulx="10"
@@ -1431,7 +1483,8 @@
                   lrx="1856"
                   lry="2425"
                   contentUlx="99"
-                  contentWidth="1614">
+                  contentWidth="1614"
+                  charWidth="24.64">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83096.jpg"/>
          </surface>
          <surface xml:id="f83097"
@@ -1439,8 +1492,9 @@
                   uly="0"
                   lrx="1912"
                   lry="2450"
-                  contentUlx="229"
-                  contentWidth="1610">
+                  contentUlx="219"
+                  contentWidth="1620"
+                  charWidth="26.66">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83097.jpg"/>
             <zone xml:id="zone_f83097_fig1"
                   ulx="569"
@@ -1454,8 +1508,9 @@
                   uly="0"
                   lrx="1906"
                   lry="2414"
-                  contentUlx="33"
-                  contentWidth="1793">
+                  contentUlx="23"
+                  contentWidth="1803"
+                  charWidth="29.11">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83098.jpg"/>
             <zone xml:id="zone_f83098_fig1"
                   ulx="468"
@@ -1496,8 +1551,8 @@
                   uly="0"
                   lrx="1913"
                   lry="2412"
-                  contentUlx="52"
-                  contentWidth="1840">
+                  contentUlx="43"
+                  contentWidth="1850">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83100.jpg"/>
             <zone xml:id="zone_f83100_fig1"
                   ulx="59"
@@ -1511,8 +1566,8 @@
                   uly="0"
                   lrx="1943"
                   lry="2457"
-                  contentUlx="146"
-                  contentWidth="1772">
+                  contentUlx="101"
+                  contentWidth="1817">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83101.jpg"/>
             <zone xml:id="zone_f83101_fig1"
                   ulx="8"
@@ -1526,8 +1581,8 @@
                   uly="0"
                   lrx="1919"
                   lry="2432"
-                  contentUlx="234"
-                  contentWidth="1644">
+                  contentUlx="232"
+                  contentWidth="1645">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83103.jpg"/>
             <zone xml:id="zone_f83103_fig1"
                   ulx="26"
@@ -1541,8 +1596,8 @@
                   uly="0"
                   lrx="1894"
                   lry="2413"
-                  contentUlx="136"
-                  contentWidth="1758">
+                  contentUlx="5"
+                  contentWidth="1889">
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83186.jpg"/>
             <zone xml:id="zone_f83186_fig1"
                   ulx="560"
@@ -2629,7 +2684,7 @@
                         <w>schreiben</w>
                      </l>
                   </ab>
-                  <figure facs="#zone_f83049_fig5" rend="float-left"/>
+                  <figure facs="#zone_f83049_fig5" rend="block"/>
                   <l n="13">
                      <w>Aber</w>
                      <w>das</w>
@@ -3824,6 +3879,195 @@
                            <w>genz</w>
                         </l>
                      </label>
+                     <ab n="8">
+                        <l n="15">
+                           <w>Wir</w>
+                           <w>beschäftigten</w>
+                           <w>uns</w>
+                           <w>vor</w>
+                           <w>14</w>
+                           <w>Tagen</w>
+                           <add>
+                              <w>unter</w>
+                              <w>anderem</w>
+                           </add>
+                           <w>mit</w>
+                           <w>der</w>
+                           <w>freien</w>
+                           <w>Linie</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                        <l n="16">
+                           <w>Ich</w>
+                           <w>wählte</w>
+                           <w>als</w>
+                           <w>Beispiel</w>
+                           <w>einen</w>
+                           <w>Typ</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>der</w>
+                           <w>einem</w>
+                           <w>in</w>
+                           <w>sich</w>
+                           <w>ruhenden</w>
+                        </l>
+                        <l n="17">
+                           <w>Gange</w>
+                           <w>ohne</w>
+                           <w>ausgesprochenen</w>
+                           <w>Zweck</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>ohne</w>
+                           <w>ausgesprochenes</w>
+                        </l>
+                        <l n="18">
+                           <w>Ziel</w>
+                           <w>entsprach</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <ab n="9">
+                        <l n="19">
+                           <w>Die</w>
+                           <w>Linie</w>
+                           <w>hatte</w>
+                           <w>etwas</w>
+                           <w>in</w>
+                           <w>sich</w>
+                           <w>ruhendes</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>harmoni -</w>
+                        </l>
+                        <l n="20">
+                           <w>sches</w>
+                           <w>und</w>
+                           <w>hätte</w>
+                           <w>als</w>
+                           <w>Thema</w>
+                           <w>zu</w>
+                           <w>einer</w>
+                           <w>Composition</w>
+                           <w>eher</w>
+                           <w>nach</w>
+                        </l>
+                        <l n="21">
+                           <w>einer</w>
+                           <w>Ausführung</w>
+                           <w>mit</w>
+                           <w>begleitenden</w>
+                           <w>Formen</w>
+                           <w>verlangt</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>und</w>
+                        </l>
+                        <l n="22">
+                           <w>hätte</w>
+                           <w>dann</w>
+                           <w>etwa<sic>s</sic>
+                           </w>
+                           <w>der</w>
+                           <w>volkstümlichen</w>
+                           <w>Liedform</w>
+                           <w>in</w>
+                           <w>der</w>
+                           <w>Musik</w>
+                        </l>
+                        <l n="23">
+                           <w>eher</w>
+                           <w>entsprochen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>als</w>
+                           <w>einer</w>
+                           <w>kunstvolleren</w>
+                           <w>Form</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <ab n="10">
+                        <l n="24">
+                           <w>Es</w>
+                           <w>gesellten</w>
+                           <w>sich</w>
+                           <w>denn</w>
+                           <w>auch</w>
+                           <w>nur</w>
+                           <w>Begleitformen</w>
+                           <w>oder</w>
+                        </l>
+                        <l n="25">
+                           <w>Ersatzformen</w>
+                           <w>zu</w>
+                           <w>der</w>
+                           <w>in</w>
+                           <w>sich</w>
+                           <w>ruhenden</w>
+                           <w>Linie</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83056_fig1" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 1 .  </head>
+                     </figure>
+                     <l n="26">
+                        <add>
+                           <w>Begleitformen</w>
+                        </add>
+                        <w>teils</w>
+                        <add>
+                           <pc type="bracketOpen" float="right" force="inter">(</pc>
+                           <w>fig</w>
+                           <w>1</w>
+                           <pc type="bracketClose" float="left" force="inter">)</pc>
+                        </add>
+                        <w>absolut</w>
+                        <w>convergierenden</w>
+                        <w>Charakters</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>oder</w>
+                        <add>
+                           <w>fig</w>
+                           <w>2</w>
+                        </add>
+                        <w>effectiv</w>
+                        <w>convergieren -</w>
+                     </l>
+                     <l n="27">
+                        <w>den</w>
+                        <w>Charakters</w>
+                     </l>
+                     <figure facs="#zone_f83056_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 3 .  </head>
+                     </figure>
+                     <figure facs="#zone_f83056_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 2  </head>
+                     </figure>
+                     <l n="28">
+                        <w>oder</w>
+                        <pc type="bracketOpen" float="right" force="inter">(</pc>
+                        <w>3</w>
+                        <pc type="bracketClose" float="left" force="inter">)</pc>
+                        <w>effectiv</w>
+                        <w>convergierender</w>
+                        <w>Natur</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>unter</w>
+                        <w>Wahrung</w>
+                        <w>der</w>
+                     </l>
+                     <l n="29">
+                        <w>Selbständigkeit</w>
+                        <w>der</w>
+                        <w>begleitenden</w>
+                        <w>Linie</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>Etwa</w>
+                        <w>dem</w>
+                        <w>Gang</w>
+                        <w>eines</w>
+                     </l>
                      <pb n="14" facs="83057.jpg"/>
                      <l n="1">
                         <w>Menschen</w>
@@ -3951,7 +4195,7 @@
                            <w>Perspective</w>
                         </l>
                      </label>
-                     <figure facs="#zone_f83057_fig2" rend="block">
+                     <figure facs="#zone_f83057_fig2" rend="float-left">
                         <head rend="italic">
                            <w>fig</w> 5  </head>
                      </figure>
@@ -4131,7 +4375,7 @@
                            <w>Punkten</w>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83058_fig2" rend="float-right"/>
+                     <figure facs="#zone_f83058_fig2" rend="block"/>
                      <l n="10">
                         <w>zu</w>
                         <w>Linien</w>
@@ -4157,7 +4401,7 @@
                         <w>log</w>
                         <w>nicht</w>
                      </l>
-                     <figure facs="#zone_f83058_fig4" rend="float-left"/>
+                     <figure facs="#zone_f83058_fig4" rend="block"/>
                      <l n="14">
                         <w>Flächen</w>
                         <w>mit</w>
@@ -4307,6 +4551,116 @@
                            <w>rung</w>
                         </l>
                      </label>
+                     <figure facs="#zone_f83059_fig1" rend="float-right">
+                        <head rend="italic">
+                           <w>fig</w> 8  </head>
+                     </figure>
+                     <ab n="1">
+                        <l n="5">
+                           <w>Räumlich</w>
+                           <w>dargestellt</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>sieht</w>
+                           <w>diese<add>s</add>
+                           </w>
+                           <choice>
+                              <sic>
+                                 <w>Darstellung</w>
+                              </sic>
+                              <corr>
+                                 <w>graphische</w>
+                                 <w>Bild</w>
+                              </corr>
+                           </choice>
+                           <w>jedoch</w>
+                        </l>
+                        <l n="6">
+                           <w>wesentlich</w>
+                           <w>anders</w>
+                           <w>aus</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Die</w>
+                           <w>Abstände</w>
+                           <w>der</w>
+                           <w>Schwellen</w>
+                        </l>
+                        <l n="7">
+                           <w>vergrössern</w>
+                           <w>sich</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>wie</w>
+                           <w>die</w>
+                           <w>meisten</w>
+                           <w>Europäer</w>
+                           <w>wissen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                        <l n="8">
+                           <w>zusehends</w>
+                           <w>nach</w>
+                           <w>vorn</w>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83059_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w>
+                           <w>8</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>a</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </head>
+                     </figure>
+                     <figure facs="#zone_f83059_fig3" rend="float-left">
+                        <head rend="italic">
+                           <w>fig</w> 9  </head>
+                     </figure>
+                     <l n="9">
+                        <w>Die</w>
+                        <w>Front</w>
+                        <w>der</w>
+                        <w>Lokomotive</w>
+                        <w>steht</w>
+                     </l>
+                     <l n="10">
+                        <w>zu</w>
+                        <w>der</w>
+                        <w>zwischen</w>
+                        <w>den</w>
+                        <w>Schienen</w>
+                     </l>
+                     <l n="11">
+                        <w>liegenden</w>
+                        <w>Fläche</w>
+                        <w>in</w>
+                        <w>einem</w>
+                     </l>
+                     <l n="12">
+                        <w>rechten</w>
+                        <w>Winkel</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <pc type="bracketOpen" float="right" force="inter">(</pc>
+                        <w>Wir</w>
+                     </l>
+                     <l n="13">
+                        <w>haben</w>
+                        <w>somit</w>
+                        <w>gleich</w>
+                     </l>
+                     <l n="14">
+                        <w>zu</w>
+                        <w>Anfang</w>
+                        <w>die</w>
+                     </l>
+                     <l n="15">
+                        <w>grösste</w>
+                        <w>räumliche</w>
+                     </l>
+                     <l n="16">
+                        <w>Höhe</w>
+                        <w>proiciert</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <pc type="bracketClose" float="left" force="inter">)</pc>
+                     </l>
                      <pb n="17" facs="83060.jpg"/>
                      <l n="1">
                         <w>Nun</w>
@@ -4333,8 +4687,14 @@
                         <w>die</w>
                         <w>bei</w>
                      </l>
-                     <figure facs="#zone_f83060_fig1" rend="float-left"/>
-                     <figure facs="#zone_f83060_fig2" rend="block"/>
+                     <figure facs="#zone_f83060_fig1" rend="float-left">
+                        <head rend="italic">
+                           <w>fig</w> 10 .  </head>
+                     </figure>
+                     <figure facs="#zone_f83060_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 11  </head>
+                     </figure>
                      <l n="3">
                         <w>fig</w>
                         <w>11</w>
@@ -4360,7 +4720,10 @@
                         <w>Winkel</w>
                         <pc type="bracketClose" float="left" force="inter">)</pc>
                      </l>
-                     <figure facs="#zone_f83060_fig3" rend="block"/>
+                     <figure facs="#zone_f83060_fig3" rend="float-left">
+                        <head rend="italic">
+                           <w>fig</w> 12  </head>
+                     </figure>
                      <l n="7">
                         <w>und</w>
                         <add>
@@ -4388,7 +4751,10 @@
                      <trailer rend="bold" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
-                     <figure facs="#zone_f83060_fig4" rend="block"/>
+                     <figure facs="#zone_f83060_fig4" rend="float-left">
+                        <head rend="italic">
+                           <w>fig</w> 13  </head>
+                     </figure>
                      <label type="margin"
                             place="right"
                             rend="margin-head margin-right"
@@ -4400,8 +4766,79 @@
                            <w>gradierung</w>
                         </l>
                      </label>
+                     <l n="13">
+                        <w>Gehen</w>
+                        <w>wir</w>
+                        <w>noch</w>
+                        <w>einmal</w>
+                     </l>
+                     <l n="14">
+                        <w>von</w>
+                        <w>der</w>
+                        <w>Vorstellung</w>
+                     </l>
+                     <l n="15">
+                        <w>der</w>
+                        <w>Schienen</w>
+                        <w>aus</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                     </l>
+                     <l n="16">
+                        <w>beschränken</w>
+                        <w>uns</w>
+                        <w>aber</w>
+                     </l>
+                     <l n="17">
+                        <w>auf</w>
+                        <w>eine</w>
+                        <add>
+                           <w>ganz</w>
+                        </add>
+                        <w>zurückliegende</w>
+                     </l>
+                     <l n="18">
+                        <w>und</w>
+                        <w>auf</w>
+                        <w>eine</w>
+                        <w>nächst -</w>
+                     </l>
+                     <l n="19">
+                        <w>liegende</w>
+                        <w>Schwelle</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>also</w>
+                     </l>
+                     <l n="20">
+                        <w>nur</w>
+                        <w>auf</w>
+                        <w>zwei</w>
+                        <w>Schwellen</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </l>
+                     <l n="21">
+                        <w>Diese</w>
+                        <w>beiden</w>
+                        <w>Schwellen</w>
+                     </l>
+                     <l n="22">
+                        <w>teilen</w>
+                        <w>wir</w>
+                        <w>in</w>
+                        <w>gleichviele</w>
+                        <w>gleiche</w>
+                        <w>Teile</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>hier</w>
+                        <w>z</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>B</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>an</w>
+                        <w>drei</w>
+                        <w>Stellen</w>
+                     </l>
                      <pb n="18" facs="83061.jpg"/>
-                     <figure facs="#zone_f83061_fig1" rend="block">
+                     <figure facs="#zone_f83061_fig1" rend="float-left">
                         <head rend="italic">
                            <w>fig</w> 14  </head>
                      </figure>
@@ -4580,7 +5017,7 @@
                            <w>Fläche</w>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83062_fig2" rend="float-right"/>
+                     <figure facs="#zone_f83062_fig2" rend="block"/>
                      <l n="4">
                         <w>bleibt</w>
                         <w>die</w>
@@ -4960,11 +5397,11 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83065_fig3" rend="float-right">
+                     <figure facs="#zone_f83065_fig3" rend="block">
                         <head rend="italic">
                            <w>ad</w> 23  </head>
                      </figure>
-                     <figure facs="#zone_f83065_fig4" rend="block">
+                     <figure facs="#zone_f83065_fig4" rend="float-left">
                         <head rend="italic">
                            <w>ad</w> 23  </head>
                      </figure>
@@ -5577,7 +6014,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83070_fig1" rend="float-right">
+                     <figure facs="#zone_f83070_fig1" rend="block">
                         <head rend="italic">
                            <w>fig</w> 1  </head>
                      </figure>
@@ -6093,7 +6530,7 @@
                         <w>aus</w>
                         <pc type="colon" float="left" force="weak">:</pc>
                      </l>
-                     <figure facs="#zone_f83073_fig5" rend="float-right">
+                     <figure facs="#zone_f83073_fig5" rend="block">
                         <head rend="italic">
                            <w>fig</w> 11  </head>
                      </figure>
@@ -6105,7 +6542,7 @@
                         <w>Kreuz</w>
                         <pc type="colon" float="left" force="weak">:</pc>
                      </l>
-                     <figure facs="#zone_f83073_fig6" rend="float-right">
+                     <figure facs="#zone_f83073_fig6" rend="block">
                         <head rend="italic">
                            <w>fig</w> 12  </head>
                      </figure>
@@ -6164,7 +6601,7 @@
                         <w>so</w>
                         <pc type="colon" float="left" force="weak">:</pc>
                      </l>
-                     <figure facs="#zone_f83074_fig1" rend="row-start">
+                     <figure facs="#zone_f83074_fig1" rend="block">
                         <head rend="italic">
                            <w>fig</w> 13  </head>
                      </figure>
@@ -6179,7 +6616,7 @@
                         <w>so</w>
                         <pc type="colon" float="left" force="weak">:</pc>
                      </l>
-                     <figure facs="#zone_f83074_fig2" rend="row-next">
+                     <figure facs="#zone_f83074_fig2" rend="float-right">
                         <head rend="italic"> 13a  </head>
                      </figure>
                      <ab n="1">
@@ -6973,7 +7410,7 @@
                            </l>
                         </ab>
                         <pb n="36" facs="83079.jpg"/>
-                        <figure facs="#zone_f83079_fig1" rend="block">
+                        <figure facs="#zone_f83079_fig1" rend="float-left">
                            <head rend="italic">
                               <w>Fig</w> 25  </head>
                            <figDesc>
@@ -7130,7 +7567,7 @@
                            </l>
                         </ab>
                         <pb n="37" facs="83080.jpg"/>
-                        <figure facs="#zone_f83080_fig1" rend="block">
+                        <figure facs="#zone_f83080_fig1" rend="float-left">
                            <head rend="italic">
                               <w>Fig</w> 26  </head>
                         </figure>
@@ -7301,11 +7738,11 @@
                               <pc type="bracketClose" float="left" force="inter">)</pc>
                            </l>
                         </ab>
-                        <figure facs="#zone_f83080_fig3" rend="block">
+                        <figure facs="#zone_f83080_fig3" rend="row-start">
                            <head rend="italic">
                               <w>fig</w> 27  </head>
                         </figure>
-                        <figure facs="#zone_f83080_fig4" rend="block">
+                        <figure facs="#zone_f83080_fig4" rend="row-next">
                            <head rend="italic">
                               <w>fig</w> 28  </head>
                         </figure>
@@ -7591,14 +8028,14 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <figure facs="#zone_f83081_fig3" rend="row-start">
+                        <figure facs="#zone_f83081_fig3" rend="block">
                            <head rend="italic">
                               <w>fig</w> 31  </head>
                         </figure>
                         <trailer rend="bold" type="pause">
                            <pc type="punct" force="inter">*</pc>
                         </trailer>
-                        <figure facs="#zone_f83081_fig4" rend="row-next">
+                        <figure facs="#zone_f83081_fig4" rend="float-right">
                            <head rend="italic"> 31a  </head>
                         </figure>
                         <pb n="39" facs="83082.jpg"/>
@@ -7625,7 +8062,7 @@
                               <pc type="colon" float="left" force="weak">:</pc>
                            </l>
                         </ab>
-                        <figure facs="#zone_f83082_fig1" rend="float-right">
+                        <figure facs="#zone_f83082_fig1" rend="block">
                            <head rend="italic">
                               <w>fig</w> 32  </head>
                            <figDesc>
@@ -8328,6 +8765,166 @@
                            <w>Structur</w>
                         </l>
                      </label>
+                     <ab n="3">
+                        <l n="4">
+                           <w>Das</w>
+                           <w>letz</w>
+                           <supplied>
+                              <pc type="slash" float="both" force="inter">/</pc>
+                              <w>t</w>
+                           </supplied>
+                           <w>e</w>
+                           <w>Mal</w>
+                           <w>hat</w>
+                           <w>sich</w>
+                           <w>der</w>
+                           <w>Gegensatz</w>
+                           <w>zwischen</w>
+                           <w>komposi -</w>
+                        </l>
+                        <l n="5">
+                           <w>tionelle</w>
+                           <choice>
+                              <sic>
+                                 <w>r</w>
+                              </sic>
+                              <corr>
+                                 <w>n</w>
+                              </corr>
+                           </choice>
+                           <w>und</w>
+                           <w>structurale</w>
+                           <choice>
+                              <sic>
+                                 <w>r</w>
+                              </sic>
+                              <corr>
+                                 <w>n</w>
+                              </corr>
+                           </choice>
+                           <w>Charakteren</w>
+                           <w>gezeigt</w>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83085_fig1" rend="float-left"/>
+                     <l n="6">
+                        <w>Structurale</w>
+                        <w>Rhythmen</w>
+                        <w>von</w>
+                        <w>niedrig -</w>
+                     </l>
+                     <l n="7">
+                        <w>stem</w>
+                        <w>Entwicklungsgrad</w>
+                        <w>traten</w>
+                        <w>in</w>
+                        <w>Erscheinung</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>die</w>
+                     </l>
+                     <l n="8">
+                        <w>ihren</w>
+                        <w>Zahlenmässigen</w>
+                        <w>mässigen</w>
+                        <w>Ausdruck</w>
+                        <w>in</w>
+                        <w>der</w>
+                     </l>
+                     <l n="9">
+                        <w>Summierung</w>
+                        <w>reiner</w>
+                        <w>Einheiten</w>
+                        <w>finden</w>
+                        <pc type="colon" float="left" force="weak">:</pc>
+                     </l>
+                     <figure facs="#zone_f83085_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 1  </head>
+                     </figure>
+                     <l n="10">
+                        <w>und</w>
+                     </l>
+                     <figure facs="#zone_f83085_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 2  </head>
+                     </figure>
+                     <ab n="1">
+                        <l n="11">
+                           <w>Addition</w>
+                           <w>von</w>
+                           <w>reinen</w>
+                           <w>Einheiten</w>
+                           <w>nach</w>
+                           <w>einer</w>
+                           <w>linearen</w>
+                        </l>
+                        <l n="12">
+                           <w>Richtung</w>
+                        </l>
+                     </ab>
+                     <ab n="2">
+                        <l n="13">
+                           <w>Eine</w>
+                           <w>Kreuzung</w>
+                           <w>der</w>
+                           <w>beiden</w>
+                           <w>Richtungen</w>
+                           <w>bringt</w>
+                        </l>
+                        <l n="14">
+                           <w>dieses</w>
+                           <w>neue</w>
+                           <w>structurale</w>
+                           <w>Bild</w>
+                           <w>hervor</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83085_fig4" rend="float-left">
+                        <head rend="italic">
+                           <w>fig</w> 3 .  </head>
+                     </figure>
+                     <l n="15">
+                        <w>welches</w>
+                        <w>als</w>
+                        <w>Addition</w>
+                        <w>von</w>
+                     </l>
+                     <l n="16">
+                        <w>Einheiten</w>
+                        <w>in</w>
+                        <w>der</w>
+                        <w>Richtung</w>
+                        <w>zweier</w>
+                     </l>
+                     <l n="17">
+                        <w>Dimensionen</w>
+                        <w>bezeichnet</w>
+                        <w>werden</w>
+                     </l>
+                     <l n="18">
+                        <w>kann</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>Dieses</w>
+                        <w>Bild</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>obwohl</w>
+                     </l>
+                     <l n="19">
+                        <w>durch</w>
+                        <w>seine</w>
+                        <w>zweidimensionale</w>
+                     </l>
+                     <l n="20">
+                        <w>Richtung</w>
+                        <add>
+                           <w>erweitert</w>
+                        </add>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>steht</w>
+                        <w>immer</w>
+                        <w>noch</w>
+                     </l>
                      <pb n="43" facs="83086.jpg"/>
                      <l n="1">
                         <w>an</w>
@@ -8935,11 +9532,11 @@
                         <w>entsteht</w>
                         <pc type="period" float="left" force="strong">.</pc>
                      </l>
-                     <figure facs="#zone_f83089_fig2" rend="row-start"/>
+                     <figure facs="#zone_f83089_fig2" rend="block"/>
                      <l n="6">
                         <w>oder</w>
                      </l>
-                     <figure facs="#zone_f83089_fig3" rend="row-next"/>
+                     <figure facs="#zone_f83089_fig3" rend="block"/>
                      <ab n="1">
                         <l n="7">
                            <w>Diese</w>
@@ -8965,11 +9562,11 @@
                      <trailer rend="bold" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
-                     <figure facs="#zone_f83089_fig4" rend="block">
+                     <figure facs="#zone_f83089_fig4" rend="row-start">
                         <head rend="italic">
                            <w>fig</w> 7a  </head>
                      </figure>
-                     <figure facs="#zone_f83089_fig5" rend="block">
+                     <figure facs="#zone_f83089_fig5" rend="row-next">
                         <head rend="italic">
                            <w>fig</w>
                            <pc type="period" float="left" force="strong">.</pc>8  </head>
@@ -9682,11 +10279,11 @@
                            <w>Taktbild</w>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83094_fig8" rend="block">
+                     <figure facs="#zone_f83094_fig8" rend="row-start">
                         <head rend="italic">
                            <w>fig</w> 20  </head>
                      </figure>
-                     <figure facs="#zone_f83094_fig9" rend="block">
+                     <figure facs="#zone_f83094_fig9" rend="row-next">
                         <head rend="italic">
                            <w>fig</w>
                            <pc type="period" float="left" force="strong">.</pc>20a  </head>
