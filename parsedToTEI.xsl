@@ -201,6 +201,174 @@
     </xsl:if>
   </xsl:function>
 
+  <!-- ======================= Paragraphisms =======================
+       The short strokes in the outer margin that mark the start of a paragraph. They are drawn on
+       the ALTO page as GraphicZone:paragraphism#N and are not in the Euporia source, so they are
+       built from the ALTO alone: a <zone> in the facsimile (like the figures) and a <figure
+       type="paragraphism"> anchored to the text line they stand beside. -->
+
+  <!-- Baseline y of a TextLine: mean of the y values of its BASELINE (centre of the box if it has none) -->
+  <xsl:function name="kf:baseline-y" as="xs:double">
+    <xsl:param name="line" as="element(alto:TextLine)"/>
+    <xsl:variable name="t" select="tokenize(normalize-space($line/@BASELINE), '\s+')[. != '']"/>
+    <xsl:variable name="ys" select="for $i in 1 to (count($t) idiv 2) return xs:double($t[2 * $i])"/>
+    <xsl:sequence select="if (exists($ys)) then avg($ys) else xs:double($line/@VPOS) + xs:double($line/@HEIGHT) div 2"/>
+  </xsl:function>
+
+  <!-- y of the baseline of each physical line of the main text column, top to bottom.
+       Headings, interlinear additions and text inside figures do not make a row of their own;
+       baselines closer than half a median line height are the same row. The Euporia source has one
+       <line> per physical line, so row n corresponds to the n-th <line> of the page's mainZones
+       (without the section headings). -->
+  <xsl:function name="kf:text-rows" as="xs:double*">
+    <xsl:param name="altoDoc"/>
+    <xsl:variable name="skipTags"
+      select="$altoDoc//alto:OtherTag[matches(@LABEL, '^(HeadingLine|CustomLine:addition|CustomLine:textinfigure)')]/@ID"/>
+    <xsl:variable name="ys" as="xs:double*">
+      <xsl:perform-sort select="
+        for $l in kf:main-lines($altoDoc)[not(tokenize(normalize-space(@TAGREFS), '\s+') = $skipTags)]
+        return kf:baseline-y($l)">
+        <xsl:sort select="."/>
+      </xsl:perform-sort>
+    </xsl:variable>
+    <xsl:variable name="tol" select="0.5 * kf:median-line-height($altoDoc)"/>
+    <xsl:variable name="ends" select="
+      (0, (for $i in 2 to count($ys) return if ($ys[$i] - $ys[$i - 1] gt $tol) then $i - 1 else ()), count($ys))"/>
+    <xsl:sequence select="
+      for $r in 1 to (count($ends) - 1)
+      return avg($ys[position() gt $ends[$r] and position() le $ends[$r + 1]])"/>
+  </xsl:function>
+
+  <!-- Bounding box (x0, y0, x1, y1) of paragraphism #ordinal; empty if missing -->
+  <xsl:function name="kf:par-box" as="xs:double*">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:variable name="tagIds"
+      select="$altoDoc//alto:OtherTag[@LABEL = concat('GraphicZone:paragraphism#', $ordinal)]/@ID"/>
+    <xsl:variable name="blocks"
+      select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds]"/>
+    <xsl:if test="exists($blocks)">
+      <xsl:sequence select="(
+          min(for $b in $blocks return xs:double($b/@HPOS)),
+          min(for $b in $blocks return xs:double($b/@VPOS)),
+          max(for $b in $blocks return xs:double($b/@HPOS) + xs:double($b/@WIDTH)),
+          max(for $b in $blocks return xs:double($b/@VPOS) + xs:double($b/@HEIGHT))
+        )"/>
+    </xsl:if>
+  </xsl:function>
+
+  <!-- Numbers N of the GraphicZone:paragraphism#N zones of the page that have a block, ascending -->
+  <xsl:function name="kf:par-ordinals" as="xs:integer*">
+    <xsl:param name="altoDoc"/>
+    <xsl:variable name="all" as="xs:integer*">
+      <xsl:perform-sort select="
+        for $t in $altoDoc//alto:OtherTag[matches(@LABEL, '^GraphicZone:paragraphism#\d+$')]
+        return xs:integer(replace($t/@LABEL, '^GraphicZone:paragraphism#(\d+)$', '$1'))">
+        <xsl:sort select="."/>
+      </xsl:perform-sort>
+    </xsl:variable>
+    <xsl:sequence select="for $n in $all return if (exists(kf:par-box($altoDoc, $n))) then $n else ()"/>
+  </xsl:function>
+
+  <!-- Distance (px) from the middle of a text line to its baseline: the middle of the line box
+       in the viewer is a little above the baseline -->
+  <xsl:function name="kf:line-middle-offset" as="xs:double">
+    <xsl:param name="altoDoc"/>
+    <xsl:sequence select="0.3 * kf:median-line-height($altoDoc)"/>
+  </xsl:function>
+
+  <!-- Index (in $rows) of the text row a box (x0, y0, x1, y1) stands beside: the one whose middle
+       is closest to the middle of the box -->
+  <xsl:function name="kf:box-row" as="xs:integer?">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="b" as="xs:double*"/>
+    <xsl:param name="rows" as="xs:double*"/>
+    <xsl:if test="exists($b) and exists($rows)">
+      <xsl:variable name="cy" select="($b[2] + $b[4]) div 2"/>
+      <xsl:variable name="off" select="kf:line-middle-offset($altoDoc)"/>
+      <xsl:variable name="d" select="for $r in $rows return abs($cy - ($r - $off))"/>
+      <xsl:sequence select="index-of($d, min($d))[1]"/>
+    </xsl:if>
+  </xsl:function>
+
+  <!-- Vertical offset (px of the scan) of the middle of a box from the middle of its text row;
+       positive = lower than the line. 0 when there is no row. -->
+  <xsl:function name="kf:box-dy" as="xs:double">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="b" as="xs:double*"/>
+    <xsl:param name="rows" as="xs:double*"/>
+    <xsl:variable name="row" select="kf:box-row($altoDoc, $b, $rows)"/>
+    <xsl:sequence select="
+      if (empty($row)) then 0
+      else ($b[2] + $b[4]) div 2 - ($rows[$row] - kf:line-middle-offset($altoDoc))"/>
+  </xsl:function>
+
+  <xsl:function name="kf:par-row" as="xs:integer?">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:param name="rows" as="xs:double*"/>
+    <xsl:sequence select="kf:box-row($altoDoc, kf:par-box($altoDoc, $ordinal), $rows)"/>
+  </xsl:function>
+
+  <xsl:function name="kf:par-dy" as="xs:double">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:param name="rows" as="xs:double*"/>
+    <xsl:sequence select="kf:box-dy($altoDoc, kf:par-box($altoDoc, $ordinal), $rows)"/>
+  </xsl:function>
+
+  <!-- Number of the <line> (among the $nLines lines of the page's mainZones) that ALTO row $row
+       corresponds to. Equal numbers when ALTO and source agree; otherwise the row is scaled, so a
+       mark still lands close to the right place. -->
+  <xsl:function name="kf:target-line" as="xs:integer?">
+    <xsl:param name="row" as="xs:integer?"/>
+    <xsl:param name="nRows" as="xs:integer"/>
+    <xsl:param name="nLines" as="xs:integer"/>
+    <xsl:sequence select="
+      if (empty($row) or $nLines eq 0) then ()
+      else if ($nRows eq $nLines) then $row
+      else max((1, min(($nLines, xs:integer(round($row * $nLines div $nRows))))))"/>
+  </xsl:function>
+
+  <!-- Outer margin the stroke is in: 'left' or 'right' of the middle of the text column -->
+  <xsl:function name="kf:par-side" as="xs:string">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:variable name="b" select="kf:par-box($altoDoc, $ordinal)"/>
+    <xsl:sequence select="
+      if (exists($b) and ($b[1] + $b[3]) div 2 ge kf:content-ulx($altoDoc) + kf:content-width($altoDoc) div 2)
+      then 'right' else 'left'"/>
+  </xsl:function>
+
+  <!-- A small figure that stands in the outer margin, entirely beside the text column (like the
+       dotted arrow and the dot left of the rule on p. 6): 'out-left' / 'out-right', else ''.
+       Such a figure does not belong to the text flow: klee.css hangs it in the margin, beyond the
+       vertical rule, at the height where it appears in the flow. Anything wider than about ten
+       letters, or touching a text line, keeps the normal layouts. -->
+  <xsl:function name="kf:fig-margin" as="xs:string">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:variable name="b" select="kf:fig-box($altoDoc, $ordinal)"/>
+    <xsl:variable name="chw" select="kf:char-width($altoDoc)"/>
+    <xsl:choose>
+      <xsl:when test="empty($b) or $chw le 0 or $b[3] - $b[1] gt 10 * $chw">
+        <xsl:sequence select="''"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="x0" select="kf:content-ulx($altoDoc)"/>
+        <xsl:variable name="x1" select="$x0 + kf:content-width($altoDoc)"/>
+        <xsl:variable name="poly" select="kf:fig-poly($altoDoc, $ordinal)"/>
+        <xsl:variable name="clash"
+          select="kf:main-lines($altoDoc)[kf:line-side(., $poly, $b[2], $b[4], 0.5 * $chw) = 'clash']"/>
+        <xsl:sequence select="
+          if (exists($clash)) then ''
+          else if ($b[3] le $x0 + 0.5 * $chw) then 'out-left'
+          else if ($b[1] ge $x1 - 0.5 * $chw) then 'out-right'
+          else ''"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
   <!-- Two figures form a row when they share a horizontal band (>= 50% of the
        smaller height), are mostly side by side (b on the right of a, bbox overlap
        <= 40% of the smaller width) and no text line sits between them. -->
@@ -332,6 +500,26 @@
     </xsl:choose>
   </xsl:function>
 
+  <!-- Layout of the figure that graphZoneFig $fig stands for: out-left / out-right (in the outer
+       margin, see kf:fig-margin), row-start / row-next (side by side), else inline / float-left /
+       float-right / block. A figure is only put in the margin when the page has a line to hang it on. -->
+  <xsl:function name="kf:fig-rend" as="xs:string">
+    <xsl:param name="fig" as="element()"/>
+    <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
+    <xsl:variable name="pageNum" select="normalize-space($page/facsimile/num)"/>
+    <xsl:variable name="figOrdinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
+    <xsl:variable name="altoPath" select="concat('data/', $pageNum, '.xml')"/>
+    <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+    <xsl:variable name="inMargin" select="
+      if ($altoDoc and exists($page//mainZone//line[not(ancestor::sectionHeading)]) and exists(kf:text-rows($altoDoc)))
+      then kf:fig-margin($altoDoc, $figOrdinal) else ''"/>
+    <xsl:sequence select="
+      if (not($altoDoc)) then 'block'
+      else if ($inMargin != '') then $inMargin
+      else if (kf:fig-row($altoDoc, $figOrdinal) != '') then kf:fig-row($altoDoc, $figOrdinal)
+      else kf:fig-side($altoDoc, $figOrdinal)"/>
+  </xsl:function>
+
   <!-- The <l> an inline figure must be attached to: the line right before it
        (or the last line of the preceding <ab>) -->
   <xsl:function name="kf:host-line" as="element()?">
@@ -345,6 +533,8 @@
   <xsl:template name="alto-zone">
     <xsl:param name="zoneId" as="xs:string"/>
     <xsl:param name="blocks" as="element(alto:TextBlock)*" select="."/>
+    <!-- paragraphisms only: offset of the stroke from the middle of its text row (px of the scan) -->
+    <xsl:param name="dy" as="xs:double?" select="()"/>
     <xsl:variable name="x0" select="min(for $b in $blocks return xs:double($b/@HPOS))"/>
     <xsl:variable name="y0" select="min(for $b in $blocks return xs:double($b/@VPOS))"/>
     <xsl:variable name="x1" select="max(for $b in $blocks return xs:double($b/@HPOS) + xs:double($b/@WIDTH))"/>
@@ -355,6 +545,9 @@
       <xsl:attribute name="uly"><xsl:value-of select="format-number($y0, '0')"/></xsl:attribute>
       <xsl:attribute name="lrx"><xsl:value-of select="format-number($x1, '0')"/></xsl:attribute>
       <xsl:attribute name="lry"><xsl:value-of select="format-number($y1, '0')"/></xsl:attribute>
+      <xsl:if test="exists($dy)">
+        <xsl:attribute name="dy"><xsl:value-of select="format-number($dy, '0.#')"/></xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="points">
         <xsl:choose>
           <xsl:when test="count($blocks) = 1">
@@ -531,8 +724,26 @@
                     <xsl:call-template name="alto-zone">
                       <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_fig', $figOrdinal)"/>
                       <xsl:with-param name="blocks" select="$blocks"/>
+                      <!-- a figure in the outer margin hangs on a text line: offset from its middle -->
+                      <xsl:with-param name="dy" select="
+                        if (kf:fig-margin($altoDoc, $figOrdinal) != '')
+                        then kf:box-dy($altoDoc, kf:fig-box($altoDoc, $figOrdinal), kf:text-rows($altoDoc))
+                        else ()"/>
                     </xsl:call-template>
                   </xsl:if>
+                </xsl:for-each>
+                <!-- Paragraphisms (GraphicZone:paragraphism#N): same kind of zone as the figures -->
+                <xsl:variable name="rows" select="kf:text-rows($altoDoc)"/>
+                <xsl:for-each select="kf:par-ordinals($altoDoc)">
+                  <xsl:variable name="parOrdinal" select="."/>
+                  <xsl:variable name="tagId"
+                    select="$altoDoc//alto:OtherTag[@LABEL = concat('GraphicZone:paragraphism#', $parOrdinal)]/@ID"/>
+                  <xsl:call-template name="alto-zone">
+                    <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_par', $parOrdinal)"/>
+                    <xsl:with-param name="blocks"
+                      select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                    <xsl:with-param name="dy" select="kf:par-dy($altoDoc, $parOrdinal, $rows)"/>
+                  </xsl:call-template>
                 </xsl:for-each>
               </xsl:if>
             </surface>
@@ -775,19 +986,22 @@
   <!-- Figures -->
 
   <xsl:template match="graphZoneFig">
+    <xsl:variable name="figRend" select="kf:fig-rend(.)"/>
+    <!-- figures in the outer margin are emitted by the text line they stand beside (paragraphism-marks) -->
+    <xsl:if test="not(starts-with($figRend, 'out-'))">
+      <xsl:call-template name="fig-element">
+        <xsl:with-param name="figRend" select="$figRend"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- The <figure> of a graphZoneFig (context node) with the given layout -->
+  <xsl:template name="fig-element">
+    <xsl:param name="figRend" as="xs:string"/>
     <xsl:variable name="fid" select="normalize-space(replace(figId, '\s+', ''))"/>
     <xsl:variable name="item" select="key('fig-by-id', $fid)"/>
     <xsl:variable name="pageNum" select="normalize-space(ancestor::page[1]/facsimile/num)"/>
     <xsl:variable name="figOrdinal" select="count(preceding-sibling::graphZoneFig) + 1"/>
-
-    <xsl:variable name="altoPath" select="concat('data/', $pageNum, '.xml')"/>
-    <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
-
-    <!-- row-start / row-next (side by side), else inline / float-left / float-right / block -->
-    <xsl:variable name="figRend" as="xs:string" select="
-      if (not($altoDoc)) then 'block'
-      else if (kf:fig-row($altoDoc, $figOrdinal) != '') then kf:fig-row($altoDoc, $figOrdinal)
-      else kf:fig-side($altoDoc, $figOrdinal)"/>
 
     <figure facs="#zone_f{$pageNum}_fig{$figOrdinal}" rend="{$figRend}">
       <xsl:if test="$item/label">
@@ -966,8 +1180,50 @@
       <xsl:attribute name="n">
         <xsl:number level="any" count="line" from="page"/>
       </xsl:attribute>
+      <xsl:call-template name="paragraphism-marks"/>
       <xsl:apply-templates/>
     </l>
+  </xsl:template>
+
+  <!-- Figures in the outer margin standing beside this line: the paragraphisms and the small
+       figures kf:fig-margin finds beside the text column. Only lines of the main text qualify. Each
+       mark is tied to the ALTO text row nearest to it; row n is the n-th line of the page's mainZones
+       (kf:target-line scales the row when the ALTO and the source count lines differently). The
+       figure is the first child of the <l>; its side (rend="par-left" / "par-right" for
+       paragraphisms, "out-left" / "out-right" for figures) and its offset from the middle of the
+       line (zone/@dy) come from the ALTO, its place in the margin from klee.css. -->
+  <xsl:template name="paragraphism-marks">
+    <xsl:if test="ancestor::mainZone and not(ancestor::sectionHeading)">
+      <xsl:variable name="page" select="ancestor::page[1]"/>
+      <xsl:variable name="pageNum" select="normalize-space($page/facsimile/num)"/>
+      <xsl:variable name="altoPath" select="concat('data/', $pageNum, '.xml')"/>
+      <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+      <xsl:if test="$altoDoc">
+        <xsl:variable name="me" select="."/>
+        <xsl:variable name="mainLines" select="$page//mainZone//line[not(ancestor::sectionHeading)]"/>
+        <xsl:variable name="nLines" select="count($mainLines)"/>
+        <xsl:variable name="idx" select="count($mainLines[. &lt;&lt; $me]) + 1"/>
+        <xsl:variable name="rows" select="kf:text-rows($altoDoc)"/>
+        <xsl:for-each select="kf:par-ordinals($altoDoc)">
+          <xsl:variable name="parOrdinal" select="."/>
+          <xsl:variable name="row" select="kf:par-row($altoDoc, $parOrdinal, $rows)"/>
+          <xsl:if test="kf:target-line($row, count($rows), $nLines) eq $idx">
+            <figure type="paragraphism"
+              facs="#zone_f{$pageNum}_par{$parOrdinal}"
+              rend="par-{kf:par-side($altoDoc, $parOrdinal)}"/>
+          </xsl:if>
+        </xsl:for-each>
+        <xsl:for-each select="$page/graphZoneFig[starts-with(kf:fig-rend(.), 'out-')]">
+          <xsl:variable name="figOrdinal" select="count(preceding-sibling::graphZoneFig) + 1"/>
+          <xsl:variable name="row" select="kf:box-row($altoDoc, kf:fig-box($altoDoc, $figOrdinal), $rows)"/>
+          <xsl:if test="kf:target-line($row, count($rows), $nLines) eq $idx">
+            <xsl:call-template name="fig-element">
+              <xsl:with-param name="figRend" select="kf:fig-rend(.)"/>
+            </xsl:call-template>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:if>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="textSeq">

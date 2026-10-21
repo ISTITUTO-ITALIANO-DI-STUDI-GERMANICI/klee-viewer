@@ -115,6 +115,7 @@
                   uly="209"
                   lrx="193"
                   lry="342"
+                  dy="-24.4"
                   points="34,238 29,342 175,342 193,209"/>
             <zone xml:id="zone_f83049_fig2"
                   ulx="846"
@@ -127,6 +128,7 @@
                   uly="574"
                   lrx="99"
                   lry="621"
+                  dy="-34.8"
                   points="52,574 52,621 99,621 99,574"/>
             <zone xml:id="zone_f83049_fig4"
                   ulx="772"
@@ -140,6 +142,27 @@
                   lrx="917"
                   lry="1788"
                   points="606,1455 682,1788 917,1670 912,1452"/>
+            <zone xml:id="zone_f83049_par1"
+                  ulx="21"
+                  uly="101"
+                  lrx="197"
+                  lry="215"
+                  dy="-28.2"
+                  points="21,149 21,215 197,137 190,101"/>
+            <zone xml:id="zone_f83049_par2"
+                  ulx="16"
+                  uly="619"
+                  lrx="175"
+                  lry="728"
+                  dy="41.2"
+                  points="24,728 16,683 168,619 175,672"/>
+            <zone xml:id="zone_f83049_par3"
+                  ulx="33"
+                  uly="1162"
+                  lrx="195"
+                  lry="1292"
+                  dy="43.9"
+                  points="33,1292 36,1230 185,1162 195,1215"/>
          </surface>
          <surface xml:id="f83050"
                   ulx="0"
@@ -264,6 +287,13 @@
                   lrx="1551"
                   lry="2396"
                   points="20,2206 32,2321 101,2319 689,2306 712,2396 1551,2375 1535,2168 1337,2161 1284,2257 1239,2254 894,2268 882,2169 705,2164 699,2258 698,2281 281,2292 266,2207"/>
+            <zone xml:id="zone_f83053_par1"
+                  ulx="18"
+                  uly="2331"
+                  lrx="49"
+                  lry="2382"
+                  dy="172.4"
+                  points="18,2331 18,2382 49,2382 49,2331"/>
          </surface>
          <surface xml:id="f83054"
                   ulx="0"
@@ -728,6 +758,13 @@
                   lrx="1759"
                   lry="1986"
                   points="9,959 1759,959 1759,1986 9,1986"/>
+            <zone xml:id="zone_f83070_par1"
+                  ulx="1722"
+                  uly="1127"
+                  lrx="1844"
+                  lry="1331"
+                  dy="-7.3"
+                  points="1722,1127 1722,1331 1844,1331 1844,1127"/>
          </surface>
          <surface xml:id="f83071"
                   ulx="0"
@@ -761,7 +798,15 @@
                   uly="2126"
                   lrx="270"
                   lry="2444"
+                  dy="22.6"
                   points="15,2126 12,2442 267,2444 270,2126"/>
+            <zone xml:id="zone_f83071_par1"
+                  ulx="164"
+                  uly="506"
+                  lrx="347"
+                  lry="1046"
+                  dy="24.1"
+                  points="302,506 164,1046 347,1027 341,994 205,1005 328,507"/>
          </surface>
          <surface xml:id="f83072"
                   ulx="0"
@@ -778,6 +823,13 @@
                   lrx="1497"
                   lry="1743"
                   points="511,128 495,1743 929,1743 1497,1743 1497,128"/>
+            <zone xml:id="zone_f83072_par1"
+                  ulx="1643"
+                  uly="2099"
+                  lrx="1846"
+                  lry="2371"
+                  dy="-26.9"
+                  points="1643,2099 1657,2124 1662,2134 1785,2145 1791,2371 1846,2371 1823,2105"/>
          </surface>
          <surface xml:id="f83073"
                   ulx="0"
@@ -824,6 +876,13 @@
                   lrx="1859"
                   lry="1985"
                   points="1349,1723 1349,1985 1856,1985 1858,1835 1859,1720"/>
+            <zone xml:id="zone_f83073_par1"
+                  ulx="80"
+                  uly="1755"
+                  lrx="203"
+                  lry="1948"
+                  dy="19"
+                  points="80,1755 80,1948 187,1945 203,1894 119,1897 122,1755"/>
          </surface>
          <surface xml:id="f83074"
                   ulx="0"
@@ -898,6 +957,13 @@
                   lrx="1370"
                   lry="2197"
                   points="316,1987 316,2194 1370,2197 1370,1981 436,1986"/>
+            <zone xml:id="zone_f83075_par1"
+                  ulx="63"
+                  uly="458"
+                  lrx="260"
+                  lry="803"
+                  dy="-24"
+                  points="63,458 63,803 141,803 141,549 254,533 260,469"/>
          </surface>
          <surface xml:id="f83076"
                   ulx="0"
@@ -960,6 +1026,13 @@
                   lrx="1608"
                   lry="1347"
                   points="246,934 246,1237 415,1236 713,1235 701,1347 1049,1337 1608,1321 1606,934 1344,934 683,934"/>
+            <zone xml:id="zone_f83077_par1"
+                  ulx="106"
+                  uly="1155"
+                  lrx="287"
+                  lry="1691"
+                  dy="-25.3"
+                  points="106,1155 106,1691 271,1681 287,1623 203,1620 203,1155"/>
          </surface>
          <surface xml:id="f83078"
                   ulx="0"
@@ -976,6 +1049,20 @@
                   lrx="1659"
                   lry="690"
                   points="99,129 99,284 99,690 470,690 1659,690 1659,520 1659,133 1259,132"/>
+            <zone xml:id="zone_f83078_par1"
+                  ulx="17"
+                  uly="823"
+                  lrx="1888"
+                  lry="1123"
+                  dy="32.3"
+                  points="17,923 17,972 796,935 823,863 1828,866 1811,1117 1866,1123 1888,823 802,840 767,901"/>
+            <zone xml:id="zone_f83078_par2"
+                  ulx="1802"
+                  uly="648"
+                  lrx="1888"
+                  lry="868"
+                  dy="32.8"
+                  points="1835,648 1802,868 1888,866 1888,840 1833,837 1865,649"/>
          </surface>
          <surface xml:id="f83079"
                   ulx="0"
@@ -1026,6 +1113,13 @@
                   lrx="1443"
                   lry="1985"
                   points="883,1311 883,1985 1443,1985 1443,1664 1443,1311"/>
+            <zone xml:id="zone_f83080_par1"
+                  ulx="1538"
+                  uly="1920"
+                  lrx="1704"
+                  lry="1991"
+                  dy="-91.9"
+                  points="1538,1920 1538,1991 1704,1991 1704,1920"/>
          </surface>
          <surface xml:id="f83081"
                   ulx="0"
@@ -1088,6 +1182,20 @@
                   lrx="1577"
                   lry="2092"
                   points="304,1703 304,2092 1577,2092 1577,1902 1577,1703 1063,1703 748,1703"/>
+            <zone xml:id="zone_f83082_par1"
+                  ulx="1593"
+                  uly="982"
+                  lrx="1719"
+                  lry="1127"
+                  dy="111.3"
+                  points="1719,1127 1719,982 1593,1010 1593,1127"/>
+            <zone xml:id="zone_f83082_par2"
+                  ulx="1649"
+                  uly="2218"
+                  lrx="1747"
+                  lry="2360"
+                  dy="25.1"
+                  points="1649,2218 1649,2360 1747,2360 1747,2218"/>
          </surface>
          <surface xml:id="f83083"
                   ulx="0"
@@ -1142,6 +1250,13 @@
                   lrx="993"
                   lry="2460"
                   points="265,1799 256,2450 297,2460 993,2460 993,1780"/>
+            <zone xml:id="zone_f83085_par1"
+                  ulx="164"
+                  uly="1744"
+                  lrx="265"
+                  lry="1869"
+                  dy="-30.7"
+                  points="164,1744 164,1869 265,1869 265,1744"/>
          </surface>
          <surface xml:id="f83086"
                   ulx="0"
@@ -1248,6 +1363,13 @@
                   lrx="1582"
                   lry="2430"
                   points="925,2077 925,2430 1582,2430 1582,2077"/>
+            <zone xml:id="zone_f83089_par1"
+                  ulx="61"
+                  uly="421"
+                  lrx="274"
+                  lry="1219"
+                  dy="-471.1"
+                  points="61,421 61,1219 274,1219 274,421"/>
          </surface>
          <surface xml:id="f83090"
                   ulx="0"
@@ -1332,6 +1454,13 @@
                   lrx="1600"
                   lry="2333"
                   points="12,1973 12,2333 172,2333 1600,2333 1600,1973 86,1973"/>
+            <zone xml:id="zone_f83092_par1"
+                  ulx="38"
+                  uly="501"
+                  lrx="200"
+                  lry="624"
+                  dy="14.7"
+                  points="171,501 104,555 38,609 79,624 200,511"/>
          </surface>
          <surface xml:id="f83093"
                   ulx="0"
@@ -1502,6 +1631,13 @@
                   lrx="1240"
                   lry="692"
                   points="569,604 569,692 1240,692 1237,604"/>
+            <zone xml:id="zone_f83097_par1"
+                  ulx="510"
+                  uly="976"
+                  lrx="547"
+                  lry="1334"
+                  dy="-21.7"
+                  points="510,976 510,1334 547,1334 547,976"/>
          </surface>
          <surface xml:id="f83098"
                   ulx="0"
@@ -1575,6 +1711,13 @@
                   lrx="1926"
                   lry="1259"
                   points="8,604 8,1259 1926,1259 1926,604"/>
+            <zone xml:id="zone_f83101_par1"
+                  ulx="172"
+                  uly="2010"
+                  lrx="813"
+                  lry="2032"
+                  dy="-36.1"
+                  points="172,2010 172,2032 813,2032 813,2010"/>
          </surface>
          <surface xml:id="f83103"
                   ulx="0"
@@ -1590,6 +1733,13 @@
                   lrx="1740"
                   lry="2123"
                   points="26,1426 26,2123 1740,2123 1740,1426"/>
+            <zone xml:id="zone_f83103_par1"
+                  ulx="115"
+                  uly="1185"
+                  lrx="304"
+                  lry="1316"
+                  dy="-20.2"
+                  points="250,1185 115,1295 191,1316 304,1205"/>
          </surface>
          <surface xml:id="f83186"
                   ulx="0"
@@ -2529,9 +2679,9 @@
                      <w>1</w>
                      <pc type="period" float="left" force="strong">.</pc>
                   </head>
-                  <figure facs="#zone_f83049_fig1" rend="inline"/>
                   <ab n="1">
                      <l n="2">
+                        <figure type="paragraphism" facs="#zone_f83049_par1" rend="par-left"/>
                         <choice>
                            <sic>
                               <w>Beim</w>
@@ -2569,6 +2719,7 @@
                         </hi>
                      </l>
                      <l n="3">
+                        <figure facs="#zone_f83049_fig1" rend="out-left"/>
                         <sic>
                            <w>linear</w>
                            <w>aktiven</w>
@@ -2596,9 +2747,10 @@
                      </l>
                   </ab>
                   <figure facs="#zone_f83049_fig2" rend="float-right"/>
-                  <figure facs="#zone_f83049_fig3" rend="inline"/>
                   <ab n="1">
                      <l n="6">
+                        <figure type="paragraphism" facs="#zone_f83049_par2" rend="par-left"/>
+                        <figure facs="#zone_f83049_fig3" rend="out-left"/>
                         <w>Setze</w>
                         <w>ich</w>
                         <w>aber</w>
@@ -2656,6 +2808,7 @@
                   <figure facs="#zone_f83049_fig4" rend="block"/>
                   <ab n="1">
                      <l n="10">
+                        <figure type="paragraphism" facs="#zone_f83049_par3" rend="par-left"/>
                         <w>Hätten</w>
                         <w>wir</w>
                         <w>eine</w>
@@ -3295,6 +3448,7 @@
                         <w>Viereck</w>
                      </l>
                      <l n="11">
+                        <figure type="paragraphism" facs="#zone_f83053_par1" rend="par-left"/>
                         <w>oder</w>
                         <w>hier</w>
                         <w>Kreis</w>
@@ -6106,6 +6260,7 @@
                            </hi>
                         </l>
                         <l n="12">
+                           <figure type="paragraphism" facs="#zone_f83070_par1" rend="par-right"/>
                            <pc type="exclam" float="left" force="strong">!</pc>
                            <hi rend="underline">
                               <w>hüben</w>
@@ -6300,6 +6455,7 @@
                         <w>zwei</w>
                      </l>
                      <l n="2">
+                        <figure type="paragraphism" facs="#zone_f83071_par1" rend="par-left"/>
                         <w>Gewichte</w>
                         <w>gegeneinander</w>
                         <w>ab</w>
@@ -6446,6 +6602,7 @@
                            <w>horizon -</w>
                         </l>
                         <l n="7">
+                           <figure type="paragraphism" facs="#zone_f83072_par1" rend="par-right"/>
                            <w>talen</w>
                            <w>zur</w>
                            <w>Vertikalen</w>
@@ -6535,6 +6692,7 @@
                            <w>fig</w> 11  </head>
                      </figure>
                      <l n="7">
+                        <figure type="paragraphism" facs="#zone_f83073_par1" rend="par-left"/>
                         <w>Das</w>
                         <w>neue</w>
                         <w>ist</w>
@@ -6779,6 +6937,7 @@
                            <w>equilibristischen</w>
                         </l>
                         <l n="2">
+                           <figure type="paragraphism" facs="#zone_f83075_par1" rend="par-left"/>
                            <w>Handlung</w>
                            <w>gestattet</w>
                            <w>mir</w>
@@ -7065,6 +7224,7 @@
                         <w>Dosis</w>
                      </l>
                      <l n="7">
+                        <figure type="paragraphism" facs="#zone_f83077_par1" rend="par-left"/>
                         <w>hüben</w>
                         <w>und</w>
                         <w>drüben</w>
@@ -7184,6 +7344,7 @@
                      </figure>
                      <ab n="1">
                         <l n="1">
+                           <figure type="paragraphism" facs="#zone_f83078_par2" rend="par-right"/>
                            <w>Hier</w>
                            <w>ist</w>
                            <w>ein</w>
@@ -7224,6 +7385,7 @@
                         </head>
                         <ab n="3">
                            <l n="5">
+                              <figure type="paragraphism" facs="#zone_f83078_par1" rend="par-left"/>
                               <w>Die</w>
                               <w>durch</w>
                               <w>das</w>
@@ -7748,6 +7910,7 @@
                         </figure>
                         <ab n="1">
                            <l n="16">
+                              <figure type="paragraphism" facs="#zone_f83080_par1" rend="par-right"/>
                               <w>Die</w>
                               <w>Art</w>
                               <w>solcher</w>
@@ -8111,6 +8274,7 @@
                            <w>viel</w>
                         </l>
                         <l n="7">
+                           <figure type="paragraphism" facs="#zone_f83082_par1" rend="par-right"/>
                            <w>kleineres</w>
                            <w>Viereck</w>
                            <w>hinzu</w>
@@ -8211,6 +8375,7 @@
                               <w>dafür</w>
                            </l>
                            <l n="15">
+                              <figure type="paragraphism" facs="#zone_f83082_par2" rend="par-right"/>
                               <w>aber</w>
                               <w>viel</w>
                               <w>grösser</w>
@@ -8885,6 +9050,7 @@
                            <w>fig</w> 3 .  </head>
                      </figure>
                      <l n="15">
+                        <figure type="paragraphism" facs="#zone_f83085_par1" rend="par-left"/>
                         <w>welches</w>
                         <w>als</w>
                         <w>Addition</w>
@@ -9510,6 +9676,7 @@
                            <w>fig</w> 7  </head>
                      </figure>
                      <l n="4">
+                        <figure type="paragraphism" facs="#zone_f83089_par1" rend="par-left"/>
                         <w>wobei</w>
                         <w>eine</w>
                         <w>Gliederung</w>
@@ -9957,6 +10124,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                         <l n="6">
+                           <figure type="paragraphism" facs="#zone_f83092_par1" rend="par-left"/>
                            <w>Die</w>
                            <w>Taktnormen</w>
                            <w>sind</w>
@@ -10623,6 +10791,7 @@
                            <w>diesem</w>
                         </l>
                         <l n="5">
+                           <figure type="paragraphism" facs="#zone_f83097_par1" rend="par-left"/>
                            <w>Beispiel</w>
                            <w>vor</w>
                            <pc type="comma" float="left" force="weak">,</pc>
@@ -11326,6 +11495,7 @@
                         <w>structuralen</w>
                      </l>
                      <l n="17">
+                        <figure type="paragraphism" facs="#zone_f83101_par1" rend="par-left"/>
                         <pc type="punct" force="inter">*</pc>
                         <w>Ich</w>
                         <w>habe</w>
@@ -11402,6 +11572,7 @@
                         </add>
                      </l>
                      <l n="2">
+                        <figure type="paragraphism" facs="#zone_f83103_par1" rend="par-left"/>
                         <w>TESTO</w>
                         <w>DI</w>
                         <w>PROVA</w>

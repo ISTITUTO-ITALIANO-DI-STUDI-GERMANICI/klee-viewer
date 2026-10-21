@@ -3824,6 +3824,195 @@
                            <w>genz</w>
                         </l>
                      </label>
+                     <ab n="8">
+                        <l n="15">
+                           <w>Wir</w>
+                           <w>beschäftigten</w>
+                           <w>uns</w>
+                           <w>vor</w>
+                           <w>14</w>
+                           <w>Tagen</w>
+                           <add>
+                              <w>unter</w>
+                              <w>anderem</w>
+                           </add>
+                           <w>mit</w>
+                           <w>der</w>
+                           <w>freien</w>
+                           <w>Linie</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                        <l n="16">
+                           <w>Ich</w>
+                           <w>wählte</w>
+                           <w>als</w>
+                           <w>Beispiel</w>
+                           <w>einen</w>
+                           <w>Typ</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>der</w>
+                           <w>einem</w>
+                           <w>in</w>
+                           <w>sich</w>
+                           <w>ruhenden</w>
+                        </l>
+                        <l n="17">
+                           <w>Gange</w>
+                           <w>ohne</w>
+                           <w>ausgesprochenen</w>
+                           <w>Zweck</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>ohne</w>
+                           <w>ausgesprochenes</w>
+                        </l>
+                        <l n="18">
+                           <w>Ziel</w>
+                           <w>entsprach</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <ab n="9">
+                        <l n="19">
+                           <w>Die</w>
+                           <w>Linie</w>
+                           <w>hatte</w>
+                           <w>etwas</w>
+                           <w>in</w>
+                           <w>sich</w>
+                           <w>ruhendes</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>harmoni -</w>
+                        </l>
+                        <l n="20">
+                           <w>sches</w>
+                           <w>und</w>
+                           <w>hätte</w>
+                           <w>als</w>
+                           <w>Thema</w>
+                           <w>zu</w>
+                           <w>einer</w>
+                           <w>Composition</w>
+                           <w>eher</w>
+                           <w>nach</w>
+                        </l>
+                        <l n="21">
+                           <w>einer</w>
+                           <w>Ausführung</w>
+                           <w>mit</w>
+                           <w>begleitenden</w>
+                           <w>Formen</w>
+                           <w>verlangt</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>und</w>
+                        </l>
+                        <l n="22">
+                           <w>hätte</w>
+                           <w>dann</w>
+                           <w>etwa<sic>s</sic>
+                           </w>
+                           <w>der</w>
+                           <w>volkstümlichen</w>
+                           <w>Liedform</w>
+                           <w>in</w>
+                           <w>der</w>
+                           <w>Musik</w>
+                        </l>
+                        <l n="23">
+                           <w>eher</w>
+                           <w>entsprochen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>als</w>
+                           <w>einer</w>
+                           <w>kunstvolleren</w>
+                           <w>Form</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <ab n="10">
+                        <l n="24">
+                           <w>Es</w>
+                           <w>gesellten</w>
+                           <w>sich</w>
+                           <w>denn</w>
+                           <w>auch</w>
+                           <w>nur</w>
+                           <w>Begleitformen</w>
+                           <w>oder</w>
+                        </l>
+                        <l n="25">
+                           <w>Ersatzformen</w>
+                           <w>zu</w>
+                           <w>der</w>
+                           <w>in</w>
+                           <w>sich</w>
+                           <w>ruhenden</w>
+                           <w>Linie</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83056_fig1" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 1 .  </head>
+                     </figure>
+                     <l n="26">
+                        <add>
+                           <w>Begleitformen</w>
+                        </add>
+                        <w>teils</w>
+                        <add>
+                           <pc type="bracketOpen" float="right" force="inter">(</pc>
+                           <w>fig</w>
+                           <w>1</w>
+                           <pc type="bracketClose" float="left" force="inter">)</pc>
+                        </add>
+                        <w>absolut</w>
+                        <w>convergierenden</w>
+                        <w>Charakters</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>oder</w>
+                        <add>
+                           <w>fig</w>
+                           <w>2</w>
+                        </add>
+                        <w>effectiv</w>
+                        <w>convergieren -</w>
+                     </l>
+                     <l n="27">
+                        <w>den</w>
+                        <w>Charakters</w>
+                     </l>
+                     <figure facs="#zone_f83056_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 3 .  </head>
+                     </figure>
+                     <figure facs="#zone_f83056_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 2  </head>
+                     </figure>
+                     <l n="28">
+                        <w>oder</w>
+                        <pc type="bracketOpen" float="right" force="inter">(</pc>
+                        <w>3</w>
+                        <pc type="bracketClose" float="left" force="inter">)</pc>
+                        <w>effectiv</w>
+                        <w>convergierender</w>
+                        <w>Natur</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>unter</w>
+                        <w>Wahrung</w>
+                        <w>der</w>
+                     </l>
+                     <l n="29">
+                        <w>Selbständigkeit</w>
+                        <w>der</w>
+                        <w>begleitenden</w>
+                        <w>Linie</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>Etwa</w>
+                        <w>dem</w>
+                        <w>Gang</w>
+                        <w>eines</w>
+                     </l>
                      <pb n="14" facs="83057.jpg"/>
                      <l n="1">
                         <w>Menschen</w>
@@ -4307,6 +4496,116 @@
                            <w>rung</w>
                         </l>
                      </label>
+                     <figure facs="#zone_f83059_fig1" rend="float-right">
+                        <head rend="italic">
+                           <w>fig</w> 8  </head>
+                     </figure>
+                     <ab n="1">
+                        <l n="5">
+                           <w>Räumlich</w>
+                           <w>dargestellt</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>sieht</w>
+                           <w>diese<add>s</add>
+                           </w>
+                           <choice>
+                              <sic>
+                                 <w>Darstellung</w>
+                              </sic>
+                              <corr>
+                                 <w>graphische</w>
+                                 <w>Bild</w>
+                              </corr>
+                           </choice>
+                           <w>jedoch</w>
+                        </l>
+                        <l n="6">
+                           <w>wesentlich</w>
+                           <w>anders</w>
+                           <w>aus</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Die</w>
+                           <w>Abstände</w>
+                           <w>der</w>
+                           <w>Schwellen</w>
+                        </l>
+                        <l n="7">
+                           <w>vergrössern</w>
+                           <w>sich</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>wie</w>
+                           <w>die</w>
+                           <w>meisten</w>
+                           <w>Europäer</w>
+                           <w>wissen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                        <l n="8">
+                           <w>zusehends</w>
+                           <w>nach</w>
+                           <w>vorn</w>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83059_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w>
+                           <w>8</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>a</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </head>
+                     </figure>
+                     <figure facs="#zone_f83059_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 9  </head>
+                     </figure>
+                     <l n="9">
+                        <w>Die</w>
+                        <w>Front</w>
+                        <w>der</w>
+                        <w>Lokomotive</w>
+                        <w>steht</w>
+                     </l>
+                     <l n="10">
+                        <w>zu</w>
+                        <w>der</w>
+                        <w>zwischen</w>
+                        <w>den</w>
+                        <w>Schienen</w>
+                     </l>
+                     <l n="11">
+                        <w>liegenden</w>
+                        <w>Fläche</w>
+                        <w>in</w>
+                        <w>einem</w>
+                     </l>
+                     <l n="12">
+                        <w>rechten</w>
+                        <w>Winkel</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <pc type="bracketOpen" float="right" force="inter">(</pc>
+                        <w>Wir</w>
+                     </l>
+                     <l n="13">
+                        <w>haben</w>
+                        <w>somit</w>
+                        <w>gleich</w>
+                     </l>
+                     <l n="14">
+                        <w>zu</w>
+                        <w>Anfang</w>
+                        <w>die</w>
+                     </l>
+                     <l n="15">
+                        <w>grösste</w>
+                        <w>räumliche</w>
+                     </l>
+                     <l n="16">
+                        <w>Höhe</w>
+                        <w>proiciert</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <pc type="bracketClose" float="left" force="inter">)</pc>
+                     </l>
                      <pb n="17" facs="83060.jpg"/>
                      <l n="1">
                         <w>Nun</w>
@@ -4333,8 +4632,14 @@
                         <w>die</w>
                         <w>bei</w>
                      </l>
-                     <figure facs="#zone_f83060_fig1" rend="float-left"/>
-                     <figure facs="#zone_f83060_fig2" rend="block"/>
+                     <figure facs="#zone_f83060_fig1" rend="float-left">
+                        <head rend="italic">
+                           <w>fig</w> 10 .  </head>
+                     </figure>
+                     <figure facs="#zone_f83060_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 11  </head>
+                     </figure>
                      <l n="3">
                         <w>fig</w>
                         <w>11</w>
@@ -4360,7 +4665,10 @@
                         <w>Winkel</w>
                         <pc type="bracketClose" float="left" force="inter">)</pc>
                      </l>
-                     <figure facs="#zone_f83060_fig3" rend="block"/>
+                     <figure facs="#zone_f83060_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 12  </head>
+                     </figure>
                      <l n="7">
                         <w>und</w>
                         <add>
@@ -4388,7 +4696,10 @@
                      <trailer rend="bold" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
-                     <figure facs="#zone_f83060_fig4" rend="block"/>
+                     <figure facs="#zone_f83060_fig4" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 13  </head>
+                     </figure>
                      <label type="margin"
                             place="right"
                             rend="margin-head margin-right"
@@ -4400,6 +4711,77 @@
                            <w>gradierung</w>
                         </l>
                      </label>
+                     <l n="13">
+                        <w>Gehen</w>
+                        <w>wir</w>
+                        <w>noch</w>
+                        <w>einmal</w>
+                     </l>
+                     <l n="14">
+                        <w>von</w>
+                        <w>der</w>
+                        <w>Vorstellung</w>
+                     </l>
+                     <l n="15">
+                        <w>der</w>
+                        <w>Schienen</w>
+                        <w>aus</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                     </l>
+                     <l n="16">
+                        <w>beschränken</w>
+                        <w>uns</w>
+                        <w>aber</w>
+                     </l>
+                     <l n="17">
+                        <w>auf</w>
+                        <w>eine</w>
+                        <add>
+                           <w>ganz</w>
+                        </add>
+                        <w>zurückliegende</w>
+                     </l>
+                     <l n="18">
+                        <w>und</w>
+                        <w>auf</w>
+                        <w>eine</w>
+                        <w>nächst -</w>
+                     </l>
+                     <l n="19">
+                        <w>liegende</w>
+                        <w>Schwelle</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>also</w>
+                     </l>
+                     <l n="20">
+                        <w>nur</w>
+                        <w>auf</w>
+                        <w>zwei</w>
+                        <w>Schwellen</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </l>
+                     <l n="21">
+                        <w>Diese</w>
+                        <w>beiden</w>
+                        <w>Schwellen</w>
+                     </l>
+                     <l n="22">
+                        <w>teilen</w>
+                        <w>wir</w>
+                        <w>in</w>
+                        <w>gleichviele</w>
+                        <w>gleiche</w>
+                        <w>Teile</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>hier</w>
+                        <w>z</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>B</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>an</w>
+                        <w>drei</w>
+                        <w>Stellen</w>
+                     </l>
                      <pb n="18" facs="83061.jpg"/>
                      <figure facs="#zone_f83061_fig1" rend="block">
                         <head rend="italic">
@@ -8328,6 +8710,166 @@
                            <w>Structur</w>
                         </l>
                      </label>
+                     <ab n="3">
+                        <l n="4">
+                           <w>Das</w>
+                           <w>letz</w>
+                           <supplied>
+                              <pc type="slash" float="both" force="inter">/</pc>
+                              <w>t</w>
+                           </supplied>
+                           <w>e</w>
+                           <w>Mal</w>
+                           <w>hat</w>
+                           <w>sich</w>
+                           <w>der</w>
+                           <w>Gegensatz</w>
+                           <w>zwischen</w>
+                           <w>komposi -</w>
+                        </l>
+                        <l n="5">
+                           <w>tionelle</w>
+                           <choice>
+                              <sic>
+                                 <w>r</w>
+                              </sic>
+                              <corr>
+                                 <w>n</w>
+                              </corr>
+                           </choice>
+                           <w>und</w>
+                           <w>structurale</w>
+                           <choice>
+                              <sic>
+                                 <w>r</w>
+                              </sic>
+                              <corr>
+                                 <w>n</w>
+                              </corr>
+                           </choice>
+                           <w>Charakteren</w>
+                           <w>gezeigt</w>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83085_fig1" rend="float-left"/>
+                     <l n="6">
+                        <w>Structurale</w>
+                        <w>Rhythmen</w>
+                        <w>von</w>
+                        <w>niedrig -</w>
+                     </l>
+                     <l n="7">
+                        <w>stem</w>
+                        <w>Entwicklungsgrad</w>
+                        <w>traten</w>
+                        <w>in</w>
+                        <w>Erscheinung</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>die</w>
+                     </l>
+                     <l n="8">
+                        <w>ihren</w>
+                        <w>Zahlenmässigen</w>
+                        <w>mässigen</w>
+                        <w>Ausdruck</w>
+                        <w>in</w>
+                        <w>der</w>
+                     </l>
+                     <l n="9">
+                        <w>Summierung</w>
+                        <w>reiner</w>
+                        <w>Einheiten</w>
+                        <w>finden</w>
+                        <pc type="colon" float="left" force="weak">:</pc>
+                     </l>
+                     <figure facs="#zone_f83085_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 1  </head>
+                     </figure>
+                     <l n="10">
+                        <w>und</w>
+                     </l>
+                     <figure facs="#zone_f83085_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 2  </head>
+                     </figure>
+                     <ab n="1">
+                        <l n="11">
+                           <w>Addition</w>
+                           <w>von</w>
+                           <w>reinen</w>
+                           <w>Einheiten</w>
+                           <w>nach</w>
+                           <w>einer</w>
+                           <w>linearen</w>
+                        </l>
+                        <l n="12">
+                           <w>Richtung</w>
+                        </l>
+                     </ab>
+                     <ab n="2">
+                        <l n="13">
+                           <w>Eine</w>
+                           <w>Kreuzung</w>
+                           <w>der</w>
+                           <w>beiden</w>
+                           <w>Richtungen</w>
+                           <w>bringt</w>
+                        </l>
+                        <l n="14">
+                           <w>dieses</w>
+                           <w>neue</w>
+                           <w>structurale</w>
+                           <w>Bild</w>
+                           <w>hervor</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83085_fig4" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 3 .  </head>
+                     </figure>
+                     <l n="15">
+                        <w>welches</w>
+                        <w>als</w>
+                        <w>Addition</w>
+                        <w>von</w>
+                     </l>
+                     <l n="16">
+                        <w>Einheiten</w>
+                        <w>in</w>
+                        <w>der</w>
+                        <w>Richtung</w>
+                        <w>zweier</w>
+                     </l>
+                     <l n="17">
+                        <w>Dimensionen</w>
+                        <w>bezeichnet</w>
+                        <w>werden</w>
+                     </l>
+                     <l n="18">
+                        <w>kann</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>Dieses</w>
+                        <w>Bild</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>obwohl</w>
+                     </l>
+                     <l n="19">
+                        <w>durch</w>
+                        <w>seine</w>
+                        <w>zweidimensionale</w>
+                     </l>
+                     <l n="20">
+                        <w>Richtung</w>
+                        <add>
+                           <w>erweitert</w>
+                        </add>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>steht</w>
+                        <w>immer</w>
+                        <w>noch</w>
+                     </l>
                      <pb n="43" facs="83086.jpg"/>
                      <l n="1">
                         <w>an</w>
