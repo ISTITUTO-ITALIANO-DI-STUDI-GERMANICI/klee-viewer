@@ -4009,7 +4009,6 @@
                </div>
                <div n="2" type="unit">
                   <head n="2" type="unit">
-                     <pc type="colon" float="left" force="weak">:</pc>
                      <w>2</w>
                      <pc type="period" float="left" force="strong">.</pc>
                   </head>
@@ -4192,11 +4191,11 @@
                      </l>
                      <figure facs="#zone_f83056_fig2" rend="block">
                         <head rend="italic">
-                           <w>fig</w> 3 .  </head>
+                           <w>fig</w> 2  </head>
                      </figure>
                      <figure facs="#zone_f83056_fig3" rend="block">
                         <head rend="italic">
-                           <w>fig</w> 2  </head>
+                           <w>fig</w> 3 .  </head>
                      </figure>
                      <l n="28">
                         <w>oder</w>
@@ -5161,7 +5160,10 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83062_fig1" rend="block"/>
+                     <figure facs="#zone_f83062_fig1" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 17 .  </head>
+                     </figure>
                      <ab n="1">
                         <l n="3">
                            <w>Beim</w>
@@ -5190,6 +5192,72 @@
                         <w>die</w>
                         <w>andern</w>
                      </l>
+                     <l n="6">
+                        <w>linien</w>
+                        <w>kommen</w>
+                        <w>mir</w>
+                        <w>ausstrahlend</w>
+                        <w>entgegen</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </l>
+                     <figure facs="#zone_f83062_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 18 .  </head>
+                     </figure>
+                     <l n="7">
+                        <w>Verlasse</w>
+                        <w>ich</w>
+                        <w>aber</w>
+                        <w>die</w>
+                        <w>Linie</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>so</w>
+                        <w>schlägt</w>
+                        <w>das</w>
+                        <w>Bild</w>
+                        <w>nach</w>
+                        <w>der</w>
+                     </l>
+                     <l n="8">
+                        <w>jeweils</w>
+                        <w>entgegengesetzten</w>
+                        <w>Seite</w>
+                        <w>aus</w>
+                     </l>
+                     <figure facs="#zone_f83062_fig4" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 19  </head>
+                     </figure>
+                     <figure facs="#zone_f83062_fig5" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 20  </head>
+                     </figure>
+                     <l n="9">
+                        <pc type="bracketOpen" float="right" force="inter">(</pc>
+                     </l>
+                     <ab n="2">
+                        <l n="10">
+                           <w>Und</w>
+                           <w>nun</w>
+                           <w>haben</w>
+                           <w>wir</w>
+                           <add>
+                              <w>nebenbei</w>
+                           </add>
+                           <w>Bekanntschaft</w>
+                           <w>mit</w>
+                           <w>dem</w>
+                           <w>Phaenomen</w>
+                           <w>der</w>
+                        </l>
+                        <l n="11">
+                           <w>Gegenbewegung</w>
+                           <w>gemacht</w>
+                           <pc type="exclam" float="left" force="strong">!</pc>
+                           <pc type="exclam" float="left" force="strong">!</pc>
+                           <pc type="bracketClose" float="left" force="inter">)</pc>
+                        </l>
+                     </ab>
                      <pb n="20" facs="83063.jpg"/>
                      <l n="1">
                         <w>Nun</w>
