@@ -22,6 +22,54 @@
        (typical left/right edge of the main text column) that is robust to a
        single outlier block (e.g. a label/annotation reaching the page edge),
        unlike a plain min/max bounding box. -->
+  <!-- Glue a trailing word-break hyphen to the preceding word ("Längs -" -> "Längs-").
+       Only a plain hyphen-minus preceded by a letter is touched, so numeric ranges
+       such as "143 - 146" stay as they are. -->
+  <xsl:function name="kf:glue-hyphen" as="xs:string">
+    <xsl:param name="s" as="xs:string"/>
+    <xsl:sequence select="replace($s, '(\p{L})[\s&#160;]+-$', '$1-')"/>
+  </xsl:function>
+
+  <!-- A line that holds nothing but one bracket (figures anchored on it are ignored). -->
+  <xsl:function name="kf:lone-bracket" as="xs:boolean">
+    <xsl:param name="l" as="element(tei:l)"/>
+    <xsl:param name="type" as="xs:string"/>
+    <xsl:sequence select="
+      count($l/tei:pc) eq 1
+      and $l/tei:pc/@type = $type
+      and empty($l/*[not(self::tei:pc or self::tei:figure)])
+      and not(normalize-space(string-join($l/text(), '')))"/>
+  </xsl:function>
+
+  <!-- Lone opening-bracket lines, indexed by the next <l> in document order. -->
+  <xsl:key name="lone-open"
+    match="tei:l[kf:lone-bracket(., 'bracketOpen')]"
+    use="generate-id(following::tei:l[1])"/>
+
+  <!-- glue-bracket: identity copy, except a lone "(" line is merged into the next line -->
+  <xsl:template match="node() | @*" mode="glue-bracket">
+    <xsl:copy><xsl:apply-templates select="@* | node()" mode="glue-bracket"/></xsl:copy>
+  </xsl:template>
+
+  <!-- the lone-bracket line itself is dropped (its n is simply skipped) -->
+  <xsl:template match="tei:l[kf:lone-bracket(., 'bracketOpen')][following::tei:l]"
+    mode="glue-bracket"/>
+
+  <!-- the next line receives the bracket, after any leading margin figures -->
+  <xsl:template match="tei:l[key('lone-open', generate-id(.), root(.))]"
+    mode="glue-bracket" priority="2">
+    <xsl:variable name="open" select="key('lone-open', generate-id(.), root(.))[1]"/>
+    <xsl:variable name="lead"
+      select="tei:figure[not(preceding-sibling::*[not(self::tei:figure)])]"/>
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:copy-of select="$open/tei:figure"/>
+      <xsl:copy-of select="$lead"/>
+      <xsl:copy-of select="$open/tei:pc"/>
+      <xsl:apply-templates select="node()[not(. intersect $lead)]" mode="glue-bracket"/>
+    </xsl:copy>
+  </xsl:template>
+
   <xsl:function name="kf:median" as="xs:double">
     <xsl:param name="values" as="xs:double*"/>
     <xsl:variable name="sorted" as="xs:double*">
@@ -768,8 +816,12 @@
             <xsl:variable name="withInline">
               <xsl:apply-templates select="$flatBody/node()" mode="attach-inline"/>
             </xsl:variable>
+            <!-- Merge lone "(" lines into the following line -->
+            <xsl:variable name="glued">
+              <xsl:apply-templates select="$withInline/node()" mode="glue-bracket"/>
+            </xsl:variable>
             <xsl:call-template name="nest-headings">
-              <xsl:with-param name="nodes" select="$withInline/node()"/>
+              <xsl:with-param name="nodes" select="$glued/node()"/>
             </xsl:call-template>
           </body>
         </text>
@@ -1364,7 +1416,7 @@
           <xsl:if test="$firstSegId != '' and generate-id(.) = $firstSegId">
             <xsl:attribute name="rend">sans</xsl:attribute>
           </xsl:if>
-          <xsl:value-of select="replace(., '^[\s&#160;]+|[\s&#160;]+$', '')"/>
+          <xsl:value-of select="kf:glue-hyphen(replace(., '^[\s&#160;]+|[\s&#160;]+$', ''))"/>
         </w>
       </xsl:otherwise>
     </xsl:choose>
@@ -1482,7 +1534,7 @@
         </xsl:if>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="normalize-space(.)"/>
+        <xsl:value-of select="kf:glue-hyphen(normalize-space(.))"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
