@@ -13,15 +13,14 @@
 
   <xsl:strip-space elements="*"/>
   <xsl:param name="lang" select="'und'"/>
+  <!-- Set to true() to print, for every figure, the layout chosen and the rule that chose it
+       (xsl:message), e.g.  figure #5 of 83049: block (coverage 0.18 < 0.4) -->
+  <xsl:param name="debug-figures" select="false()"/>
 
   <xsl:key name="fig-by-id"
     match="apparatoFigureItem"
     use="normalize-space(replace(figId, '\s+', ''))"/>
 
-  <!-- Median of a numeric sequence: used to derive a per-page "content frame"
-       (typical left/right edge of the main text column) that is robust to a
-       single outlier block (e.g. a label/annotation reaching the page edge),
-       unlike a plain min/max bounding box. -->
   <!-- Glue a trailing word-break hyphen to the preceding word ("Längs -" -> "Längs-").
        Only a plain hyphen-minus preceded by a letter is touched, so numeric ranges
        such as "143 - 146" stay as they are. -->
@@ -53,11 +52,11 @@
 
   <!-- the lone-bracket line itself is dropped (its n is simply skipped) -->
   <xsl:template match="tei:l[kf:lone-bracket(., 'bracketOpen')][following::tei:l]"
-    mode="glue-bracket"/>
+                mode="glue-bracket"/>
 
   <!-- the next line receives the bracket, after any leading margin figures -->
   <xsl:template match="tei:l[key('lone-open', generate-id(.), root(.))]"
-    mode="glue-bracket" priority="2">
+                mode="glue-bracket" priority="2">
     <xsl:variable name="open" select="key('lone-open', generate-id(.), root(.))[1]"/>
     <xsl:variable name="lead"
       select="tei:figure[not(preceding-sibling::*[not(self::tei:figure)])]"/>
@@ -70,6 +69,19 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Printed page number of a source <page>: first <num> of numbZone,
+       otherwise the first purely numeric <seg> -->
+  <xsl:function name="kf:page-number" as="xs:string">
+    <xsl:param name="page" as="element()"/>
+    <xsl:sequence select="normalize-space(
+        if ($page/numbZone//num) then $page/numbZone//num[1]
+        else $page/numbZone//seg[matches(normalize-space(.), '^\d+$')][1])"/>
+  </xsl:function>
+
+  <!-- Median of a numeric sequence: used to derive a per-page "content frame"
+       (typical left/right edge of the main text column) that is robust to a
+       single outlier block (e.g. a label/annotation reaching the page edge),
+       unlike a plain min/max bounding box. -->
   <xsl:function name="kf:median" as="xs:double">
     <xsl:param name="values" as="xs:double*"/>
     <xsl:variable name="sorted" as="xs:double*">
@@ -198,7 +210,11 @@
     <xsl:variable name="lh" select="xs:double($line/@HEIGHT)"/>
     <xsl:variable name="b0" select="max(($ly0, $fy0))"/>
     <xsl:variable name="b1" select="min(($ly0 + $lh, $fy1))"/>
-    <xsl:variable name="xr" select="kf:poly-x-range($poly, $b0, $b1)"/>
+    <!-- The outline is probed on the core of the shared band only (15% trimmed at both ends):
+         a line box that merely grazes a corner or a step of the outline by a few pixels
+         (p. 17: "in einem rechten Winkel)" vs. the step of fig 11) is not a clash. -->
+    <xsl:variable name="trim" select="0.15 * ($b1 - $b0)"/>
+    <xsl:variable name="xr" select="kf:poly-x-range($poly, $b0 + $trim, $b1 - $trim)"/>
     <xsl:variable name="lx0" select="xs:double($line/@HPOS)"/>
     <xsl:variable name="lx1" select="$lx0 + xs:double($line/@WIDTH)"/>
     <xsl:sequence select="
@@ -266,7 +282,7 @@
   <!-- y of the baseline of each physical line of the main text column, top to bottom.
        Headings, interlinear additions and text inside figures do not make a row of their own;
        baselines closer than half a median line height are the same row. The Euporia source has one
-       <line> per physical line, so row n corresponds to the n-th <line> of the page's mainZones
+       <l> per physical line, so row n corresponds to the n-th <l> of the page's mainZones
        (without the section headings). -->
   <xsl:function name="kf:text-rows" as="xs:double*">
     <xsl:param name="altoDoc"/>
@@ -365,7 +381,7 @@
     <xsl:sequence select="kf:box-dy($altoDoc, kf:par-box($altoDoc, $ordinal), $rows)"/>
   </xsl:function>
 
-  <!-- Number of the <line> (among the $nLines lines of the page's mainZones) that ALTO row $row
+  <!-- Number of the <l> (among the $nLines lines of the page's mainZones) that ALTO row $row
        corresponds to. Equal numbers when ALTO and source agree; otherwise the row is scaled, so a
        mark still lands close to the right place. -->
   <xsl:function name="kf:target-line" as="xs:integer?">
@@ -385,7 +401,7 @@
     <xsl:variable name="b" select="kf:par-box($altoDoc, $ordinal)"/>
     <xsl:sequence select="
       if (exists($b) and ($b[1] + $b[3]) div 2 ge kf:content-ulx($altoDoc) + kf:content-width($altoDoc) div 2)
-      then 'right' else 'left'"/>
+        then 'right' else 'left'"/>
   </xsl:function>
 
   <!-- A small figure that stands in the outer margin, entirely beside the text column (like the
@@ -445,8 +461,8 @@
           and $bb[1] ge $ba[1]
           and $ba[3] - $bb[1] le 0.4 * $wMin
           and $bb[3] - $ba[1] le kf:content-width($altoDoc)
-          and $ba[1] ge kf:content-ulx($altoDoc)
-          and $bb[3] le kf:content-ulx($altoDoc) + kf:content-width($altoDoc)
+          and $ba[1] ge kf:content-ulx($altoDoc) - 2 * kf:char-width($altoDoc)
+          and $bb[3] le kf:content-ulx($altoDoc) + kf:content-width($altoDoc) + 2 * kf:char-width($altoDoc)
           and empty($between)"/>
       </xsl:otherwise>
     </xsl:choose>
@@ -466,84 +482,184 @@
        no text beside / text overlapping / wider than half the column -> block
        small figure with text on its left                            -> inline
        text only on the right                                        -> float-left
-       text only on the left                                         -> float-right -->
+       text only on the left                                         -> float-right
+       A figure with text beside only its LOWER part (e.g. a sketch whose last lines wrap around it)
+       is a float too, with a gap: the vertical distance (em) from the top of the figure to the
+       first line beside it, rendered as a spacer figure (see kf:fig-gap and the 'gap-' @rend).
+       Returns <v rend="..." why="..." gap="em"/>; $ordinal and $altoDoc are only used for messages. -->
 
-  <xsl:function name="kf:fig-side" as="xs:string">
+  <xsl:function name="kf:fig-layout" as="element()">
     <xsl:param name="altoDoc"/>
     <xsl:param name="ordinal" as="xs:integer"/>
 
     <xsl:variable name="box" select="kf:fig-box($altoDoc, $ordinal)"/>
 
+    <xsl:variable name="verdict" as="element()">
+      <xsl:choose>
+        <xsl:when test="empty($box)">
+          <v rend="block" why="no figure box in the ALTO" gap="0"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:variable name="fx0" select="$box[1]"/>
+          <xsl:variable name="fy0" select="$box[2]"/>
+          <xsl:variable name="fx1" select="$box[3]"/>
+          <xsl:variable name="fy1" select="$box[4]"/>
+          <xsl:variable name="fw" select="$fx1 - $fx0"/>
+          <xsl:variable name="fh" select="$fy1 - $fy0"/>
+          <xsl:variable name="mlh" select="kf:median-line-height($altoDoc)"/>
+          <xsl:variable name="cw" select="kf:content-width($altoDoc)"/>
+          <xsl:variable name="chw" select="kf:char-width($altoDoc)"/>
+          <xsl:variable name="tol" select="if ($chw gt 0) then $chw else 0.02 * $cw"/>
+          <xsl:variable name="poly" select="kf:fig-poly($altoDoc, $ordinal)"/>
+
+          <xsl:variable name="sides" as="element()*">
+            <xsl:for-each select="kf:main-lines($altoDoc)">
+              <xsl:variable name="s" select="kf:line-side(., $poly, $fy0, $fy1, $tol)"/>
+              <!-- a line that only brushes the top of the drawing (its baseline lies in the upper third
+                   of the figure, e.g. ascenders touching the peak of a sketch) is above it, not a clash -->
+              <xsl:if test="$s ne 'none' and not($s = 'clash' and kf:baseline-y(.) le $fy0 + 0.35 * $fh)">
+                <l side="{$s}" x0="{@HPOS}" x1="{xs:double(@HPOS) + xs:double(@WIDTH)}"
+                   y0="{@VPOS}" y1="{xs:double(@VPOS) + xs:double(@HEIGHT)}"
+                   ov="{min((xs:double(@VPOS) + xs:double(@HEIGHT), $fy1)) - max((xs:double(@VPOS), $fy0))}"/>
+              </xsl:if>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:variable name="left" select="$sides[@side = 'left']"/>
+          <xsl:variable name="right" select="$sides[@side = 'right']"/>
+          <xsl:variable name="clash" select="$sides[@side = 'clash']"/>
+          <!-- share of the figure's height that has text beside it -->
+          <xsl:variable name="coverage"
+            select="min((1, sum(for $x in ($left, $right) return xs:double($x/@ov)) div $fh))"/>
+          <!-- characters spanned by figure + text beside it: must fit the narrowest column -->
+          <xsl:variable name="maxChars" select="78"/>
+          <xsl:variable name="spanRight"
+            select="if (exists($right)) then max(for $x in $right return xs:double($x/@x1)) - $fx0 else 0"/>
+          <xsl:variable name="spanLeft"
+            select="if (exists($left)) then $fx1 - min(for $x in $left return xs:double($x/@x0)) else 0"/>
+          <!-- text that wraps only the lower part of a tall figure: it starts at or below the top of
+               the figure and reaches at least the middle of it -->
+          <xsl:variable name="beside" select="($left, $right)"/>
+          <xsl:variable name="firstTop" select="if (exists($beside)) then min(for $x in $beside return xs:double($x/@y0)) else $fy0"/>
+          <xsl:variable name="lastBottom" select="if (exists($beside)) then max(for $x in $beside return xs:double($x/@y1)) else $fy0"/>
+          <xsl:variable name="lowerWrap"
+            select="exists($beside) and $fh gt 2 * $mlh and $lastBottom ge $fy0 + 0.5 * $fh"/>
+          <!-- distance from the top of the figure to the first line beside it, in em of the text -->
+          <xsl:variable name="gapEm"
+            select="if ($lowerWrap and $chw gt 0) then max((0, $firstTop - $fy0)) * 0.4 div $chw else 0"/>
+          <xsl:variable name="cov" select="format-number($coverage, '0.00')"/>
+
+          <xsl:choose>
+            <xsl:when test="empty($sides)">
+              <v rend="block" why="no text line beside the figure" gap="0"/>
+            </xsl:when>
+
+            <!-- small sign sitting in a line: the line may span it (clash) -->
+            <xsl:when test="$fh le 1.5 * $mlh and $fw le 0.15 * $cw
+              and (every $c in $clash satisfies (xs:double($c/@x0) le $fx0 and xs:double($c/@x1) ge $fx1))">
+              <v rend="inline" why="small sign inside a line" gap="0"/>
+            </xsl:when>
+
+            <!-- one-line sign standing between two pieces of text of the same row (e.g. an arrow
+                 between "Punkten" and "zu Linien"): inline, hosted by the line before it -->
+            <xsl:when test="$fh le 1.5 * $mlh and $fw le 0.25 * $cw and exists($left) and exists($right) and empty($clash)">
+              <v rend="inline" why="one-line sign between text on its left and right" gap="0"/>
+            </xsl:when>
+
+            <xsl:when test="exists($clash)">
+              <v rend="block" why="{count($clash)} line(s) overlap the drawing (clash)" gap="0"/>
+            </xsl:when>
+
+            <xsl:when test="$fw ge 0.82 * $cw">
+              <v rend="block" why="figure wider than 82% of the column" gap="0"/>
+            </xsl:when>
+
+            <xsl:when test="$coverage lt 0.4 and not($lowerWrap)">
+              <v rend="block" why="coverage {$cov} &lt; 0.4 and the text does not wrap the lower half" gap="0"/>
+            </xsl:when>
+
+            <xsl:when test="exists($left) and exists($right)">
+              <v rend="block" why="text on both sides" gap="0"/>
+            </xsl:when>
+
+            <xsl:when test="exists($left)">
+              <xsl:choose>
+                <xsl:when test="$chw gt 0 and $spanLeft div $chw gt $maxChars">
+                  <v rend="block" why="figure + text beside it span more than {$maxChars} characters" gap="0"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <v rend="float-right" why="text on the left only (coverage {$cov}, gap {format-number($gapEm, '0.##')}em)" gap="{$gapEm}"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:when>
+
+            <xsl:otherwise>
+              <xsl:choose>
+                <xsl:when test="$chw gt 0 and $spanRight div $chw gt $maxChars">
+                  <v rend="block" why="figure + text beside it span more than {$maxChars} characters" gap="0"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <v rend="float-left" why="text on the right only (coverage {$cov}, gap {format-number($gapEm, '0.##')}em)" gap="{$gapEm}"/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+
+    <xsl:if test="$debug-figures">
+      <xsl:message>[fig-layout] figure #<xsl:value-of select="$ordinal"/>: <xsl:value-of select="$verdict/@rend"/> (<xsl:value-of select="$verdict/@why"/>)</xsl:message>
+    </xsl:if>
+    <xsl:sequence select="$verdict"/>
+  </xsl:function>
+
+  <xsl:function name="kf:fig-side" as="xs:string">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:sequence select="string(kf:fig-layout($altoDoc, $ordinal)/@rend)"/>
+  </xsl:function>
+
+  <!-- Spacer (em) to put after a float so that the text beside it starts level with the first
+       line that has text beside it in the manuscript; 0 for every other layout -->
+  <xsl:function name="kf:fig-gap" as="xs:double">
+    <xsl:param name="fig" as="element()"/>
+    <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
+    <xsl:variable name="altoPath" select="concat('data/', normalize-space($page/facsimile/num), '.xml')"/>
+    <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+    <xsl:variable name="ordinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
+    <xsl:variable name="v" select="if ($altoDoc) then kf:fig-layout($altoDoc, $ordinal) else ()"/>
+    <xsl:sequence select="if ($v/@rend = ('float-left', 'float-right')) then xs:double($v/@gap) else 0"/>
+  </xsl:function>
+
+  <!-- True when figure $fig is a float (or starts a row) that begins at or below the bottom of an
+       earlier float / row of the page (within about one line height). Without a break the browser
+       would put it beside that earlier float; in the manuscript it stands under it (p. 17: fig 12
+       under fig 10 + fig 11). Emitted as <figure rend="clear"/> before the figure. -->
+  <xsl:function name="kf:fig-needs-clear" as="xs:boolean">
+    <xsl:param name="fig" as="element()"/>
+    <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
+    <xsl:variable name="altoPath" select="concat('data/', normalize-space($page/facsimile/num), '.xml')"/>
+    <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+    <xsl:variable name="ordinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
     <xsl:choose>
-      <xsl:when test="empty($box)">
-        <xsl:sequence select="'block'"/>
+      <xsl:when test="empty($altoDoc) or $ordinal le 1">
+        <xsl:sequence select="false()"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:variable name="fx0" select="$box[1]"/>
-        <xsl:variable name="fy0" select="$box[2]"/>
-        <xsl:variable name="fx1" select="$box[3]"/>
-        <xsl:variable name="fy1" select="$box[4]"/>
-        <xsl:variable name="fw" select="$fx1 - $fx0"/>
-        <xsl:variable name="fh" select="$fy1 - $fy0"/>
-        <xsl:variable name="mlh" select="kf:median-line-height($altoDoc)"/>
-        <xsl:variable name="cw" select="kf:content-width($altoDoc)"/>
-        <xsl:variable name="chw" select="kf:char-width($altoDoc)"/>
-        <xsl:variable name="tol" select="if ($chw gt 0) then $chw else 0.02 * $cw"/>
-        <xsl:variable name="poly" select="kf:fig-poly($altoDoc, $ordinal)"/>
-
-        <xsl:variable name="sides" as="element()*">
-          <xsl:for-each select="kf:main-lines($altoDoc)">
-            <xsl:variable name="s" select="kf:line-side(., $poly, $fy0, $fy1, $tol)"/>
-            <xsl:if test="$s ne 'none'">
-              <l side="{$s}" x0="{@HPOS}" x1="{xs:double(@HPOS) + xs:double(@WIDTH)}"
-                 ov="{min((xs:double(@VPOS) + xs:double(@HEIGHT), $fy1)) - max((xs:double(@VPOS), $fy0))}"/>
-            </xsl:if>
-          </xsl:for-each>
-        </xsl:variable>
-        <xsl:variable name="left" select="$sides[@side = 'left']"/>
-        <xsl:variable name="right" select="$sides[@side = 'right']"/>
-        <xsl:variable name="clash" select="$sides[@side = 'clash']"/>
-        <!-- share of the figure's height that has text beside it -->
-        <xsl:variable name="coverage"
-          select="min((1, sum(for $x in ($left, $right) return xs:double($x/@ov)) div $fh))"/>
-        <!-- characters spanned by figure + text beside it: must fit the narrowest column -->
-        <xsl:variable name="maxChars" select="78"/>
-        <xsl:variable name="spanRight"
-          select="if (exists($right)) then max(for $x in $right return xs:double($x/@x1)) - $fx0 else 0"/>
-        <xsl:variable name="spanLeft"
-          select="if (exists($left)) then $fx1 - min(for $x in $left return xs:double($x/@x0)) else 0"/>
-
-        <xsl:choose>
-          <xsl:when test="empty($sides)">
-            <xsl:sequence select="'block'"/>
-          </xsl:when>
-
-          <!-- small sign sitting in a line: the line may span it (clash) -->
-          <xsl:when test="$fh le 1.5 * $mlh and $fw le 0.15 * $cw
-            and (every $c in $clash satisfies (xs:double($c/@x0) le $fx0 and xs:double($c/@x1) ge $fx1))">
-            <xsl:sequence select="'inline'"/>
-          </xsl:when>
-
-          <xsl:when test="exists($clash)">
-            <xsl:sequence select="'block'"/>
-          </xsl:when>
-
-          <xsl:when test="$fw ge 0.82 * $cw or $coverage lt 0.4">
-            <xsl:sequence select="'block'"/>
-          </xsl:when>
-
-          <xsl:when test="exists($left) and exists($right)">
-            <xsl:sequence select="'block'"/>
-          </xsl:when>
-
-          <xsl:when test="exists($left)">
-            <xsl:sequence select="if ($chw gt 0 and $spanLeft div $chw gt $maxChars) then 'block' else 'float-right'"/>
-          </xsl:when>
-
-          <xsl:otherwise>
-            <xsl:sequence select="if ($chw gt 0 and $spanRight div $chw gt $maxChars) then 'block' else 'float-left'"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:variable name="mine" select="kf:fig-rend($fig)"/>
+        <xsl:variable name="box" select="kf:fig-box($altoDoc, $ordinal)"/>
+        <xsl:variable name="tol" select="kf:median-line-height($altoDoc)"/>
+        <!-- bottoms of the earlier figures that float -->
+        <xsl:variable name="bottoms" select="
+          for $p in $fig/preceding-sibling::graphZoneFig
+          return if (kf:fig-rend($p) = ('float-left', 'float-right', 'row-start', 'row-next'))
+            then kf:fig-box($altoDoc, count($p/preceding-sibling::graphZoneFig) + 1)[4] else ()"/>
+        <xsl:sequence select="
+          $mine = ('float-left', 'float-right', 'row-start')
+          and exists($box) and exists($bottoms)
+          and (some $b in $bottoms satisfies $box[2] ge $b - $tol)
+          and not($mine = 'row-next')
+          and kf:fig-rend($fig/preceding-sibling::graphZoneFig[1]) ne 'row-start'"/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>
@@ -560,12 +676,13 @@
     <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
     <xsl:variable name="inMargin" select="
       if ($altoDoc and exists($page//mainZone//line[not(ancestor::sectionHeading)]) and exists(kf:text-rows($altoDoc)))
-      then kf:fig-margin($altoDoc, $figOrdinal) else ''"/>
+        then kf:fig-margin($altoDoc, $figOrdinal) else ''"/>
     <xsl:sequence select="
       if (not($altoDoc)) then 'block'
       else if ($inMargin != '') then $inMargin
       else if (kf:fig-row($altoDoc, $figOrdinal) != '') then kf:fig-row($altoDoc, $figOrdinal)
-      else kf:fig-side($altoDoc, $figOrdinal)"/>
+      else string(kf:fig-layout($altoDoc, $figOrdinal)/@rend)
+      "/>
   </xsl:function>
 
   <!-- The <l> an inline figure must be attached to: the line right before it
@@ -655,6 +772,78 @@
   <!-- already emitted inside the host line: drop the standalone copy -->
   <xsl:template match="tei:figure[@rend = 'inline'][exists(kf:host-line(.))]" mode="attach-inline"/>
 
+  <!-- A line that belongs to the numbered main text -->
+  <xsl:function name="kf:counted-line" as="xs:boolean">
+    <xsl:param name="l" as="element(tei:l)"/>
+    <xsl:sequence select="not($l/parent::tei:label or $l/parent::tei:note
+        or $l/parent::tei:ab[@type = 'margin'])"/>
+  </xsl:function>
+
+  <!-- Counted lines grouped by the page (<pb>) they stand on -->
+  <xsl:key name="counted-lines-by-pb"
+    match="tei:l[kf:counted-line(.)]"
+    use="generate-id(preceding::tei:pb[1])"/>
+
+  <xsl:template match="node() | @*" mode="l-to-lb">
+    <xsl:copy><xsl:apply-templates select="@* | node()" mode="l-to-lb"/></xsl:copy>
+  </xsl:template>
+
+  <!-- Wraps the runs of orphan <l> among $nodes in <ab>, then converts everything -->
+  <xsl:template name="l-to-lb-children">
+    <xsl:param name="nodes" as="node()*"/>
+    <xsl:for-each-group select="$nodes" group-adjacent="exists(self::tei:l)">
+      <xsl:choose>
+        <xsl:when test="current-grouping-key()">
+          <ab>
+            <xsl:apply-templates select="current-group()" mode="l-to-lb"/>
+          </ab>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="current-group()" mode="l-to-lb"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each-group>
+  </xsl:template>
+
+  <xsl:template match="tei:div" mode="l-to-lb">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:call-template name="l-to-lb-children">
+        <xsl:with-param name="nodes" select="node()"/>
+      </xsl:call-template>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- Main-text line: numbered milestone, then the content of the old <l> -->
+  <xsl:template match="tei:l[kf:counted-line(.)]" mode="l-to-lb">
+    <xsl:variable name="me" select="."/>
+    <xsl:variable name="onPage"
+      select="key('counted-lines-by-pb', generate-id(preceding::tei:pb[1]), root(.))"/>
+    <!-- Counted line: an <l> element carrying its number on the page -->
+    <l n="{count($onPage[. &lt;&lt; $me]) + 1}">
+      <xsl:apply-templates select="node()" mode="l-to-lb"/>
+    </l>
+  </xsl:template>
+
+  <!-- Line of a heading-like / marginal / note block: plain break between lines -->
+  <xsl:template match="tei:l" mode="l-to-lb">
+    <xsl:if test="preceding-sibling::tei:l"><lb/></xsl:if>
+    <xsl:apply-templates select="node()" mode="l-to-lb"/>
+  </xsl:template>
+
+  <!-- Diplomatic edition: <l> becomes <line>, same @n -->
+  <xsl:template match="tei:l" mode="source-doc">
+    <line>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates select="node()" mode="source-doc"/>
+    </line>
+  </xsl:template>
+
+  <!-- source-doc: identity copy (line elements are handled in the next step) -->
+  <xsl:template match="node() | @*" mode="source-doc">
+    <xsl:copy><xsl:apply-templates select="@* | node()" mode="source-doc"/></xsl:copy>
+  </xsl:template>
+
   <xsl:template match="/">
 
     <xsl:processing-instruction name="teipublisher">odd="klee.odd" template="klee2.html" view="page" media="web print epub"</xsl:processing-instruction>
@@ -663,6 +852,7 @@
 
       <!-- teiHeader corpus -->
       <teiHeader>
+        
         <fileDesc>
           <titleStmt>
             <title>Beiträge zur bildnerischen Formlehre.</title>
@@ -670,14 +860,32 @@
           <publicationStmt>
             <publisher>Istituto Italiano di Studi Germanici - IISG</publisher>
           </publicationStmt>
+          <respStmt>
+            <resp>Trascrizione e marcatura a cura di</resp>
+            <name xml:id="HH">Hansmichael Hohenegger</name>
+          </respStmt>
+          <respStmt>
+            <resp>Modello di codifica a cura di</resp>
+            <name xml:id="TM">Tiziana Mancinelli</name>
+            <name xml:id="CG">Calogero Giudice</name>
+          </respStmt>
           <sourceDesc/>
         </fileDesc>
+
         <encodingDesc>
           <tagsDecl>
             <rendition source="klee.css"/>
           </tagsDecl>
         </encodingDesc>
-        <profileDesc/>
+
+        <profileDesc>
+          <langUsage>
+            <language ident="de">Deutsch</language>
+          </langUsage>
+        </profileDesc>
+
+        <revisionDesc>
+        </revisionDesc>
       </teiHeader>
 
       <!-- Empty standOff before TEI children -->
@@ -722,10 +930,7 @@
             <xsl:variable name="fid" select="normalize-space(facsimile/num)"/>
             <xsl:variable name="altoPath" select="concat('data/', $fid, '.xml')"/>
             <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
-            <!-- Content frame: the typical left/right edge of the main text column
-                 (MainZone/BT8 blocks), used to position figures relative to the
-                 written column instead of the full scanned page width. -->
-            <xsl:variable name="mainZoneTagIds" select="$altoDoc//alto:OtherTag[@LABEL = 'MainZone']/@ID"/>
+            <!-- Content frame -->
             <xsl:variable name="contentUlx" select="kf:content-ulx($altoDoc)"/>
             <xsl:variable name="contentWidth" select="kf:content-width($altoDoc)"/>
             <surface>
@@ -775,7 +980,7 @@
                       <!-- a figure in the outer margin hangs on a text line: offset from its middle -->
                       <xsl:with-param name="dy" select="
                         if (kf:fig-margin($altoDoc, $figOrdinal) != '')
-                        then kf:box-dy($altoDoc, kf:fig-box($altoDoc, $figOrdinal), kf:text-rows($altoDoc))
+                          then kf:box-dy($altoDoc, kf:fig-box($altoDoc, $figOrdinal), kf:text-rows($altoDoc))
                         else ()"/>
                     </xsl:call-template>
                   </xsl:if>
@@ -807,21 +1012,40 @@
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83602.jpg"/>
           </surface>
         </facsimile>
+        <xsl:variable name="flatBody">
+          <xsl:apply-templates/>
+        </xsl:variable>
+        <!-- Move inline figures into the end of the preceding line -->
+        <xsl:variable name="withInline">
+          <xsl:apply-templates select="$flatBody/node()" mode="attach-inline"/>
+        </xsl:variable>
+        <!-- Merge lone "(" lines into the following line -->
+        <xsl:variable name="glued">
+          <xsl:apply-templates select="$withInline/node()" mode="glue-bracket"/>
+        </xsl:variable>
+        <xsl:variable name="nested">
+          <xsl:call-template name="nest-headings">
+            <xsl:with-param name="nodes" select="$glued/node()"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <!-- Numbering pass: runs once, feeds both editions -->
+        <xsl:variable name="numbered">
+          <xsl:call-template name="l-to-lb-children">
+            <xsl:with-param name="nodes" select="$nested/node()"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <!-- Diplomatic edition -->
+        <sourceDoc>
+          <xsl:apply-templates select="$numbered/node()" mode="source-doc"/>
+        </sourceDoc>
+
+        <!-- Critical edition -->
         <text>
           <body>
-            <xsl:variable name="flatBody">
-              <xsl:apply-templates/>
-            </xsl:variable>
-            <!-- Move inline figures into the end of the preceding line -->
-            <xsl:variable name="withInline">
-              <xsl:apply-templates select="$flatBody/node()" mode="attach-inline"/>
-            </xsl:variable>
-            <!-- Merge lone "(" lines into the following line -->
-            <xsl:variable name="glued">
-              <xsl:apply-templates select="$withInline/node()" mode="glue-bracket"/>
-            </xsl:variable>
-            <xsl:call-template name="nest-headings">
-              <xsl:with-param name="nodes" select="$glued/node()"/>
+            <xsl:call-template name="l-to-lb-children">
+              <xsl:with-param name="nodes" select="$numbered/node()"/>
             </xsl:call-template>
           </body>
         </text>
@@ -862,7 +1086,6 @@
 
   <xsl:template name="render-punct">
     <xsl:param name="char"/>
-    <xsl:param name="mode" select="''"/>
 
     <pc>
       <!-- Which type of punctuation -->
@@ -991,19 +1214,7 @@
 
   <xsl:template match="page">
     <pb>
-      <xsl:attribute name="n">
-        <xsl:choose>
-          <xsl:when test="numbZone//num">
-            <xsl:value-of select="normalize-space(numbZone//num[1])"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of
-              select="normalize-space(
-                  numbZone//seg[matches(normalize-space(.), '^\d+$')][1]
-                )"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:attribute name="n" select="kf:page-number(.)"/>
       <xsl:attribute name="facs">
         <xsl:value-of select="normalize-space(facsimile//num)"/>
         <xsl:text>.jpg</xsl:text>
@@ -1041,9 +1252,18 @@
     <xsl:variable name="figRend" select="kf:fig-rend(.)"/>
     <!-- figures in the outer margin are emitted by the text line they stand beside (paragraphism-marks) -->
     <xsl:if test="not(starts-with($figRend, 'out-'))">
+      <xsl:if test="kf:fig-needs-clear(.)">
+        <figure rend="clear"/>
+      </xsl:if>
       <xsl:call-template name="fig-element">
         <xsl:with-param name="figRend" select="$figRend"/>
       </xsl:call-template>
+      <!-- text beside only the lower part of the figure: spacer that pushes the next line down
+           (rendered by the ODD as <figure class="fig-gap" style="height:...em">) -->
+      <xsl:variable name="gap" select="kf:fig-gap(.)"/>
+      <xsl:if test="$gap ge 0.5">
+        <figure rend="gap-{format-number($gap, '0.##')}"/>
+      </xsl:if>
     </xsl:if>
   </xsl:template>
 
@@ -1101,7 +1321,6 @@
     <xsl:variable name="char" select="normalize-space(.)"/>
     <xsl:call-template name="render-punct">
       <xsl:with-param name="char" select="$char"/>
-      <xsl:with-param name="mode" select="'fig'"/>
     </xsl:call-template>
   </xsl:template>
 
@@ -1172,7 +1391,7 @@
     <xsl:variable name="level" select="string-length(translate(level, ' ', ''))"/>
     <xsl:variable name="type"  select="lower-case(normalize-space(sectionType/seg))"/>
 
-    <!-- First <seg> ID in document order inside <line>, only if level 1 and type is PART -->
+    <!-- First <seg> ID in document order inside <l>, only if level 1 and type is PART -->
     <xsl:variable name="firstSegId"
       select="if ($level = 1 and $type = 'part')
           then generate-id((line//*[local-name()='seg'])[1])
@@ -1197,15 +1416,9 @@
   </xsl:template>
 
   <xsl:template match="hdLineMargin">
+    
     <!-- Navigate to get page number -->
-    <xsl:variable name="pageNum"
-      select="xs:integer(
-          if (ancestor::page[1]/numbZone//num)
-            then normalize-space(ancestor::page[1]/numbZone//num[1])
-          else normalize-space(
-              ancestor::page[1]/numbZone//seg[matches(normalize-space(.), '^\d+$')][1]
-            )
-        )"/>
+    <xsl:variable name="pageNum" select="xs:integer(kf:page-number(ancestor::page[1]))"/>
 
     <xsl:variable name="marginPlace">
       <xsl:call-template name="margin-place">
@@ -1261,8 +1474,8 @@
           <xsl:variable name="row" select="kf:par-row($altoDoc, $parOrdinal, $rows)"/>
           <xsl:if test="kf:target-line($row, count($rows), $nLines) eq $idx">
             <figure type="paragraphism"
-              facs="#zone_f{$pageNum}_par{$parOrdinal}"
-              rend="par-{kf:par-side($altoDoc, $parOrdinal)}"/>
+                    facs="#zone_f{$pageNum}_par{$parOrdinal}"
+                    rend="par-{kf:par-side($altoDoc, $parOrdinal)}"/>
           </xsl:if>
         </xsl:for-each>
         <xsl:for-each select="$page/graphZoneFig[starts-with(kf:fig-rend(.), 'out-')]">
@@ -1296,14 +1509,7 @@
 
   <xsl:template match="mrgTextZoneIn">
     <!-- Navigate to get page number -->
-    <xsl:variable name="pageNum"
-      select="xs:integer(
-          if (ancestor::page[1]/numbZone//num)
-            then normalize-space(ancestor::page[1]/numbZone//num[1])
-          else normalize-space(
-              ancestor::page[1]/numbZone//seg[matches(normalize-space(.), '^\d+$')][1]
-            )
-        )"/>
+    <xsl:variable name="pageNum" select="xs:integer(kf:page-number(ancestor::page[1]))"/>
 
     <!-- Get the right place basing on position (inner is true) -->
     <xsl:variable name="marginPlace">
@@ -1319,14 +1525,7 @@
 
   <xsl:template match="mrgTextZoneOut">
     <!-- Navigate to get page number -->
-    <xsl:variable name="pageNum"
-      select="xs:integer(
-          if (ancestor::page[1]/numbZone//num)
-            then normalize-space(ancestor::page[1]/numbZone//num[1])
-          else normalize-space(
-              ancestor::page[1]/numbZone//seg[matches(normalize-space(.), '^\d+$')][1]
-            )
-        )"/>
+    <xsl:variable name="pageNum" select="xs:integer(kf:page-number(ancestor::page[1]))"/>
 
     <!-- Get the right place basing on position (inner is false = outer position) -->
     <xsl:variable name="marginPlace">

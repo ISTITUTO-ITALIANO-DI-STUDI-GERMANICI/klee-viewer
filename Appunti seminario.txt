@@ -1,0 +1,39 @@
+APPUNTI SEMINARIO
+
+Testo critico. Per ogni paragrafo sotto ci sta il corrispettivo apparato. Passando il mouse mostra il riferimento all'apparato corrispondente
+
+Documenti -> Database e trascrizione
+Lavoro -> testo critico, edizione visuale (grafo con la genealogia)
+
+Indici di nomi, archivi, ecc
+
+==============================
+
+Sviluppare una terminologia chiara per rendere operativi i loro approcci tra lavoro e transizione
+
+Strategie: superstruttura
+
+Tecnologia: TEI, IIIF e GAMS
+
+Cadmus e strumenti utili
+
+===================================
+
+Superstruttura con ID, etichetta, nome, gruppo, un booleano con la canonicità, la persona, nomi alternativi e la genealogia. Dal manoscritto si ricavano delle caratterische comuni e relazionarle a sua volta (anche i link WikiData)
+
+Supporta anche l'organizzazione spaziale nel singolo manoscritto. Collegare ciascun singolo elemento nel punto specifico del facsimile.
+
+=====================================
+
+Tutto raccolto in un singolo file!!!
+
+Cadmus -> Annotare nella pagina importata tramite IIIF. In ciascuna pagina si evidenziano le singole figure con relativa etichetta e annotazione
+
+Ci può essere il problema per il quale possa esserci un gruppo di figure per singola pagina
+
+Tramite uno script di Google Sheets si inizializza un editor visuale con l'immagine, la trascrizione, l'ID e note. Viene usata una grammatica molto semplice
+
+Nel secondo livello si può quindi navigare nel manoscritto associando ciascuna figura alla trascrizione corrispondente.
+
+La trascrizione è precaricata nell'editor perché è la versione secondo loro più simile all'originale
+
