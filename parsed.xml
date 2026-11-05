@@ -1749,7 +1749,7 @@
             <graphic url="https://escriptorium.d4science.org/media/documents/3/83602.jpg"/>
          </surface>
       </facsimile>
-      <sourceDoc>
+      <sourceDoc xml:id="klee_dipl" type="diplomatic" xml:lang="de">
          <div n="1" type="title">
             <pb n="1" facs="83044.jpg"/>
             <head n="1" type="title">

@@ -78,6 +78,22 @@
         else $page/numbZone//seg[matches(normalize-space(.), '^\d+$')][1])"/>
   </xsl:function>
 
+  <!-- ALTO document of a source <page>; empty sequence if the file is not available -->
+  <xsl:function name="kf:alto" as="document-node()?">
+    <xsl:param name="page" as="element()"/>
+    <xsl:variable name="path"
+      select="concat('data/', normalize-space($page/facsimile/num), '.xml')"/>
+    <xsl:sequence select="if (doc-available($path)) then document($path) else ()"/>
+  </xsl:function>
+
+  <!-- Side of the page a margin text sits on. Outer margin: left on even pages,
+       right on odd pages; the inner margin is the opposite. -->
+  <xsl:function name="kf:margin-place" as="xs:string">
+    <xsl:param name="pageNum" as="xs:integer"/>
+    <xsl:param name="inner" as="xs:boolean"/>
+    <xsl:sequence select="if (($pageNum mod 2 = 0) != $inner) then 'left' else 'right'"/>
+  </xsl:function>
+
   <!-- Median of a numeric sequence: used to derive a per-page "content frame"
        (typical left/right edge of the main text column) that is robust to a
        single outlier block (e.g. a label/annotation reaching the page edge),
@@ -624,8 +640,7 @@
   <xsl:function name="kf:fig-gap" as="xs:double">
     <xsl:param name="fig" as="element()"/>
     <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
-    <xsl:variable name="altoPath" select="concat('data/', normalize-space($page/facsimile/num), '.xml')"/>
-    <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+    <xsl:variable name="altoDoc" select="kf:alto($page)"/>
     <xsl:variable name="ordinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
     <xsl:variable name="v" select="if ($altoDoc) then kf:fig-layout($altoDoc, $ordinal) else ()"/>
     <xsl:sequence select="if ($v/@rend = ('float-left', 'float-right')) then xs:double($v/@gap) else 0"/>
@@ -638,8 +653,7 @@
   <xsl:function name="kf:fig-needs-clear" as="xs:boolean">
     <xsl:param name="fig" as="element()"/>
     <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
-    <xsl:variable name="altoPath" select="concat('data/', normalize-space($page/facsimile/num), '.xml')"/>
-    <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+    <xsl:variable name="altoDoc" select="kf:alto($page)"/>
     <xsl:variable name="ordinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
     <xsl:choose>
       <xsl:when test="empty($altoDoc) or $ordinal le 1">
@@ -670,10 +684,8 @@
   <xsl:function name="kf:fig-rend" as="xs:string">
     <xsl:param name="fig" as="element()"/>
     <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
-    <xsl:variable name="pageNum" select="normalize-space($page/facsimile/num)"/>
     <xsl:variable name="figOrdinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
-    <xsl:variable name="altoPath" select="concat('data/', $pageNum, '.xml')"/>
-    <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+    <xsl:variable name="altoDoc" select="kf:alto($page)"/>
     <xsl:variable name="inMargin" select="
       if ($altoDoc and exists($page//mainZone//line[not(ancestor::sectionHeading)]) and exists(kf:text-rows($altoDoc)))
         then kf:fig-margin($altoDoc, $figOrdinal) else ''"/>
@@ -730,24 +742,6 @@
         </xsl:choose>
       </xsl:attribute>
     </zone>
-  </xsl:template>
-
-  <!-- This template manages margin text positioning -->
-  <xsl:template name="margin-place">
-    <xsl:param name="pageNum" as="xs:integer"/>
-    <xsl:param name="inner" as="xs:boolean" select="false()"/>
-
-    <xsl:choose>
-      <!-- Outer page: if even page go left, else right -->
-      <xsl:when test="not($inner)">
-        <xsl:value-of select="if ($pageNum mod 2 = 0) then 'left' else 'right'"/>
-      </xsl:when>
-
-      <!-- Inner page: swap positions -->
-      <xsl:otherwise>
-        <xsl:value-of select="if ($pageNum mod 2 = 0) then 'right' else 'left'"/>
-      </xsl:otherwise>
-    </xsl:choose>
   </xsl:template>
 
   <!-- attach-inline: identity copy, except inline figures are moved into their host line -->
@@ -844,6 +838,8 @@
     <xsl:copy><xsl:apply-templates select="@* | node()" mode="source-doc"/></xsl:copy>
   </xsl:template>
 
+
+  <!-- MAIN TEMPLATE -->
   <xsl:template match="/">
 
     <xsl:processing-instruction name="teipublisher">odd="klee.odd" template="klee2.html" view="page" media="web print epub"</xsl:processing-instruction>
@@ -928,8 +924,7 @@
           <!-- Other pages -->
           <xsl:for-each select="//page[facsimile/num]">
             <xsl:variable name="fid" select="normalize-space(facsimile/num)"/>
-            <xsl:variable name="altoPath" select="concat('data/', $fid, '.xml')"/>
-            <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+            <xsl:variable name="altoDoc" select="kf:alto(.)"/>
             <!-- Content frame -->
             <xsl:variable name="contentUlx" select="kf:content-ulx($altoDoc)"/>
             <xsl:variable name="contentWidth" select="kf:content-width($altoDoc)"/>
@@ -1038,6 +1033,9 @@
 
         <!-- Diplomatic edition -->
         <sourceDoc>
+          <xsl:attribute name="xml:id">klee_dipl</xsl:attribute>
+          <xsl:attribute name="type">diplomatic</xsl:attribute>
+          <xsl:attribute name="xml:lang">de</xsl:attribute>
           <xsl:apply-templates select="$numbered/node()" mode="source-doc"/>
         </sourceDoc>
 
@@ -1419,12 +1417,7 @@
     
     <!-- Navigate to get page number -->
     <xsl:variable name="pageNum" select="xs:integer(kf:page-number(ancestor::page[1]))"/>
-
-    <xsl:variable name="marginPlace">
-      <xsl:call-template name="margin-place">
-        <xsl:with-param name="pageNum" select="$pageNum"/>
-      </xsl:call-template>
-    </xsl:variable>
+    <xsl:variable name="marginPlace" select="kf:margin-place($pageNum, false())"/>
 
     <!-- Intentionally NOT <head>: a TOC walker that collects every <head>
          descendant (not just a div's first child) would otherwise still
@@ -1461,8 +1454,7 @@
     <xsl:if test="ancestor::mainZone and not(ancestor::sectionHeading)">
       <xsl:variable name="page" select="ancestor::page[1]"/>
       <xsl:variable name="pageNum" select="normalize-space($page/facsimile/num)"/>
-      <xsl:variable name="altoPath" select="concat('data/', $pageNum, '.xml')"/>
-      <xsl:variable name="altoDoc" select="if (doc-available($altoPath)) then document($altoPath) else ()"/>
+      <xsl:variable name="altoDoc" select="kf:alto($page)"/>
       <xsl:if test="$altoDoc">
         <xsl:variable name="me" select="."/>
         <xsl:variable name="mainLines" select="$page//mainZone//line[not(ancestor::sectionHeading)]"/>
@@ -1507,33 +1499,12 @@
     </ab>
   </xsl:template>
 
-  <xsl:template match="mrgTextZoneIn">
-    <!-- Navigate to get page number -->
+  <!-- Used to manage margin zones -->
+  <xsl:template match="mrgTextZoneIn | mrgTextZoneOut">
     <xsl:variable name="pageNum" select="xs:integer(kf:page-number(ancestor::page[1]))"/>
-
-    <!-- Get the right place basing on position (inner is true) -->
-    <xsl:variable name="marginPlace">
-      <xsl:call-template name="margin-place">
-        <xsl:with-param name="pageNum" select="$pageNum"/>
-        <xsl:with-param name="inner" select="true()"/>
-      </xsl:call-template>
-    </xsl:variable>
-    <ab type="margin" place="{$marginPlace}" rend="margin-{$marginPlace}">
-      <xsl:apply-templates/>
-    </ab>
-  </xsl:template>
-
-  <xsl:template match="mrgTextZoneOut">
-    <!-- Navigate to get page number -->
-    <xsl:variable name="pageNum" select="xs:integer(kf:page-number(ancestor::page[1]))"/>
-
-    <!-- Get the right place basing on position (inner is false = outer position) -->
-    <xsl:variable name="marginPlace">
-      <xsl:call-template name="margin-place">
-        <xsl:with-param name="pageNum" select="$pageNum"/>
-        <xsl:with-param name="inner" select="false()"/>
-      </xsl:call-template>
-    </xsl:variable>
+    <!-- Inner zone: opposite side of the outer one -->
+    <xsl:variable name="marginPlace"
+      select="kf:margin-place($pageNum, exists(self::mrgTextZoneIn))"/>
     <ab type="margin" place="{$marginPlace}" rend="margin-{$marginPlace}">
       <xsl:apply-templates/>
     </ab>
@@ -1570,6 +1541,11 @@
     <xsl:choose>
 
       <!-- Regular case: single word-fragment glued to prefix and/or suffix -->
+      <!-- mode="wordpart": Used inside a single interrupted word -->
+      <!-- All templates here stay INLINE -->
+
+      <!-- prefix/suffix become plain text, not their own <w> -->
+
       <xsl:when test="not($multiTextSeq)">
         <w>
           <xsl:if test="$firstSegId != '' and generate-id(.) = $firstSegId">
@@ -1642,61 +1618,55 @@
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="substitution">
-    <choice><xsl:apply-templates/></choice>
+  <xsl:template match="substitution" mode="#default wordpart">
+    <choice><xsl:apply-templates mode="#current"/></choice>
   </xsl:template>
 
-  <xsl:template match="deletion">
-    <sic><xsl:apply-templates/></sic>
+  <xsl:template match="deletion" mode="#default wordpart">
+    <sic><xsl:apply-templates mode="#current"/></sic>
   </xsl:template>
 
-  <xsl:template match="replace">
-    <corr><xsl:apply-templates/></corr>
+  <xsl:template match="replace" mode="#default wordpart">
+    <corr><xsl:apply-templates mode="#current"/></corr>
   </xsl:template>
 
-  <xsl:template match="subspencilDeletion | pencilDeletion">
-    <sic hand="#pencil"><xsl:apply-templates/></sic>
+  <xsl:template match="subspencilDeletion | pencilDeletion" mode="#default wordpart">
+    <sic hand="#pencil"><xsl:apply-templates mode="#current"/></sic>
   </xsl:template>
 
-  <xsl:template match="subspencilAddition | pencilAddition">
-    <add hand="#pencil"><xsl:apply-templates/></add>
+  <xsl:template match="subspencilAddition | pencilAddition" mode="#default wordpart">
+    <add hand="#pencil"><xsl:apply-templates mode="#current"/></add>
   </xsl:template>
 
-  <xsl:template match="pencil">
-    <hi hand="#pencil"><xsl:apply-templates/></hi>
+  <xsl:template match="pencil" mode="#default wordpart">
+    <hi hand="#pencil"><xsl:apply-templates mode="#current"/></hi>
   </xsl:template>
 
-  <xsl:template match="addition">
-    <add><xsl:apply-templates/></add>
+  <xsl:template match="addition" mode="#default wordpart">
+    <add><xsl:apply-templates mode="#current"/></add>
   </xsl:template>
 
-  <xsl:template match="phiDel">
-    <del rend="strikethrough"><xsl:apply-templates/></del>
+  <xsl:template match="phiDel" mode="#default wordpart">
+    <del rend="strikethrough"><xsl:apply-templates mode="#current"/></del>
   </xsl:template>
 
-  <xsl:template match="phiAdd">
+  <xsl:template match="phiAdd" mode="#default wordpart">
     <supplied>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="#current"/>
     </supplied>
   </xsl:template>
 
-  <xsl:template match="phiSub">
+  <xsl:template match="phiSub" mode="#default wordpart">
     <choice>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="#current"/>
     </choice>
   </xsl:template>
 
-  <xsl:template match="underlined | underlined_app">
+  <xsl:template match="underlined | underlined_app" mode="#default wordpart">
     <hi rend="underline">
-      <xsl:apply-templates select="node()[not(self::text()[normalize-space(.) = '_'])]"/>
+      <xsl:apply-templates select="node()[not(self::text()[normalize-space(.) = '_'])]" mode="#current" />
     </hi>
   </xsl:template>
-
-  <!-- mode="wordpart"                                               -->
-  <!-- Used inside a single interrupted word (see seg dispatcher     -->
-  <!-- above). All templates here stay INLINE -->
-
-  <!-- prefix/suffix become plain text, not their own <w> -->
 
   <xsl:template match="prefix | prefix_app" mode="wordpart">
     <xsl:param name="includePrefix" tunnel="yes" select="true()"/>
@@ -1736,56 +1706,6 @@
         <xsl:value-of select="kf:glue-hyphen(normalize-space(.))"/>
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template match="substitution" mode="wordpart">
-    <choice><xsl:apply-templates mode="wordpart"/></choice>
-  </xsl:template>
-
-  <xsl:template match="deletion" mode="wordpart">
-    <sic><xsl:apply-templates mode="wordpart"/></sic>
-  </xsl:template>
-
-  <xsl:template match="replace" mode="wordpart">
-    <corr><xsl:apply-templates mode="wordpart"/></corr>
-  </xsl:template>
-
-  <xsl:template match="subspencilDeletion | pencilDeletion" mode="wordpart">
-    <sic hand="#pencil"><xsl:apply-templates mode="wordpart"/></sic>
-  </xsl:template>
-
-  <xsl:template match="subspencilAddition | pencilAddition" mode="wordpart">
-    <add hand="#pencil"><xsl:apply-templates mode="wordpart"/></add>
-  </xsl:template>
-
-  <xsl:template match="pencil" mode="wordpart">
-    <hi hand="#pencil"><xsl:apply-templates mode="wordpart"/></hi>
-  </xsl:template>
-
-  <xsl:template match="addition" mode="wordpart">
-    <add><xsl:apply-templates mode="wordpart"/></add>
-  </xsl:template>
-
-  <xsl:template match="phiDel" mode="wordpart">
-    <del rend="strikethrough"><xsl:apply-templates mode="wordpart"/></del>
-  </xsl:template>
-
-  <xsl:template match="phiAdd" mode="wordpart">
-    <supplied>
-      <xsl:apply-templates mode="wordpart"/>
-    </supplied>
-  </xsl:template>
-
-  <xsl:template match="phiSub" mode="wordpart">
-    <choice>
-      <xsl:apply-templates mode="wordpart"/>
-    </choice>
-  </xsl:template>
-
-  <xsl:template match="underlined | underlined_app" mode="wordpart">
-    <hi rend="underline">
-      <xsl:apply-templates mode="wordpart" select="node()[not(self::text()[normalize-space(.) = '_'])]"/>
-    </hi>
   </xsl:template>
 
   <!-- strip the same Euporia editorial-symbol text nodes in wordpart mode -->

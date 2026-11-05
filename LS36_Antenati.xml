@@ -1,0 +1,316 @@
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Antenati</title>
+            <respStmt>
+               <resp>Codifica a cura di</resp>
+               <name xml:id="AS">Andrea Schembari</name>
+            </respStmt>
+            <respStmt>
+               <resp>Modello di codifica a cura di</resp>
+               <name xml:id="LiborioBarbarino">Liborio Barbarino</name>
+               <name xml:id="ChristianDAgata">Christian D'Agata</name>
+               <name xml:id="AngeloMarioDelGrosso">Angelo Mario Del Grosso</name>
+               <name xml:id="GiovanniGafa">Giovanni Gafà</name>
+            </respStmt>
+            <respStmt>
+               <resp>Con la collaborazione di</resp>
+               <name xml:id="LauraMazzagufo">Laura Mazzagufo</name>
+               <name xml:id="DariaSpampinato">Daria Spampinato</name>
+            </respStmt>
+
+        </titleStmt>
+         <editionStmt>
+            <edition>PAVES-e. Per un'edizione-archivio digitale dell'opera di Pavese</edition>
+            <!-- Inserire data di fine marcatura -->
+         </editionStmt>
+         <publicationStmt>
+            <authority>Consiglio Nazionale delle Ricerche - Istituto di Scienze e Tecnologie della Cognizione di Catania</authority>
+            <authority>Università di Torino</authority>
+            <publisher>Università degli Studi di Catania</publisher>
+            <date>2024</date>
+            <idno type="filename">LS36_Antenati.xml</idno>
+            <availability>
+               <licence target="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</licence>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <bibl>
+               <author>Liborio Pietro Barbarino</author>
+               <title>Il primo Lavorare stanca di Pavese (1936)</title>
+               <publisher>Edizioni Sinestesie</publisher>
+               <pubPlace>Avellino</pubPlace>
+               <date>2020</date>
+            </bibl>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+        <p>PAVES-e è promosso da Università di Catania (P.I. Antonio Sichera), Università degli Studi di Torino (resp. unità Laura Nay), CNR - Istituto di Scienze e Tecnologie della Cognizione di Catania (resp. unità Daria Spampinato), con la collaborazione del CINUM (Centro di Informatica Umanistica dell'Università di Catania) e del Centro Studi Gozzano-Pavese.</p>         </projectDesc>
+         <tagsDecl partial="true">
+            <namespace name="http://www.tei-c.org/ns/1.0">
+               <tagUsage gi="sourceDoc">Tag "sourceDoc" utilizzato per codificare i testimoni</tagUsage>
+            </namespace>
+         </tagsDecl>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date from="1932-02-01" to="1932-02-29">Febbraio 1932</date>
+         </creation>
+         <langUsage>
+            <language ident="Ita">Italiano</language>
+         </langUsage>
+      </profileDesc>
+      <revisionDesc>
+         <change when="2024-02" who="#SiglaNome">
+            <p>Prima fase di marcatura (sourceDoc) e testo base</p>
+         </change>
+      </revisionDesc>
+   </teiHeader>
+   <sourceDoc xml:id="LS_Antenati_FE4_A2" n="A2">
+      <pb n="1" xml:id="FE4_211r"/>
+      <surface n="211r">
+         <graphic url="LS_FE4_211r.png"/>
+         <line n="1" type="head">
+            Antenati
+         </line>
+         <line n="2">
+            <del>Stu</del>Stupefatto del mondo mi giunse un'età</line>
+         <line n="3">che tiravo gran pugni nell’aria e piangevo da solo.</line>
+         <line n="4">Ascoltare i discorsi di uomini e donne</line>
+         <line n="5">non sapendo rispondere, è poca allegria.</line>
+         <line n="6">Ma anche questa è passata: non sono più solo</line>
+         <line n="7">
+            e se non so rispondere so far<mod type="subst">
+               <del>e</del>
+               <add place="superimposed">ne</add>
+            </mod>
+            a meno.
+         </line>
+         <line n="8">Ho trovato compagni trovando me stesso</line>
+         <space/>
+         <line n="9" rend="indented">Ho scoperto che, prima di nascere, sono vissuto</line>
+         <line n="10">sempre in uomini saldi, signori di sè,</line>
+         <line n="11">e nessuno sapeva rispondere e tutti eran calmi.</line>
+         <line n="12">Due cognati hanno aperto un negozio – la prima fortuna</line>
+         <line n="13">della nostra famiglia – e l’estraneo era serio,</line>
+         <line n="14">
+            calcolante, <mod type="subst">meschino<del>,</del>
+               <add place="superimposed">:</add>
+               <mod type="subst">
+                        <del>diverso</del>
+                  <add place="above">spietato</add>
+                    </mod>
+               <del>,</del>
+               <add place="left">,</add>
+            </mod>
+                <metamark function="transposition">∿<ptr type="metamark" n="1" target="#M_1_LS36_Antenati"/>
+                </metamark>
+            una donna.
+         </line>
+         <line n="15">L’altro, il nostro, in negozio leggeva romanzi</line>
+         <line n="16">– in paese era molto – e i clienti che entravano</line>
+         <line n="17">si sentivan rispondere a brevi parole</line>
+         <line n="18">che lo zucchero no, che il solfato neppure,</line>
+         <line n="19">che era tutto esaurito. È accaduto più tardi</line>
+         <line n="20">che quest’ultimo ha dato una mano al cognato fallito.</line>
+         <line n="21"> A pensar
+            <mod type="subst">
+               <del>quella</del>
+               <add place="above">
+                  questa
+               </add>
+            </mod>
+            gente mi sento più forte
+         </line>
+         <line n="22">che a guardare lo specchio gonfiando le spalle</line>
+         <line n="23">e atteggiando le labbra a un sorriso solenne.</line>
+         <line n="24">È vissuto un mio nonno, remoto nei tempi,</line>
+         <line n="25">che si fece truffare da un suo contadino</line>
+         <line n="26">ed allora zappò lui le vigne – d’estate –</line>
+      </surface>
+      <pb n="2" xml:id="FE4_212r"/>
+      <surface n="212r">
+         <graphic url="LS_FE4_212r.png"/>
+         <line n="1">per vedere un lavoro ben fatto. Così</line>
+         <line n="2">sono sempre vissuto ed ho sempre tenuto</line>
+         <line n="3">una faccia sicura e pagato di mano.</line>
+         <space/>
+         <line n="4" rend="indented">E le donne non contano nella famiglia.</line>
+         <line n="5">Voglio dire, le donne da noi stanno in casa</line>
+         <line n="6">e ci mettono al mondo e non dicono nulla</line>
+         <line n="7">e non contano nulla e non le ricordiamo.</line>
+         <line n="8">e non contano nulla e non le ricordiamo.</line>
+         <line n="9">Ogni donna c’infonde nel sangue qualcosa di nuovo</line>
+         <line n="10">ma s’annullano tutte nell’opera e noi </line>
+         <line n="11">rinnovati così, siamo i soli a durare.</line>
+         <line n="12">
+            Siamo pieni di viz
+            <mod type="subst">
+               <del>î</del>
+               <add place="superimposed">
+                  i
+               </add>
+            </mod>, di ticchi e di orrori
+         </line>
+         <line n="13">– noi, gli uomini, i padri – qualcuno si è ucciso,</line>
+         <line n="14">ma una sola vergogna non ci ha mai toccato,</line>
+         <line n="15">non saremo mai donne, mai schiavi a nessuno.</line>
+         <space/>
+         <line n="16" rend="indented">Ho trovato una terra trovando i compagni,</line>
+         <line n="17">
+            <mod type="subst">
+               <del>una terra cattiva</del>
+               <add place="above">
+                  <del>
+                     <gap reason="illegible"/>
+                  </del>
+                  <add place="relativeLeft">una terra cattiva</add>
+               </add>
+            </mod>
+            dov'è un privilegio
+         </line>
+         <line n="18">
+            <mod type="subst">
+                    <del>
+                        <mod type="subst">
+                            <del>non far nulla</del>
+                            <add place="above">lavorare</add>
+                        </mod> pensando al <mod type="subst">
+                            <del>futuro</del>
+                            <add place="aboveRight"> riposo</add>
+                        </mod>
+                    </del>
+               <add>
+                        <metamark function="reference" place="above">↖</metamark>non far nulla <mod type="subst">
+                            <del>e</del> pensa<del>re</del>
+                            <add place="superimposed">ndo</add>
+                        </mod> al futuro</add>
+                </mod>.
+         </line>
+         <line n="19">Perchè il solo lavoro non basta a me e ai miei,</line>
+         <line n="20">noi sappiamo schiantarci, ma il
+            <del>solo</del>
+            <add place="above">sogno</add> più grande
+         </line>
+         <line n="21">dei miei padri, fu sempre un far nulla da bravi.</line>
+         <line n="22">Siamo nati per girovagare su quelle colline,</line>
+         <line n="23">senza donne e le mani tenercele dietro alla schiena.</line>
+      </surface>
+      <pb/>
+      <!-- surface fittizio provvisorio per aggirare bug in TEI Publisher -->
+      <surface/>
+   </sourceDoc>
+   <text subtype="manuscript" type="poem" corresp="paves-eListWork#LS36_Antenati">
+      <body>
+         <head type="title">Antenati</head>
+         <lg>
+            <l n="1">Stupefatto del mondo mi giunse un’età</l>
+            <l n="2">che tiravo gran pugni nell’aria e piangevo da solo.</l>
+            <l n="3">Ascoltare i discorsi di uomini e donne</l>
+            <l n="4">non sapendo rispondere, è poca allegria.</l>
+            <l n="5">Ma anche questa è passata: non sono più solo</l>
+            <l n="6">e, se non so rispondere, so farne a meno.</l>
+            <l n="7">Ho trovato compagni trovando me stesso.</l>
+         </lg>
+         <lg>
+            <l n="8">Ho scoperto che, prima di nascere, sono vissuto</l>
+            <l n="9">sempre in uomini saldi, signori di sé,</l>
+            <l n="10">e nessuno sapeva rispondere e tutti eran calmi.</l>
+            <l n="11">Due cognati hanno aperto un negozio – la prima fortuna</l>
+            <l n="12">della nostra famiglia – e l’estraneo era serio,</l>
+            <l n="13">calcolante, spietato, meschino: una donna.</l>
+            <l n="14">L’altro, il nostro, in negozio leggeva romanzi</l>
+            <l n="15">– in paese era molto – e i clienti che entravano</l>
+            <l n="16">si sentivan rispondere a brevi parole</l>
+            <l n="17">che lo zucchero no, che il solfato neppure,</l>
+            <l n="18">che era tutto esaurito. È accaduto più tardi</l>
+            <l n="19">che quest’ultimo ha dato una mano al cognato fallito.</l>
+            <l n="20">A pensar questa gente mi sento più forte</l>
+            <l n="21">che a guardare lo specchio gonfiando le spalle</l>
+            <l n="22">e atteggiando le labbra a un sorriso solenne.</l>
+            <l n="23">È vissuto un mio nonno, remoto nei tempi,</l>
+            <l n="24">che si fece truffare da un suo contadino</l>
+            <l n="25">e allora zappò lui le vigne – d’estate –</l>
+            <l n="26">per vedere un lavoro ben fatto. Così</l>
+            <l n="27">sono sempre vissuto e ho sempre tenuto</l>
+            <l n="28">una faccia sicura e pagato di mano.</l>
+         </lg>
+         <lg>
+            <l n="29">E le donne non contano<ptr type="note" n="1" target="#N_1_LS36_Antenati"/> nella famiglia.</l>
+            <l n="30">Voglio dire, le donne da noi stanno in casa</l>
+            <l n="31">e ci mettono al mondo e non dicono nulla</l>
+            <l n="32">e non contano nulla e non le ricordiamo.</l>
+            <l n="33">Ogni donna c’infonde nel sangue qualcosa di nuovo,</l>
+            <l n="34">ma s’annullano tutte nell’opera e noi,</l>
+            <l n="35">rinnovati così, siamo i soli a durare.</l>
+            <l n="36">Siamo pieni di vizi, di <distinct ana="paves-eListTerm.xml#ticchi">ticchi</distinct> e di orrori</l>
+            <l n="37">– noi, gli uomini, i padri – qualcuno si è ucciso,</l>
+            <l n="38">ma una sola vergogna non ci ha mai toccato,</l>
+            <l n="39">non saremo mai donne, mai schiavi a nessuno.</l>
+         </lg>
+         <lg>
+            <l n="40">Ho trovato una terra trovando i compagni,</l>
+            <l n="41">una terra cattiva, dov’è un privilegio</l>
+            <l n="42">non far nulla, pensando al futuro.</l>
+            <l n="43">Perché il solo lavoro non basta a me e ai miei,</l>
+            <l n="44">noi sappiamo schiantarci, ma il sogno più grande</l>
+            <l n="45">dei miei padri fu sempre un far nulla da bravi.</l>
+            <l n="46">Siamo nati per girovagare su quelle colline,</l>
+            <l n="47">senza donne e le mani tenercele dietro alla schiena.</l>
+         </lg>
+      </body>
+      <back>
+         <list type="metamark">
+            <item n="1" xml:id="M_1_LS36_Antenati">
+               <label>Inversione di segmenti testuali</label>
+               <note resp="#LiborioBarbarino">L'autore indica con questo segno che i due aggettivi vanno invertiti, e in tal senso si collocano gli interventi sulla punteggiatura. La redazione ultima è dunque: "spietato, meschino:”.</note>
+            </item>
+         </list>
+         <list type="note">
+            <item n="0" xml:id="N_0_LS36_Antenati" ana="philology">
+               <label>Nota critica</label>
+               <note xml:lang="it">
+                  <p>Scritta non più tardi del febbraio 1932, anno in cui Pavese termina la stesura di <title>Ciau Masino</title> e in cui esce la sua traduzione del <title rend="italic">Moby Dick</title> di Herman Melville, <hi rend="italic">Antenati</hi> dà il nome alla prima sezione di <title>Lavorare stanca</title> del 1943 e sviluppa il grande tema dei padri, osservato dalla prospettiva del ragazzo. </p>
+                  <p>
+                            <hi rend="bold">Edizioni a stampa</hi>: Seconda poesia di Lavorare stanca 1936 e 1943, dove appartiene alla sezione eponima.</p>
+                  <p>
+                            <hi rend="bold">Varianti introdotte nella seconda edizione</hi>: gran pugni] dei pugni (v. 2); mai donne, mai schiavi a nessuno] mai donne, mai ombre a nessuno (v. 39); miei,] miei; (v. 43); senza donne e le mani tenercele dietro alla schiena] senza donne, e le mani tenercele dietro la schiena (v. 47).</p>
+               </note>
+               <note xml:lang="en">
+                  <p>Written not later than February 1932, the year in which Pavese completed the drafting of <title>Ciau Masino</title> and in which his translation of Herman Melville’s <title rend="italic">Moby Dick</title> was published, <hi rend="italic">Antenati</hi> gives its name to the first section of <title>Lavorare stanca</title> (1943) and develops the major theme of fathers. The boy’s discovery is the possible identification with the men of his own family.</p>
+                  <p>
+                            <hi rend="bold">Printed editions</hi>: Second poem of <title>Lavorare stanca</title> 1936 and 1943.</p>
+                  <p>
+                            <hi rend="bold">Variants introduced in the second edition</hi>: gran pugni] dei pugni (v. 2); mai donne, mai schiavi a nessuno] mai donne, mai ombre a nessuno (v. 39); miei,] miei; (v. 43); senza donne e le mani tenercele dietro alla schiena] senza donne, e le mani tenercele dietro la schiena (v. 47).</p>
+               </note>
+            </item>
+            <item n="1" xml:id="N_1_LS36_Antenati">
+               <label>Ritratto delle donne</label>
+               <note>
+                  <p>Nella lettera a Giuseppe Cassano del giugno 1936, Pavese scioglie il nodo del misoginismo dietro l’affermazione che «le donne non contano in famiglia»: si tratta delle parole di un giovane che assorbe il «senso di forza e di virilità» proveniente dalla tradizione paesana, non un insegnamento a «insultare la propria madre».</p>
+               </note>
+            </item>
+         </list>
+         <listBibl type="bibliography" xml:id="bibliography_LS36_Antenati">
+            <bibl ref="paves-eListWork.xml#OperaPoetica">
+               Antonio Sichera, Antonio Di Silvestro, <hi>Note e notizie</hi>, in Cesare Pavese, <title>L'opera poetica</title>, Mondadori, Milano 2021, pp. 1245, 1267.
+            </bibl>
+            <bibl>
+            A.M. Mutterle, <title>I fioretti del diavolo</title>, Edizioni dell'Orso, Alessandria 2003, pp. 6, 14, 35.
+            </bibl>
+            <bibl>
+            M. Villa, N. Scaffai, <title>Antenati</title>, in Cesare Pavese, <title>Poesie</title>, Garzanti, Milano 2023.
+            </bibl>
+            <bibl>V. Capasa, <title>«Lo scopritore di una terra incognita». Cesare Pavese poeta</title>, Edizioni dell'Orso, Alessandria 2008, pp. 99-140.</bibl>
+            
+         </listBibl>
+         <listRelation type="references" xml:id="references_LS36_Antenati">
+            <relation name="citedBy" ana="Il_mestiere_di_vivere" active="paves-eListWork.xml#LS36_Antenati" passive="paves-eListWork.xml#MV_19351205" n="Il mestiere di vivere, 5 dicembre 1935"/>	 
+            <relation name="citedBy" ana="letter" active="paves-eListWork.xml#LS36_Antenati" passive="paves-eListWork.xml#PL_19360608_CassanoGiuseppe" n="Lettera a Giuseppe Cassano (Torino, giugno 1936)"/>
+         </listRelation>
+      </back>
+   </text>
+</TEI>
