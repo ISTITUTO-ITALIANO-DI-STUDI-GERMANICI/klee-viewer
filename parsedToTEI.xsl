@@ -844,6 +844,32 @@
 
     <xsl:processing-instruction name="teipublisher">odd="klee.odd" template="klee2.html" view="page" media="web print epub"</xsl:processing-instruction>
 
+    <xsl:variable name="flatBody">
+      <xsl:apply-templates/>
+    </xsl:variable>
+
+    <!-- Move inline figures into the end of the preceding line -->
+    <xsl:variable name="withInline">
+      <xsl:apply-templates select="$flatBody/node()" mode="attach-inline"/>
+    </xsl:variable>
+    <!-- Merge lone "(" lines into the following line -->
+    <xsl:variable name="glued">
+      <xsl:apply-templates select="$withInline/node()" mode="glue-bracket"/>
+    </xsl:variable>
+      
+    <xsl:variable name="nested">
+      <xsl:call-template name="nest-headings">
+        <xsl:with-param name="nodes" select="$glued/node()"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <!-- Numbering pass: runs once, feeds all editions -->
+    <xsl:variable name="numbered">
+      <xsl:call-template name="l-to-lb-children">
+        <xsl:with-param name="nodes" select="$nested/node()"/>
+      </xsl:call-template>
+    </xsl:variable>
+
     <TEI version="3.3.0">
 
       <!-- teiHeader corpus -->
@@ -884,170 +910,154 @@
         </revisionDesc>
       </teiHeader>
 
+      <facsimile>
+        <!-- Cover and inner cover (pages -2 and -1) -->
+        <surface xml:id="f65281">
+          <graphic url="https://escriptorium.d4science.org/media/documents/3/65281.jpg"/>
+        </surface>
+        <surface xml:id="f67096">
+          <graphic url="https://escriptorium.d4science.org/media/documents/3/67096.jpg"/>
+        </surface>
+        <!-- Other pages -->
+        <xsl:for-each select="//page[facsimile/num]">
+          <xsl:variable name="fid" select="normalize-space(facsimile/num)"/>
+          <xsl:variable name="altoDoc" select="kf:alto(.)"/>
+          <!-- Content frame -->
+          <xsl:variable name="contentUlx" select="kf:content-ulx($altoDoc)"/>
+          <xsl:variable name="contentWidth" select="kf:content-width($altoDoc)"/>
+          <surface>
+            <xsl:attribute name="xml:id">
+              <xsl:value-of select="concat('f', $fid)" />
+            </xsl:attribute>
+            <xsl:attribute name="ulx">0</xsl:attribute>
+            <xsl:attribute name="uly">0</xsl:attribute>
+            <xsl:attribute name="lrx"><xsl:value-of select="$altoDoc//alto:Page/@WIDTH"/></xsl:attribute>
+            <xsl:attribute name="lry"><xsl:value-of select="$altoDoc//alto:Page/@HEIGHT"/></xsl:attribute>
+            <xsl:if test="$altoDoc and $contentWidth gt 0">
+              <xsl:attribute name="contentUlx"><xsl:value-of select="format-number($contentUlx, '0')"/></xsl:attribute>
+              <xsl:attribute name="contentWidth"><xsl:value-of select="format-number($contentWidth, '0')"/></xsl:attribute>
+              <xsl:if test="kf:char-width($altoDoc) gt 0">
+                <xsl:attribute name="charWidth"><xsl:value-of select="format-number(kf:char-width($altoDoc), '0.##')"/></xsl:attribute>
+              </xsl:if>
+            </xsl:if>
+            <graphic>
+              <xsl:attribute name="url">
+                <xsl:value-of select="concat('https://escriptorium.d4science.org/media/documents/3/', $fid, '.jpg')"/>
+              </xsl:attribute>
+            </graphic>
+            <!-- Zones derived from ALTO MusicZone tags -->
+            <xsl:if test="$altoDoc">
+              <xsl:for-each select="$altoDoc//alto:OtherTag[@LABEL = 'MusicZone']">
+                <xsl:variable name="tagId" select="@ID"/>
+                <xsl:variable name="musicOrdinal" select="position()"/>
+                <xsl:variable name="blocks"
+                  select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                <xsl:if test="exists($blocks)">
+                  <xsl:call-template name="alto-zone">
+                    <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_music', $musicOrdinal)"/>
+                    <xsl:with-param name="blocks" select="$blocks"/>
+                  </xsl:call-template>
+                </xsl:if>
+              </xsl:for-each>
+              <xsl:for-each select="$altoDoc//alto:OtherTag[matches(@LABEL, '^GraphicZone:figure#\d+$')]">
+                <xsl:variable name="tagId" select="@ID"/>
+                <xsl:variable name="figOrdinal"
+                  select="xs:integer(replace(@LABEL, '^GraphicZone:figure#(\d+)$', '$1'))"/>
+                <xsl:variable name="blocks"
+                  select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                <xsl:if test="exists($blocks)">
+                  <xsl:call-template name="alto-zone">
+                    <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_fig', $figOrdinal)"/>
+                    <xsl:with-param name="blocks" select="$blocks"/>
+                    <!-- a figure in the outer margin hangs on a text line: offset from its middle -->
+                    <xsl:with-param name="dy" select="
+                      if (kf:fig-margin($altoDoc, $figOrdinal) != '')
+                        then kf:box-dy($altoDoc, kf:fig-box($altoDoc, $figOrdinal), kf:text-rows($altoDoc))
+                      else ()"/>
+                  </xsl:call-template>
+                </xsl:if>
+              </xsl:for-each>
+              <!-- Paragraphisms (GraphicZone:paragraphism#N): same kind of zone as the figures -->
+              <xsl:variable name="rows" select="kf:text-rows($altoDoc)"/>
+              <xsl:for-each select="kf:par-ordinals($altoDoc)">
+                <xsl:variable name="parOrdinal" select="."/>
+                <xsl:variable name="tagId"
+                  select="$altoDoc//alto:OtherTag[@LABEL = concat('GraphicZone:paragraphism#', $parOrdinal)]/@ID"/>
+                <xsl:call-template name="alto-zone">
+                  <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_par', $parOrdinal)"/>
+                  <xsl:with-param name="blocks"
+                    select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                  <xsl:with-param name="dy" select="kf:par-dy($altoDoc, $parOrdinal, $rows)"/>
+                </xsl:call-template>
+              </xsl:for-each>
+            </xsl:if>
+          </surface>
+        </xsl:for-each>
+        <!-- Final three pages -->
+        <surface xml:id="f83236">
+          <graphic url="https://escriptorium.d4science.org/media/documents/3/83236.jpg"/>
+        </surface>
+        <surface xml:id="f83587">
+          <graphic url="https://escriptorium.d4science.org/media/documents/3/83587.jpg"/>
+        </surface>
+        <surface xml:id="f83602">
+          <graphic url="https://escriptorium.d4science.org/media/documents/3/83602.jpg"/>
+        </surface>
+      </facsimile>
+
+      <!-- Diplomatic edition -->
+      <sourceDoc>
+        <xsl:attribute name="xml:id">klee_dipl</xsl:attribute>
+        <xsl:attribute name="type">diplomatic</xsl:attribute>
+        <xsl:attribute name="xml:lang">de</xsl:attribute>
+        <xsl:apply-templates select="$numbered/node()" mode="source-doc"/>
+      </sourceDoc>
+
       <!-- Empty standOff before TEI children -->
       <standOff/>
 
-      <!-- TEI Language child -->
-      <TEI version="3.3.0">
-        <teiHeader>
-          <fileDesc>
-            <titleStmt>
-              <title></title>
-            </titleStmt>
-            <publicationStmt>
-              <p><xsl:value-of select="$lang"/></p>
-            </publicationStmt>
-            <sourceDesc>
-              <msDesc>
-                <handDesc>
-                  <handNote medium="pencil" xml:id="pencil">Text written with pencil.</handNote>
-                </handDesc>
-              </msDesc>
-            </sourceDesc>
-          </fileDesc>
-          <profileDesc>
-            <langUsage>
-              <!-- The language code is set to 'und' (undetermined) by default -->
-              <language ident="{$lang}"><xsl:value-of select="$lang"/></language>
-            </langUsage>
-          </profileDesc>
-        </teiHeader>
-        <!-- Implemented facsimile -->
-        <facsimile>
-          <!-- Cover and inner cover (pages -2 and -1) -->
-          <surface xml:id="f65281">
-            <graphic url="https://escriptorium.d4science.org/media/documents/3/65281.jpg"/>
-          </surface>
-          <surface xml:id="f67096">
-            <graphic url="https://escriptorium.d4science.org/media/documents/3/67096.jpg"/>
-          </surface>
-          <!-- Other pages -->
-          <xsl:for-each select="//page[facsimile/num]">
-            <xsl:variable name="fid" select="normalize-space(facsimile/num)"/>
-            <xsl:variable name="altoDoc" select="kf:alto(.)"/>
-            <!-- Content frame -->
-            <xsl:variable name="contentUlx" select="kf:content-ulx($altoDoc)"/>
-            <xsl:variable name="contentWidth" select="kf:content-width($altoDoc)"/>
-            <surface>
-              <xsl:attribute name="xml:id">
-                <xsl:value-of select="concat('f', $fid)" />
-              </xsl:attribute>
-              <xsl:attribute name="ulx">0</xsl:attribute>
-              <xsl:attribute name="uly">0</xsl:attribute>
-              <xsl:attribute name="lrx"><xsl:value-of select="$altoDoc//alto:Page/@WIDTH"/></xsl:attribute>
-              <xsl:attribute name="lry"><xsl:value-of select="$altoDoc//alto:Page/@HEIGHT"/></xsl:attribute>
-              <xsl:if test="$altoDoc and $contentWidth gt 0">
-                <xsl:attribute name="contentUlx"><xsl:value-of select="format-number($contentUlx, '0')"/></xsl:attribute>
-                <xsl:attribute name="contentWidth"><xsl:value-of select="format-number($contentWidth, '0')"/></xsl:attribute>
-                <xsl:if test="kf:char-width($altoDoc) gt 0">
-                  <xsl:attribute name="charWidth"><xsl:value-of select="format-number(kf:char-width($altoDoc), '0.##')"/></xsl:attribute>
-                </xsl:if>
-              </xsl:if>
-              <graphic>
-                <xsl:attribute name="url">
-                  <xsl:value-of select="concat('https://escriptorium.d4science.org/media/documents/3/', $fid, '.jpg')"/>
-                </xsl:attribute>
-              </graphic>
-              <!-- Zones derived from ALTO MusicZone tags -->
-              <xsl:if test="$altoDoc">
-                <xsl:for-each select="$altoDoc//alto:OtherTag[@LABEL = 'MusicZone']">
-                  <xsl:variable name="tagId" select="@ID"/>
-                  <xsl:variable name="musicOrdinal" select="position()"/>
-                  <xsl:variable name="blocks"
-                    select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
-                  <xsl:if test="exists($blocks)">
-                    <xsl:call-template name="alto-zone">
-                      <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_music', $musicOrdinal)"/>
-                      <xsl:with-param name="blocks" select="$blocks"/>
-                    </xsl:call-template>
-                  </xsl:if>
-                </xsl:for-each>
-                <xsl:for-each select="$altoDoc//alto:OtherTag[matches(@LABEL, '^GraphicZone:figure#\d+$')]">
-                  <xsl:variable name="tagId" select="@ID"/>
-                  <xsl:variable name="figOrdinal"
-                    select="xs:integer(replace(@LABEL, '^GraphicZone:figure#(\d+)$', '$1'))"/>
-                  <xsl:variable name="blocks"
-                    select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
-                  <xsl:if test="exists($blocks)">
-                    <xsl:call-template name="alto-zone">
-                      <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_fig', $figOrdinal)"/>
-                      <xsl:with-param name="blocks" select="$blocks"/>
-                      <!-- a figure in the outer margin hangs on a text line: offset from its middle -->
-                      <xsl:with-param name="dy" select="
-                        if (kf:fig-margin($altoDoc, $figOrdinal) != '')
-                          then kf:box-dy($altoDoc, kf:fig-box($altoDoc, $figOrdinal), kf:text-rows($altoDoc))
-                        else ()"/>
-                    </xsl:call-template>
-                  </xsl:if>
-                </xsl:for-each>
-                <!-- Paragraphisms (GraphicZone:paragraphism#N): same kind of zone as the figures -->
-                <xsl:variable name="rows" select="kf:text-rows($altoDoc)"/>
-                <xsl:for-each select="kf:par-ordinals($altoDoc)">
-                  <xsl:variable name="parOrdinal" select="."/>
-                  <xsl:variable name="tagId"
-                    select="$altoDoc//alto:OtherTag[@LABEL = concat('GraphicZone:paragraphism#', $parOrdinal)]/@ID"/>
-                  <xsl:call-template name="alto-zone">
-                    <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_par', $parOrdinal)"/>
-                    <xsl:with-param name="blocks"
-                      select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
-                    <xsl:with-param name="dy" select="kf:par-dy($altoDoc, $parOrdinal, $rows)"/>
-                  </xsl:call-template>
-                </xsl:for-each>
-              </xsl:if>
-            </surface>
-          </xsl:for-each>
-          <!-- Final three pages -->
-          <surface xml:id="f83236">
-            <graphic url="https://escriptorium.d4science.org/media/documents/3/83236.jpg"/>
-          </surface>
-          <surface xml:id="f83587">
-            <graphic url="https://escriptorium.d4science.org/media/documents/3/83587.jpg"/>
-          </surface>
-          <surface xml:id="f83602">
-            <graphic url="https://escriptorium.d4science.org/media/documents/3/83602.jpg"/>
-          </surface>
-        </facsimile>
-        <xsl:variable name="flatBody">
-          <xsl:apply-templates/>
-        </xsl:variable>
-        <!-- Move inline figures into the end of the preceding line -->
-        <xsl:variable name="withInline">
-          <xsl:apply-templates select="$flatBody/node()" mode="attach-inline"/>
-        </xsl:variable>
-        <!-- Merge lone "(" lines into the following line -->
-        <xsl:variable name="glued">
-          <xsl:apply-templates select="$withInline/node()" mode="glue-bracket"/>
-        </xsl:variable>
-        <xsl:variable name="nested">
-          <xsl:call-template name="nest-headings">
-            <xsl:with-param name="nodes" select="$glued/node()"/>
-          </xsl:call-template>
-        </xsl:variable>
 
-        <!-- Numbering pass: runs once, feeds both editions -->
-        <xsl:variable name="numbered">
-          <xsl:call-template name="l-to-lb-children">
-            <xsl:with-param name="nodes" select="$nested/node()"/>
-          </xsl:call-template>
-        </xsl:variable>
+      <teiCorpus version="3.3.0" xmlns="http://www.tei-c.org/ns/1.0">
+        
+      <!-- Single editions (critical, aligned, etc.) -->
+      <!-- Critical edition -->
+        <TEI>
+          <teiHeader>
+            <fileDesc>
+              <titleStmt>
+                <title></title>
+              </titleStmt>
+              <publicationStmt>
+                <p><xsl:value-of select="$lang"/></p>
+              </publicationStmt>
+              <sourceDesc>
+                <msDesc>
+                  <handDesc>
+                    <handNote medium="pencil" xml:id="pencil">Text written with pencil.</handNote>
+                  </handDesc>
+                </msDesc>
+              </sourceDesc>
+            </fileDesc>
+            <profileDesc>
+              <langUsage>
+                <language ident="de">Deutsch</language>
+              </langUsage>
+            </profileDesc>
+          </teiHeader>
 
-        <!-- Diplomatic edition -->
-        <sourceDoc>
-          <xsl:attribute name="xml:id">klee_dipl</xsl:attribute>
-          <xsl:attribute name="type">diplomatic</xsl:attribute>
-          <xsl:attribute name="xml:lang">de</xsl:attribute>
-          <xsl:apply-templates select="$numbered/node()" mode="source-doc"/>
-        </sourceDoc>
+          <text xml:id="klee_crit" xml:lang="de" type="critical">
+            <body>
+              <xsl:call-template name="l-to-lb-children">
+                <xsl:with-param name="nodes" select="$numbered/node()"/>
+              </xsl:call-template>
+            </body>
+          </text>
+        </TEI>
 
-        <!-- Critical edition -->
-        <text>
-          <body>
-            <xsl:call-template name="l-to-lb-children">
-              <xsl:with-param name="nodes" select="$numbered/node()"/>
-            </xsl:call-template>
-          </body>
-        </text>
-      </TEI>
+        <!-- Aligned edition -->
+      
+        
+      </teiCorpus>
 
     </TEI>
   </xsl:template>
