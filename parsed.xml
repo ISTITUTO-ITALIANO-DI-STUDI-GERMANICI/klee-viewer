@@ -6217,6 +6217,37 @@
                      <w>Goghs</w>
                      <w>Perspectivinstrument</w>
                   </line>
+                  <line n="7">
+                     <w>Rodlers</w>
+                     <pc type="punct" float="both" force="inter">„</pc>
+                     <w>carré</w>
+                  </line>
+               </ab>
+            </div>
+            <div n="3" type="exercise">
+               <head n="3" type="exercise">
+                  <w>5</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+                  <w>Dezember</w>
+                  <pc type="bracketOpen" float="right" force="inter">(</pc>
+                  <w>Übungen</w>
+                  <pc type="bracketClose" float="left" force="inter">)</pc>
+               </head>
+               <ab>
+                  <line n="8">
+                     <w>Gleichgewichtsdarstellungen</w>
+                     <w>zeichnerisch</w>
+                     <w>und</w>
+                     <w>tonal</w>
+                     <w>nach</w>
+                     <w>Gleichgewichtsbauten</w>
+                  </line>
+                  <line n="9">
+                     <w>in</w>
+                     <w>der</w>
+                     <w>Fläche</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
                </ab>
             </div>
          </div>
@@ -12012,7 +12043,7 @@
          <text xml:id="klee_crit" xml:lang="de" type="critical">
             <body>
                <div n="1" type="title">
-                  <pb n="1" facs="83044.jpg"/>
+                  <pb xml:id="klee_crit_83044" n="1" facs="83044.jpg"/>
                   <head n="1" type="title">
                      <w>Beiträge</w>
                      <w>zur</w>
@@ -12237,7 +12268,7 @@
                            <w>Bekannten</w>
                         </l>
                      </ab>
-                     <pb n="2" facs="83045.jpg"/>
+                     <pb xml:id="klee_crit_83045" n="2" facs="83045.jpg"/>
                      <ab>
                         <l n="1">
                            <w>Teilen</w>
@@ -12409,7 +12440,7 @@
                            <w>ist</w>
                         </l>
                      </ab>
-                     <pb n="3" facs="83046.jpg"/>
+                     <pb xml:id="klee_crit_83046" n="3" facs="83046.jpg"/>
                      <ab>
                         <l n="1">
                            <w>die</w>
@@ -12613,7 +12644,7 @@
                            <w>Notwendigkeit</w>
                         </l>
                      </ab>
-                     <pb n="4" facs="83047.jpg"/>
+                     <pb xml:id="klee_crit_83047" n="4" facs="83047.jpg"/>
                      <ab>
                         <l n="1">
                            <w>zur</w>
@@ -12859,7 +12890,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <pb n="5" facs="83048.jpg"/>
+                     <pb xml:id="klee_crit_83048" n="5" facs="83048.jpg"/>
                      <ab>
                         <l n="1">
                            <choice>
@@ -12919,7 +12950,7 @@
                      </ab>
                   </div>
                   <div n="2" type="unit">
-                     <pb n="6" facs="83049.jpg"/>
+                     <pb xml:id="klee_crit_83049" n="6" facs="83049.jpg"/>
                      <head n="2" type="unit">
                         <w>1</w>
                         <pc type="period" float="left" force="strong">.</pc>
@@ -13140,7 +13171,7 @@
                            <w>unsere</w>
                         </l>
                      </ab>
-                     <pb n="7" facs="83050.jpg"/>
+                     <pb xml:id="klee_crit_83050" n="7" facs="83050.jpg"/>
                      <ab>
                         <l n="1">
                            <w>Kinder</w>
@@ -13332,7 +13363,7 @@
                      <trailer rend="bold" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
-                     <pb n="8" facs="83051.jpg"/>
+                     <pb xml:id="klee_crit_83051" n="8" facs="83051.jpg"/>
                      <ab n="1">
                         <l n="1">
                            <w>Aber</w>
@@ -13458,7 +13489,7 @@
                            <head rend="italic">
                               <w>fig</w> 4  </head>
                         </figure>
-                        <pb n="9" facs="83052.jpg"/>
+                        <pb xml:id="klee_crit_83052" n="9" facs="83052.jpg"/>
                         <ab>
                            <l n="1">
                               <w>Freie</w>
@@ -13596,7 +13627,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <pb n="10" facs="83053.jpg"/>
+                        <pb xml:id="klee_crit_83053" n="10" facs="83053.jpg"/>
                         <ab type="margin" place="upper" rend="margin-upper">
                            <pc type="bracketOpen" float="right" force="inter">(</pc>
                            <w>linear</w>
@@ -13732,7 +13763,7 @@
                               <w>13</w>
                               <pc type="slash" float="both" force="inter">/</pc>14  </head>
                         </figure>
-                        <pb n="11" facs="83054.jpg"/>
+                        <pb xml:id="klee_crit_83054" n="11" facs="83054.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Als</w>
@@ -13919,7 +13950,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <pb n="12" facs="83055.jpg"/>
+                        <pb xml:id="klee_crit_83055" n="12" facs="83055.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Umgekehrt</w>
@@ -14153,7 +14184,7 @@
                         </ab>
                      </div>
                      <div n="3" type="exercise">
-                        <pb n="13" facs="83056.jpg"/>
+                        <pb xml:id="klee_crit_83056" n="13" facs="83056.jpg"/>
                         <head n="3" type="exercise">
                            <w>21</w>
                            <pc type="period" float="left" force="strong">.</pc>
@@ -14482,7 +14513,7 @@
                               <w>eines</w>
                            </l>
                         </ab>
-                        <pb n="14" facs="83057.jpg"/>
+                        <pb xml:id="klee_crit_83057" n="14" facs="83057.jpg"/>
                         <ab>
                            <l n="1">
                               <w>Menschen</w>
@@ -14690,7 +14721,7 @@
                            <head rend="italic">
                               <w>fig</w> 6  </head>
                         </figure>
-                        <pb n="15" facs="83058.jpg"/>
+                        <pb xml:id="klee_crit_83058" n="15" facs="83058.jpg"/>
                         <figure facs="#zone_f83058_fig1" rend="float-left">
                            <head rend="italic">
                               <w>fig</w> 6  </head>
@@ -14953,7 +14984,7 @@
                            </l>
                         </ab>
                         <figure facs="#zone_f83058_fig6" rend="block"/>
-                        <pb n="16" facs="83059.jpg"/>
+                        <pb xml:id="klee_crit_83059" n="16" facs="83059.jpg"/>
                         <ab>
                            <l n="1">
                               <w>und</w>
@@ -15088,7 +15119,7 @@
                               <pc type="bracketClose" float="left" force="inter">)</pc>
                            </l>
                         </ab>
-                        <pb n="17" facs="83060.jpg"/>
+                        <pb xml:id="klee_crit_83060" n="17" facs="83060.jpg"/>
                         <ab>
                            <l n="1">
                               <w>Nun</w>
@@ -15273,7 +15304,7 @@
                               <w>Stellen</w>
                            </l>
                         </ab>
-                        <pb n="18" facs="83061.jpg"/>
+                        <pb xml:id="klee_crit_83061" n="18" facs="83061.jpg"/>
                         <figure facs="#zone_f83061_fig1" rend="float-left">
                            <head rend="italic">
                               <w>fig</w> 14  </head>
@@ -15428,7 +15459,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <pb n="19" facs="83062.jpg"/>
+                        <pb xml:id="klee_crit_83062" n="19" facs="83062.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Während</w>
@@ -15548,7 +15579,7 @@
                               <pc type="bracketClose" float="left" force="inter">)</pc>
                            </l>
                         </ab>
-                        <pb n="20" facs="83063.jpg"/>
+                        <pb xml:id="klee_crit_83063" n="20" facs="83063.jpg"/>
                         <ab>
                            <l n="1">
                               <w>Nun</w>
@@ -15659,7 +15690,7 @@
                               <w>Wagrechten</w>
                            </l>
                         </ab>
-                        <pb n="21" facs="83064.jpg"/>
+                        <pb xml:id="klee_crit_83064" n="21" facs="83064.jpg"/>
                         <figure facs="#zone_f83064_fig1" rend="float-left">
                            <head rend="italic">
                               <w>fig</w> 22  </head>
@@ -15802,7 +15833,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <pb n="22" facs="83065.jpg"/>
+                        <pb xml:id="klee_crit_83065" n="22" facs="83065.jpg"/>
                         <figure facs="#zone_f83065_fig1" rend="block">
                            <head rend="italic">
                               <w>fig</w> 24  </head>
@@ -15977,7 +16008,7 @@
                               <w>erscheint</w>
                            </l>
                         </ab>
-                        <pb n="23" facs="83066.jpg"/>
+                        <pb xml:id="klee_crit_83066" n="23" facs="83066.jpg"/>
                         <ab>
                            <l n="1">
                               <w>ihn</w>
@@ -16116,7 +16147,7 @@
                               <pc type="bracketClose" float="left" force="inter">)</pc>
                            </l>
                         </ab>
-                        <pb n="24" facs="83067.jpg"/>
+                        <pb xml:id="klee_crit_83067" n="24" facs="83067.jpg"/>
                         <figure facs="#zone_f83067_fig1" rend="block">
                            <head rend="italic">
                               <w>Fig</w> 26  </head>
@@ -16236,7 +16267,7 @@
                               <w>gedacht</w>
                            </figDesc>
                         </figure>
-                        <pb n="25" facs="83068.jpg"/>
+                        <pb xml:id="klee_crit_83068" n="25" facs="83068.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Diese</w>
@@ -16404,7 +16435,7 @@
                            <w>Anmerkg</w>
                            <pc type="period" float="left" force="strong">.</pc>
                         </label>
-                        <pb n="26" facs="83069.jpg"/>
+                        <pb xml:id="klee_crit_83069" n="26" facs="83069.jpg"/>
                         <ab>
                            <l n="1">
                               <w>sind</w>
@@ -16502,11 +16533,42 @@
                               <w>Goghs</w>
                               <w>Perspectivinstrument</w>
                            </l>
+                           <l n="7">
+                              <w>Rodlers</w>
+                              <pc type="punct" float="both" force="inter">„</pc>
+                              <w>carré</w>
+                           </l>
+                        </ab>
+                     </div>
+                     <div n="3" type="exercise">
+                        <head n="3" type="exercise">
+                           <w>5</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Dezember</w>
+                           <pc type="bracketOpen" float="right" force="inter">(</pc>
+                           <w>Übungen</w>
+                           <pc type="bracketClose" float="left" force="inter">)</pc>
+                        </head>
+                        <ab>
+                           <l n="8">
+                              <w>Gleichgewichtsdarstellungen</w>
+                              <w>zeichnerisch</w>
+                              <w>und</w>
+                              <w>tonal</w>
+                              <w>nach</w>
+                              <w>Gleichgewichtsbauten</w>
+                           </l>
+                           <l n="9">
+                              <w>in</w>
+                              <w>der</w>
+                              <w>Fläche</w>
+                              <pc type="period" float="left" force="strong">.</pc>
+                           </l>
                         </ab>
                      </div>
                   </div>
                   <div n="2" type="unit">
-                     <pb n="27" facs="83070.jpg"/>
+                     <pb xml:id="klee_crit_83070" n="27" facs="83070.jpg"/>
                      <head n="2" type="unit">
                         <w>3</w>
                         <pc type="period" float="left" force="strong">.</pc>
@@ -16819,7 +16881,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <pb n="28" facs="83071.jpg"/>
+                        <pb xml:id="klee_crit_83071" n="28" facs="83071.jpg"/>
                         <figure facs="#zone_f83071_fig1" rend="row-start"/>
                         <figure facs="#zone_f83071_fig2" rend="row-next"/>
                         <ab>
@@ -16895,7 +16957,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <pb n="29" facs="83072.jpg"/>
+                        <pb xml:id="klee_crit_83072" n="29" facs="83072.jpg"/>
                         <figure facs="#zone_f83072_fig1" rend="block">
                            <head rend="italic">
                               <w>fig</w> 6  </head>
@@ -16999,7 +17061,7 @@
                               <w>Wage</w>
                            </l>
                         </ab>
-                        <pb n="30" facs="83073.jpg"/>
+                        <pb xml:id="klee_crit_83073" n="30" facs="83073.jpg"/>
                         <ab>
                            <l n="1">
                               <w>und</w>
@@ -17148,7 +17210,7 @@
                               <w>Beispiel</w>
                            </l>
                         </ab>
-                        <pb n="31" facs="83074.jpg"/>
+                        <pb xml:id="klee_crit_83074" n="31" facs="83074.jpg"/>
                         <ab>
                            <l n="1">
                               <w>viereckig</w>
@@ -17331,7 +17393,7 @@
                         </ab>
                         <figure rend="clear"/>
                         <figure facs="#zone_f83074_fig7" rend="float-right"/>
-                        <pb n="32" facs="83075.jpg"/>
+                        <pb xml:id="klee_crit_83075" n="32" facs="83075.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Die</w>
@@ -17383,7 +17445,7 @@
                               <w>abweichender</w>
                            </l>
                         </ab>
-                        <pb n="33" facs="83076.jpg"/>
+                        <pb xml:id="klee_crit_83076" n="33" facs="83076.jpg"/>
                         <figure facs="#zone_f83076_fig1" rend="block">
                            <head rend="italic">
                               <w>fig</w> 21  </head>
@@ -17548,7 +17610,7 @@
                               <w>dunkelgrau</w>
                            </figDesc>
                         </figure>
-                        <pb n="34" facs="83077.jpg"/>
+                        <pb xml:id="klee_crit_83077" n="34" facs="83077.jpg"/>
                         <ab>
                            <l n="1">
                               <w>Bei</w>
@@ -17749,7 +17811,7 @@
                               <pc type="colon" float="left" force="weak">:</pc>
                            </l>
                         </ab>
-                        <pb n="35" facs="83078.jpg"/>
+                        <pb xml:id="klee_crit_83078" n="35" facs="83078.jpg"/>
                         <figure facs="#zone_f83078_fig1" rend="block">
                            <head rend="italic">
                               <w>Fig</w>
@@ -17991,7 +18053,7 @@
                                  <pc type="bracketClose" float="left" force="inter">)</pc>
                               </l>
                            </ab>
-                           <pb n="36" facs="83079.jpg"/>
+                           <pb xml:id="klee_crit_83079" n="36" facs="83079.jpg"/>
                            <figure facs="#zone_f83079_fig1" rend="float-left">
                               <head rend="italic">
                                  <w>Fig</w> 25  </head>
@@ -18151,7 +18213,7 @@
                                  <pc type="period" float="left" force="strong">.</pc>
                               </l>
                            </ab>
-                           <pb n="37" facs="83080.jpg"/>
+                           <pb xml:id="klee_crit_83080" n="37" facs="83080.jpg"/>
                            <figure facs="#zone_f83080_fig1" rend="float-left">
                               <head rend="italic">
                                  <w>Fig</w> 26  </head>
@@ -18396,7 +18458,7 @@
                                  <w>Balancierender</w>
                               </l>
                            </ab>
-                           <pb n="38" facs="83081.jpg"/>
+                           <pb xml:id="klee_crit_83081" n="38" facs="83081.jpg"/>
                            <ab>
                               <l n="1">
                                  <w>Activität</w>
@@ -18631,7 +18693,7 @@
                            <figure facs="#zone_f83081_fig4" rend="float-right">
                               <head rend="italic"> 31a  </head>
                            </figure>
-                           <pb n="39" facs="83082.jpg"/>
+                           <pb xml:id="klee_crit_83082" n="39" facs="83082.jpg"/>
                            <trailer rend="bold" type="pause">
                               <pc type="punct" force="inter">*</pc>
                            </trailer>
@@ -18827,7 +18889,7 @@
                                  <pc type="period" float="left" force="strong">.</pc>
                               </l>
                            </ab>
-                           <pb n="40" facs="83083.jpg"/>
+                           <pb xml:id="klee_crit_83083" n="40" facs="83083.jpg"/>
                            <ab>
                               <l n="1">
                                  <w>Man</w>
@@ -19136,7 +19198,7 @@
                                  <w>successive</w>
                               </l>
                            </ab>
-                           <pb n="41" facs="83084.jpg"/>
+                           <pb xml:id="klee_crit_83084" n="41" facs="83084.jpg"/>
                            <ab>
                               <l n="1">
                                  <w>aufhellt</w>
@@ -19352,7 +19414,7 @@
                      </div>
                   </div>
                   <div n="2" type="unit">
-                     <pb n="42" facs="83085.jpg"/>
+                     <pb xml:id="klee_crit_83085" n="42" facs="83085.jpg"/>
                      <head n="2" type="unit">
                         <w>4</w>
                         <pc type="period" float="left" force="strong">.</pc>
@@ -19536,7 +19598,7 @@
                               <w>noch</w>
                            </l>
                         </ab>
-                        <pb n="43" facs="83086.jpg"/>
+                        <pb xml:id="klee_crit_83086" n="43" facs="83086.jpg"/>
                         <ab>
                            <l n="1">
                               <w>an</w>
@@ -19832,7 +19894,7 @@
                               <pc type="comma" float="left" force="weak">,</pc>
                            </l>
                         </ab>
-                        <pb n="44" facs="83087.jpg"/>
+                        <pb xml:id="klee_crit_83087" n="44" facs="83087.jpg"/>
                         <ab>
                            <l n="1">
                               <w>und</w>
@@ -20062,14 +20124,14 @@
                               <w>1</w>
                            </l>
                         </ab>
-                        <pb n="45" facs="83088.jpg"/>
+                        <pb xml:id="klee_crit_83088" n="45" facs="83088.jpg"/>
                         <ab>
                            <l n="1">
                               <w>also</w>
                               <w>3</w>
                            </l>
                         </ab>
-                        <pb n="46" facs="83089.jpg"/>
+                        <pb xml:id="klee_crit_83089" n="46" facs="83089.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Es</w>
@@ -20198,7 +20260,7 @@
                               <w>fig</w>
                               <pc type="period" float="left" force="strong">.</pc>8  </head>
                         </figure>
-                        <pb n="47" facs="83090.jpg"/>
+                        <pb xml:id="klee_crit_83090" n="47" facs="83090.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <pc type="bracketOpen" float="right" force="inter">(</pc>
@@ -20437,7 +20499,7 @@
                               <w>1</w>
                            </l>
                         </ab>
-                        <pb n="48" facs="83091.jpg"/>
+                        <pb xml:id="klee_crit_83091" n="48" facs="83091.jpg"/>
                         <ab>
                            <l n="1">
                               <w>Man</w>
@@ -20529,7 +20591,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <pb n="49" facs="83092.jpg"/>
+                        <pb xml:id="klee_crit_83092" n="49" facs="83092.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Ich</w>
@@ -20724,7 +20786,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </figDesc>
                         </figure>
-                        <pb n="50" facs="83093.jpg"/>
+                        <pb xml:id="klee_crit_83093" n="50" facs="83093.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Die</w>
@@ -20746,7 +20808,7 @@
                               <w>2</w>
                            </l>
                         </ab>
-                        <pb n="51" facs="83094.jpg"/>
+                        <pb xml:id="klee_crit_83094" n="51" facs="83094.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Mehr</w>
@@ -20929,7 +20991,7 @@
                            <head rend="italic">
                               <w>fig</w> 20b.  </head>
                         </figure>
-                        <pb n="52" facs="83095.jpg"/>
+                        <pb xml:id="klee_crit_83095" n="52" facs="83095.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Auf</w>
@@ -21082,7 +21144,7 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </figDesc>
                         </figure>
-                        <pb n="53" facs="83096.jpg"/>
+                        <pb xml:id="klee_crit_83096" n="53" facs="83096.jpg"/>
                         <ab>
                            <l n="1">
                               <w>An</w>
@@ -21213,7 +21275,7 @@
                               <w>kön</w>
                            </l>
                         </ab>
-                        <pb n="54" facs="83097.jpg"/>
+                        <pb xml:id="klee_crit_83097" n="54" facs="83097.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Ein</w>
@@ -21298,7 +21360,7 @@
                         <trailer rend="bold" type="pause">
                            <pc type="punct" force="inter">*</pc>
                         </trailer>
-                        <pb n="55" facs="83098.jpg"/>
+                        <pb xml:id="klee_crit_83098" n="55" facs="83098.jpg"/>
                         <ab n="1"/>
                      </div>
                      <div n="3" type="5">
@@ -21397,7 +21459,7 @@
                               <w>11</w>
                            </l>
                         </ab>
-                        <pb n="56" facs="83099.jpg"/>
+                        <pb xml:id="klee_crit_83099" n="56" facs="83099.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>und</w>
@@ -21514,7 +21576,7 @@
                            </l>
                         </ab>
                         <figure facs="#zone_f83099_fig2" rend="block"/>
-                        <pb n="57" facs="83100.jpg"/>
+                        <pb xml:id="klee_crit_83100" n="57" facs="83100.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>In</w>
@@ -21762,7 +21824,7 @@
                               <pc type="exclam" float="left" force="strong">!</pc>
                            </l>
                         </ab>
-                        <pb n="58" facs="83101.jpg"/>
+                        <pb xml:id="klee_crit_83101" n="58" facs="83101.jpg"/>
                         <ab n="1">
                            <l n="1">
                               <w>Über</w>
@@ -22026,7 +22088,7 @@
                               <w>Unterformen</w>
                            </l>
                         </ab>
-                        <pb n="60" facs="83103.jpg"/>
+                        <pb xml:id="klee_crit_83103" n="60" facs="83103.jpg"/>
                         <ab>
                            <l n="1">
                               <add hand="#pencil">
@@ -22058,7 +22120,7 @@
                   </div>
                </div>
                <div n="1" type="part">
-                  <pb n="143" facs="83186.jpg"/>
+                  <pb xml:id="klee_crit_83186" n="143" facs="83186.jpg"/>
                   <head n="1" type="part">
                      <add hand="#pencil">
                         <w rend="sans">B</w>

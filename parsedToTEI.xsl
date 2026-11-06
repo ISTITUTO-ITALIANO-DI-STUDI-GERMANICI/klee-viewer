@@ -15,6 +15,12 @@
   <xsl:param name="lang" select="'und'"/>
   <!-- Set to true() to print, for every figure, the layout chosen and the rule that chose it
        (xsl:message), e.g.  figure #5 of 83049: block (coverage 0.18 < 0.4) -->
+
+  <!-- Identity of the critical <text> (further <text> elements will get their own values) -->
+  <xsl:param name="critical-id" select="'klee_crit'"/>
+  <xsl:param name="critical-type" select="'critical'"/>
+  <xsl:param name="critical-lang" select="'de'"/>
+ 
   <xsl:param name="debug-figures" select="false()"/>
 
   <xsl:key name="fig-by-id"
@@ -44,11 +50,6 @@
   <xsl:key name="lone-open"
     match="tei:l[kf:lone-bracket(., 'bracketOpen')]"
     use="generate-id(following::tei:l[1])"/>
-
-  <!-- glue-bracket: identity copy, except a lone "(" line is merged into the next line -->
-  <xsl:template match="node() | @*" mode="glue-bracket">
-    <xsl:copy><xsl:apply-templates select="@* | node()" mode="glue-bracket"/></xsl:copy>
-  </xsl:template>
 
   <!-- the lone-bracket line itself is dropped (its n is simply skipped) -->
   <xsl:template match="tei:l[kf:lone-bracket(., 'bracketOpen')][following::tei:l]"
@@ -744,13 +745,6 @@
     </zone>
   </xsl:template>
 
-  <!-- attach-inline: identity copy, except inline figures are moved into their host line -->
-  <xsl:template match="node() | @*" mode="attach-inline">
-    <xsl:copy>
-      <xsl:apply-templates select="@* | node()" mode="attach-inline"/>
-    </xsl:copy>
-  </xsl:template>
-
   <xsl:template match="tei:l" mode="attach-inline">
     <xsl:variable name="me" select="."/>
     <!-- figures are siblings of the <ab>, not of its last <l> -->
@@ -777,10 +771,6 @@
   <xsl:key name="counted-lines-by-pb"
     match="tei:l[kf:counted-line(.)]"
     use="generate-id(preceding::tei:pb[1])"/>
-
-  <xsl:template match="node() | @*" mode="l-to-lb">
-    <xsl:copy><xsl:apply-templates select="@* | node()" mode="l-to-lb"/></xsl:copy>
-  </xsl:template>
 
   <!-- Wraps the runs of orphan <l> among $nodes in <ab>, then converts everything -->
   <xsl:template name="l-to-lb-children">
@@ -833,11 +823,38 @@
     </line>
   </xsl:template>
 
-  <!-- source-doc: identity copy (line elements are handled in the next step) -->
-  <xsl:template match="node() | @*" mode="source-doc">
-    <xsl:copy><xsl:apply-templates select="@* | node()" mode="source-doc"/></xsl:copy>
+  <!-- Identity copy shared by all the tree-rewriting passes -->
+  <xsl:template match="node() | @*" mode="glue-bracket attach-inline l-to-lb source-doc edition">
+    <xsl:copy><xsl:apply-templates select="@* | node()" mode="#current"/></xsl:copy>
   </xsl:template>
 
+  <!-- Edition copy: every <pb> gets an xml:id prefixed with the id of its edition,
+       so that a view can open one page of that edition by id -->
+  <xsl:template match="tei:pb" mode="edition">
+    <xsl:param name="edition-id" tunnel="yes"/>
+    <pb xml:id="{$edition-id}_{substring-before(@facs, '.jpg')}">
+      <xsl:copy-of select="@*"/>
+    </pb>
+  </xsl:template>
+
+  <!-- One <text> of the corpus: its identity attributes plus the numbered content -->
+  <xsl:template name="edition-text">
+    <xsl:param name="id" as="xs:string"/>
+    <xsl:param name="edition-lang" as="xs:string?"/>
+    <xsl:param name="type" as="xs:string"/>
+    <xsl:param name="content" as="node()*"/>
+    <text xml:id="{$id}">
+      <xsl:if test="$edition-lang">
+        <xsl:attribute name="xml:lang" select="$edition-lang"/>
+      </xsl:if>
+      <xsl:attribute name="type" select="$type"/>
+      <body>
+        <xsl:apply-templates select="$content" mode="edition">
+          <xsl:with-param name="edition-id" select="$id" tunnel="yes"/>
+        </xsl:apply-templates>
+      </body>
+    </text>
+  </xsl:template>
 
   <!-- MAIN TEMPLATE -->
   <xsl:template match="/">
@@ -1045,16 +1062,16 @@
             </profileDesc>
           </teiHeader>
 
-          <text xml:id="klee_crit" xml:lang="de" type="critical">
-            <body>
-              <xsl:call-template name="l-to-lb-children">
-                <xsl:with-param name="nodes" select="$numbered/node()"/>
-              </xsl:call-template>
-            </body>
-          </text>
+          <xsl:call-template name="edition-text">
+            <xsl:with-param name="id" select="$critical-id"/>
+            <xsl:with-param name="edition-lang" select="$critical-lang"/>
+            <xsl:with-param name="type" select="$critical-type"/>
+            <xsl:with-param name="content" select="$numbered/node()"/>
+          </xsl:call-template>
+
         </TEI>
 
-        <!-- Aligned edition -->
+        <!-- Other editions -->
       
         
       </teiCorpus>

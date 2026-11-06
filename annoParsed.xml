@@ -6532,6 +6532,48 @@
                         <seg>Perspectivinstrument </seg>
                     </textSeq>
                 </line>
+                <line>
+                    <textSeq>
+                        <seg>Rodlers </seg>
+                        <punct>„ </punct>
+                        <seg>carré </seg>
+                    </textSeq>
+
+                </line>
+                <sectionHeading>
+                    <level># # # </level>
+                    <sectionType>
+                        <seg>EXERCISE </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>5 </seg>
+                            <punct>. </punct>
+                            <seg>Dezember </seg>
+                            <punct>( </punct>
+                            <seg>Übungen </seg>
+                            <punct>) </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <line>
+                    <textSeq>
+                        <seg>Gleichgewichtsdarstellungen </seg>
+                        <seg>zeichnerisch </seg>
+                        <seg>und </seg>
+                        <seg>tonal </seg>
+                        <seg>nach </seg>
+                        <seg>Gleichgewichtsbauten </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>in </seg>
+                        <seg>der </seg>
+                        <seg>Fläche </seg>
+                        <punct>. </punct>
+                    </textSeq>
+                </line>
             </mainZone>
         </page>
     </div>
