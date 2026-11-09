@@ -3078,9 +3078,6 @@
                   <w>Endergebnis</w>
                   <w>zu</w>
                   <w>bereichern</w>
-                  <supplied>
-                     <pc type="comma" float="left" force="weak">,</pc>
-                  </supplied>
                   <w>ohne</w>
                </line>
                <line n="4">
@@ -3916,9 +3913,6 @@
                      <w>nicht</w>
                      <w>Maschine</w>
                      <pc type="bracketClose" float="left" force="inter">)</pc>
-                     <supplied>
-                        <pc type="period" float="left" force="strong">.</pc>
-                     </supplied>
                      <w>Die</w>
                      <w>Auffassung</w>
                      <w>beispielsweise</w>
@@ -4372,7 +4366,7 @@
                      <pc type="comma" float="left" force="weak">,</pc>
                      <w>die</w>
                      <w>sich</w>
-                     <w>im<supplied>m</supplied>er</w>
+                     <w>imer</w>
                   </line>
                   <line n="16">
                      <w>mehr</w>
@@ -5541,8 +5535,7 @@
                      <pc type="period" float="left" force="strong">.</pc>
                      <w>Nehmen</w>
                      <w>wir</w>
-                     <w>an<supplied>, </supplied>
-                     </w>
+                     <w>an</w>
                      <w>dass</w>
                      <w>er</w>
                      <w>aus</w>
@@ -6708,10 +6701,6 @@
                      <w>fig</w>
                      <w>3</w>
                      <w>u</w>
-                     <supplied>
-                        <pc type="slash" float="both" force="inter">/</pc>
-                        <pc type="period" float="left" force="strong">.</pc>
-                     </supplied>
                      <w>3</w>
                      <w>a</w>
                      <pc type="bracketClose" float="left" force="inter">)</pc>
@@ -9118,10 +9107,6 @@
                   <line n="1">
                      <w>Das</w>
                      <w>letz</w>
-                     <supplied>
-                        <pc type="slash" float="both" force="inter">/</pc>
-                        <w>t</w>
-                     </supplied>
                      <w>e</w>
                      <w>Mal</w>
                      <w>hat</w>
@@ -12054,28 +12039,21 @@
                </div>
                <div n="1" type="part">
                   <head n="1" type="part">
-                     <add hand="#pencil">
-                        <w rend="sans">A</w>
-                        <w>Vorträge</w>
-                        <w>im</w>
-                        <w>Wintersemester</w>
-                        <w>1921</w>
-                        <pc type="slash" float="both" force="inter">/</pc>
-                        <w>22</w>
-                     </add>
+                     <w rend="sans">A</w>
+                     <w>Vorträge</w>
+                     <w>im</w>
+                     <w>Wintersemester</w>
+                     <w>1921</w>
+                     <pc type="slash" float="both" force="inter">/</pc>
+                     <w>22</w>
                   </head>
                   <div n="3" type="lesson">
                      <head n="3" type="lesson">
                         <w>14</w>
                         <pc type="period" float="left" force="strong">.</pc>
                         <choice>
-                           <sic>
-                              <w>Okt</w>
-                           </sic>
-                           <corr>
-                              <w>Nov</w>
-                              <pc type="period" float="left" force="strong">.</pc>
-                           </corr>
+                           <w>Nov</w>
+                           <pc type="period" float="left" force="strong">.</pc>
                         </choice>
                         <w>1921</w>
                      </head>
@@ -12206,7 +12184,7 @@
                            <w>einem</w>
                         </l>
                         <l n="14">
-                           <w>Genuss<sic>h</sic>mittel</w>
+                           <w>Genussmittel</w>
                            <w>üble</w>
                            <w>Folgen</w>
                            <w>für</w>
@@ -12226,13 +12204,7 @@
                         </l>
                         <l n="16">
                            <choice>
-                              <sic>
-                                 <w>gebracht</w>
-                                 <w>werden</w>
-                              </sic>
-                              <corr>
-                                 <w>treten</w>
-                              </corr>
+                              <w>treten</w>
                            </choice>
                            <pc type="comma" float="left" force="weak">,</pc>
                            <w>damit</w>
@@ -12276,9 +12248,7 @@
                            <pc type="comma" float="left" force="weak">,</pc>
                            <w>das</w>
                            <w>Gesuchte</w>
-                           <add>
-                              <w>sind</w>
-                           </add>
+                           <w>sind</w>
                            <w>die</w>
                            <w>Bestand-</w>
                         </l>
@@ -12408,9 +12378,7 @@
                            <w>Werk-</w>
                         </l>
                         <l n="17">
-                           <add>
-                              <w>resultat</w>
-                           </add>
+                           <w>resultat</w>
                            <w>heranzuschleichen</w>
                            <w>um</w>
                            <w>schnell</w>
@@ -12545,15 +12513,11 @@
                            <w>und</w>
                            <w>werden</w>
                            <w>uns</w>
-                           <add>
-                              <w>hier</w>
-                           </add>
+                           <w>hier</w>
                            <w>daher</w>
                            <w>naturgemäss</w>
                            <w>auf</w>
-                           <add>
-                              <w>vorzugsweise</w>
-                           </add>
+                           <w>vorzugsweise</w>
                         </l>
                         <l n="12">
                            <w>formalem</w>
@@ -12591,8 +12555,7 @@
                            <w>nur</w>
                         </l>
                         <l n="16">
-                           <w>etwa<sic>s</sic>
-                           </w>
+                           <w>etwa</w>
                            <w>die</w>
                            <w>Sehnsucht</w>
                            <pc type="comma" float="left" force="weak">,</pc>
@@ -12616,13 +12579,9 @@
                            <w>dazu</w>
                            <pc type="comma" float="left" force="weak">,</pc>
                            <w>sondern</w>
-                           <add>
-                              <w>auch</w>
-                           </add>
+                           <w>auch</w>
                            <w>ein</w>
-                           <add>
-                              <w>allgemeiner</w>
-                           </add>
+                           <w>allgemeiner</w>
                            <w>Zustand</w>
                         </l>
                         <l n="19">
@@ -12667,12 +12626,7 @@
                            <w>damit</w>
                            <w>nicht</w>
                            <choice>
-                              <sic>
-                                 <w>ein</w>
-                              </sic>
-                              <corr>
-                                 <w>das</w>
-                              </corr>
+                              <w>das</w>
                            </choice>
                            <w>Miss-</w>
                         </l>
@@ -12700,9 +12654,7 @@
                            <w>noch</w>
                            <w>muss</w>
                            <w>ich</w>
-                           <add>
-                              <w>anderseits</w>
-                           </add>
+                           <w>anderseits</w>
                            <w>hier</w>
                            <w>betonen</w>
                         </l>
@@ -12710,9 +12662,7 @@
                            <w>dass</w>
                            <w>die</w>
                            <w>genaueste</w>
-                           <add>
-                              <w>wissenschaftliche</w>
-                           </add>
+                           <w>wissenschaftliche</w>
                            <w>Kenntnis</w>
                            <w>der</w>
                            <w>Natur</w>
@@ -12781,14 +12731,9 @@
                            <w>Richtung</w>
                         </l>
                         <l n="15">
-                           <w>
-                              <add hand="#pencil">mit</add>
-                           </w>
-                           <w>
-                              <add hand="#pencil">Formen</add>
-                           </w>
-                           <w>
-                              <add hand="#pencil">aus</add>gerüstet</w>
+                           <w>mit</w>
+                           <w>Formen</w>
+                           <w>ausgerüstet</w>
                            <w>sind</w>
                            <pc type="period" float="left" force="strong">.</pc>
                            <w>Dass</w>
@@ -12814,16 +12759,10 @@
                            <w>Formen</w>
                            <w>nicht</w>
                            <choice>
-                              <sic>
-                                 <w>finden</w>
-                                 <w>können</w>
-                              </sic>
-                              <corr>
-                                 <w>bei</w>
-                                 <w>der</w>
-                                 <w>Hand</w>
-                                 <w>haben</w>
-                              </corr>
+                              <w>bei</w>
+                              <w>der</w>
+                              <w>Hand</w>
+                              <w>haben</w>
                            </choice>
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
@@ -12836,13 +12775,7 @@
                            <w>auf</w>
                            <w>den</w>
                            <choice>
-                              <sic>
-                                 <w>oft</w>
-                                 <w>einmaligen</w>
-                              </sic>
-                              <corr>
-                                 <w>vereinzelten</w>
-                              </corr>
+                              <w>vereinzelten</w>
                            </choice>
                         </l>
                         <l n="19">
@@ -12857,54 +12790,30 @@
                            <w>einmalige</w>
                            <w>Ehre</w>
                            <choice>
-                              <sic hand="#pencil">
-                                 <w>und</w>
-                                 <w>uns</w>
-                                 <w>vielleicht</w>
-                                 <w>Vorüber-</w>
-                              </sic>
-                              <corr>
-                                 <w>macht</w>
-                                 <w>durch</w>
-                                 <w>ein</w>
-                                 <w>gelungenes</w>
-                                 <w>Werk</w>
-                                 <pc type="comma" float="left" force="weak">,</pc>
-                                 <w>das</w>
-                              </corr>
+                              <w>macht</w>
+                              <w>durch</w>
+                              <w>ein</w>
+                              <w>gelungenes</w>
+                              <w>Werk</w>
+                              <pc type="comma" float="left" force="weak">,</pc>
+                              <w>das</w>
                            </choice>
                         </l>
                         <l n="21">
-                           <add>
-                              <w>den</w>
-                              <w>Professionellen</w>
-                              <sic hand="#pencil">
-                                 <w>vorü</w>
-                              </sic>
-                              <w>im</w>
-                              <w>Einzelfalle</w>
-                              <w>zu</w>
-                              <w>beschämen</w>
-                              <w>vermag</w>
-                           </add>
+                           <w>den</w>
+                           <w>Professionellen</w>
+                           <w>im</w>
+                           <w>Einzelfalle</w>
+                           <w>zu</w>
+                           <w>beschämen</w>
+                           <w>vermag</w>
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
                      <pb xml:id="klee_crit_83048" n="5" facs="83048.jpg"/>
                      <ab>
                         <l n="1">
-                           <choice>
-                              <sic hand="#pencil">
-                                 <w>gehende</w>
-                                 <w>Schande</w>
-                                 <w>macht</w>
-                              </sic>
-                              <add hand="#pencil">
-                                 <del rend="strikethrough">
-                                    <w>vielleicht</w>
-                                 </del>
-                              </add>
-                           </choice>
+                           <choice/>
                         </l>
                      </ab>
                      <trailer rend="bold" type="pause">
@@ -12926,9 +12835,6 @@
                            <w>da</w>
                            <pc type="comma" float="left" force="weak">,</pc>
                            <w>wo</w>
-                           <sic>
-                              <w>es</w>
-                           </sic>
                            <w>die</w>
                            <w>bildnerische</w>
                         </l>
@@ -12959,34 +12865,21 @@
                         <l n="1">
                            <figure type="paragraphism" facs="#zone_f83049_par1" rend="par-left"/>
                            <choice>
-                              <sic>
-                                 <w>Beim</w>
-                              </sic>
-                              <corr>
-                                 <w>Kurz</w>
-                                 <w>nach</w>
-                                 <w>dem</w>
-                              </corr>
+                              <w>Kurz</w>
+                              <w>nach</w>
+                              <w>dem</w>
                            </choice>
                            <w>Ansetzen</w>
-                           <w>de<choice>
-                                 <sic>r</sic>
-                                 <corr>s</corr>
-                              </choice>
+                           <w>de<choice>s</choice>
                            </w>
                            <choice>
-                              <sic>
-                                 <w>Hand</w>
-                              </sic>
-                              <corr>
-                                 <w>Stiftes</w>
-                                 <w>oder</w>
-                                 <w>was</w>
-                                 <w>es</w>
-                                 <w>sonst</w>
-                                 <w>Spitzes</w>
-                                 <w>ist</w>
-                              </corr>
+                              <w>Stiftes</w>
+                              <w>oder</w>
+                              <w>was</w>
+                              <w>es</w>
+                              <w>sonst</w>
+                              <w>Spitzes</w>
+                              <w>ist</w>
                            </choice>
                            <w>entsteht</w>
                            <w>eine</w>
@@ -12996,11 +12889,6 @@
                         </l>
                         <l n="2">
                            <figure facs="#zone_f83049_fig1" rend="out-left"/>
-                           <sic>
-                              <w>linear</w>
-                              <w>aktiven</w>
-                              <w>Charakters</w>
-                           </sic>
                            <pc type="bracketOpen" float="right" force="inter">(</pc>
                            <w>Je</w>
                            <w>freier</w>
@@ -13032,26 +12920,15 @@
                            <w>aber</w>
                            <w>eine</w>
                            <choice>
-                              <sic>
-                                 <w>Fläche</w>
-                              </sic>
-                              <corr>
-                                 <w>Linie</w>
-                              </corr>
+                              <w>Linie</w>
                            </choice>
                            <w>an</w>
                            <pc type="comma" float="left" force="weak">,</pc>
-                           <w>ein<sic>e</sic>
-                           </w>
-                           <w>
-                              <sic>breit</sic>
-                           </w>
+                           <w>ein</w>
+                           <w/>
                         </l>
                         <l n="6">
-                           <w>kanntige<choice>
-                                 <sic>n</sic>
-                                 <corr>s</corr>
-                              </choice>
+                           <w>kanntige<choice>s</choice>
                            </w>
                            <w>Schwärz-</w>
                            <w>oder</w>
@@ -13067,9 +12944,6 @@
                            <w>zunächst</w>
                            <w>und</w>
                            <w>bei</w>
-                           <sic>
-                              <w>nicht</w>
-                           </sic>
                            <w>sehr</w>
                         </l>
                         <l n="8">
@@ -13134,9 +13008,7 @@
                            <w>Bleiben</w>
                            <w>wir</w>
                            <w>also</w>
-                           <add>
-                              <w>vorläufig</w>
-                           </add>
+                           <w>vorläufig</w>
                            <w>beim</w>
                            <w>primitivsten</w>
                            <w>Mittel</w>
@@ -13186,15 +13058,9 @@
                            <w>eines</w>
                            <w>Tags</w>
                            <choice>
-                              <sic>
-                                 <w>den</w>
-                              </sic>
-                              <corr>
-                                 <w>das</w>
-                              </corr>
+                              <w>das</w>
                            </choice>
-                           <w>Phaenomen<sic>s</sic>
-                           </w>
+                           <w>Phaenomen</w>
                            <w>des</w>
                            <w>beweglichen</w>
                            <w>Punktes</w>
@@ -13277,14 +13143,8 @@
                            <pc type="comma" float="left" force="weak">,</pc>
                            <w>aber</w>
                            <choice>
-                              <sic>
-                                 <w>die</w>
-                                 <w>anderen</w>
-                              </sic>
-                              <corr>
-                                 <w>andere</w>
-                                 <w>Kinder</w>
-                              </corr>
+                              <w>andere</w>
+                              <w>Kinder</w>
                            </choice>
                            <w>werden</w>
                            <w>bald</w>
@@ -13328,9 +13188,6 @@
                            <w>Freiheit</w>
                            <w>der</w>
                            <w>Linienführung</w>
-                           <sic>
-                              <w>ent</w>
-                           </sic>
                         </l>
                         <l n="17">
                            <w>unterwirft</w>
@@ -13372,9 +13229,7 @@
                            <w>Primitivität</w>
                            <w>kann</w>
                            <w>man</w>
-                           <add>
-                              <w>doch</w>
-                           </add>
+                           <w>doch</w>
                            <w>nicht</w>
                            <w>gut</w>
                         </l>
@@ -13403,10 +13258,6 @@
                            <w>die</w>
                            <w>übersichtlich</w>
                            <w>einfache</w>
-                           <sic>
-                              <w>n</w>
-                              <w>Gesi</w>
-                           </sic>
                            <w>Anlage</w>
                            <w>zu</w>
                         </l>
@@ -13418,20 +13269,16 @@
                      </ab>
                      <trailer rend="bold" type="pause">
                         <pc type="punct" force="inter">*</pc>
-                        <add>
-                           <w>Man</w>
-                           <w>wird</w>
-                           <w>einordnen</w>
-                           <w>müssen</w>
-                        </add>
+                        <w>Man</w>
+                        <w>wird</w>
+                        <w>einordnen</w>
+                        <w>müssen</w>
                      </trailer>
                      <ab>
                         <l n="6">
-                           <add>
-                              <w>Hauptsachen</w>
-                              <w>und</w>
-                              <w>Nebensachen</w>
-                           </add>
+                           <w>Hauptsachen</w>
+                           <w>und</w>
+                           <w>Nebensachen</w>
                         </l>
                      </ab>
                      <ab n="3">
@@ -13519,10 +13366,8 @@
                         </figure>
                         <ab>
                            <l n="3">
-                              <add hand="#pencil">
-                                 <w>5</w>
-                                 <w>a</w>
-                              </add>
+                              <w>5</w>
+                              <w>a</w>
                            </l>
                         </ab>
                         <figure facs="#zone_f83052_fig3" rend="block">
@@ -13670,9 +13515,6 @@
                               <w>w</w>
                               <pc type="period" float="left" force="strong">.</pc>
                               <w>Man</w>
-                              <del rend="strikethrough">
-                                 <w>n</w>
-                              </del>
                               <w>kann</w>
                               <w>eher</w>
                            </l>
@@ -13738,10 +13580,8 @@
                            <l n="8">
                               <w>Linie</w>
                               <w>Figuren</w>
-                              <add>
-                                 <w>der</w>
-                                 <w>Fläche</w>
-                              </add>
+                              <w>der</w>
+                              <w>Fläche</w>
                               <w>wie</w>
                               <w>Drei</w>
                               <w>Eck</w>
@@ -13875,12 +13715,7 @@
                               <w>passiven</w>
                               <w>Charakter</w>
                               <choice>
-                                 <sic>
-                                    <w>hat</w>
-                                 </sic>
-                                 <corr>
-                                    <w>haben</w>
-                                 </corr>
+                                 <w>haben</w>
                               </choice>
                               <w>die</w>
                               <w>Linien</w>
@@ -13902,9 +13737,7 @@
                               <w>Man</w>
                               <w>sieht</w>
                               <w>wohl</w>
-                              <add>
-                                 <w>auch</w>
-                              </add>
+                              <w>auch</w>
                               <w>Linien</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>aber</w>
@@ -13927,11 +13760,6 @@
                               <w>aus</w>
                               <w>Flächen-Handlungen</w>
                               <pc type="period" float="left" force="strong">.</pc>
-                              <sic>
-                                 <w>Das</w>
-                                 <w>Element</w>
-                                 <w>ist</w>
-                              </sic>
                            </l>
                            <l n="16">
                               <w>Die</w>
@@ -13941,11 +13769,6 @@
                               <w>getan</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>sondern</w>
-                              <add>
-                                 <sic>
-                                    <w>aktiv</w>
-                                 </sic>
-                              </add>
                               <w>erlitten</w>
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
@@ -13984,15 +13807,11 @@
                               <w>war</w>
                               <w>teilte</w>
                               <w>sie</w>
-                              <sic>
-                                 <w>di</w>
-                              </sic>
                               <w>in</w>
                               <w>imaginäre</w>
                            </l>
                            <l n="5">
-                              <w>Fläche<add hand="#pencil">n</add>
-                              </w>
+                              <w>Flächen</w>
                               <pc type="period" float="left" force="strong">.</pc>
                               <w>Dazwischen</w>
                               <w>drängte</w>
@@ -14328,10 +14147,8 @@
                               <w>vor</w>
                               <w>14</w>
                               <w>Tagen</w>
-                              <add>
-                                 <w>unter</w>
-                                 <w>anderem</w>
-                              </add>
+                              <w>unter</w>
+                              <w>anderem</w>
                               <w>mit</w>
                               <w>der</w>
                               <w>freien</w>
@@ -14404,8 +14221,7 @@
                            <l n="16">
                               <w>hätte</w>
                               <w>dann</w>
-                              <w>etwa<sic>s</sic>
-                              </w>
+                              <w>etwa</w>
                               <w>der</w>
                               <w>volkstümlichen</w>
                               <w>Liedform</w>
@@ -14452,25 +14268,19 @@
                         </figure>
                         <ab>
                            <l n="20">
-                              <add>
-                                 <w>Begleitformen</w>
-                              </add>
+                              <w>Begleitformen</w>
                               <w>teils</w>
-                              <add>
-                                 <pc type="bracketOpen" float="right" force="inter">(</pc>
-                                 <w>fig</w>
-                                 <w>1</w>
-                                 <pc type="bracketClose" float="left" force="inter">)</pc>
-                              </add>
+                              <pc type="bracketOpen" float="right" force="inter">(</pc>
+                              <w>fig</w>
+                              <w>1</w>
+                              <pc type="bracketClose" float="left" force="inter">)</pc>
                               <w>absolut</w>
                               <w>convergierenden</w>
                               <w>Charakters</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>oder</w>
-                              <add>
-                                 <w>fig</w>
-                                 <w>2</w>
-                              </add>
+                              <w>fig</w>
+                              <w>2</w>
                               <w>effectiv</w>
                               <w>convergieren-</w>
                            </l>
@@ -14573,8 +14383,7 @@
                               <w>Menschen</w>
                               <w>denken</w>
                               <pc type="period" float="left" force="strong">.</pc>
-                              <w>Man<del rend="strikethrough">n</del>
-                              </w>
+                              <w>Man</w>
                               <w>kann</w>
                            </l>
                            <l n="6">
@@ -14604,12 +14413,7 @@
                               <w>sehn</w>
                               <w>wir</w>
                               <choice>
-                                 <sic>
-                                    <w>unsern</w>
-                                 </sic>
-                                 <corr>
-                                    <w>den</w>
-                                 </corr>
+                                 <w>den</w>
                               </choice>
                               <w>Nebenmen-</w>
                            </l>
@@ -14649,13 +14453,11 @@
                               <w>wir</w>
                               <w>uns</w>
                               <w>darunter</w>
-                              <add>
-                                 <pc type="bracketOpen" float="right" force="inter">(</pc>
-                                 <w>fig</w>
-                                 <pc type="period" float="left" force="strong">.</pc>
-                                 <w>5</w>
-                                 <pc type="bracketClose" float="left" force="inter">)</pc>
-                              </add>
+                              <pc type="bracketOpen" float="right" force="inter">(</pc>
+                              <w>fig</w>
+                              <pc type="period" float="left" force="strong">.</pc>
+                              <w>5</w>
+                              <pc type="bracketClose" float="left" force="inter">)</pc>
                               <w>Eisenbahn-</w>
                            </l>
                            <l n="12">
@@ -14759,11 +14561,9 @@
                               <pc type="quest" float="left" force="strong">?</pc>
                               <w>Nun</w>
                               <pc type="comma" float="left" force="weak">,</pc>
-                              <add>
-                                 <w>wir</w>
-                                 <w>sind</w>
-                                 <w>eben</w>
-                              </add>
+                              <w>wir</w>
+                              <w>sind</w>
+                              <w>eben</w>
                               <w>aus</w>
                               <w>dem</w>
                               <w>flächigen</w>
@@ -14796,9 +14596,7 @@
                               <w>das</w>
                               <w>letzte</w>
                               <w>Mal</w>
-                              <add>
-                                 <w>zunächst</w>
-                              </add>
+                              <w>zunächst</w>
                               <w>bedauernd</w>
                               <w>festgestellt</w>
                               <pc type="comma" float="left" force="weak">,</pc>
@@ -14817,7 +14615,7 @@
                               <w>nicht</w>
                               <w>analog</w>
                               <w>der</w>
-                              <w>Be<add>we</add>gung</w>
+                              <w>Bewegung</w>
                               <w>von</w>
                               <w>Punkten</w>
                               <figure facs="#zone_f83058_fig2" rend="inline"/>
@@ -14885,12 +14683,7 @@
                               <w>Es</w>
                               <w>wird</w>
                               <choice>
-                                 <sic>
-                                    <w>auch</w>
-                                 </sic>
-                                 <corr>
-                                    <w>aber</w>
-                                 </corr>
+                                 <w>aber</w>
                               </choice>
                               <w>weder</w>
                               <w>weitläufig</w>
@@ -14914,7 +14707,7 @@
                               <w>die</w>
                               <w>Klarlegung</w>
                               <w>der</w>
-                              <w>innewohn<add>en</add>den</w>
+                              <w>innewohnenden</w>
                               <w>Phaenomene</w>
                            </l>
                            <l n="20">
@@ -15015,16 +14808,10 @@
                               <w>dargestellt</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>sieht</w>
-                              <w>diese<add>s</add>
-                              </w>
+                              <w>dieses</w>
                               <choice>
-                                 <sic>
-                                    <w>Darstellung</w>
-                                 </sic>
-                                 <corr>
-                                    <w>graphische</w>
-                                    <w>Bild</w>
-                                 </corr>
+                                 <w>graphische</w>
+                                 <w>Bild</w>
                               </choice>
                               <w>jedoch</w>
                            </l>
@@ -15191,9 +14978,7 @@
                         <ab>
                            <l n="7">
                               <w>und</w>
-                              <add>
-                                 <w>wir</w>
-                              </add>
+                              <w>wir</w>
                               <w>gelangen</w>
                               <w>schliesslich</w>
                               <w>zur</w>
@@ -15257,9 +15042,7 @@
                            <l n="14">
                               <w>auf</w>
                               <w>eine</w>
-                              <add>
-                                 <w>ganz</w>
-                              </add>
+                              <w>ganz</w>
                               <w>zurückliegende</w>
                            </l>
                            <l n="15">
@@ -15448,11 +15231,9 @@
                         <ab>
                            <l n="14">
                               <w>nimmt</w>
-                              <add>
-                                 <w>in</w>
-                                 <w>der</w>
-                                 <w>Projektion</w>
-                              </add>
+                              <w>in</w>
+                              <w>der</w>
+                              <w>Projektion</w>
                               <w>diese</w>
                               <w>Gestalt</w>
                               <w>an</w>
@@ -15562,9 +15343,7 @@
                               <w>nun</w>
                               <w>haben</w>
                               <w>wir</w>
-                              <add>
-                                 <w>nebenbei</w>
-                              </add>
+                              <w>nebenbei</w>
                               <w>Bekanntschaft</w>
                               <w>mit</w>
                               <w>dem</w>
@@ -15607,15 +15386,8 @@
                               <w>so</w>
                               <w>vorgehen</w>
                               <w>wie</w>
-                              <sic>
-                                 <w>beim</w>
-                              </sic>
                            </l>
                            <l n="4">
-                              <sic>
-                                 <w>vorigen</w>
-                                 <w>M</w>
-                              </sic>
                               <w>vorhin</w>
                            </l>
                            <l n="5">
@@ -15737,11 +15509,9 @@
                               <w>hier</w>
                               <w>in</w>
                               <w>den</w>
-                              <add>
-                                 <w>nun</w>
-                                 <w>schon</w>
-                                 <w>bekannten</w>
-                              </add>
+                              <w>nun</w>
+                              <w>schon</w>
+                              <w>bekannten</w>
                               <w>Raum</w>
                               <w>einen</w>
                               <w>zweiten</w>
@@ -15795,9 +15565,7 @@
                               <w>endet</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>während</w>
-                              <add>
-                                 <w>wirkliche</w>
-                              </add>
+                              <w>wirkliche</w>
                               <w>Räume</w>
                               <w>über</w>
                               <w>unser</w>
@@ -15885,20 +15653,13 @@
                         <ab n="2">
                            <l n="5">
                               <w>Eine</w>
-                              <add>
-                                 <w>solche</w>
-                                 <w>wagrechte</w>
-                              </add>
+                              <w>solche</w>
+                              <w>wagrechte</w>
                               <w>Fläche</w>
                               <w>die</w>
                               <w>von</w>
                               <choice>
-                                 <sic>
-                                    <w>oben</w>
-                                 </sic>
-                                 <corr>
-                                    <w>unten</w>
-                                 </corr>
+                                 <w>unten</w>
                               </choice>
                               <w>gesehen</w>
                               <w>werden</w>
@@ -15983,8 +15744,7 @@
                            </l>
                            <l n="12">
                               <w>diese</w>
-                              <w>
-                                 <add>Ober</add>fläche</w>
+                              <w>Oberfläche</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>weder</w>
                               <w>von</w>
@@ -16013,9 +15773,7 @@
                            <l n="1">
                               <w>ihn</w>
                               <w>als</w>
-                              <add>
-                                 <w>wagrechte</w>
-                              </add>
+                              <w>wagrechte</w>
                               <w>Linie</w>
                            </l>
                         </ab>
@@ -16079,9 +15837,6 @@
                               <w>die</w>
                               <w>ihr</w>
                               <w>zugehörige</w>
-                              <sic>
-                                 <w>Li</w>
-                              </sic>
                               <w>wagrechte</w>
                               <w>Linie</w>
                               <w>der</w>
@@ -16271,8 +16026,7 @@
                         <ab n="1">
                            <l n="1">
                               <w>Diese</w>
-                              <w>
-                                 <add>Horizont-</add>Kreisscheibe</w>
+                              <w>Horizont-Kreisscheibe</w>
                               <w>trennt</w>
                               <w>die</w>
                               <w>gesamte</w>
@@ -16286,15 +16040,9 @@
                               <w>oberen</w>
                               <w>und</w>
                               <w>einen</w>
-                              <w>untere<add>n</add>
-                              </w>
+                              <w>unteren</w>
                               <choice>
-                                 <sic>
-                                    <w>Hälfte</w>
-                                 </sic>
-                                 <corr>
-                                    <w>Teil</w>
-                                 </corr>
+                                 <w>Teil</w>
                               </choice>
                               <pc type="period" float="left" force="strong">.</pc>
                               <w>Als</w>
@@ -16305,9 +16053,7 @@
                               <w>uns</w>
                               <w>in</w>
                               <w>einer</w>
-                              <add>
-                                 <w>grossen</w>
-                              </add>
+                              <w>grossen</w>
                               <w>runden</w>
                               <w>Dose</w>
                               <w>befänden</w>
@@ -16363,16 +16109,10 @@
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>und</w>
                               <choice>
-                                 <sic>
-                                    <w>in</w>
-                                    <w>Notfall</w>
-                                 </sic>
-                                 <corr>
-                                    <w>wenn</w>
-                                    <w>es</w>
-                                    <w>sein</w>
-                                    <w>muss</w>
-                                 </corr>
+                                 <w>wenn</w>
+                                 <w>es</w>
+                                 <w>sein</w>
+                                 <w>muss</w>
                               </choice>
                               <w>strecken</w>
                               <w>wir</w>
@@ -16389,19 +16129,11 @@
                               <w>Fehler</w>
                               <w>wieder</w>
                               <choice>
-                                 <sic>
-                                    <w>zu</w>
-                                    <w>korrigieren</w>
-                                 </sic>
-                                 <corr>
-                                    <w>aus-</w>
-                                 </corr>
+                                 <w>aus-</w>
                               </choice>
                            </l>
                            <l n="10">
-                              <add>
-                                 <w>zubalancieren</w>
-                              </add>
+                              <w>zubalancieren</w>
                               <pc type="period" float="left" force="strong">.</pc>
                               <w>In</w>
                               <w>besondern</w>
@@ -16486,9 +16218,7 @@
                               <w>Der</w>
                               <w>Wert</w>
                               <w>dieses</w>
-                              <add>
-                                 <w>ganzen</w>
-                              </add>
+                              <w>ganzen</w>
                               <w>Verfahrens</w>
                               <w>liegt</w>
                            </l>
@@ -16598,9 +16328,7 @@
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>als</w>
                               <w>der</w>
-                              <add>
-                                 <w>äussersten</w>
-                              </add>
+                              <w>äussersten</w>
                               <w>Verwirklichung</w>
                               <w>des</w>
                               <w>Symbols</w>
@@ -16633,10 +16361,6 @@
                               <w>für</w>
                               <w>die</w>
                               <w>bedeutung</w>
-                              <sic>
-                                 <pc type="comma" float="left" force="weak">,</pc>
-                                 <w>der</w>
-                              </sic>
                               <w>von</w>
                               <w>Senkrecht</w>
                            </l>
@@ -16664,14 +16388,8 @@
                               <w>den</w>
                               <w>Horizont</w>
                               <w>brachte</w>
-                              <w>un<choice>
-                                    <sic>d</sic>
-                                    <corr>s</corr>
-                                 </choice>
+                              <w>un<choice>s</choice>
                               </w>
-                              <sic>
-                                 <w>auf</w>
-                              </sic>
                               <w>die</w>
                               <w>räumliche</w>
                               <w>Erweiterung</w>
@@ -16727,32 +16445,8 @@
                               <w>aus</w>
                               <w>der</w>
                            </l>
-                           <l n="12">
-                              <sic>
-                                 <w>Dabei</w>
-                                 <w>wird</w>
-                                 <w>mir</w>
-                                 <pc type="comma" float="left" force="weak">,</pc>
-                                 <w>so</w>
-                                 <w>gut</w>
-                                 <w>wie</w>
-                                 <w>dem</w>
-                                 <w>Kaufmann</w>
-                                 <pc type="comma" float="left" force="weak">,</pc>
-                                 <w>als</w>
-                              </sic>
-                           </l>
-                           <l n="13">
-                              <sic>
-                                 <w>Instrument</w>
-                                 <w>die</w>
-                                 <w>Wage</w>
-                                 <w>von</w>
-                                 <w>Nutzen</w>
-                                 <w>sein</w>
-                                 <pc type="period" float="left" force="strong">.</pc>
-                              </sic>
-                           </l>
+                           <l n="12"/>
+                           <l n="13"/>
                            <l n="14">
                               <w>Anziehungskraft</w>
                               <w>der</w>
@@ -16805,9 +16499,6 @@
                            </l>
                            <l n="18">
                               <w>wir</w>
-                              <sic>
-                                 <w>den</w>
-                              </sic>
                               <w>noch</w>
                               <w>den</w>
                               <w>festen</w>
@@ -16821,9 +16512,6 @@
                               <hi rend="underline">
                                  <w>dem</w>
                                  <w>wir</w>
-                                 <sic>
-                                    <w>uns</w>
-                                 </sic>
                                  <w>normalerweise</w>
                                  <w>stehn</w>
                               </hi>
@@ -16914,20 +16602,12 @@
                               <w>in</w>
                               <w>einer</w>
                               <w>Fläche</w>
-                              <sic>
-                                 <w>liegen</w>
-                              </sic>
                               <w>wirken</w>
-                              <add hand="#pencil">
-                                 <w>können</w>
-                              </add>
+                              <w>können</w>
                               <pc type="period" float="left" force="strong">.</pc>
                               <w>Denn</w>
                            </l>
                            <l n="4">
-                              <sic>
-                                 <w>durch</w>
-                              </sic>
                               <w>zwei</w>
                               <w>Punkte</w>
                               <w>kann</w>
@@ -16943,10 +16623,6 @@
                               <w>auch</w>
                               <w>befinden</w>
                               <w>immer</w>
-                              <sic>
-                                 <w>mit</w>
-                                 <w>eine</w>
-                              </sic>
                               <w>in</w>
                               <w>eine</w>
                            </l>
@@ -16993,12 +16669,7 @@
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>dass</w>
                               <choice>
-                                 <sic>
-                                    <w>es</w>
-                                 </sic>
-                                 <corr>
-                                    <w>die</w>
-                                 </corr>
+                                 <w>die</w>
                               </choice>
                               <w>Beschränkung</w>
                            </l>
@@ -17271,8 +16942,7 @@
                               <w>flächige</w>
                               <pc type="period" float="left" force="strong">.</pc>
                               <w>Linear</w>
-                              <w>
-                                 <add>aufgefasst</add>ist</w>
+                              <w>aufgefasstist</w>
                               <w>es</w>
                               <w>ein</w>
                               <w>Viereck</w>
@@ -17284,9 +16954,7 @@
                               <w>Diagonalen</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>flächig</w>
-                              <add>
-                                 <w>aufgefasst</w>
-                              </add>
+                              <w>aufgefasst</w>
                               <w>ist</w>
                               <w>es</w>
                               <w>ein</w>
@@ -17409,9 +17077,7 @@
                               <w>Handlung</w>
                               <w>gestattet</w>
                               <w>mir</w>
-                              <add>
-                                 <w>die</w>
-                              </add>
+                              <w>die</w>
                               <w>sozusagen</w>
                               <w>sinnbildliche</w>
                               <w>Durchführung</w>
@@ -17580,17 +17246,11 @@
                               <w>setzen</w>
                               <w>neben</w>
                               <choice>
-                                 <sic>
-                                    <w>dem</w>
-                                 </sic>
-                                 <corr>
-                                    <w>das</w>
-                                 </corr>
+                                 <w>das</w>
                               </choice>
                            </l>
                            <l n="10">
-                              <w>hellgraue<add>m</add>
-                              </w>
+                              <w>hellgrauem</w>
                               <w>Viereck</w>
                               <w>ein</w>
                               <w>kleines</w>
@@ -17690,12 +17350,7 @@
                               <w>Es</w>
                               <w>ist</w>
                               <choice>
-                                 <sic>
-                                    <w>denkbar</w>
-                                 </sic>
-                                 <corr>
-                                    <w>sicher</w>
-                                 </corr>
+                                 <w>sicher</w>
                               </choice>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>dass</w>
@@ -17734,9 +17389,7 @@
                               <w>ist</w>
                               <pc type="period" float="left" force="strong">.</pc>
                               <w>Um</w>
-                              <add>
-                                 <w>das</w>
-                              </add>
+                              <w>das</w>
                               <w>hüben</w>
                               <w>und</w>
                               <w>das</w>
@@ -17755,8 +17408,7 @@
                               <w>part</w>
                               <w>sozusagen</w>
                               <w>zwingend</w>
-                              <w>zu<sic>r</sic>
-                              </w>
+                              <w>zu</w>
                               <w>Kennzeichnen</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>ist</w>
@@ -17768,9 +17420,6 @@
                               <w>als</w>
                               <w>diese</w>
                               <w>ganz</w>
-                              <sic>
-                                 <w>s</w>
-                              </sic>
                               <w>rohe</w>
                               <w>Gegen-</w>
                            </l>
@@ -17780,9 +17429,7 @@
                               <w>Es</w>
                               <w>muss</w>
                               <w>ein</w>
-                              <add>
-                                 <w>örtlicher</w>
-                              </add>
+                              <w>örtlicher</w>
                               <w>Imperativ</w>
                               <w>hinzutreten</w>
                            </l>
@@ -17858,11 +17505,9 @@
                         <div n="4" type="section">
                            <head n="4" type="section">
                               <hi rend="underline">
-                                 <add hand="#pencil">
-                                    <w>Gestaltungsbeispiel</w>
-                                    <w>fig</w>
-                                    <w>24</w>
-                                 </add>
+                                 <w>Gestaltungsbeispiel</w>
+                                 <w>fig</w>
+                                 <w>24</w>
                               </hi>
                            </head>
                            <ab n="3">
@@ -17990,12 +17635,7 @@
                                  <w>Horizontalen</w>
                                  <pc type="comma" float="left" force="weak">,</pc>
                                  <choice>
-                                    <sic>
-                                       <w>menschlich</w>
-                                    </sic>
-                                    <corr>
-                                       <w>ermenschlichtend</w>
-                                    </corr>
+                                    <w>ermenschlichtend</w>
                                  </choice>
                               </l>
                               <l n="15">
@@ -18023,9 +17663,6 @@
                               <l n="17">
                                  <w>irgendwo</w>
                                  <w>Halt</w>
-                                 <sic>
-                                    <w>zu</w>
-                                 </sic>
                                  <w>suchend</w>
                                  <pc type="comma" float="left" force="weak">,</pc>
                                  <w>um</w>
@@ -18098,8 +17735,7 @@
                               <l n="5">
                                  <w>man</w>
                                  <w>verbreitert</w>
-                                 <w>durch<sic>Vorstellen</sic>
-                                 </w>
+                                 <w>durch</w>
                               </l>
                               <l n="6">
                                  <w>ausgreifen</w>
@@ -18125,8 +17761,7 @@
                               </l>
                               <l n="9">
                                  <w>ist</w>
-                                 <w>
-                                    <sic>con</sic>centrisch</w>
+                                 <w>centrisch</w>
                                  <pc type="comma" float="left" force="weak">,</pc>
                                  <w>d</w>
                                  <pc type="period" float="left" force="strong">.</pc>
@@ -18150,9 +17785,6 @@
                                  <w>wir</w>
                                  <w>uns</w>
                                  <w>nun</w>
-                                 <sic>
-                                    <w>diese</w>
-                                 </sic>
                                  <w>solche</w>
                                  <w>Compositionelle</w>
                               </l>
@@ -18186,8 +17818,7 @@
                                  <w>einer</w>
                               </l>
                               <l n="15">
-                                 <w>
-                                    <sic>con</sic>centrischen</w>
+                                 <w>centrischen</w>
                                  <w>Anlage</w>
                                  <w>sprechen</w>
                                  <pc type="period" float="left" force="strong">.</pc>
@@ -18250,12 +17881,7 @@
                                  <w>des</w>
                                  <w>Kippens</w>
                                  <choice>
-                                    <sic>
-                                       <w>fast</w>
-                                    </sic>
-                                    <corr>
-                                       <w>eben</w>
-                                    </corr>
+                                    <w>eben</w>
                                  </choice>
                               </l>
                               <l n="5">
@@ -18290,12 +17916,7 @@
                                  <w>findet</w>
                                  <w>und</w>
                                  <choice>
-                                    <sic>
-                                       <w>mit</w>
-                                    </sic>
-                                    <corr>
-                                       <w>in</w>
-                                    </corr>
+                                    <w>in</w>
                                  </choice>
                                  <w>dem</w>
                                  <w>Gewicht</w>
@@ -18496,13 +18117,8 @@
                               </l>
                               <l n="4">
                                  <choice>
-                                    <sic>
-                                       <w>Er</w>
-                                    </sic>
-                                    <corr>
-                                       <w>Der</w>
-                                       <w>Mensch</w>
-                                    </corr>
+                                    <w>Der</w>
+                                    <w>Mensch</w>
                                  </choice>
                                  <w>wird</w>
                                  <w>zum</w>
@@ -18522,12 +18138,7 @@
                                  <w>gegenüber</w>
                                  <w>dem</w>
                                  <choice>
-                                    <sic>
-                                       <w>cere</w>
-                                    </sic>
-                                    <corr>
-                                       <w>vertebralen</w>
-                                    </corr>
+                                    <w>vertebralen</w>
                                  </choice>
                                  <w>Aufbau</w>
                                  <pc type="bracketOpen" float="right" force="inter">(</pc>
@@ -18614,11 +18225,9 @@
                            </ab>
                            <ab type="margin" place="left" rend="margin-left">
                               <pc type="exclam" float="left" force="strong">!</pc>
-                              <add>
-                                 <w>wirklich</w>
-                                 <w>gebaut</w>
-                                 <pc type="exclam" float="left" force="strong">!</pc>
-                              </add>
+                              <w>wirklich</w>
+                              <w>gebaut</w>
+                              <pc type="exclam" float="left" force="strong">!</pc>
                            </ab>
                            <figure facs="#zone_f83081_fig2" rend="block">
                               <head rend="italic">
@@ -18659,8 +18268,7 @@
                                  <pc type="period" float="left" force="strong">.</pc>
                                  <w>bei</w>
                                  <w>diesem</w>
-                                 <w>
-                                    <add>aller</add>primi -</w>
+                                 <w>allerprimi -</w>
                               </l>
                               <l n="16">
                                  <w>tivsten</w>
@@ -19110,9 +18718,6 @@
                                  <w>Wirkungen</w>
                                  <w>gerade</w>
                                  <w>das</w>
-                                 <del rend="strikethrough">
-                                    <w>s</w>
-                                 </del>
                                  <w>hellste</w>
                                  <w>Weiss</w>
                                  <pc type="period" float="left" force="strong">.</pc>
@@ -19317,9 +18922,7 @@
                                  <w>mehr</w>
                                  <w>Relationen</w>
                                  <w>bringt</w>
-                                 <add>
-                                    <w>dann</w>
-                                 </add>
+                                 <w>dann</w>
                                  <w>die</w>
                                  <w>farbige</w>
                                  <w>Welt</w>
@@ -19450,22 +19053,12 @@
                            <l n="2">
                               <w>tionelle</w>
                               <choice>
-                                 <sic>
-                                    <w>r</w>
-                                 </sic>
-                                 <corr>
-                                    <w>n</w>
-                                 </corr>
+                                 <w>n</w>
                               </choice>
                               <w>und</w>
                               <w>structurale</w>
                               <choice>
-                                 <sic>
-                                    <w>r</w>
-                                 </sic>
-                                 <corr>
-                                    <w>n</w>
-                                 </corr>
+                                 <w>n</w>
                               </choice>
                               <w>Charakteren</w>
                               <w>gezeigt</w>
@@ -19589,9 +19182,7 @@
                            </l>
                            <l n="17">
                               <w>Richtung</w>
-                              <add>
-                                 <w>erweitert</w>
-                              </add>
+                              <w>erweitert</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>steht</w>
                               <w>immer</w>
@@ -19605,27 +19196,13 @@
                               <w>tiefster</w>
                               <w>Stelle</w>
                               <choice>
-                                 <sic>
-                                    <w>des</w>
-                                 </sic>
-                                 <corr>
-                                    <w>der</w>
-                                    <w>Ordnung</w>
-                                 </corr>
+                                 <w>der</w>
+                                 <w>Ordnung</w>
                               </choice>
-                              <w>structurale<choice>
-                                    <sic>n</sic>
-                                    <corr>r</corr>
-                                 </choice>
+                              <w>structurale<choice>r</choice>
                               </w>
-                              <w>Charakter<choice>
-                                    <sic>s</sic>
-                                    <corr>e</corr>
-                                 </choice>
+                              <w>Charakter<choice>e</choice>
                               </w>
-                              <sic>
-                                 <w>Eine</w>
-                              </sic>
                            </l>
                         </ab>
                         <ab n="2">
@@ -19718,32 +19295,21 @@
                               <w>sich</w>
                               <w>lediglich</w>
                               <w>der</w>
-                              <sic>
-                                 <w>Quantitäten</w>
-                              </sic>
                               <pc type="slash" float="both" force="inter">/</pc>
                               <hi hand="#pencil">
                                  <w>Maasse</w>
                               </hi>
                            </l>
                            <l n="8">
-                              <add hand="#pencil">
-                                 <pc type="punct" float="both" force="inter">"</pc>
-                              </add>
+                              <pc type="punct" float="both" force="inter">"</pc>
                               <w>einfache</w>
                               <w>Strecke</w>
-                              <add hand="#pencil">
-                                 <pc type="punct" float="both" force="inter">"</pc>
-                              </add>
+                              <pc type="punct" float="both" force="inter">"</pc>
                               <w>und</w>
-                              <add hand="#pencil">
-                                 <pc type="punct" float="both" force="inter">"</pc>
-                              </add>
+                              <pc type="punct" float="both" force="inter">"</pc>
                               <w>doppelte</w>
                               <w>Strecke</w>
-                              <add hand="#pencil">
-                                 <pc type="punct" float="both" force="inter">"</pc>
-                              </add>
+                              <pc type="punct" float="both" force="inter">"</pc>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>letztere</w>
                            </l>
@@ -19751,9 +19317,6 @@
                               <w>bedient</w>
                               <w>sich</w>
                               <w>der</w>
-                              <sic>
-                                 <w>Qualitäten</w>
-                              </sic>
                               <pc type="slash" float="both" force="inter">/</pc>
                               <hi hand="#pencil">
                                  <w>Gewichte</w>
@@ -19780,9 +19343,6 @@
                            <l n="11">
                               <w>Kraft</w>
                               <pc type="comma" float="left" force="weak">,</pc>
-                              <sic>
-                                 <w>die</w>
-                              </sic>
                               <w>welche</w>
                               <w>die</w>
                               <w>höhere</w>
@@ -19815,26 +19375,16 @@
                               <w>Kraft</w>
                               <w>die</w>
                               <choice>
-                                 <sic>
-                                    <w>für</w>
-                                 </sic>
-                                 <corr>
-                                    <w>auf</w>
-                                 </corr>
+                                 <w>auf</w>
                               </choice>
                            </l>
                            <l n="14">
                               <w>ihre</w>
                               <w>höhere</w>
                               <w>Leistung</w>
-                              <add>
-                                 <w>hin</w>
-                                 <w>nur</w>
-                              </add>
+                              <w>hin</w>
+                              <w>nur</w>
                               <w>mit</w>
-                              <sic>
-                                 <w>d</w>
-                              </sic>
                               <w>verdoppelter</w>
                               <w>Energie</w>
                            </l>
@@ -19843,10 +19393,8 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                            <l n="16">
-                              <add hand="#pencil">
-                                 <w>Seite</w>
-                                 <w>39</w>
-                              </add>
+                              <w>Seite</w>
+                              <w>39</w>
                            </l>
                         </ab>
                         <trailer rend="bold" type="pause">
@@ -20000,12 +19548,7 @@
                               <w>einfachste</w>
                               <w>Weg</w>
                               <choice>
-                                 <sic>
-                                    <w>ste</w>
-                                 </sic>
-                                 <corr>
-                                    <w>scheint</w>
-                                 </corr>
+                                 <w>scheint</w>
                               </choice>
                            </l>
                            <l n="9">
@@ -20146,19 +19689,10 @@
                            </l>
                            <l n="2">
                               <choice>
-                                 <sic>
-                                    <w>paarweise</w>
-                                    <w>in</w>
-                                 </sic>
-                                 <corr>
-                                    <w>als</w>
-                                    <w>paarweis<sic>er</sic>e</w>
-                                 </corr>
+                                 <w>als</w>
+                                 <w>paarweise</w>
                               </choice>
                               <w>Zusammengehörigkeit</w>
-                              <sic>
-                                 <w>der</w>
-                              </sic>
                               <w>zweier</w>
                               <w>benach-</w>
                            </l>
@@ -20167,17 +19701,8 @@
                               <w>Felder</w>
                               <w>in</w>
                               <choice>
-                                 <sic>
-                                    <w>ver</w>
-                                 </sic>
-                                 <corr>
-                                    <w>hor</w>
-                                 </corr>
+                                 <w>hor</w>
                               </choice>
-                              <del rend="strikethrough">
-                                 <pc type="slash" float="both" force="inter">/</pc>
-                                 <w>z</w>
-                              </del>
                               <w>izontaler</w>
                               <w>und</w>
                               <w>in</w>
@@ -20199,16 +19724,9 @@
                               <w>in</w>
                               <w>viereckige</w>
                               <pc type="comma" float="left" force="weak">,</pc>
-                              <sic>
-                                 <w>und</w>
-                              </sic>
                               <w>vierteilige</w>
                            </l>
                            <l n="5">
-                              <sic>
-                                 <w>Einheiten</w>
-                                 <w>en</w>
-                              </sic>
                               <w>und</w>
                               <w>sechswertige</w>
                               <w>Einheiten</w>
@@ -20275,12 +19793,7 @@
                               <w>Eine</w>
                               <w>Variante</w>
                               <choice>
-                                 <sic>
-                                    <w>in</w>
-                                 </sic>
-                                 <corr>
-                                    <w>der</w>
-                                 </corr>
+                                 <w>der</w>
                               </choice>
                               <w>Anschauung</w>
                               <w>dieser</w>
@@ -20306,9 +19819,6 @@
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>die</w>
                               <pc type="comma" float="left" force="weak">,</pc>
-                              <sic>
-                                 <w>complementär</w>
-                              </sic>
                               <pc type="slash" float="both" force="inter">/</pc>
                               <hi hand="#pencil">
                                  <w>reciprok</w>
@@ -20360,8 +19870,7 @@
                               <w>erfinden</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>sobald</w>
-                              <w>ein<sic>e</sic>
-                              </w>
+                              <w>ein</w>
                               <w>beliebig</w>
                               <w>wiederholender</w>
                            </l>
@@ -20534,9 +20043,6 @@
                               <w>grosse</w>
                               <w>Masse</w>
                               <w>bemerkbar</w>
-                              <del rend="strikethrough">
-                                 <w>e</w>
-                              </del>
                               <w>machen</w>
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
@@ -20573,8 +20079,7 @@
                               <w>leicht</w>
                               <w>einordnen</w>
                               <pc type="comma" float="left" force="weak">,</pc>
-                              <w>das<sic hand="#pencil">s</sic>
-                              </w>
+                              <w>das</w>
                               <w>Wesen</w>
                               <w>des</w>
                            </l>
@@ -20826,9 +20331,7 @@
                               <w>gewinnen</w>
                               <pc type="period" float="left" force="strong">.</pc>
                               <w>Ein</w>
-                              <add>
-                                 <w>kurzer</w>
-                              </add>
+                              <w>kurzer</w>
                               <w>Blick</w>
                               <w>auf</w>
                               <w>seinen</w>
@@ -20944,16 +20447,10 @@
                               <w>Qualitätender</w>
                            </l>
                            <l n="17">
-                              <sic>
-                                 <w>Ho</w>
-                              </sic>
                               <w>Verticalen</w>
                               <w>und</w>
                               <w>der</w>
-                              <w>Horizon<choice>
-                                    <sic>talen</sic>
-                                    <corr>talen</corr>
-                                 </choice>
+                              <w>Horizon<choice>talen</choice>
                               </w>
                            </l>
                            <l n="18">
@@ -21370,20 +20867,13 @@
                            <pc type="period" float="left" force="strong">.</pc>
                            <w>Januar</w>
                            <w>192</w>
-                           <sic>
-                              <w>1</w>
-                           </sic>
                            <pc type="slash" float="both" force="inter">/</pc>
-                           <add>
-                              <w>2</w>
-                           </add>
+                           <w>2</w>
                         </head>
                         <ab n="3">
                            <l n="1">
                               <w>Das</w>
-                              <add>
-                                 <w>vor</w>
-                              </add>
+                              <w>vor</w>
                               <w>letzte</w>
                               <w>Mal</w>
                               <w>wies</w>
@@ -21531,9 +21021,6 @@
                               <pc type="bracketClose" float="left" force="inter">)</pc>
                               <w>und</w>
                               <w>von</w>
-                              <sic>
-                                 <w>Verständnis</w>
-                              </sic>
                               <w>Verstand</w>
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
@@ -21605,10 +21092,6 @@
                            </l>
                            <l n="3">
                               <w>duums</w>
-                              <sic>
-                                 <w>Schlag</w>
-                                 <w>auf</w>
-                              </sic>
                               <w>Schritt</w>
                               <w>für</w>
                               <w>Schritt</w>
@@ -21639,17 +21122,9 @@
                               <w>Auftaktartig</w>
                               <w>beginnt</w>
                               <w>es</w>
-                              <add>
-                                 <w>bei</w>
-                                 <w>A</w>
-                              </add>
+                              <w>bei</w>
+                              <w>A</w>
                               <w>mit</w>
-                              <sic>
-                                 <w>29</w>
-                                 <pc type="slash" float="both" force="inter">/</pc>
-                                 <w>17</w>
-                                 <w>neunundzwanzig</w>
-                              </sic>
                               <w>siebzehn</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <w>senkt</w>
@@ -21815,9 +21290,6 @@
                               <pc type="period" float="left" force="strong">.</pc>
                               <pc type="punct" force="inter">*</pc>
                               <w>Be</w>
-                              <sic>
-                                 <w>tr</w>
-                              </sic>
                               <w>achtung</w>
                               <w>der</w>
                               <w>Schnittpunkte</w>
@@ -21829,13 +21301,8 @@
                            <l n="1">
                               <w>Über</w>
                               <w>die</w>
-                              <sic>
-                                 <w>ganze</w>
-                              </sic>
                               <pc type="slash" float="both" force="inter">/</pc>
-                              <add>
-                                 <w>combinierte</w>
-                              </add>
+                              <w>combinierte</w>
                               <w>Figur</w>
                               <pc type="bracketOpen" float="right" force="inter">(</pc>
                               <w>2</w>
@@ -22035,9 +21502,7 @@
                               <pc type="punct" force="inter">*</pc>
                               <w>Ich</w>
                               <w>habe</w>
-                              <add>
-                                 <w>neulich</w>
-                              </add>
+                              <w>neulich</w>
                               <w>ein</w>
                               <w>musikalisches</w>
                               <w>Gebilde</w>
@@ -22091,23 +21556,15 @@
                         <pb xml:id="klee_crit_83103" n="60" facs="83103.jpg"/>
                         <ab>
                            <l n="1">
-                              <add hand="#pencil">
-                                 <pc type="punct" float="both" force="inter">"</pc>
-                              </add>
+                              <pc type="punct" float="both" force="inter">"</pc>
                               <w>einfache</w>
                               <w>Strecke</w>
-                              <add hand="#pencil">
-                                 <pc type="punct" float="both" force="inter">"</pc>
-                              </add>
+                              <pc type="punct" float="both" force="inter">"</pc>
                               <w>und</w>
-                              <add hand="#pencil">
-                                 <pc type="punct" float="both" force="inter">"</pc>
-                              </add>
+                              <pc type="punct" float="both" force="inter">"</pc>
                               <w>doppelte</w>
                               <w>Strecke</w>
-                              <add hand="#pencil">
-                                 <pc type="punct" float="both" force="inter">"</pc>
-                              </add>
+                              <pc type="punct" float="both" force="inter">"</pc>
                            </l>
                            <l n="2">
                               <figure type="paragraphism" facs="#zone_f83103_par1" rend="par-left"/>
@@ -22122,9 +21579,7 @@
                <div n="1" type="part">
                   <pb xml:id="klee_crit_83186" n="143" facs="83186.jpg"/>
                   <head n="1" type="part">
-                     <add hand="#pencil">
-                        <w rend="sans">B</w>
-                     </add>
+                     <w rend="sans">B</w>
                      <w>Repetitionen</w>
                      <w>im</w>
                      <w>Sommersemster</w>
@@ -22216,9 +21671,6 @@
                         <w>formal</w>
                         <w>war</w>
                         <pc type="period" float="left" force="strong">.</pc>
-                        <sic>
-                           <w>4</w>
-                        </sic>
                         <w>Die</w>
                         <w>praktische</w>
                         <w>Lösung</w>

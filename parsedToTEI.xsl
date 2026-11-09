@@ -823,6 +823,16 @@
     </line>
   </xsl:template>
 
+  <!-- Diplomatic edition: phiAdd is omitted (supplied text inside figure captions is kept) -->
+  <xsl:template match="tei:supplied[not(ancestor::tei:figure)]" mode="source-doc"/>
+
+  <!-- Diplomatic edition: phiSub becomes a <seg> instead of a <choice> -->
+  <xsl:template match="tei:choice[@rend = 'phiSub']" mode="source-doc">
+    <seg type="phiSub">
+      <xsl:apply-templates select="node()" mode="source-doc"/>
+    </seg>
+  </xsl:template>
+
   <!-- Identity copy shared by all the tree-rewriting passes -->
   <xsl:template match="node() | @*" mode="glue-bracket attach-inline l-to-lb source-doc edition">
     <xsl:copy><xsl:apply-templates select="@* | node()" mode="#current"/></xsl:copy>
@@ -835,6 +845,16 @@
     <pb xml:id="{$edition-id}_{substring-before(@facs, '.jpg')}">
       <xsl:copy-of select="@*"/>
     </pb>
+  </xsl:template>
+
+  <!-- Deletions are omitted in critical edition (del from phiDel; sic from deletion / pencilDeletion).
+       <sic> inside figure captions (deletion_app) is kept, as for supplied in the diplomatic. -->
+  <xsl:template match="tei:del | tei:sic[not(ancestor::tei:figure)]" mode="edition"/>
+
+  <!-- Critical edition: additions and corrections are unwrapped (the <add> and <corr> tags is dropped, their content is kept).
+       <add> and <corr> inside figure captions keeps its markup so far, as for sic and supplied. -->
+  <xsl:template match="tei:add[not(ancestor::tei:figure)] | tei:corr[not(ancestor::tei:figure)]" mode="edition">
+    <xsl:apply-templates select="node()" mode="edition"/>
   </xsl:template>
 
   <!-- One <text> of the corpus: its identity attributes plus the numbered content -->
@@ -1684,8 +1704,8 @@
   </xsl:template>
 
   <xsl:template match="phiSub" mode="#default wordpart">
-    <choice>
-      <xsl:apply-templates mode="#current"/>
+    <choice rend="phiSub">
+      <xsl:apply-templates mode="#current" />
     </choice>
   </xsl:template>
 
