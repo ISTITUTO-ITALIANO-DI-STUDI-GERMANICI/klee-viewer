@@ -16,3 +16,11 @@ Tutto il sorgente di conversione da XML del DSL in Euporia. Le sottocartelle pri
   I file principali di versione: in **`input`** sono inclusi i sorgenti da convertire, in **`output`** il risultato delle conversioni, mentre in **`stylesheet`** i fogli di conversione.
   * `euporia_schemas` <br />
   Alcuni file utili per ricostruire la conversione in XML TEI cercando di capire il tag adatto allo scopo.
+
+## Generazione del TEI
+
+Per far ciò bisogna aprire il terminale nella cartella principale di `klee-viewer` ed eseguire il seguente comando:
+
+``` java -jar ./lib/saxon-he-12.9.jar -s:./src/conversion/input/annoParsed.xml -xsl:./src/conversion/stylesheet/parsedToTEI.xsl -o:./src/conversion/output/parsed.xml ```
+
+Modificando `input` e `stylesheet` il risultato sarà disponibile in `output`.
