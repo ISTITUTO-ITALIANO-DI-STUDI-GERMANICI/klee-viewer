@@ -857,17 +857,12 @@
     <xsl:apply-templates select="node()" mode="edition"/>
   </xsl:template>
 
-  <!-- One <text> of the corpus: its identity attributes plus the numbered content -->
+  <!-- One <text> of the corpus: the numbered content only. The identity attributes
+       (xml:id, xml:lang, type) are on the <TEI> that wraps the edition. -->
   <xsl:template name="edition-text">
     <xsl:param name="id" as="xs:string"/>
-    <xsl:param name="edition-lang" as="xs:string?"/>
-    <xsl:param name="type" as="xs:string"/>
     <xsl:param name="content" as="node()*"/>
-    <text xml:id="{$id}">
-      <xsl:if test="$edition-lang">
-        <xsl:attribute name="xml:lang" select="$edition-lang"/>
-      </xsl:if>
-      <xsl:attribute name="type" select="$type"/>
+    <text>
       <body>
         <xsl:apply-templates select="$content" mode="edition">
           <xsl:with-param name="edition-id" select="$id" tunnel="yes"/>
@@ -1055,7 +1050,7 @@
         
       <!-- Single editions (critical, aligned, etc.) -->
       <!-- Critical edition -->
-      <TEI>
+      <TEI xml:id="{$critical-id}" xml:lang="{$critical-lang}" type="{$critical-type}">
         <teiHeader>
           <fileDesc>
             <titleStmt>
@@ -1081,8 +1076,6 @@
 
         <xsl:call-template name="edition-text">
           <xsl:with-param name="id" select="$critical-id"/>
-          <xsl:with-param name="edition-lang" select="$critical-lang"/>
-          <xsl:with-param name="type" select="$critical-type"/>
           <xsl:with-param name="content" select="$numbered/node()"/>
         </xsl:call-template>
 

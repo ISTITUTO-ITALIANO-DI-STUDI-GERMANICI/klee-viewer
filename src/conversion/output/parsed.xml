@@ -12039,7 +12039,7 @@
       </div>
    </sourceDoc>
    <standOff/>
-   <TEI>
+   <TEI xml:id="klee_crit" xml:lang="de" type="critical">
       <teiHeader>
          <fileDesc>
             <titleStmt>
@@ -12062,7 +12062,7 @@
             </langUsage>
          </profileDesc>
       </teiHeader>
-      <text xml:id="klee_crit" xml:lang="de" type="critical">
+      <text>
          <body>
             <div n="1" type="title">
                <pb xml:id="klee_crit_83044" n="1" facs="83044.jpg"/>
