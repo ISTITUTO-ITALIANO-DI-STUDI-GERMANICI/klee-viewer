@@ -83,7 +83,7 @@
   <xsl:function name="kf:alto" as="document-node()?">
     <xsl:param name="page" as="element()"/>
     <xsl:variable name="path"
-      select="concat('data/', normalize-space($page/facsimile/num), '.xml')"/>
+      select="concat('../../../data/', normalize-space($page/facsimile/num), '.xml')"/>
     <xsl:sequence select="if (doc-available($path)) then document($path) else ()"/>
   </xsl:function>
 
@@ -907,7 +907,7 @@
       </xsl:call-template>
     </xsl:variable>
 
-    <TEI version="3.3.0">
+    <teiCorpus version="3.3.0">
 
       <!-- teiHeader corpus -->
       <teiHeader>
@@ -1052,51 +1052,45 @@
 
       <!-- Empty standOff before TEI children -->
       <standOff/>
-
-
-      <teiCorpus version="3.3.0" xmlns="http://www.tei-c.org/ns/1.0">
         
       <!-- Single editions (critical, aligned, etc.) -->
       <!-- Critical edition -->
-        <TEI>
-          <teiHeader>
-            <fileDesc>
-              <titleStmt>
-                <title></title>
-              </titleStmt>
-              <publicationStmt>
-                <p><xsl:value-of select="$lang"/></p>
-              </publicationStmt>
-              <sourceDesc>
-                <msDesc>
-                  <handDesc>
-                    <handNote medium="pencil" xml:id="pencil">Text written with pencil.</handNote>
-                  </handDesc>
-                </msDesc>
-              </sourceDesc>
-            </fileDesc>
-            <profileDesc>
-              <langUsage>
-                <language ident="de">Deutsch</language>
-              </langUsage>
-            </profileDesc>
-          </teiHeader>
+      <TEI>
+        <teiHeader>
+          <fileDesc>
+            <titleStmt>
+              <title>Beiträge zur bildnerischen Formlehre.</title>
+            </titleStmt>
+            <publicationStmt>
+              <p><xsl:value-of select="$lang"/></p>
+            </publicationStmt>
+            <sourceDesc>
+              <msDesc>
+                <handDesc>
+                  <handNote medium="pencil" xml:id="pencil">Text written with pencil.</handNote>
+                </handDesc>
+              </msDesc>
+            </sourceDesc>
+          </fileDesc>
+          <profileDesc>
+            <langUsage>
+              <language ident="de">Deutsch</language>
+            </langUsage>
+          </profileDesc>
+        </teiHeader>
 
-          <xsl:call-template name="edition-text">
-            <xsl:with-param name="id" select="$critical-id"/>
-            <xsl:with-param name="edition-lang" select="$critical-lang"/>
-            <xsl:with-param name="type" select="$critical-type"/>
-            <xsl:with-param name="content" select="$numbered/node()"/>
-          </xsl:call-template>
+        <xsl:call-template name="edition-text">
+          <xsl:with-param name="id" select="$critical-id"/>
+          <xsl:with-param name="edition-lang" select="$critical-lang"/>
+          <xsl:with-param name="type" select="$critical-type"/>
+          <xsl:with-param name="content" select="$numbered/node()"/>
+        </xsl:call-template>
 
-        </TEI>
+      </TEI>
 
-        <!-- Other editions -->
-      
-        
-      </teiCorpus>
+      <!-- Other editions -->
 
-    </TEI>
+    </teiCorpus>
   </xsl:template>
 
   <!-- Cleaning from Euporia symbols -->
