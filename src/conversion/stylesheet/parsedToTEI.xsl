@@ -874,10 +874,30 @@
   <!-- MAIN TEMPLATE -->
   <xsl:template match="/">
 
+    <xsl:variable name="orderedPages" as="element()*">
+      <xsl:perform-sort select="//page">
+        <xsl:sort
+          select="
+            if (matches(kf:page-number(.), '^\d+$'))
+              then xs:integer(kf:page-number(.))
+            else 2147483647
+          "
+          data-type="number"
+          order="ascending"/>
+
+        <xsl:sort
+          select="normalize-space(facsimile/num)"
+          data-type="text"
+          order="ascending"/>
+      </xsl:perform-sort>
+    </xsl:variable>
+
     <xsl:processing-instruction name="teipublisher">odd="klee.odd" template="klee2.html" view="page" media="web print epub"</xsl:processing-instruction>
 
     <xsl:variable name="flatBody">
-      <xsl:apply-templates/>
+      <xsl:for-each select="$orderedPages">
+        <xsl:apply-templates select="."/>
+      </xsl:for-each>
     </xsl:variable>
 
     <!-- Move inline figures into the end of the preceding line -->
@@ -895,10 +915,15 @@
       </xsl:call-template>
     </xsl:variable>
 
+    <!-- Unit heads: number large, date on the same line (see mode mark-heads) -->
+    <xsl:variable name="marked">
+      <xsl:apply-templates select="$nested/node()" mode="mark-heads"/>
+    </xsl:variable>
+
     <!-- Numbering pass: runs once, feeds all editions -->
     <xsl:variable name="numbered">
       <xsl:call-template name="l-to-lb-children">
-        <xsl:with-param name="nodes" select="$nested/node()"/>
+        <xsl:with-param name="nodes" select="$marked/node()"/>
       </xsl:call-template>
     </xsl:variable>
 
@@ -951,7 +976,15 @@
           <graphic url="https://escriptorium.d4science.org/media/documents/3/67096.jpg"/>
         </surface>
         <!-- Other pages -->
-        <xsl:for-each select="//page[facsimile/num]">
+        <xsl:for-each select="$orderedPages[facsimile/num]">
+          <!-- Sort by page number -->
+          <xsl:sort
+            select="
+              if (matches(kf:page-number(.), '^\d+$'))
+                then xs:integer(kf:page-number(.))
+              else 999999"
+            data-type="number"/>
+          
           <xsl:variable name="fid" select="normalize-space(facsimile/num)"/>
           <xsl:variable name="altoDoc" select="kf:alto(.)"/>
           <!-- Content frame -->
@@ -1103,7 +1136,7 @@
     substitution/text()       |
     mrgTextZoneUp/text()      |
     mrgTextZoneOut/text()     |
-    expl/text()
+    expl/text()               
                   "/>
 
   <xsl:template match="text()">
@@ -1242,6 +1275,25 @@
         </xsl:for-each-group>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <!-- mark-heads: identity, except for the <head> of a unit ("1.", "2.", ...): it gets rend="unit-number" (the
+       number is set large by CSS) plus "same-line" when its next sibling is its lesson <div> (the date, e.g.
+       "28. Nov. 1921."), so that the date goes on the same line as the number -->
+  <xsl:template match="@*|node()" mode="mark-heads">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()" mode="mark-heads"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="tei:head[@type = 'unit']" mode="mark-heads">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:attribute name="rend"
+        select="string-join(('unit-number',
+              if (following-sibling::*[1][self::tei:div[@type = 'lesson']]) then 'same-line' else ()), ' ')"/>
+      <xsl:apply-templates select="node()" mode="mark-heads"/>
+    </xsl:copy>
   </xsl:template>
 
   <xsl:template match="page">
@@ -1431,7 +1483,9 @@
 
     <xsl:choose>
       <xsl:when test="$type = 'pause'">
-        <trailer rend="bold" type="pause">
+        <!-- Asterisks alone: centered. Asterisk followed by text: stays on the line of the text before it -->
+        <trailer rend="{if (matches(normalize-space(string-join(line, ' ')), '^(\*\s*)+$')) then 'bold pause-center' else 'bold pause-inline'}"
+                 type="pause">
           <xsl:apply-templates select="line/node()">
             <xsl:with-param name="firstSegId" select="$firstSegId" tunnel="yes"/>
           </xsl:apply-templates>

@@ -3051,8 +3051,10 @@
     </div>
     <div n="16">
         <page>
-            <facsimile>[fac <num>83056 </num>] </facsimile>
+            <facsimile>[fac <num>83056 </num>] 
+            </facsimile>
             <numbZone>[[ <num>13 </num>] ] 
+
             </numbZone>
             <mainZone>
                 <sectionHeading>
@@ -3783,7 +3785,7 @@
                 </line>
                 <line>
                     <textSeq>
-                        <seg>Oder </seg>
+                        <seg>oder </seg>
                         <seg>wenn </seg>
                         <seg>man </seg>
                         <seg>die </seg>
@@ -4998,10 +5000,27 @@
             <mainZone>
                 <line>
                     <textSeq>
-                        <seg>bleibt </seg>
+                        <seg>bleib </seg>
+                    </textSeq>
+                    <operation>
+                        <substitution>
+                            <deletion>–{ <textSeq>
+                                    <seg>en </seg>
+                                </textSeq>} </deletion>
+                            <replace>/ { <textSeq>
+                                    <seg>t </seg>
+                                </textSeq>} </replace>
+                        </substitution>
+                    </operation>
+                    <textSeq>
                         <seg>die </seg>
                         <seg>Senkrechte </seg>
                     </textSeq>
+                    <operation>
+                        <deletion>–{ <textSeq>
+                                <seg>n </seg>
+                            </textSeq>} </deletion>
+                    </operation>
                 </line>
                 <line>
                     <textSeq>
@@ -5112,7 +5131,9 @@
                         <refSeries>
                             <refItem>17 </refItem>
                         </refSeries>. </labeltext>] </label>
-
+            </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>19 _ 2 </figId>: 
             </apparatoFigureItem>
             <apparatoFigureItem>
                 <figId>19 _ 3 </figId>: <label>[ <labeltext>
@@ -6532,48 +6553,6 @@
                         <seg>Perspectivinstrument </seg>
                     </textSeq>
                 </line>
-                <line>
-                    <textSeq>
-                        <seg>Rodlers </seg>
-                        <punct>„ </punct>
-                        <seg>carré </seg>
-                    </textSeq>
-
-                </line>
-                <sectionHeading>
-                    <level># # # </level>
-                    <sectionType>
-                        <seg>EXERCISE </seg>
-                    </sectionType>
-                    <line>
-                        <textSeq>
-                            <seg>5 </seg>
-                            <punct>. </punct>
-                            <seg>Dezember </seg>
-                            <punct>( </punct>
-                            <seg>Übungen </seg>
-                            <punct>) </punct>
-                        </textSeq>
-                    </line>
-                </sectionHeading>
-                <line>
-                    <textSeq>
-                        <seg>Gleichgewichtsdarstellungen </seg>
-                        <seg>zeichnerisch </seg>
-                        <seg>und </seg>
-                        <seg>tonal </seg>
-                        <seg>nach </seg>
-                        <seg>Gleichgewichtsbauten </seg>
-                    </textSeq>
-                </line>
-                <line>
-                    <textSeq>
-                        <seg>in </seg>
-                        <seg>der </seg>
-                        <seg>Fläche </seg>
-                        <punct>. </punct>
-                    </textSeq>
-                </line>
             </mainZone>
         </page>
     </div>
@@ -7125,15 +7104,273 @@
                         <punct>. </punct>
                     </textSeq>
                 </line>
-                <placeholder>|| <operation>
+                <reference>||*ref <line>
+                        <operation>
+                            <pencilAddition>+!{ <textSeq>
+                                    <punct>( </punct>
+                                    <seg>Nehmen </seg>
+                                    <punct>) </punct>
+                                </textSeq>} </pencilAddition>
+                        </operation>
+                    </line>|| 
+                </reference>
+                <sectionHeading>
+                    <level># </level>
+                    <sectionType>
+                        <seg>PAUSE </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <punct>* </punct>
+                            <punct>* </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Eine </seg>
+                    </textSeq>
+                    <operation>
                         <pencilAddition>+!{ <textSeq>
-                                <punct>( </punct>
-                                <seg>Nehmen </seg>
-                                <punct>) </punct>
+                                <seg>völlig </seg>
                             </textSeq>} </pencilAddition>
-                    </operation>|| </placeholder>
+                    </operation>
+                    <textSeq>
+                        <seg>räumliche </seg>
+                        <seg>Wage </seg>
+                        <seg>aber </seg>
+                        <seg>würde </seg>
+                        <seg>so </seg>
+                        <seg>aussehn </seg>
+                        <punct>: </punct>
+                    </textSeq>
+                </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>28 _ 3 </figId>)] 
+            </graphZoneFig>
+            <mainZone>
+                <line>
+                    <textSeq>
+                        <seg>in </seg>
+                        <seg>diesem </seg>
+                        <seg>Falle </seg>
+                        <seg>eine </seg>
+                        <seg>räumliche </seg>
+                        <seg>Wage </seg>
+                        <seg>die </seg>
+                        <seg>auf </seg>
+                        <seg>drei </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <operation>
+                        <substitution>
+                            <deletion>–{ <textSeq>
+                                    <punct>! </punct>
+                                    <seg>Ebenen </seg>
+                                </textSeq>} </deletion>
+                            <replace>/ { <textSeq>
+                                    <seg>Achsen </seg>
+                                </textSeq>} </replace>
+                        </substitution>
+                    </operation>
+                    <textSeq>
+                        <seg>AB </seg>
+                        <punct>, </punct>
+                        <seg>CD </seg>
+                        <seg>und </seg>
+                        <seg>EF </seg>
+                        <seg>sich </seg>
+                        <seg>erstreckt </seg>
+                        <punct>. </punct>
+                        <seg>Mit </seg>
+                        <seg>dieser </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>Wage </seg>
+                        <seg>könnte </seg>
+                        <seg>man </seg>
+                        <seg>die </seg>
+                        <seg>Gewichte </seg>
+                        <seg>an </seg>
+                        <seg>den </seg>
+                        <seg>Wänden </seg>
+                        <seg>eines </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>Raumes </seg>
+                    </textSeq>
+                    <operation>
+                        <substitution>
+                            <deletion>–{ <textSeq>
+                                    <seg>ausmessen </seg>
+                                </textSeq>} </deletion>
+                            <replace>/ { <textSeq>
+                                    <seg>erwägen </seg>
+                                </textSeq>} </replace>
+                        </substitution>
+                    </operation>
+                    <textSeq>
+                        <punct>, </punct>
+                        <seg>der </seg>
+                        <seg>sich </seg>
+                        <seg>über </seg>
+                        <seg>einem </seg>
+                    </textSeq>
+                    <operation>
+                        <deletion>–{ <textSeq>
+                                <seg>Dreieck </seg>
+                            </textSeq>} </deletion>
+                    </operation>
+                    <operation>
+                        <substitution>
+                            <pencilDeletion>–!{ <textSeq>
+                                    <seg>Sechs </seg>
+                                </textSeq>} </pencilDeletion>
+                            <replace>/ { <textSeq>
+                                    <seg>Sechseck </seg>
+                                </textSeq>} </replace>
+                        </substitution>
+                    </operation>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>aufbaut </seg>
+                        <punct>. </punct>
+                        <punct>( </punct>
+                        <seg>fig </seg>
+                        <seg>6 </seg>
+                        <punct>. </punct>
+                        <punct>) </punct>
+                    </textSeq>
+                </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>28 _ 4 </figId>)] </graphZoneFig>
+            <mainZone>
+                <reference>||*ref <line>
+                        <operation>
+                            <pencilAddition>+!{ <textSeq>
+                                    <punct>* </punct>
+                                    <seg>Nehmen </seg>
+                                    <seg>wir </seg>
+                                    <seg>an </seg>
+                                    <punct>, </punct>
+                                    <seg>die </seg>
+                                    <seg>eine </seg>
+                                    <seg>Fläche </seg>
+                                    <seg>sei </seg>
+                                    <seg>nun </seg>
+                                    <seg>richtig </seg>
+                                    <seg>erwogen </seg>
+                                </textSeq>} </pencilAddition>
+                        </operation>
+                    </line>
+                    <line>
+                        <operation>
+                            <pencilAddition>+!{ <textSeq>
+                                    <seg>dann </seg>
+                                    <seg>können </seg>
+                                    <seg>wir </seg>
+                                    <seg>die </seg>
+                                    <seg>Wage </seg>
+                                    <seg>in </seg>
+                                    <seg>eine </seg>
+                                    <seg>neue </seg>
+                                    <seg>Lage </seg>
+                                    <seg>bringen </seg>
+                                    <seg>und </seg>
+                                    <seg>gegen </seg>
+                                </textSeq>} </pencilAddition>
+                        </operation>
+                    </line>
+                    <line>
+                        <operation>
+                            <pencilAddition>+!{ <textSeq>
+                                    <seg>die </seg>
+                                    <seg>eine </seg>
+                                    <seg>Fläche </seg>
+                                    <seg>
+                                        <prefix>ein ^ </prefix>
+                                        <operation>
+                                            <phiAdd>+/ <textSeq>
+                                                    <seg>e </seg>
+                                                </textSeq>// </phiAdd>
+                                        </operation>
+                                    </seg>
+                                    <seg>zweite </seg>
+                                    <punct>, </punct>
+                                    <seg>gegenüberliegende </seg>
+                                    <seg>abwägen </seg>
+                                </textSeq>} </pencilAddition>
+                        </operation>
+                        <textSeq>
+                            <punct>. </punct>
+                            <punct>( </punct>
+                            <seg>eine </seg>
+                            <seg>völlig </seg>
+                            <punct>... </punct>
+                            <seg>etc </seg>
+                            <punct>) </punct>
+                        </textSeq>
+                    </line>|| 
+
+                </reference>
             </mainZone>
         </page>
+        <apparatoFigure>=====
+            <apparatoFigureItem>
+                <figId>28 _ 1 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>3 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+            </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>28 _ 2 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>3a </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+            </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>28 _ 3 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>5 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+            </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>28 _ 4 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>4 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+            </apparatoFigureItem>===== </apparatoFigure>
     </div>
     <div n="32">
         <page>
@@ -7877,10 +8114,219 @@
                         <seg>der </seg>
                         <seg>Symmetrie </seg>
                         <seg>abweichender </seg>
+                        <seg>gleichgewichts </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>Zustand </seg>
+                        <seg>könnte </seg>
+                        <seg>illustriert </seg>
+                        <seg>werden </seg>
+                        <seg>mit </seg>
+                        <seg>dem </seg>
+                        <seg>Bild </seg>
+                        <seg>einer </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>Wage </seg>
+                        <punct>: </punct>
+                        <seg>in </seg>
+                        <seg>der </seg>
+                        <seg>einen </seg>
+                        <seg>Schale </seg>
+                        <seg>beispielsweise </seg>
+                        <seg>zwei </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>Pfundgewichte </seg>
+                        <seg>in </seg>
+                        <seg>der </seg>
+                        <seg>andern </seg>
+                        <seg>Schale </seg>
+                        <seg>ein </seg>
+                        <seg>Gewicht </seg>
+                        <seg>von </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>750 </seg>
+                        <seg>gr </seg>
+                        <seg>und </seg>
+                        <seg>eines </seg>
+                        <seg>von </seg>
+                        <seg>250 </seg>
+                        <seg>gr </seg>
+                        <punct>. </punct>
                     </textSeq>
                 </line>
             </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>32 _ 1 </figId>)] 
+            </graphZoneFig>
+            <mainZone>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Aber </seg>
+                        <seg>damit </seg>
+                        <seg>soll </seg>
+                    </textSeq>
+                    <operation>
+                        <deletion>–{ <textSeq>
+                                <seg>die </seg>
+                            </textSeq>} </deletion>
+                    </operation>
+                    <textSeq>
+                        <seg>es </seg>
+                    </textSeq>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <seg>nun </seg>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <seg>sein </seg>
+                        <seg>Bewenden </seg>
+                        <seg>haben </seg>
+                        <punct>. </punct>
+                        <seg>Wir </seg>
+                        <seg>müssen </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>mit </seg>
+                        <seg>bildnerischen </seg>
+                        <seg>Elementen </seg>
+                        <seg>operieren </seg>
+                        <punct>, </punct>
+                        <seg>an </seg>
+                        <seg>denen </seg>
+                        <seg>die </seg>
+                        <seg>Ge - </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>wichts </seg>
+                    </textSeq>
+                    <underlined>_ <textSeq>
+                            <seg>empfindung </seg>
+                        </textSeq>_ </underlined>
+                    <textSeq>
+                        <seg>erörtert </seg>
+                        <seg>werden </seg>
+                        <seg>kann </seg>
+                        <punct>. </punct>
+                    </textSeq>
+                </line>
+                <sectionHeading>
+                    <level># </level>
+                    <sectionType>
+                        <seg>PAUSE </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <punct>* </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Zunächst </seg>
+                        <seg>einige </seg>
+                        <seg>Fälle </seg>
+                        <punct>, </punct>
+                        <seg>wo </seg>
+                        <seg>von </seg>
+                        <seg>Gleichgewicht </seg>
+                        <seg>ganz </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>sicher </seg>
+                        <seg>nicht </seg>
+                        <seg>die </seg>
+                        <seg>Rede </seg>
+                        <seg>sein </seg>
+                        <seg>kann </seg>
+                        <punct>. </punct>
+                    </textSeq>
+                </line>
+            </mainZone>
+            <graphZoneFig>[FIGURE ( <figId>32 _ 2 </figId>)] 
+            </graphZoneFig>
+            <mainZone>
+                <line>
+                    <textSeq>
+                        <seg>20 </seg>
+                        <punct>/ </punct>
+                        <seg>Verschiedenheit </seg>
+                    </textSeq>
+                    <operation>
+                        <substitution>
+                            <deletion>–{ <textSeq>
+                                    <seg>durch </seg>
+                                    <seg>an </seg>
+                                </textSeq>} </deletion>
+                            <replace>/ { <textSeq>
+                                    <seg>an </seg>
+                                </textSeq>} </replace>
+                        </substitution>
+                    </operation>
+                    <textSeq>
+                        <seg>Ausdehnung </seg>
+                        <punct>, </punct>
+                        <seg>Summierung </seg>
+                        <seg>an </seg>
+                        <seg>Energie </seg>
+                        <punct>. </punct>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>auf </seg>
+                        <seg>der </seg>
+                        <seg>rechten </seg>
+                        <seg>Seite </seg>
+                        <seg>durch </seg>
+                        <seg>Addition </seg>
+                    </textSeq>
+
+                </line>
+            </mainZone>
         </page>
+        <apparatoFigure>=====
+            <apparatoFigureItem>
+                <figId>32 _ 1 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>19 </refItem>
+                        </refSeries>
+                    </labeltext>] </label>
+            </apparatoFigureItem>
+            <apparatoFigureItem>
+                <figId>32 _ 2 </figId>: <label>[ <labeltext>
+                        <line_app>
+                            <textSeqinfig>
+                                <seginfig>fig </seginfig>
+                            </textSeqinfig>
+                        </line_app>
+                        <refSeries>
+                            <refItem>20 </refItem>
+                        </refSeries>. </labeltext>] </label>
+            </apparatoFigureItem>===== </apparatoFigure>
     </div>
     <div n="36">
         <page>
@@ -8662,7 +9108,7 @@
                                     <seg>menschlich </seg>
                                 </textSeq>} </deletion>
                             <replace>/ { <textSeq>
-                                    <seg>ermenschlichtend </seg>
+                                    <seg>vermenschlichtend </seg>
                                 </textSeq>} </replace>
                         </substitution>
                     </operation>
@@ -10534,7 +10980,6 @@
                     </sectionType>
                     <line>
                         <textSeq>
-                            <punct>: </punct>
                             <seg>9 </seg>
                             <punct>. </punct>
                             <seg>Januar </seg>
@@ -10633,7 +11078,6 @@
                     </sectionType>
                     <line>
                         <textSeq>
-                            <punct>: </punct>
                             <seg>16 </seg>
                             <punct>. </punct>
                             <seg>Januar </seg>
@@ -10653,16 +11097,15 @@
                 <line>
                     <textSeq>
                         <seg>Das </seg>
-                        <seg>letz </seg>
-                    </textSeq>
-                    <operation>
-                        <phiAdd>+/ <textSeq>
-                                <punct>/ </punct>
-                                <seg>t </seg>
-                            </textSeq>// </phiAdd>
-                    </operation>
-                    <textSeq>
-                        <seg>e </seg>
+                        <seg>
+                            <prefix>letz ^ </prefix>
+                            <operation>
+                                <phiAdd>+/ <textSeq>
+                                        <seg>t </seg>
+                                    </textSeq>// </phiAdd>
+                            </operation>
+                            <suffix>^ e </suffix>
+                        </seg>
                         <seg>Mal </seg>
                         <seg>hat </seg>
                         <seg>sich </seg>
@@ -10674,33 +11117,33 @@
                 </line>
                 <line>
                     <textSeq>
-                        <seg>tionelle </seg>
-                    </textSeq>
-                    <operation>
-                        <substitution>
-                            <deletion>–{ <textSeq>
-                                    <seg>r </seg>
-                                </textSeq>} </deletion>
-                            <replace>/ { <textSeq>
-                                    <seg>n </seg>
-                                </textSeq>} </replace>
-                        </substitution>
-                    </operation>
-                    <textSeq>
+                        <seg>
+                            <prefix>tionelle ^ </prefix>
+                            <operation>
+                                <substitution>
+                                    <deletion>–{ <textSeq>
+                                            <seg>r </seg>
+                                        </textSeq>} </deletion>
+                                    <replace>/ { <textSeq>
+                                            <seg>n </seg>
+                                        </textSeq>} </replace>
+                                </substitution>
+                            </operation>
+                        </seg>
                         <seg>und </seg>
-                        <seg>structurale </seg>
-                    </textSeq>
-                    <operation>
-                        <substitution>
-                            <deletion>–{ <textSeq>
-                                    <seg>r </seg>
-                                </textSeq>} </deletion>
-                            <replace>/ { <textSeq>
-                                    <seg>n </seg>
-                                </textSeq>} </replace>
-                        </substitution>
-                    </operation>
-                    <textSeq>
+                        <seg>
+                            <prefix>structurale ^ </prefix>
+                            <operation>
+                                <substitution>
+                                    <deletion>–{ <textSeq>
+                                            <seg>r </seg>
+                                        </textSeq>} </deletion>
+                                    <replace>/ { <textSeq>
+                                            <seg>n </seg>
+                                        </textSeq>} </replace>
+                                </substitution>
+                            </operation>
+                        </seg>
                         <seg>Charakteren </seg>
                         <seg>gezeigt </seg>
                     </textSeq>
@@ -12298,13 +12741,147 @@
                         <punct>. </punct>
                     </textSeq>
                 </line>
-                <placeholder>|| <operation>
-                        <addition>+{ <textSeq>
-                                <punct>* </punct>
-                                <seg>Anmerkung </seg>
-                                <punct>* </punct>
-                            </textSeq>} </addition>
-                    </operation>|| </placeholder>
+                <reference>||*ref <line>
+                        <operation>
+                            <addition>+{ <textSeq>
+                                    <punct>* </punct>
+                                    <seg>Anmerkung </seg>
+                                    <punct>* </punct>
+                                </textSeq>} </addition>
+                        </operation>
+                    </line>|| 
+
+                </reference>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Individuelle </seg>
+                        <seg>Rhythmen </seg>
+                        <seg>würden </seg>
+                        <seg>umgekehrt </seg>
+                        <seg>nicht </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>auf </seg>
+                        <seg>eins </seg>
+                        <seg>oder </seg>
+                        <seg>auf </seg>
+                        <seg>gleichgeartete </seg>
+                        <seg>Zahlen </seg>
+                        <seg>reduziert </seg>
+                        <seg>werden </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>können </seg>
+                        <punct>, </punct>
+                        <seg>sondern </seg>
+                        <seg>bei </seg>
+                        <seg>Verhältnissen </seg>
+                        <seg>wie </seg>
+                        <seg>2 </seg>
+                        <punct>: </punct>
+                        <seg>3 </seg>
+                        <punct>: </punct>
+                        <seg>5 </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>oder </seg>
+                        <seg>7 </seg>
+                        <punct>: </punct>
+                        <seg>11 </seg>
+                        <punct>: </punct>
+                        <seg>13 </seg>
+                        <punct>: </punct>
+                        <seg>17 </seg>
+                        <seg>unerbittlich </seg>
+                        <seg>Halt </seg>
+                        <seg>machen </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>müssen </seg>
+                        <punct>. </punct>
+                    </textSeq>
+                </line>
+                <sectionHeading>
+                    <level># </level>
+                    <sectionType>
+                        <seg>PAUSE </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <punct>* </punct>
+                        </textSeq>
+
+                    </line>
+                </sectionHeading>
+                <reference>||*ref <line>
+                        <operation>
+                            <addition>+{ <textSeq>
+                                    <seg>Anmerkung </seg>
+                                    <punct>* </punct>
+                                    <seg>Sie </seg>
+                                    <seg>eignen </seg>
+                                    <seg>sich </seg>
+                                    <seg>daher </seg>
+                                    <seg>zur </seg>
+                                    <seg>Belebung </seg>
+                                    <seg>bedürftiger </seg>
+                                    <seg>Stellen </seg>
+                                    <seg>in </seg>
+                                </textSeq>} </addition>
+                        </operation>
+                    </line>
+                    <line>
+                        <operation>
+                            <addition>+{ <textSeq>
+                                    <seg>gegebenen </seg>
+                                    <seg>Kompositionen </seg>
+                                    <punct>, </punct>
+                                    <seg>sie </seg>
+                                    <seg>sind </seg>
+                                    <seg>längst </seg>
+                                    <seg>bekannt </seg>
+                                    <seg>als </seg>
+                                    <seg>Tapeten - </seg>
+                                </textSeq>} </addition>
+                        </operation>
+                    </line>
+                    <line>
+                        <operation>
+                            <addition>+{ <textSeq>
+                                    <seg>muster </seg>
+                                    <punct>, </punct>
+                                    <seg>sie </seg>
+                                    <seg>eignen </seg>
+                                    <seg>sich </seg>
+                                    <seg>für </seg>
+                                    <seg>Bücher </seg>
+                                    <punct>, </punct>
+                                    <seg>und </seg>
+                                    <seg>für </seg>
+                                    <seg>Mappen </seg>
+                                    <seg>als </seg>
+                                </textSeq>} </addition>
+                        </operation>
+                    </line>
+                    <line>
+                        <operation>
+                            <addition>+{ <textSeq>
+                                    <seg>neutrale </seg>
+                                    <seg>Belebung </seg>
+                                    <seg>der </seg>
+                                    <seg>Fläche </seg>
+                                </textSeq>} </addition>
+                        </operation>
+                    </line>|| </reference>
             </mainZone>
         </page>
     </div>
@@ -13309,9 +13886,284 @@
                         <seg>klingen </seg>
                         <punct>( </punct>
                         <seg>es </seg>
-                        <seg>kön </seg>
+                        <seg>
+                            <prefix>kön ^ </prefix>
+                            <operation>
+                                <phiAdd>+/ <textSeq>
+                                        <seg>n </seg>
+                                    </textSeq>// </phiAdd>
+                            </operation>
+                            <suffix>^ nte </suffix>
+                        </seg>
+                        <seg>auch </seg>
+                        <seg>einmal </seg>
+                        <seg>eine </seg>
+                        <seg>für </seg>
+                        <seg>sich </seg>
+                        <seg>allein </seg>
+                        <seg>klingen </seg>
+                        <punct>) </punct>
                     </textSeq>
                 </line>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Die </seg>
+                        <seg>beiden </seg>
+                        <seg>Stimmen </seg>
+                        <punct>( </punct>
+                        <seg>zweite </seg>
+                        <seg>und </seg>
+                        <seg>dritte </seg>
+                        <seg>Stimme </seg>
+                        <punct>) </punct>
+                        <seg>des </seg>
+                        <seg>ersten </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>Taktes </seg>
+                        <seg>unterscheiden </seg>
+                        <seg>sich </seg>
+                        <seg>sehr </seg>
+                        <seg>in </seg>
+                        <seg>der </seg>
+                        <seg>Individualisierung </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>Die </seg>
+                        <seg>Untere </seg>
+                        <seg>hat </seg>
+                        <seg>sichtlich </seg>
+                        <seg>structuralen </seg>
+                        <seg>Charakter </seg>
+                        <seg>im </seg>
+                        <seg>Vergleich </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>zur </seg>
+                        <seg>Oberen </seg>
+                        <punct>, </punct>
+                        <seg>welche </seg>
+                        <seg>individuel </seg>
+                        <seg>gehalten </seg>
+                        <seg>ist </seg>
+                        <punct>. </punct>
+                    </textSeq>
+                </line>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Der </seg>
+                    </textSeq>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <seg>spätere </seg>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <seg>Einsatz </seg>
+                        <seg>der </seg>
+                        <seg>ersten </seg>
+                        <seg>Stimme </seg>
+                        <seg>erfolgt </seg>
+                        <seg>etwas </seg>
+                        <seg>unterhalb </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>der </seg>
+                        <seg>zweiten </seg>
+                        <punct>, </punct>
+                        <seg>will </seg>
+                        <seg>sie </seg>
+                        <seg>überspringen </seg>
+                        <punct>, </punct>
+                        <seg>was </seg>
+                        <seg>fürs </seg>
+                        <seg>erste </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>nicht </seg>
+                        <seg>gelingt </seg>
+                        <punct>; </punct>
+                        <seg>erst </seg>
+                        <seg>nach </seg>
+                        <seg>der </seg>
+                        <seg>kurzen </seg>
+                        <seg>Pause </seg>
+                        <seg>der </seg>
+                        <seg>zweiten </seg>
+                        <seg>Stimme </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>erlangt </seg>
+                        <seg>die </seg>
+                        <seg>das </seg>
+                        <seg>erstrebte </seg>
+                        <seg>Übergewicht </seg>
+                        <punct>. </punct>
+                        <seg>Die </seg>
+                        <seg>zweite </seg>
+                        <seg>wird </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>bei </seg>
+                        <seg>individuellem </seg>
+                        <seg>Eintritt </seg>
+                        <seg>der </seg>
+                        <seg>ersten </seg>
+                        <seg>zum </seg>
+                        <seg>structuralen </seg>
+                        <seg>Charak - </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>ter </seg>
+                        <seg>degradiert </seg>
+                        <punct>, </punct>
+                        <seg>macht </seg>
+                        <seg>durch </seg>
+                        <seg>Höhenlage </seg>
+                        <seg>im </seg>
+                        <seg>einverstandenen </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>Gegensatz </seg>
+                        <seg>zur </seg>
+                        <seg>Dritten </seg>
+                        <punct>, </punct>
+                        <seg>die </seg>
+                        <seg>sich </seg>
+                        <seg>an </seg>
+                        <seg>dieser </seg>
+                        <seg>Stelle </seg>
+                        <seg>etwas </seg>
+                        <seg>vertieft </seg>
+                        <punct>, </punct>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>ein </seg>
+                        <seg>Joch </seg>
+                        <punct>, </punct>
+                        <seg>unter </seg>
+                        <seg>dem </seg>
+                        <seg>sich </seg>
+                        <seg>die </seg>
+                        <seg>Erste </seg>
+                        <seg>individuel </seg>
+                        <seg>bewegt </seg>
+                        <punct>. </punct>
+                    </textSeq>
+
+                </line>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Nach </seg>
+                        <seg>der </seg>
+                        <seg>resignierenden </seg>
+                        <seg>Pause </seg>
+                        <seg>geht </seg>
+                        <seg>die </seg>
+                        <seg>Zweite </seg>
+                        <seg>parallel </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>mit </seg>
+                        <seg>der </seg>
+                        <seg>Dritten </seg>
+                        <punct>. </punct>
+                    </textSeq>
+                </line>
+                <openPar>¶ </openPar>
+                <line>
+                    <textSeq>
+                        <seg>Die </seg>
+                        <seg>dritte </seg>
+                        <seg>bleibt </seg>
+                        <seg>ihrem </seg>
+                        <seg>structuralen </seg>
+                        <seg>Charakter </seg>
+                    </textSeq>
+                    <operation>
+                        <addition>+{ <textSeq>
+                                <seg>von </seg>
+                                <seg>Anfang </seg>
+                                <seg>an </seg>
+                            </textSeq>} </addition>
+                    </operation>
+                    <textSeq>
+                        <seg>treu </seg>
+                        <punct>, </punct>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>bis </seg>
+                        <seg>zu </seg>
+                        <seg>der </seg>
+                        <seg>Stelle </seg>
+                        <punct>, </punct>
+                        <seg>wo </seg>
+                        <seg>die </seg>
+                        <seg>Zweite </seg>
+                        <seg>sich </seg>
+                        <seg>parallel </seg>
+                        <seg>ihr </seg>
+                        <seg>zugesellt </seg>
+                        <punct>; </punct>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>hier </seg>
+                        <seg>kann </seg>
+                        <seg>man </seg>
+                        <seg>einen </seg>
+                        <seg>schüchternen </seg>
+                        <seg>Versuch </seg>
+                        <seg>zum </seg>
+                        <seg>Individuellen </seg>
+                    </textSeq>
+                </line>
+                <line>
+                    <textSeq>
+                        <seg>hin </seg>
+                        <seg>erkennen </seg>
+                        <punct>. </punct>
+                    </textSeq>
+                </line>
+                <sectionHeading>
+                    <level># </level>
+                    <sectionType>
+                        <seg>PAUSE </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <punct>* </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
             </mainZone>
         </page>
     </div>
@@ -13440,28 +14292,38 @@
                     <seg>55 </seg>
                     <punct>. </punct>
                 </textSeq>] ] 
+
             </numbZone>
             <mainZone>
-                <openPar>¶ </openPar>
                 <sectionHeading>
-                    <level># # # </level>
+                    <level># # </level>
                     <sectionType>
-                        <seg>5 </seg>
+                        <seg>UNIT </seg>
                     </sectionType>
                     <line>
                         <textSeq>
-                            <seg>Lesson </seg>
+                            <seg>5 </seg>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # # </level>
+                    <sectionType>
+                        <seg>LESSON </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
                             <seg>30 </seg>
                             <punct>. </punct>
                             <seg>Januar </seg>
-                            <seg>192 </seg>
-                        </textSeq>
-                        <operation>
-                            <deletion>–{ <textSeq>
-                                    <seg>1 </seg>
-                                </textSeq>} </deletion>
-                        </operation>
-                        <textSeq>
+                            <seg>
+                                <prefix>192 ^ </prefix>
+                                <operation>
+                                    <deletion>–{ <textSeq>
+                                            <seg>1 </seg>
+                                        </textSeq>} </deletion>
+                                </operation>
+                            </seg>
                             <punct>/ </punct>
                         </textSeq>
                         <operation>
@@ -13469,6 +14331,7 @@
                                     <seg>2 </seg>
                                 </textSeq>} </addition>
                         </operation>
+
                     </line>
                 </sectionHeading>
                 <openPar>¶ </openPar>
@@ -14694,6 +15557,311 @@
                         <seg>heit </seg>
                     </textSeq>
                 </line>
+            </mainZone>
+        </page>
+    </div>
+    <div n="72">
+        <page>
+            <facsimile>[fac <num>83112 </num>] 
+            </facsimile>
+            <numbZone>[[ <textSeq>
+                    <seg>69 </seg>
+                    <punct>. </punct>
+                </textSeq>] ] 
+
+            </numbZone>
+            <mainZone>
+                <sectionHeading>
+                    <level># </level>
+                    <sectionType>
+                        <seg>PAUSE </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <punct>* </punct>
+                        </textSeq>
+
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # </level>
+                    <sectionType>
+                        <seg>UNIT </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>6 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # # </level>
+                    <sectionType>
+                        <seg>LESSON </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>Montag </seg>
+                            <seg>deu </seg>
+                            <seg>13 </seg>
+                            <punct>. </punct>
+                            <seg>Februar </seg>
+                            <seg>1922 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+            </mainZone>
+        </page>
+    </div>
+    <div n="90">
+        <page>
+            <facsimile>[fac <num>83130 </num>] 
+            </facsimile>
+            <numbZone>[[ <num>87 </num>] ] 
+
+            </numbZone>
+            <mainZone>
+                <sectionHeading>
+                    <level># # </level>
+                    <sectionType>
+                        <seg>UNIT </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>7 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # # </level>
+                    <sectionType>
+                        <seg>LESSON </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>Montag </seg>
+                            <seg>den </seg>
+                            <seg>17 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                        <operation>
+                            <substitution>
+                                <deletion>-{ <textSeq>
+                                        <seg>Januar </seg>
+                                    </textSeq>} </deletion>
+                                <replace>/ { <textSeq>
+                                        <seg>Februar </seg>
+                                    </textSeq>} </replace>
+                            </substitution>
+                        </operation>
+                        <textSeq>
+                            <seg>1922 </seg>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+            </mainZone>
+        </page>
+    </div>
+    <div n="108">
+        <page>
+            <facsimile>[fac <num>83148 </num>] 
+            </facsimile>
+            <numbZone>[[ <num>105 </num>] ] 
+
+            </numbZone>
+            <mainZone>
+                <sectionHeading>
+                    <level># # </level>
+                    <sectionType>
+                        <seg>UNIT </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>8 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # # </level>
+                    <sectionType>
+                        <seg>LESSON </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>Montag </seg>
+                            <seg>den </seg>
+                            <seg>20 </seg>
+                            <punct>. </punct>
+                            <seg>Marz </seg>
+                            <seg>1922 </seg>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+            </mainZone>
+        </page>
+    </div>
+    <div n="126">
+        <page>
+            <facsimile>[fac <num>83166 </num>] 
+            </facsimile>
+            <numbZone>[[ <num>123 </num>] ] 
+
+            </numbZone>
+            <mainZone>
+                <sectionHeading>
+                    <level># # </level>
+                    <sectionType>
+                        <seg>UNIT </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>9 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # # </level>
+                    <sectionType>
+                        <seg>LESSON </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>Montag </seg>
+                            <seg>den </seg>
+                            <seg>3 </seg>
+                            <punct>. </punct>
+                            <seg>Avril </seg>
+                            <seg>1922 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+            </mainZone>
+        </page>
+    </div>
+    <div n="156">
+        <page>
+            <facsimile>[fac <num>83196 </num>] 
+            </facsimile>
+            <numbZone>[[ <num>153 </num>] ] 
+
+            </numbZone>
+            <mainZone>
+                <sectionHeading>
+                    <level># </level>
+                    <sectionType>
+                        <seg>PART </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>C </seg>
+                            <seg>Vorträge </seg>
+                            <seg>im </seg>
+                            <seg>Wintersemester </seg>
+                            <seg>1922 </seg>
+                            <punct>/ </punct>
+                            <seg>23 </seg>
+                        </textSeq>
+
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # </level>
+                    <sectionType>
+                        <seg>UNIT </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>10 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # # </level>
+                    <sectionType>
+                        <seg>LESSON </seg>
+                    </sectionType>
+                    <line>
+                        <operation>
+                            <substitution>
+                                <deletion>-{ <textSeq>
+                                        <seg>Mitnoch </seg>
+                                    </textSeq>} </deletion>
+                                <replace>/ { <textSeq>
+                                        <seg>Dienstag </seg>
+                                    </textSeq>} </replace>
+                            </substitution>
+                        </operation>
+                        <textSeq>
+                            <seg>deu </seg>
+                        </textSeq>
+                        <operation>
+                            <substitution>
+                                <deletion>-{ <textSeq>
+                                        <seg>29 </seg>
+                                        <punct>. </punct>
+                                    </textSeq>} </deletion>
+                                <replace>/ { <textSeq>
+                                        <seg>28 </seg>
+                                        <punct>. </punct>
+                                    </textSeq>} </replace>
+                            </substitution>
+                        </operation>
+                        <textSeq>
+                            <seg>November </seg>
+                            <seg>1922 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+            </mainZone>
+        </page>
+    </div>
+    <div n="175">
+        <page>
+            <facsimile>[fac <num>83215 </num>] 
+            </facsimile>
+            <numbZone>[[ <num>172 </num>] ] 
+
+
+            </numbZone>
+            <mainZone>
+                <sectionHeading>
+                    <level># # </level>
+                    <sectionType>
+                        <seg>UNIT </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>11 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
+                <sectionHeading>
+                    <level># # # </level>
+                    <sectionType>
+                        <seg>LESSON </seg>
+                    </sectionType>
+                    <line>
+                        <textSeq>
+                            <seg>Dienstag </seg>
+                            <seg>deu </seg>
+                            <seg>19 </seg>
+                            <punct>. </punct>
+                            <seg>Dez </seg>
+                            <punct>. </punct>
+                            <seg>22 </seg>
+                            <punct>. </punct>
+                        </textSeq>
+                    </line>
+                </sectionHeading>
             </mainZone>
         </page>
     </div>

@@ -743,11 +743,11 @@
                lry="587"
                points="593,432 593,579 965,585 1112,587 1133,436"/>
          <zone xml:id="zone_f83070_fig2"
-               ulx="9"
+               ulx="910"
                uly="959"
-               lrx="1759"
-               lry="1986"
-               points="9,959 1759,959 1759,1986 9,1986"/>
+               lrx="1473"
+               lry="1129"
+               points="910,959 918,1129 1468,1121 1473,965"/>
          <zone xml:id="zone_f83070_par1"
                ulx="1722"
                uly="1127"
@@ -755,6 +755,13 @@
                lry="1331"
                dy="-7.3"
                points="1722,1127 1722,1331 1844,1331 1844,1127"/>
+         <zone xml:id="zone_f83070_par2"
+               ulx="9"
+               uly="1517"
+               lrx="1759"
+               lry="1986"
+               dy="-13.1"
+               points="9,1930 9,1986 1213,1965 1231,1900 1754,1919 1759,1527 1719,1517 1719,1518 1728,1873 1223,1874 1195,1933"/>
       </surface>
       <surface xml:id="f83071"
                ulx="0"
@@ -1732,6 +1739,48 @@
                dy="-20.2"
                points="250,1185 115,1295 191,1316 304,1205"/>
       </surface>
+      <surface xml:id="f83112"
+               ulx="0"
+               uly="0"
+               lrx="1894"
+               lry="2419"
+               contentUlx="33"
+               contentWidth="1711">
+         <graphic url="https://escriptorium.d4science.org/media/documents/3/83112.jpg"/>
+      </surface>
+      <surface xml:id="f83130"
+               ulx="0"
+               uly="0"
+               lrx="1912"
+               lry="2420"
+               contentUlx="39"
+               contentWidth="1678">
+         <graphic url="https://escriptorium.d4science.org/media/documents/3/83130.jpg"/>
+      </surface>
+      <surface xml:id="f83148"
+               ulx="0"
+               uly="0"
+               lrx="1900"
+               lry="2419"
+               contentUlx="5"
+               contentWidth="1895">
+         <graphic url="https://escriptorium.d4science.org/media/documents/3/83148.jpg"/>
+      </surface>
+      <surface xml:id="f83166"
+               ulx="0"
+               uly="0"
+               lrx="1938"
+               lry="2426"
+               contentUlx="21"
+               contentWidth="1884">
+         <graphic url="https://escriptorium.d4science.org/media/documents/3/83166.jpg"/>
+         <zone xml:id="zone_f83166_fig1"
+               ulx="23"
+               uly="1894"
+               lrx="1806"
+               lry="2204"
+               points="23,1979 23,2204 1806,2204 1802,1894 969,1900 926,1963"/>
+      </surface>
       <surface xml:id="f83186"
                ulx="0"
                uly="0"
@@ -1752,6 +1801,52 @@
                lrx="1775"
                lry="2188"
                points="486,2005 485,2136 968,2155 960,2188 1057,2159 1775,2188 1775,2005 1220,2005 1061,2101 1097,2017"/>
+      </surface>
+      <surface xml:id="f83196"
+               ulx="0"
+               uly="0"
+               lrx="1931"
+               lry="2419"
+               contentUlx="17"
+               contentWidth="1914">
+         <graphic url="https://escriptorium.d4science.org/media/documents/3/83196.jpg"/>
+         <zone xml:id="zone_f83196_par1"
+               ulx="358"
+               uly="785"
+               lrx="470"
+               lry="841"
+               dy="-49.6"
+               points="358,785 358,841 382,841 465,837 466,835 470,824 382,824 382,785"/>
+         <zone xml:id="zone_f83196_par2"
+               ulx="1791"
+               uly="790"
+               lrx="1870"
+               lry="931"
+               dy="-2.1"
+               points="1791,790 1791,931 1870,931 1870,790"/>
+      </surface>
+      <surface xml:id="f83215"
+               ulx="0"
+               uly="0"
+               lrx="1952"
+               lry="2444"
+               contentUlx="180"
+               contentWidth="1616">
+         <graphic url="https://escriptorium.d4science.org/media/documents/3/83215.jpg"/>
+         <zone xml:id="zone_f83215_par1"
+               ulx="88"
+               uly="2214"
+               lrx="272"
+               lry="2368"
+               dy="0"
+               points="88,2297 104,2368 272,2276 233,2214"/>
+         <zone xml:id="zone_f83215_par2"
+               ulx="230"
+               uly="2270"
+               lrx="311"
+               lry="2371"
+               dy="0"
+               points="230,2270 230,2371 311,2369 311,2270"/>
       </surface>
       <surface xml:id="f83236">
          <graphic url="https://escriptorium.d4science.org/media/documents/3/83236.jpg"/>
@@ -2149,7 +2244,7 @@
                   <pc type="period" float="left" force="strong">.</pc>
                </line>
             </ab>
-            <trailer rend="bold" type="pause">
+            <trailer rend="bold pause-center" type="pause">
                <pc type="punct" force="inter">*</pc>
             </trailer>
             <ab n="5">
@@ -2251,7 +2346,7 @@
                   <pc type="period" float="left" force="strong">.</pc>
                </line>
             </ab>
-            <trailer rend="bold" type="pause">
+            <trailer rend="bold pause-center" type="pause">
                <pc type="punct" force="inter">*</pc>
             </trailer>
             <ab n="3">
@@ -2629,7 +2724,7 @@
                   </choice>
                </line>
             </ab>
-            <trailer rend="bold" type="pause">
+            <trailer rend="bold pause-center" type="pause">
                <pc type="punct" force="inter">*</pc>
                <pc type="punct" force="inter">*</pc>
                <pc type="punct" force="inter">*</pc>
@@ -2673,7 +2768,7 @@
          </div>
          <div n="2" type="unit">
             <pb n="6" facs="83049.jpg"/>
-            <head n="2" type="unit">
+            <head n="2" type="unit" rend="unit-number">
                <w>1</w>
                <pc type="period" float="left" force="strong">.</pc>
             </head>
@@ -2848,7 +2943,7 @@
                   <w>Utopie</w>
                </line>
             </ab>
-            <trailer rend="bold" type="pause">
+            <trailer rend="bold pause-center" type="pause">
                <pc type="punct" force="inter">*</pc>
             </trailer>
             <ab n="3">
@@ -3082,7 +3177,7 @@
                   <pc type="period" float="left" force="strong">.</pc>
                </line>
             </ab>
-            <trailer rend="bold" type="pause">
+            <trailer rend="bold pause-center" type="pause">
                <pc type="punct" force="inter">*</pc>
             </trailer>
             <pb n="8" facs="83051.jpg"/>
@@ -3135,7 +3230,7 @@
                   <pc type="period" float="left" force="strong">.</pc>
                </line>
             </ab>
-            <trailer rend="bold" type="pause">
+            <trailer rend="bold pause-inline" type="pause">
                <pc type="punct" force="inter">*</pc>
                <add>
                   <w>Man</w>
@@ -3849,7 +3944,7 @@
                      <pc type="bracketClose" float="left" force="inter">)</pc>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
                <ab type="margin" place="left" rend="margin-left">
@@ -4009,13 +4104,13 @@
                      <w>Natur</w>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
             </div>
          </div>
          <div n="2" type="unit">
-            <head n="2" type="unit">
+            <head n="2" type="unit" rend="unit-number same-line">
                <w>2</w>
                <pc type="period" float="left" force="strong">.</pc>
             </head>
@@ -4348,7 +4443,7 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
                <label type="margin" place="left" rend="margin-head margin-left" n="4">
@@ -4421,7 +4516,7 @@
                      <w>Entgleisung</w>
                   </line>
                   <line n="18">
-                     <w>Oder</w>
+                     <w>oder</w>
                      <w>wenn</w>
                      <w>man</w>
                      <w>die</w>
@@ -4930,7 +5025,7 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
                <figure rend="clear"/>
@@ -5211,9 +5306,20 @@
                <figure facs="#zone_f83062_fig2" rend="block"/>
                <ab>
                   <line n="4">
-                     <w>bleibt</w>
+                     <w>bleib</w>
+                     <choice>
+                        <sic>
+                           <w>en</w>
+                        </sic>
+                        <corr>
+                           <w>t</w>
+                        </corr>
+                     </choice>
                      <w>die</w>
                      <w>Senkrechte</w>
+                     <sic>
+                        <w>n</w>
+                     </sic>
                   </line>
                   <line n="5">
                      <w>senkrecht</w>
@@ -6140,7 +6246,7 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
                <label type="margin"
@@ -6248,43 +6354,12 @@
                      <w>Goghs</w>
                      <w>Perspectivinstrument</w>
                   </line>
-                  <line n="7">
-                     <w>Rodlers</w>
-                     <pc type="punct" float="both" force="inter">„</pc>
-                     <w>carré</w>
-                  </line>
-               </ab>
-            </div>
-            <div n="3" type="exercise">
-               <head n="3" type="exercise">
-                  <w>5</w>
-                  <pc type="period" float="left" force="strong">.</pc>
-                  <w>Dezember</w>
-                  <pc type="bracketOpen" float="right" force="inter">(</pc>
-                  <w>Übungen</w>
-                  <pc type="bracketClose" float="left" force="inter">)</pc>
-               </head>
-               <ab>
-                  <line n="8">
-                     <w>Gleichgewichtsdarstellungen</w>
-                     <w>zeichnerisch</w>
-                     <w>und</w>
-                     <w>tonal</w>
-                     <w>nach</w>
-                     <w>Gleichgewichtsbauten</w>
-                  </line>
-                  <line n="9">
-                     <w>in</w>
-                     <w>der</w>
-                     <w>Fläche</w>
-                     <pc type="period" float="left" force="strong">.</pc>
-                  </line>
                </ab>
             </div>
          </div>
          <div n="2" type="unit">
             <pb n="27" facs="83070.jpg"/>
-            <head n="2" type="unit">
+            <head n="2" type="unit" rend="unit-number same-line">
                <w>3</w>
                <pc type="period" float="left" force="strong">.</pc>
             </head>
@@ -6398,7 +6473,7 @@
                      <pc type="colon" float="left" force="weak">:</pc>
                   </line>
                </ab>
-               <figure facs="#zone_f83070_fig2" rend="block">
+               <figure facs="#zone_f83070_fig2" rend="float-right">
                   <head rend="italic">
                      <w>fig</w> 2  </head>
                </figure>
@@ -6511,6 +6586,7 @@
                      </hi>
                   </line>
                   <line n="17">
+                     <figure type="paragraphism" facs="#zone_f83070_par2" rend="par-right"/>
                      <w>Gewichtsgesetzen</w>
                      <w>unterworfen</w>
                      <w>sind</w>
@@ -6597,8 +6673,14 @@
                   </line>
                </ab>
                <pb n="28" facs="83071.jpg"/>
-               <figure facs="#zone_f83071_fig1" rend="row-start"/>
-               <figure facs="#zone_f83071_fig2" rend="row-next"/>
+               <figure facs="#zone_f83071_fig1" rend="row-start">
+                  <head rend="italic">
+                     <w>fig</w> 3  </head>
+               </figure>
+               <figure facs="#zone_f83071_fig2" rend="row-next">
+                  <head rend="italic">
+                     <w>fig</w> 3a  </head>
+               </figure>
                <ab>
                   <line n="1">
                      <w>So</w>
@@ -6612,7 +6694,6 @@
                      <w>zwei</w>
                   </line>
                   <line n="2">
-                     <figure type="paragraphism" facs="#zone_f83071_par1" rend="par-left"/>
                      <w>Gewichte</w>
                      <w>gegeneinander</w>
                      <w>ab</w>
@@ -6640,6 +6721,7 @@
                      <w>Denn</w>
                   </line>
                   <line n="4">
+                     <figure type="paragraphism" facs="#zone_f83071_par1" rend="par-left"/>
                      <sic>
                         <w>durch</w>
                      </sic>
@@ -6670,6 +6752,110 @@
                      <w>Fläche</w>
                      <w>hineinbringen</w>
                      <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <trailer rend="bold pause-center" type="pause">
+                  <pc type="punct" force="inter">*</pc>
+                  <pc type="punct" force="inter">*</pc>
+               </trailer>
+               <ab n="3">
+                  <line n="7">
+                     <w>Eine</w>
+                     <add hand="#pencil">
+                        <w>völlig</w>
+                     </add>
+                     <w>räumliche</w>
+                     <w>Wage</w>
+                     <w>aber</w>
+                     <w>würde</w>
+                     <w>so</w>
+                     <w>aussehn</w>
+                     <pc type="colon" float="left" force="weak">:</pc>
+                  </line>
+               </ab>
+               <figure facs="#zone_f83071_fig3" rend="block">
+                  <head rend="italic">
+                     <w>fig</w> 5  </head>
+               </figure>
+               <ab>
+                  <line n="8">
+                     <w>in</w>
+                     <w>diesem</w>
+                     <w>Falle</w>
+                     <w>eine</w>
+                     <w>räumliche</w>
+                     <w>Wage</w>
+                     <w>die</w>
+                     <w>auf</w>
+                     <w>drei</w>
+                  </line>
+                  <line n="9">
+                     <choice>
+                        <sic>
+                           <pc type="exclam" float="left" force="strong">!</pc>
+                           <w>Ebenen</w>
+                        </sic>
+                        <corr>
+                           <w>Achsen</w>
+                        </corr>
+                     </choice>
+                     <w>AB</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>CD</w>
+                     <w>und</w>
+                     <w>EF</w>
+                     <w>sich</w>
+                     <w>erstreckt</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                     <w>Mit</w>
+                     <w>dieser</w>
+                  </line>
+                  <line n="10">
+                     <w>Wage</w>
+                     <w>könnte</w>
+                     <w>man</w>
+                     <w>die</w>
+                     <w>Gewichte</w>
+                     <w>an</w>
+                     <w>den</w>
+                     <w>Wänden</w>
+                     <w>eines</w>
+                  </line>
+                  <line n="11">
+                     <w>Raumes</w>
+                     <choice>
+                        <sic>
+                           <w>ausmessen</w>
+                        </sic>
+                        <corr>
+                           <w>erwägen</w>
+                        </corr>
+                     </choice>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>der</w>
+                     <w>sich</w>
+                     <w>über</w>
+                     <w>einem</w>
+                     <sic>
+                        <w>Dreieck</w>
+                     </sic>
+                     <choice>
+                        <sic hand="#pencil">
+                           <w>Sechs</w>
+                        </sic>
+                        <corr>
+                           <w>Sechseck</w>
+                        </corr>
+                     </choice>
+                  </line>
+                  <line n="12">
+                     <w>aufbaut</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                     <pc type="bracketOpen" float="right" force="inter">(</pc>
+                     <w>fig</w>
+                     <w>6</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                     <pc type="bracketClose" float="left" force="inter">)</pc>
                   </line>
                </ab>
                <pb n="29" facs="83072.jpg"/>
@@ -7116,7 +7302,6 @@
                      <w>equilibristischen</w>
                   </line>
                   <line n="2">
-                     <figure type="paragraphism" facs="#zone_f83075_par1" rend="par-left"/>
                      <w>Handlung</w>
                      <w>gestattet</w>
                      <w>mir</w>
@@ -7154,6 +7339,151 @@
                      <w>der</w>
                      <w>Symmetrie</w>
                      <w>abweichender</w>
+                     <w>gleichgewichts</w>
+                  </line>
+                  <line n="6">
+                     <w>Zustand</w>
+                     <w>könnte</w>
+                     <w>illustriert</w>
+                     <w>werden</w>
+                     <w>mit</w>
+                     <w>dem</w>
+                     <w>Bild</w>
+                     <w>einer</w>
+                  </line>
+                  <line n="7">
+                     <figure type="paragraphism" facs="#zone_f83075_par1" rend="par-left"/>
+                     <w>Wage</w>
+                     <pc type="colon" float="left" force="weak">:</pc>
+                     <w>in</w>
+                     <w>der</w>
+                     <w>einen</w>
+                     <w>Schale</w>
+                     <w>beispielsweise</w>
+                     <w>zwei</w>
+                  </line>
+                  <line n="8">
+                     <w>Pfundgewichte</w>
+                     <w>in</w>
+                     <w>der</w>
+                     <w>andern</w>
+                     <w>Schale</w>
+                     <w>ein</w>
+                     <w>Gewicht</w>
+                     <w>von</w>
+                  </line>
+                  <line n="9">
+                     <w>750</w>
+                     <w>gr</w>
+                     <w>und</w>
+                     <w>eines</w>
+                     <w>von</w>
+                     <w>250</w>
+                     <w>gr</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <figure facs="#zone_f83075_fig1" rend="block">
+                  <head rend="italic">
+                     <w>fig</w> 19  </head>
+               </figure>
+               <ab n="1">
+                  <line n="10">
+                     <w>Aber</w>
+                     <w>damit</w>
+                     <w>soll</w>
+                     <sic>
+                        <w>die</w>
+                     </sic>
+                     <w>es</w>
+                     <add>
+                        <w>nun</w>
+                     </add>
+                     <w>sein</w>
+                     <w>Bewenden</w>
+                     <w>haben</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                     <w>Wir</w>
+                     <w>müssen</w>
+                  </line>
+                  <line n="11">
+                     <w>mit</w>
+                     <w>bildnerischen</w>
+                     <w>Elementen</w>
+                     <w>operieren</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>an</w>
+                     <w>denen</w>
+                     <w>die</w>
+                     <w>Ge-</w>
+                  </line>
+                  <line n="12">
+                     <w>wichts</w>
+                     <hi rend="underline">
+                        <w>empfindung</w>
+                     </hi>
+                     <w>erörtert</w>
+                     <w>werden</w>
+                     <w>kann</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <trailer rend="bold pause-center" type="pause">
+                  <pc type="punct" force="inter">*</pc>
+               </trailer>
+               <ab n="3">
+                  <line n="13">
+                     <w>Zunächst</w>
+                     <w>einige</w>
+                     <w>Fälle</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>wo</w>
+                     <w>von</w>
+                     <w>Gleichgewicht</w>
+                     <w>ganz</w>
+                  </line>
+                  <line n="14">
+                     <w>sicher</w>
+                     <w>nicht</w>
+                     <w>die</w>
+                     <w>Rede</w>
+                     <w>sein</w>
+                     <w>kann</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <figure facs="#zone_f83075_fig2" rend="block">
+                  <head rend="italic">
+                     <w>fig</w> 20 .  </head>
+               </figure>
+               <ab>
+                  <line n="15">
+                     <w>20</w>
+                     <pc type="slash" float="both" force="inter">/</pc>
+                     <w>Verschiedenheit</w>
+                     <choice>
+                        <sic>
+                           <w>durch</w>
+                           <w>an</w>
+                        </sic>
+                        <corr>
+                           <w>an</w>
+                        </corr>
+                     </choice>
+                     <w>Ausdehnung</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>Summierung</w>
+                     <w>an</w>
+                     <w>Energie</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+                  <line n="16">
+                     <w>auf</w>
+                     <w>der</w>
+                     <w>rechten</w>
+                     <w>Seite</w>
+                     <w>durch</w>
+                     <w>Addition</w>
                   </line>
                </ab>
                <pb n="33" facs="83076.jpg"/>
@@ -7705,7 +8035,7 @@
                               <w>menschlich</w>
                            </sic>
                            <corr>
-                              <w>ermenschlichtend</w>
+                              <w>vermenschlichtend</w>
                            </corr>
                         </choice>
                      </line>
@@ -8398,14 +8728,14 @@
                         <w>fig</w> 31  </head>
                   </figure>
                   <figure rend="gap-0.75"/>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-center" type="pause">
                      <pc type="punct" force="inter">*</pc>
                   </trailer>
                   <figure facs="#zone_f83081_fig4" rend="float-right">
                      <head rend="italic"> 31a  </head>
                   </figure>
                   <pb n="39" facs="83082.jpg"/>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-center" type="pause">
                      <pc type="punct" force="inter">*</pc>
                   </trailer>
                   <ab n="2">
@@ -9058,14 +9388,13 @@
                         <pc type="period" float="left" force="strong">.</pc>
                      </line>
                   </ab>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-center" type="pause">
                      <pc type="punct" force="inter">*</pc>
                   </trailer>
                </div>
             </div>
             <div n="3" type="exercise">
                <head n="3" type="exercise">
-                  <pc type="colon" float="left" force="weak">:</pc>
                   <w>9</w>
                   <pc type="period" float="left" force="strong">.</pc>
                   <w>Januar</w>
@@ -9126,13 +9455,12 @@
          </div>
          <div n="2" type="unit">
             <pb n="42" facs="83085.jpg"/>
-            <head n="2" type="unit">
+            <head n="2" type="unit" rend="unit-number same-line">
                <w>4</w>
                <pc type="period" float="left" force="strong">.</pc>
             </head>
             <div n="3" type="lesson">
                <head n="3" type="lesson">
-                  <pc type="colon" float="left" force="weak">:</pc>
                   <w>16</w>
                   <pc type="period" float="left" force="strong">.</pc>
                   <w>Januar</w>
@@ -9144,8 +9472,7 @@
                <ab n="3">
                   <line n="1">
                      <w>Das</w>
-                     <w>letz</w>
-                     <w>e</w>
+                     <w>letze</w>
                      <w>Mal</w>
                      <w>hat</w>
                      <w>sich</w>
@@ -9155,25 +9482,17 @@
                      <w>komposi-</w>
                   </line>
                   <line n="2">
-                     <w>tionelle</w>
-                     <choice>
-                        <sic>
-                           <w>r</w>
-                        </sic>
-                        <corr>
-                           <w>n</w>
-                        </corr>
-                     </choice>
+                     <w>tionelle<choice>
+                           <sic>r</sic>
+                           <corr>n</corr>
+                        </choice>
+                     </w>
                      <w>und</w>
-                     <w>structurale</w>
-                     <choice>
-                        <sic>
-                           <w>r</w>
-                        </sic>
-                        <corr>
-                           <w>n</w>
-                        </corr>
-                     </choice>
+                     <w>structurale<choice>
+                           <sic>r</sic>
+                           <corr>n</corr>
+                        </choice>
+                     </w>
                      <w>Charakteren</w>
                      <w>gezeigt</w>
                   </line>
@@ -9556,7 +9875,7 @@
                      </add>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
                <ab n="3">
@@ -9793,7 +10112,7 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
                <ab n="5">
@@ -9954,7 +10273,7 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
                <figure rend="clear"/>
@@ -10298,6 +10617,58 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
+               <ab n="3">
+                  <line n="11">
+                     <w>Individuelle</w>
+                     <w>Rhythmen</w>
+                     <w>würden</w>
+                     <w>umgekehrt</w>
+                     <w>nicht</w>
+                  </line>
+                  <line n="12">
+                     <w>auf</w>
+                     <w>eins</w>
+                     <w>oder</w>
+                     <w>auf</w>
+                     <w>gleichgeartete</w>
+                     <w>Zahlen</w>
+                     <w>reduziert</w>
+                     <w>werden</w>
+                  </line>
+                  <line n="13">
+                     <w>können</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>sondern</w>
+                     <w>bei</w>
+                     <w>Verhältnissen</w>
+                     <w>wie</w>
+                     <w>2</w>
+                     <pc type="colon" float="left" force="weak">:</pc>
+                     <w>3</w>
+                     <pc type="colon" float="left" force="weak">:</pc>
+                     <w>5</w>
+                  </line>
+                  <line n="14">
+                     <w>oder</w>
+                     <w>7</w>
+                     <pc type="colon" float="left" force="weak">:</pc>
+                     <w>11</w>
+                     <pc type="colon" float="left" force="weak">:</pc>
+                     <w>13</w>
+                     <pc type="colon" float="left" force="weak">:</pc>
+                     <w>17</w>
+                     <w>unerbittlich</w>
+                     <w>Halt</w>
+                     <w>machen</w>
+                  </line>
+                  <line n="15">
+                     <w>müssen</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <trailer rend="bold pause-center" type="pause">
+                  <pc type="punct" force="inter">*</pc>
+               </trailer>
                <pb n="49" facs="83092.jpg"/>
                <ab n="1">
                   <line n="1">
@@ -10979,9 +11350,227 @@
                      <w>klingen</w>
                      <pc type="bracketOpen" float="right" force="inter">(</pc>
                      <w>es</w>
-                     <w>kön</w>
+                     <w>könnte</w>
+                     <w>auch</w>
+                     <w>einmal</w>
+                     <w>eine</w>
+                     <w>für</w>
+                     <w>sich</w>
+                     <w>allein</w>
+                     <w>klingen</w>
+                     <pc type="bracketClose" float="left" force="inter">)</pc>
                   </line>
                </ab>
+               <ab n="5">
+                  <line n="13">
+                     <w>Die</w>
+                     <w>beiden</w>
+                     <w>Stimmen</w>
+                     <pc type="bracketOpen" float="right" force="inter">(</pc>
+                     <w>zweite</w>
+                     <w>und</w>
+                     <w>dritte</w>
+                     <w>Stimme</w>
+                     <pc type="bracketClose" float="left" force="inter">)</pc>
+                     <w>des</w>
+                     <w>ersten</w>
+                  </line>
+                  <line n="14">
+                     <w>Taktes</w>
+                     <w>unterscheiden</w>
+                     <w>sich</w>
+                     <w>sehr</w>
+                     <w>in</w>
+                     <w>der</w>
+                     <w>Individualisierung</w>
+                  </line>
+                  <line n="15">
+                     <w>Die</w>
+                     <w>Untere</w>
+                     <w>hat</w>
+                     <w>sichtlich</w>
+                     <w>structuralen</w>
+                     <w>Charakter</w>
+                     <w>im</w>
+                     <w>Vergleich</w>
+                  </line>
+                  <line n="16">
+                     <w>zur</w>
+                     <w>Oberen</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>welche</w>
+                     <w>individuel</w>
+                     <w>gehalten</w>
+                     <w>ist</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <ab n="6">
+                  <line n="17">
+                     <w>Der</w>
+                     <add>
+                        <w>spätere</w>
+                     </add>
+                     <w>Einsatz</w>
+                     <w>der</w>
+                     <w>ersten</w>
+                     <w>Stimme</w>
+                     <w>erfolgt</w>
+                     <w>etwas</w>
+                     <w>unterhalb</w>
+                  </line>
+                  <line n="18">
+                     <w>der</w>
+                     <w>zweiten</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>will</w>
+                     <w>sie</w>
+                     <w>überspringen</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>was</w>
+                     <w>fürs</w>
+                     <w>erste</w>
+                  </line>
+                  <line n="19">
+                     <w>nicht</w>
+                     <w>gelingt</w>
+                     <pc type="semicolon" float="left" force="weak">;</pc>
+                     <w>erst</w>
+                     <w>nach</w>
+                     <w>der</w>
+                     <w>kurzen</w>
+                     <w>Pause</w>
+                     <w>der</w>
+                     <w>zweiten</w>
+                     <w>Stimme</w>
+                  </line>
+                  <line n="20">
+                     <w>erlangt</w>
+                     <w>die</w>
+                     <w>das</w>
+                     <w>erstrebte</w>
+                     <w>Übergewicht</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                     <w>Die</w>
+                     <w>zweite</w>
+                     <w>wird</w>
+                  </line>
+                  <line n="21">
+                     <w>bei</w>
+                     <w>individuellem</w>
+                     <w>Eintritt</w>
+                     <w>der</w>
+                     <w>ersten</w>
+                     <w>zum</w>
+                     <w>structuralen</w>
+                     <w>Charak-</w>
+                  </line>
+                  <line n="22">
+                     <w>ter</w>
+                     <w>degradiert</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>macht</w>
+                     <w>durch</w>
+                     <w>Höhenlage</w>
+                     <w>im</w>
+                     <w>einverstandenen</w>
+                  </line>
+                  <line n="23">
+                     <w>Gegensatz</w>
+                     <w>zur</w>
+                     <w>Dritten</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>die</w>
+                     <w>sich</w>
+                     <w>an</w>
+                     <w>dieser</w>
+                     <w>Stelle</w>
+                     <w>etwas</w>
+                     <w>vertieft</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                  </line>
+                  <line n="24">
+                     <w>ein</w>
+                     <w>Joch</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>unter</w>
+                     <w>dem</w>
+                     <w>sich</w>
+                     <w>die</w>
+                     <w>Erste</w>
+                     <w>individuel</w>
+                     <w>bewegt</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <ab n="7">
+                  <line n="25">
+                     <w>Nach</w>
+                     <w>der</w>
+                     <w>resignierenden</w>
+                     <w>Pause</w>
+                     <w>geht</w>
+                     <w>die</w>
+                     <w>Zweite</w>
+                     <w>parallel</w>
+                  </line>
+                  <line n="26">
+                     <w>mit</w>
+                     <w>der</w>
+                     <w>Dritten</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <ab n="8">
+                  <line n="27">
+                     <w>Die</w>
+                     <w>dritte</w>
+                     <w>bleibt</w>
+                     <w>ihrem</w>
+                     <w>structuralen</w>
+                     <w>Charakter</w>
+                     <add>
+                        <w>von</w>
+                        <w>Anfang</w>
+                        <w>an</w>
+                     </add>
+                     <w>treu</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                  </line>
+                  <line n="28">
+                     <w>bis</w>
+                     <w>zu</w>
+                     <w>der</w>
+                     <w>Stelle</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>wo</w>
+                     <w>die</w>
+                     <w>Zweite</w>
+                     <w>sich</w>
+                     <w>parallel</w>
+                     <w>ihr</w>
+                     <w>zugesellt</w>
+                     <pc type="semicolon" float="left" force="weak">;</pc>
+                  </line>
+                  <line n="29">
+                     <w>hier</w>
+                     <w>kann</w>
+                     <w>man</w>
+                     <w>einen</w>
+                     <w>schüchternen</w>
+                     <w>Versuch</w>
+                     <w>zum</w>
+                     <w>Individuellen</w>
+                  </line>
+                  <line n="30">
+                     <w>hin</w>
+                     <w>erkennen</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </line>
+               </ab>
+               <trailer rend="bold pause-center" type="pause">
+                  <pc type="punct" force="inter">*</pc>
+               </trailer>
                <pb n="54" facs="83097.jpg"/>
                <ab n="1">
                   <line n="1">
@@ -11064,22 +11653,23 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
-               <trailer rend="bold" type="pause">
+               <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
-               <pb n="55" facs="83098.jpg"/>
-               <ab n="1"/>
             </div>
-            <div n="3" type="5">
-               <head n="3" type="5">
-                  <w>Lesson</w>
+         </div>
+         <div n="2" type="unit">
+            <pb n="55" facs="83098.jpg"/>
+            <head n="2" type="unit" rend="unit-number same-line">
+               <w>5</w>
+            </head>
+            <div n="3" type="lesson">
+               <head n="3" type="lesson">
                   <w>30</w>
                   <pc type="period" float="left" force="strong">.</pc>
                   <w>Januar</w>
-                  <w>192</w>
-                  <sic>
-                     <w>1</w>
-                  </sic>
+                  <w>192<sic>1</sic>
+                  </w>
                   <pc type="slash" float="both" force="inter">/</pc>
                   <add>
                      <w>2</w>
@@ -11823,6 +12413,86 @@
                      <w>PROVA</w>
                   </line>
                </ab>
+               <pb n="69" facs="83112.jpg"/>
+               <trailer rend="bold pause-center" type="pause">
+                  <pc type="punct" force="inter">*</pc>
+               </trailer>
+            </div>
+         </div>
+         <div n="2" type="unit">
+            <head n="2" type="unit" rend="unit-number same-line">
+               <w>6</w>
+               <pc type="period" float="left" force="strong">.</pc>
+            </head>
+            <div n="3" type="lesson">
+               <head n="3" type="lesson">
+                  <w>Montag</w>
+                  <w>deu</w>
+                  <w>13</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+                  <w>Februar</w>
+                  <w>1922</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+               </head>
+            </div>
+         </div>
+         <div n="2" type="unit">
+            <pb n="87" facs="83130.jpg"/>
+            <head n="2" type="unit" rend="unit-number same-line">
+               <w>7</w>
+               <pc type="period" float="left" force="strong">.</pc>
+            </head>
+            <div n="3" type="lesson">
+               <head n="3" type="lesson">
+                  <w>Montag</w>
+                  <w>den</w>
+                  <w>17</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+                  <choice>
+                     <sic>
+                        <w>Januar</w>
+                     </sic>
+                     <corr>
+                        <w>Februar</w>
+                     </corr>
+                  </choice>
+                  <w>1922</w>
+               </head>
+            </div>
+         </div>
+         <div n="2" type="unit">
+            <pb n="105" facs="83148.jpg"/>
+            <head n="2" type="unit" rend="unit-number same-line">
+               <w>8</w>
+               <pc type="period" float="left" force="strong">.</pc>
+            </head>
+            <div n="3" type="lesson">
+               <head n="3" type="lesson">
+                  <w>Montag</w>
+                  <w>den</w>
+                  <w>20</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+                  <w>Marz</w>
+                  <w>1922</w>
+               </head>
+            </div>
+         </div>
+         <div n="2" type="unit">
+            <pb n="123" facs="83166.jpg"/>
+            <head n="2" type="unit" rend="unit-number same-line">
+               <w>9</w>
+               <pc type="period" float="left" force="strong">.</pc>
+            </head>
+            <div n="3" type="lesson">
+               <head n="3" type="lesson">
+                  <w>Montag</w>
+                  <w>den</w>
+                  <w>3</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+                  <w>Avril</w>
+                  <w>1922</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+               </head>
             </div>
          </div>
       </div>
@@ -12036,6 +12706,69 @@
                <w>heit</w>
             </line>
          </ab>
+      </div>
+      <div n="1" type="part">
+         <pb n="153" facs="83196.jpg"/>
+         <head n="1" type="part">
+            <w rend="sans">C</w>
+            <w>Vorträge</w>
+            <w>im</w>
+            <w>Wintersemester</w>
+            <w>1922</w>
+            <pc type="slash" float="both" force="inter">/</pc>
+            <w>23</w>
+         </head>
+         <div n="2" type="unit">
+            <head n="2" type="unit" rend="unit-number same-line">
+               <w>10</w>
+               <pc type="period" float="left" force="strong">.</pc>
+            </head>
+            <div n="3" type="lesson">
+               <head n="3" type="lesson">
+                  <choice>
+                     <sic>
+                        <w>Mitnoch</w>
+                     </sic>
+                     <corr>
+                        <w>Dienstag</w>
+                     </corr>
+                  </choice>
+                  <w>deu</w>
+                  <choice>
+                     <sic>
+                        <w>29</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </sic>
+                     <corr>
+                        <w>28</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </corr>
+                  </choice>
+                  <w>November</w>
+                  <w>1922</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+               </head>
+            </div>
+         </div>
+         <div n="2" type="unit">
+            <pb n="172" facs="83215.jpg"/>
+            <head n="2" type="unit" rend="unit-number same-line">
+               <w>11</w>
+               <pc type="period" float="left" force="strong">.</pc>
+            </head>
+            <div n="3" type="lesson">
+               <head n="3" type="lesson">
+                  <w>Dienstag</w>
+                  <w>deu</w>
+                  <w>19</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+                  <w>Dez</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+                  <w>22</w>
+                  <pc type="period" float="left" force="strong">.</pc>
+               </head>
+            </div>
+         </div>
       </div>
    </sourceDoc>
    <standOff/>
@@ -12432,7 +13165,7 @@
                         <pc type="period" float="left" force="strong">.</pc>
                      </l>
                   </ab>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-center" type="pause">
                      <pc type="punct" force="inter">*</pc>
                   </trailer>
                   <ab n="5">
@@ -12534,7 +13267,7 @@
                         <pc type="period" float="left" force="strong">.</pc>
                      </l>
                   </ab>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-center" type="pause">
                      <pc type="punct" force="inter">*</pc>
                   </trailer>
                   <ab n="3">
@@ -12853,7 +13586,7 @@
                         <choice/>
                      </l>
                   </ab>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-center" type="pause">
                      <pc type="punct" force="inter">*</pc>
                      <pc type="punct" force="inter">*</pc>
                      <pc type="punct" force="inter">*</pc>
@@ -12894,7 +13627,7 @@
                </div>
                <div n="2" type="unit">
                   <pb xml:id="klee_crit_83049" n="6" facs="83049.jpg"/>
-                  <head n="2" type="unit">
+                  <head n="2" type="unit" rend="unit-number">
                      <w>1</w>
                      <pc type="period" float="left" force="strong">.</pc>
                   </head>
@@ -13037,7 +13770,7 @@
                         <w>Utopie</w>
                      </l>
                   </ab>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-center" type="pause">
                      <pc type="punct" force="inter">*</pc>
                   </trailer>
                   <ab n="3">
@@ -13254,7 +13987,7 @@
                         <pc type="period" float="left" force="strong">.</pc>
                      </l>
                   </ab>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-center" type="pause">
                      <pc type="punct" force="inter">*</pc>
                   </trailer>
                   <pb xml:id="klee_crit_83051" n="8" facs="83051.jpg"/>
@@ -13304,7 +14037,7 @@
                         <pc type="period" float="left" force="strong">.</pc>
                      </l>
                   </ab>
-                  <trailer rend="bold" type="pause">
+                  <trailer rend="bold pause-inline" type="pause">
                      <pc type="punct" force="inter">*</pc>
                      <w>Man</w>
                      <w>wird</w>
@@ -13986,7 +14719,7 @@
                            <pc type="bracketClose" float="left" force="inter">)</pc>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
                      <ab type="margin" place="left" rend="margin-left">
@@ -14149,13 +14882,13 @@
                            <w>Natur</w>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
                   </div>
                </div>
                <div n="2" type="unit">
-                  <head n="2" type="unit">
+                  <head n="2" type="unit" rend="unit-number same-line">
                      <w>2</w>
                      <pc type="period" float="left" force="strong">.</pc>
                   </head>
@@ -14473,7 +15206,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
                      <label type="margin" place="left" rend="margin-head margin-left" n="4">
@@ -14544,7 +15277,7 @@
                            <w>Entgleisung</w>
                         </l>
                         <l n="18">
-                           <w>Oder</w>
+                           <w>oder</w>
                            <w>wenn</w>
                            <w>man</w>
                            <w>die</w>
@@ -15036,7 +15769,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
                      <figure rend="clear"/>
@@ -15313,7 +16046,10 @@
                      <figure facs="#zone_f83062_fig2" rend="block"/>
                      <ab>
                         <l n="4">
-                           <w>bleibt</w>
+                           <w>bleib</w>
+                           <choice>
+                              <w>t</w>
+                           </choice>
                            <w>die</w>
                            <w>Senkrechte</w>
                         </l>
@@ -16194,7 +16930,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
                      <label type="margin"
@@ -16300,43 +17036,12 @@
                            <w>Goghs</w>
                            <w>Perspectivinstrument</w>
                         </l>
-                        <l n="7">
-                           <w>Rodlers</w>
-                           <pc type="punct" float="both" force="inter">„</pc>
-                           <w>carré</w>
-                        </l>
-                     </ab>
-                  </div>
-                  <div n="3" type="exercise">
-                     <head n="3" type="exercise">
-                        <w>5</w>
-                        <pc type="period" float="left" force="strong">.</pc>
-                        <w>Dezember</w>
-                        <pc type="bracketOpen" float="right" force="inter">(</pc>
-                        <w>Übungen</w>
-                        <pc type="bracketClose" float="left" force="inter">)</pc>
-                     </head>
-                     <ab>
-                        <l n="8">
-                           <w>Gleichgewichtsdarstellungen</w>
-                           <w>zeichnerisch</w>
-                           <w>und</w>
-                           <w>tonal</w>
-                           <w>nach</w>
-                           <w>Gleichgewichtsbauten</w>
-                        </l>
-                        <l n="9">
-                           <w>in</w>
-                           <w>der</w>
-                           <w>Fläche</w>
-                           <pc type="period" float="left" force="strong">.</pc>
-                        </l>
                      </ab>
                   </div>
                </div>
                <div n="2" type="unit">
                   <pb xml:id="klee_crit_83070" n="27" facs="83070.jpg"/>
-                  <head n="2" type="unit">
+                  <head n="2" type="unit" rend="unit-number same-line">
                      <w>3</w>
                      <pc type="period" float="left" force="strong">.</pc>
                   </head>
@@ -16438,7 +17143,7 @@
                            <pc type="colon" float="left" force="weak">:</pc>
                         </l>
                      </ab>
-                     <figure facs="#zone_f83070_fig2" rend="block">
+                     <figure facs="#zone_f83070_fig2" rend="float-right">
                         <head rend="italic">
                            <w>fig</w> 2  </head>
                      </figure>
@@ -16527,6 +17232,7 @@
                            </hi>
                         </l>
                         <l n="17">
+                           <figure type="paragraphism" facs="#zone_f83070_par2" rend="par-right"/>
                            <w>Gewichtsgesetzen</w>
                            <w>unterworfen</w>
                            <w>sind</w>
@@ -16607,8 +17313,14 @@
                         </l>
                      </ab>
                      <pb xml:id="klee_crit_83071" n="28" facs="83071.jpg"/>
-                     <figure facs="#zone_f83071_fig1" rend="row-start"/>
-                     <figure facs="#zone_f83071_fig2" rend="row-next"/>
+                     <figure facs="#zone_f83071_fig1" rend="row-start">
+                        <head rend="italic">
+                           <w>fig</w> 3  </head>
+                     </figure>
+                     <figure facs="#zone_f83071_fig2" rend="row-next">
+                        <head rend="italic">
+                           <w>fig</w> 3a  </head>
+                     </figure>
                      <ab>
                         <l n="1">
                            <w>So</w>
@@ -16622,7 +17334,6 @@
                            <w>zwei</w>
                         </l>
                         <l n="2">
-                           <figure type="paragraphism" facs="#zone_f83071_par1" rend="par-left"/>
                            <w>Gewichte</w>
                            <w>gegeneinander</w>
                            <w>ab</w>
@@ -16645,6 +17356,7 @@
                            <w>Denn</w>
                         </l>
                         <l n="4">
+                           <figure type="paragraphism" facs="#zone_f83071_par1" rend="par-left"/>
                            <w>zwei</w>
                            <w>Punkte</w>
                            <w>kann</w>
@@ -16668,6 +17380,89 @@
                            <w>Fläche</w>
                            <w>hineinbringen</w>
                            <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <trailer rend="bold pause-center" type="pause">
+                        <pc type="punct" force="inter">*</pc>
+                        <pc type="punct" force="inter">*</pc>
+                     </trailer>
+                     <ab n="3">
+                        <l n="7">
+                           <w>Eine</w>
+                           <w>völlig</w>
+                           <w>räumliche</w>
+                           <w>Wage</w>
+                           <w>aber</w>
+                           <w>würde</w>
+                           <w>so</w>
+                           <w>aussehn</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83071_fig3" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 5  </head>
+                     </figure>
+                     <ab>
+                        <l n="8">
+                           <w>in</w>
+                           <w>diesem</w>
+                           <w>Falle</w>
+                           <w>eine</w>
+                           <w>räumliche</w>
+                           <w>Wage</w>
+                           <w>die</w>
+                           <w>auf</w>
+                           <w>drei</w>
+                        </l>
+                        <l n="9">
+                           <choice>
+                              <w>Achsen</w>
+                           </choice>
+                           <w>AB</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>CD</w>
+                           <w>und</w>
+                           <w>EF</w>
+                           <w>sich</w>
+                           <w>erstreckt</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Mit</w>
+                           <w>dieser</w>
+                        </l>
+                        <l n="10">
+                           <w>Wage</w>
+                           <w>könnte</w>
+                           <w>man</w>
+                           <w>die</w>
+                           <w>Gewichte</w>
+                           <w>an</w>
+                           <w>den</w>
+                           <w>Wänden</w>
+                           <w>eines</w>
+                        </l>
+                        <l n="11">
+                           <w>Raumes</w>
+                           <choice>
+                              <w>erwägen</w>
+                           </choice>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>der</w>
+                           <w>sich</w>
+                           <w>über</w>
+                           <w>einem</w>
+                           <choice>
+                              <w>Sechseck</w>
+                           </choice>
+                        </l>
+                        <l n="12">
+                           <w>aufbaut</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <pc type="bracketOpen" float="right" force="inter">(</pc>
+                           <w>fig</w>
+                           <w>6</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <pc type="bracketClose" float="left" force="inter">)</pc>
                         </l>
                      </ab>
                      <pb xml:id="klee_crit_83072" n="29" facs="83072.jpg"/>
@@ -17110,7 +17905,6 @@
                            <w>equilibristischen</w>
                         </l>
                         <l n="2">
-                           <figure type="paragraphism" facs="#zone_f83075_par1" rend="par-left"/>
                            <w>Handlung</w>
                            <w>gestattet</w>
                            <w>mir</w>
@@ -17146,6 +17940,140 @@
                            <w>der</w>
                            <w>Symmetrie</w>
                            <w>abweichender</w>
+                           <w>gleichgewichts</w>
+                        </l>
+                        <l n="6">
+                           <w>Zustand</w>
+                           <w>könnte</w>
+                           <w>illustriert</w>
+                           <w>werden</w>
+                           <w>mit</w>
+                           <w>dem</w>
+                           <w>Bild</w>
+                           <w>einer</w>
+                        </l>
+                        <l n="7">
+                           <figure type="paragraphism" facs="#zone_f83075_par1" rend="par-left"/>
+                           <w>Wage</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                           <w>in</w>
+                           <w>der</w>
+                           <w>einen</w>
+                           <w>Schale</w>
+                           <w>beispielsweise</w>
+                           <w>zwei</w>
+                        </l>
+                        <l n="8">
+                           <w>Pfundgewichte</w>
+                           <w>in</w>
+                           <w>der</w>
+                           <w>andern</w>
+                           <w>Schale</w>
+                           <w>ein</w>
+                           <w>Gewicht</w>
+                           <w>von</w>
+                        </l>
+                        <l n="9">
+                           <w>750</w>
+                           <w>gr</w>
+                           <w>und</w>
+                           <w>eines</w>
+                           <w>von</w>
+                           <w>250</w>
+                           <w>gr</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83075_fig1" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 19  </head>
+                     </figure>
+                     <ab n="1">
+                        <l n="10">
+                           <w>Aber</w>
+                           <w>damit</w>
+                           <w>soll</w>
+                           <w>es</w>
+                           <w>nun</w>
+                           <w>sein</w>
+                           <w>Bewenden</w>
+                           <w>haben</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Wir</w>
+                           <w>müssen</w>
+                        </l>
+                        <l n="11">
+                           <w>mit</w>
+                           <w>bildnerischen</w>
+                           <w>Elementen</w>
+                           <w>operieren</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>an</w>
+                           <w>denen</w>
+                           <w>die</w>
+                           <w>Ge-</w>
+                        </l>
+                        <l n="12">
+                           <w>wichts</w>
+                           <hi rend="underline">
+                              <w>empfindung</w>
+                           </hi>
+                           <w>erörtert</w>
+                           <w>werden</w>
+                           <w>kann</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <trailer rend="bold pause-center" type="pause">
+                        <pc type="punct" force="inter">*</pc>
+                     </trailer>
+                     <ab n="3">
+                        <l n="13">
+                           <w>Zunächst</w>
+                           <w>einige</w>
+                           <w>Fälle</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>wo</w>
+                           <w>von</w>
+                           <w>Gleichgewicht</w>
+                           <w>ganz</w>
+                        </l>
+                        <l n="14">
+                           <w>sicher</w>
+                           <w>nicht</w>
+                           <w>die</w>
+                           <w>Rede</w>
+                           <w>sein</w>
+                           <w>kann</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <figure facs="#zone_f83075_fig2" rend="block">
+                        <head rend="italic">
+                           <w>fig</w> 20 .  </head>
+                     </figure>
+                     <ab>
+                        <l n="15">
+                           <w>20</w>
+                           <pc type="slash" float="both" force="inter">/</pc>
+                           <w>Verschiedenheit</w>
+                           <choice>
+                              <w>an</w>
+                           </choice>
+                           <w>Ausdehnung</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>Summierung</w>
+                           <w>an</w>
+                           <w>Energie</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                        <l n="16">
+                           <w>auf</w>
+                           <w>der</w>
+                           <w>rechten</w>
+                           <w>Seite</w>
+                           <w>durch</w>
+                           <w>Addition</w>
                         </l>
                      </ab>
                      <pb xml:id="klee_crit_83076" n="33" facs="83076.jpg"/>
@@ -17672,7 +18600,7 @@
                               <w>Horizontalen</w>
                               <pc type="comma" float="left" force="weak">,</pc>
                               <choice>
-                                 <w>ermenschlichtend</w>
+                                 <w>vermenschlichtend</w>
                               </choice>
                            </l>
                            <l n="15">
@@ -18332,14 +19260,14 @@
                               <w>fig</w> 31  </head>
                         </figure>
                         <figure rend="gap-0.75"/>
-                        <trailer rend="bold" type="pause">
+                        <trailer rend="bold pause-center" type="pause">
                            <pc type="punct" force="inter">*</pc>
                         </trailer>
                         <figure facs="#zone_f83081_fig4" rend="float-right">
                            <head rend="italic"> 31a  </head>
                         </figure>
                         <pb xml:id="klee_crit_83082" n="39" facs="83082.jpg"/>
-                        <trailer rend="bold" type="pause">
+                        <trailer rend="bold pause-center" type="pause">
                            <pc type="punct" force="inter">*</pc>
                         </trailer>
                         <ab n="2">
@@ -18987,14 +19915,13 @@
                               <pc type="period" float="left" force="strong">.</pc>
                            </l>
                         </ab>
-                        <trailer rend="bold" type="pause">
+                        <trailer rend="bold pause-center" type="pause">
                            <pc type="punct" force="inter">*</pc>
                         </trailer>
                      </div>
                   </div>
                   <div n="3" type="exercise">
                      <head n="3" type="exercise">
-                        <pc type="colon" float="left" force="weak">:</pc>
                         <w>9</w>
                         <pc type="period" float="left" force="strong">.</pc>
                         <w>Januar</w>
@@ -19055,13 +19982,12 @@
                </div>
                <div n="2" type="unit">
                   <pb xml:id="klee_crit_83085" n="42" facs="83085.jpg"/>
-                  <head n="2" type="unit">
+                  <head n="2" type="unit" rend="unit-number same-line">
                      <w>4</w>
                      <pc type="period" float="left" force="strong">.</pc>
                   </head>
                   <div n="3" type="lesson">
                      <head n="3" type="lesson">
-                        <pc type="colon" float="left" force="weak">:</pc>
                         <w>16</w>
                         <pc type="period" float="left" force="strong">.</pc>
                         <w>Januar</w>
@@ -19073,12 +19999,7 @@
                      <ab n="3">
                         <l n="1">
                            <w>Das</w>
-                           <w>letz</w>
-                           <supplied>
-                              <pc type="slash" float="both" force="inter">/</pc>
-                              <w>t</w>
-                           </supplied>
-                           <w>e</w>
+                           <w>letz<supplied>t</supplied>e</w>
                            <w>Mal</w>
                            <w>hat</w>
                            <w>sich</w>
@@ -19088,15 +20009,11 @@
                            <w>komposi-</w>
                         </l>
                         <l n="2">
-                           <w>tionelle</w>
-                           <choice>
-                              <w>n</w>
-                           </choice>
+                           <w>tionelle<choice>n</choice>
+                           </w>
                            <w>und</w>
-                           <w>structurale</w>
-                           <choice>
-                              <w>n</w>
-                           </choice>
+                           <w>structurale<choice>n</choice>
+                           </w>
                            <w>Charakteren</w>
                            <w>gezeigt</w>
                         </l>
@@ -19434,7 +20351,7 @@
                            <w>39</w>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
                      <ab n="3">
@@ -19666,7 +20583,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
                      <ab n="5">
@@ -19802,7 +20719,7 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
                      <figure rend="clear"/>
@@ -20133,6 +21050,58 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
+                     <ab n="3">
+                        <l n="11">
+                           <w>Individuelle</w>
+                           <w>Rhythmen</w>
+                           <w>würden</w>
+                           <w>umgekehrt</w>
+                           <w>nicht</w>
+                        </l>
+                        <l n="12">
+                           <w>auf</w>
+                           <w>eins</w>
+                           <w>oder</w>
+                           <w>auf</w>
+                           <w>gleichgeartete</w>
+                           <w>Zahlen</w>
+                           <w>reduziert</w>
+                           <w>werden</w>
+                        </l>
+                        <l n="13">
+                           <w>können</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>sondern</w>
+                           <w>bei</w>
+                           <w>Verhältnissen</w>
+                           <w>wie</w>
+                           <w>2</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                           <w>3</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                           <w>5</w>
+                        </l>
+                        <l n="14">
+                           <w>oder</w>
+                           <w>7</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                           <w>11</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                           <w>13</w>
+                           <pc type="colon" float="left" force="weak">:</pc>
+                           <w>17</w>
+                           <w>unerbittlich</w>
+                           <w>Halt</w>
+                           <w>machen</w>
+                        </l>
+                        <l n="15">
+                           <w>müssen</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <trailer rend="bold pause-center" type="pause">
+                        <pc type="punct" force="inter">*</pc>
+                     </trailer>
                      <pb xml:id="klee_crit_83092" n="49" facs="83092.jpg"/>
                      <ab n="1">
                         <l n="1">
@@ -20806,9 +21775,223 @@
                            <w>klingen</w>
                            <pc type="bracketOpen" float="right" force="inter">(</pc>
                            <w>es</w>
-                           <w>kön</w>
+                           <w>kön<supplied>n</supplied>nte</w>
+                           <w>auch</w>
+                           <w>einmal</w>
+                           <w>eine</w>
+                           <w>für</w>
+                           <w>sich</w>
+                           <w>allein</w>
+                           <w>klingen</w>
+                           <pc type="bracketClose" float="left" force="inter">)</pc>
                         </l>
                      </ab>
+                     <ab n="5">
+                        <l n="13">
+                           <w>Die</w>
+                           <w>beiden</w>
+                           <w>Stimmen</w>
+                           <pc type="bracketOpen" float="right" force="inter">(</pc>
+                           <w>zweite</w>
+                           <w>und</w>
+                           <w>dritte</w>
+                           <w>Stimme</w>
+                           <pc type="bracketClose" float="left" force="inter">)</pc>
+                           <w>des</w>
+                           <w>ersten</w>
+                        </l>
+                        <l n="14">
+                           <w>Taktes</w>
+                           <w>unterscheiden</w>
+                           <w>sich</w>
+                           <w>sehr</w>
+                           <w>in</w>
+                           <w>der</w>
+                           <w>Individualisierung</w>
+                        </l>
+                        <l n="15">
+                           <w>Die</w>
+                           <w>Untere</w>
+                           <w>hat</w>
+                           <w>sichtlich</w>
+                           <w>structuralen</w>
+                           <w>Charakter</w>
+                           <w>im</w>
+                           <w>Vergleich</w>
+                        </l>
+                        <l n="16">
+                           <w>zur</w>
+                           <w>Oberen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>welche</w>
+                           <w>individuel</w>
+                           <w>gehalten</w>
+                           <w>ist</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <ab n="6">
+                        <l n="17">
+                           <w>Der</w>
+                           <w>spätere</w>
+                           <w>Einsatz</w>
+                           <w>der</w>
+                           <w>ersten</w>
+                           <w>Stimme</w>
+                           <w>erfolgt</w>
+                           <w>etwas</w>
+                           <w>unterhalb</w>
+                        </l>
+                        <l n="18">
+                           <w>der</w>
+                           <w>zweiten</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>will</w>
+                           <w>sie</w>
+                           <w>überspringen</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>was</w>
+                           <w>fürs</w>
+                           <w>erste</w>
+                        </l>
+                        <l n="19">
+                           <w>nicht</w>
+                           <w>gelingt</w>
+                           <pc type="semicolon" float="left" force="weak">;</pc>
+                           <w>erst</w>
+                           <w>nach</w>
+                           <w>der</w>
+                           <w>kurzen</w>
+                           <w>Pause</w>
+                           <w>der</w>
+                           <w>zweiten</w>
+                           <w>Stimme</w>
+                        </l>
+                        <l n="20">
+                           <w>erlangt</w>
+                           <w>die</w>
+                           <w>das</w>
+                           <w>erstrebte</w>
+                           <w>Übergewicht</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                           <w>Die</w>
+                           <w>zweite</w>
+                           <w>wird</w>
+                        </l>
+                        <l n="21">
+                           <w>bei</w>
+                           <w>individuellem</w>
+                           <w>Eintritt</w>
+                           <w>der</w>
+                           <w>ersten</w>
+                           <w>zum</w>
+                           <w>structuralen</w>
+                           <w>Charak-</w>
+                        </l>
+                        <l n="22">
+                           <w>ter</w>
+                           <w>degradiert</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>macht</w>
+                           <w>durch</w>
+                           <w>Höhenlage</w>
+                           <w>im</w>
+                           <w>einverstandenen</w>
+                        </l>
+                        <l n="23">
+                           <w>Gegensatz</w>
+                           <w>zur</w>
+                           <w>Dritten</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>die</w>
+                           <w>sich</w>
+                           <w>an</w>
+                           <w>dieser</w>
+                           <w>Stelle</w>
+                           <w>etwas</w>
+                           <w>vertieft</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                        <l n="24">
+                           <w>ein</w>
+                           <w>Joch</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>unter</w>
+                           <w>dem</w>
+                           <w>sich</w>
+                           <w>die</w>
+                           <w>Erste</w>
+                           <w>individuel</w>
+                           <w>bewegt</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <ab n="7">
+                        <l n="25">
+                           <w>Nach</w>
+                           <w>der</w>
+                           <w>resignierenden</w>
+                           <w>Pause</w>
+                           <w>geht</w>
+                           <w>die</w>
+                           <w>Zweite</w>
+                           <w>parallel</w>
+                        </l>
+                        <l n="26">
+                           <w>mit</w>
+                           <w>der</w>
+                           <w>Dritten</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <ab n="8">
+                        <l n="27">
+                           <w>Die</w>
+                           <w>dritte</w>
+                           <w>bleibt</w>
+                           <w>ihrem</w>
+                           <w>structuralen</w>
+                           <w>Charakter</w>
+                           <w>von</w>
+                           <w>Anfang</w>
+                           <w>an</w>
+                           <w>treu</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                        </l>
+                        <l n="28">
+                           <w>bis</w>
+                           <w>zu</w>
+                           <w>der</w>
+                           <w>Stelle</w>
+                           <pc type="comma" float="left" force="weak">,</pc>
+                           <w>wo</w>
+                           <w>die</w>
+                           <w>Zweite</w>
+                           <w>sich</w>
+                           <w>parallel</w>
+                           <w>ihr</w>
+                           <w>zugesellt</w>
+                           <pc type="semicolon" float="left" force="weak">;</pc>
+                        </l>
+                        <l n="29">
+                           <w>hier</w>
+                           <w>kann</w>
+                           <w>man</w>
+                           <w>einen</w>
+                           <w>schüchternen</w>
+                           <w>Versuch</w>
+                           <w>zum</w>
+                           <w>Individuellen</w>
+                        </l>
+                        <l n="30">
+                           <w>hin</w>
+                           <w>erkennen</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </l>
+                     </ab>
+                     <trailer rend="bold pause-center" type="pause">
+                        <pc type="punct" force="inter">*</pc>
+                     </trailer>
                      <pb xml:id="klee_crit_83097" n="54" facs="83097.jpg"/>
                      <ab n="1">
                         <l n="1">
@@ -20891,15 +22074,18 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
-                     <trailer rend="bold" type="pause">
+                     <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
-                     <pb xml:id="klee_crit_83098" n="55" facs="83098.jpg"/>
-                     <ab n="1"/>
                   </div>
-                  <div n="3" type="5">
-                     <head n="3" type="5">
-                        <w>Lesson</w>
+               </div>
+               <div n="2" type="unit">
+                  <pb xml:id="klee_crit_83098" n="55" facs="83098.jpg"/>
+                  <head n="2" type="unit" rend="unit-number same-line">
+                     <w>5</w>
+                  </head>
+                  <div n="3" type="lesson">
+                     <head n="3" type="lesson">
                         <w>30</w>
                         <pc type="period" float="left" force="strong">.</pc>
                         <w>Januar</w>
@@ -21610,6 +22796,81 @@
                            <w>PROVA</w>
                         </l>
                      </ab>
+                     <pb xml:id="klee_crit_83112" n="69" facs="83112.jpg"/>
+                     <trailer rend="bold pause-center" type="pause">
+                        <pc type="punct" force="inter">*</pc>
+                     </trailer>
+                  </div>
+               </div>
+               <div n="2" type="unit">
+                  <head n="2" type="unit" rend="unit-number same-line">
+                     <w>6</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </head>
+                  <div n="3" type="lesson">
+                     <head n="3" type="lesson">
+                        <w>Montag</w>
+                        <w>deu</w>
+                        <w>13</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>Februar</w>
+                        <w>1922</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </head>
+                  </div>
+               </div>
+               <div n="2" type="unit">
+                  <pb xml:id="klee_crit_83130" n="87" facs="83130.jpg"/>
+                  <head n="2" type="unit" rend="unit-number same-line">
+                     <w>7</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </head>
+                  <div n="3" type="lesson">
+                     <head n="3" type="lesson">
+                        <w>Montag</w>
+                        <w>den</w>
+                        <w>17</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <choice>
+                           <w>Februar</w>
+                        </choice>
+                        <w>1922</w>
+                     </head>
+                  </div>
+               </div>
+               <div n="2" type="unit">
+                  <pb xml:id="klee_crit_83148" n="105" facs="83148.jpg"/>
+                  <head n="2" type="unit" rend="unit-number same-line">
+                     <w>8</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </head>
+                  <div n="3" type="lesson">
+                     <head n="3" type="lesson">
+                        <w>Montag</w>
+                        <w>den</w>
+                        <w>20</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>Marz</w>
+                        <w>1922</w>
+                     </head>
+                  </div>
+               </div>
+               <div n="2" type="unit">
+                  <pb xml:id="klee_crit_83166" n="123" facs="83166.jpg"/>
+                  <head n="2" type="unit" rend="unit-number same-line">
+                     <w>9</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </head>
+                  <div n="3" type="lesson">
+                     <head n="3" type="lesson">
+                        <w>Montag</w>
+                        <w>den</w>
+                        <w>3</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>Avril</w>
+                        <w>1922</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </head>
                   </div>
                </div>
             </div>
@@ -21818,6 +23079,58 @@
                      <w>heit</w>
                   </l>
                </ab>
+            </div>
+            <div n="1" type="part">
+               <pb xml:id="klee_crit_83196" n="153" facs="83196.jpg"/>
+               <head n="1" type="part">
+                  <w rend="sans">C</w>
+                  <w>Vorträge</w>
+                  <w>im</w>
+                  <w>Wintersemester</w>
+                  <w>1922</w>
+                  <pc type="slash" float="both" force="inter">/</pc>
+                  <w>23</w>
+               </head>
+               <div n="2" type="unit">
+                  <head n="2" type="unit" rend="unit-number same-line">
+                     <w>10</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </head>
+                  <div n="3" type="lesson">
+                     <head n="3" type="lesson">
+                        <choice>
+                           <w>Dienstag</w>
+                        </choice>
+                        <w>deu</w>
+                        <choice>
+                           <w>28</w>
+                           <pc type="period" float="left" force="strong">.</pc>
+                        </choice>
+                        <w>November</w>
+                        <w>1922</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </head>
+                  </div>
+               </div>
+               <div n="2" type="unit">
+                  <pb xml:id="klee_crit_83215" n="172" facs="83215.jpg"/>
+                  <head n="2" type="unit" rend="unit-number same-line">
+                     <w>11</w>
+                     <pc type="period" float="left" force="strong">.</pc>
+                  </head>
+                  <div n="3" type="lesson">
+                     <head n="3" type="lesson">
+                        <w>Dienstag</w>
+                        <w>deu</w>
+                        <w>19</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>Dez</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <w>22</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                     </head>
+                  </div>
+               </div>
             </div>
          </body>
       </text>

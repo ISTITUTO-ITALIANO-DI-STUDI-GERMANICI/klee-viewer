@@ -25,7 +25,7 @@ start =
          | element mrgTextZoneOut {                             [MARGIN-OUT ... ]
              (text
               | line
-              | element expl { (text | line)+ })+               ||* ... ||
+              | element expl { (text | line)+ })+               ||*expl ... ||
            }
          | element musicZone {                                  [MUSIC ( ... )]
              (text
