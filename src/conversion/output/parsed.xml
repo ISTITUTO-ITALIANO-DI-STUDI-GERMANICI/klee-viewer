@@ -6754,6 +6754,17 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
+               <ab type="reference"
+                   subtype="call"
+                   rend="reference-call"
+                   xml:id="klee_dipl_ref_f83071_1a"
+                   corresp="#klee_dipl_ref_f83071_1b">
+                  <add hand="#pencil">
+                     <pc type="bracketOpen" float="right" force="inter">(</pc>
+                     <w>Nehmen</w>
+                     <pc type="bracketClose" float="left" force="inter">)</pc>
+                  </add>
+               </ab>
                <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                   <pc type="punct" force="inter">*</pc>
@@ -6857,6 +6868,63 @@
                      <pc type="period" float="left" force="strong">.</pc>
                      <pc type="bracketClose" float="left" force="inter">)</pc>
                   </line>
+               </ab>
+               <ab type="reference"
+                   subtype="text"
+                   rend="reference-text"
+                   xml:id="klee_dipl_ref_f83071_1b"
+                   corresp="#klee_dipl_ref_f83071_1a">
+                  <figure facs="#zone_f83071_fig4" rend="out-left">
+                     <head rend="italic">
+                        <w>fig</w> 4  </head>
+                  </figure>
+                  <add hand="#pencil">
+                     <pc type="punct" force="inter">*</pc>
+                     <w>Nehmen</w>
+                     <w>wir</w>
+                     <w>an</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>die</w>
+                     <w>eine</w>
+                     <w>Fläche</w>
+                     <w>sei</w>
+                     <w>nun</w>
+                     <w>richtig</w>
+                     <w>erwogen</w>
+                  </add>
+                  <lb/>
+                  <add hand="#pencil">
+                     <w>dann</w>
+                     <w>können</w>
+                     <w>wir</w>
+                     <w>die</w>
+                     <w>Wage</w>
+                     <w>in</w>
+                     <w>eine</w>
+                     <w>neue</w>
+                     <w>Lage</w>
+                     <w>bringen</w>
+                     <w>und</w>
+                     <w>gegen</w>
+                  </add>
+                  <lb/>
+                  <add hand="#pencil">
+                     <w>die</w>
+                     <w>eine</w>
+                     <w>Fläche</w>
+                     <w>ein</w>
+                     <w>zweite</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>gegenüberliegende</w>
+                     <w>abwägen</w>
+                  </add>
+                  <pc type="period" float="left" force="strong">.</pc>
+                  <pc type="bracketOpen" float="right" force="inter">(</pc>
+                  <w>eine</w>
+                  <w>völlig</w>
+                  <pc type="ellipsis" float="left" force="strong">...</pc>
+                  <w>etc</w>
+                  <pc type="bracketClose" float="left" force="inter">)</pc>
                </ab>
                <pb n="29" facs="83072.jpg"/>
                <figure facs="#zone_f83072_fig1" rend="block">
@@ -10617,6 +10685,17 @@
                      <pc type="period" float="left" force="strong">.</pc>
                   </line>
                </ab>
+               <ab type="reference"
+                   subtype="call"
+                   rend="reference-call"
+                   xml:id="klee_dipl_ref_f83091_1a"
+                   corresp="#klee_dipl_ref_f83091_1b">
+                  <add>
+                     <pc type="punct" force="inter">*</pc>
+                     <w>Anmerkung</w>
+                     <pc type="punct" force="inter">*</pc>
+                  </add>
+               </ab>
                <ab n="3">
                   <line n="11">
                      <w>Individuelle</w>
@@ -10669,6 +10748,59 @@
                <trailer rend="bold pause-center" type="pause">
                   <pc type="punct" force="inter">*</pc>
                </trailer>
+               <ab type="reference"
+                   subtype="text"
+                   rend="reference-text"
+                   xml:id="klee_dipl_ref_f83091_1b"
+                   corresp="#klee_dipl_ref_f83091_1a">
+                  <add>
+                     <w>Anmerkung</w>
+                     <pc type="punct" force="inter">*</pc>
+                     <w>Sie</w>
+                     <w>eignen</w>
+                     <w>sich</w>
+                     <w>daher</w>
+                     <w>zur</w>
+                     <w>Belebung</w>
+                     <w>bedürftiger</w>
+                     <w>Stellen</w>
+                     <w>in</w>
+                  </add>
+                  <lb/>
+                  <add>
+                     <w>gegebenen</w>
+                     <w>Kompositionen</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>sie</w>
+                     <w>sind</w>
+                     <w>längst</w>
+                     <w>bekannt</w>
+                     <w>als</w>
+                     <w>Tapeten-</w>
+                  </add>
+                  <lb/>
+                  <add>
+                     <w>muster</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>sie</w>
+                     <w>eignen</w>
+                     <w>sich</w>
+                     <w>für</w>
+                     <w>Bücher</w>
+                     <pc type="comma" float="left" force="weak">,</pc>
+                     <w>und</w>
+                     <w>für</w>
+                     <w>Mappen</w>
+                     <w>als</w>
+                  </add>
+                  <lb/>
+                  <add>
+                     <w>neutrale</w>
+                     <w>Belebung</w>
+                     <w>der</w>
+                     <w>Fläche</w>
+                  </add>
+               </ab>
                <pb n="49" facs="83092.jpg"/>
                <ab n="1">
                   <line n="1">
@@ -17382,6 +17514,15 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
+                     <ab type="reference"
+                         subtype="call"
+                         rend="reference-call"
+                         xml:id="klee_crit_ref_f83071_1a"
+                         corresp="#klee_crit_ref_f83071_1b">
+                        <pc type="bracketOpen" float="right" force="inter">(</pc>
+                        <w>Nehmen</w>
+                        <pc type="bracketClose" float="left" force="inter">)</pc>
+                     </ab>
                      <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                         <pc type="punct" force="inter">*</pc>
@@ -17464,6 +17605,58 @@
                            <pc type="period" float="left" force="strong">.</pc>
                            <pc type="bracketClose" float="left" force="inter">)</pc>
                         </l>
+                     </ab>
+                     <ab type="reference"
+                         subtype="text"
+                         rend="reference-text"
+                         xml:id="klee_crit_ref_f83071_1b"
+                         corresp="#klee_crit_ref_f83071_1a">
+                        <figure facs="#zone_f83071_fig4" rend="out-left">
+                           <head rend="italic">
+                              <w>fig</w> 4  </head>
+                        </figure>
+                        <pc type="punct" force="inter">*</pc>
+                        <w>Nehmen</w>
+                        <w>wir</w>
+                        <w>an</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>die</w>
+                        <w>eine</w>
+                        <w>Fläche</w>
+                        <w>sei</w>
+                        <w>nun</w>
+                        <w>richtig</w>
+                        <w>erwogen</w>
+                        <lb/>
+                        <w>dann</w>
+                        <w>können</w>
+                        <w>wir</w>
+                        <w>die</w>
+                        <w>Wage</w>
+                        <w>in</w>
+                        <w>eine</w>
+                        <w>neue</w>
+                        <w>Lage</w>
+                        <w>bringen</w>
+                        <w>und</w>
+                        <w>gegen</w>
+                        <lb/>
+                        <w>die</w>
+                        <w>eine</w>
+                        <w>Fläche</w>
+                        <w>ein<supplied>e</supplied>
+                        </w>
+                        <w>zweite</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>gegenüberliegende</w>
+                        <w>abwägen</w>
+                        <pc type="period" float="left" force="strong">.</pc>
+                        <pc type="bracketOpen" float="right" force="inter">(</pc>
+                        <w>eine</w>
+                        <w>völlig</w>
+                        <pc type="ellipsis" float="left" force="strong">...</pc>
+                        <w>etc</w>
+                        <pc type="bracketClose" float="left" force="inter">)</pc>
                      </ab>
                      <pb xml:id="klee_crit_83072" n="29" facs="83072.jpg"/>
                      <figure facs="#zone_f83072_fig1" rend="block">
@@ -21050,6 +21243,15 @@
                            <pc type="period" float="left" force="strong">.</pc>
                         </l>
                      </ab>
+                     <ab type="reference"
+                         subtype="call"
+                         rend="reference-call"
+                         xml:id="klee_crit_ref_f83091_1a"
+                         corresp="#klee_crit_ref_f83091_1b">
+                        <pc type="punct" force="inter">*</pc>
+                        <w>Anmerkung</w>
+                        <pc type="punct" force="inter">*</pc>
+                     </ab>
                      <ab n="3">
                         <l n="11">
                            <w>Individuelle</w>
@@ -21102,6 +21304,51 @@
                      <trailer rend="bold pause-center" type="pause">
                         <pc type="punct" force="inter">*</pc>
                      </trailer>
+                     <ab type="reference"
+                         subtype="text"
+                         rend="reference-text"
+                         xml:id="klee_crit_ref_f83091_1b"
+                         corresp="#klee_crit_ref_f83091_1a">
+                        <w>Anmerkung</w>
+                        <pc type="punct" force="inter">*</pc>
+                        <w>Sie</w>
+                        <w>eignen</w>
+                        <w>sich</w>
+                        <w>daher</w>
+                        <w>zur</w>
+                        <w>Belebung</w>
+                        <w>bedürftiger</w>
+                        <w>Stellen</w>
+                        <w>in</w>
+                        <lb/>
+                        <w>gegebenen</w>
+                        <w>Kompositionen</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>sie</w>
+                        <w>sind</w>
+                        <w>längst</w>
+                        <w>bekannt</w>
+                        <w>als</w>
+                        <w>Tapeten-</w>
+                        <lb/>
+                        <w>muster</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>sie</w>
+                        <w>eignen</w>
+                        <w>sich</w>
+                        <w>für</w>
+                        <w>Bücher</w>
+                        <pc type="comma" float="left" force="weak">,</pc>
+                        <w>und</w>
+                        <w>für</w>
+                        <w>Mappen</w>
+                        <w>als</w>
+                        <lb/>
+                        <w>neutrale</w>
+                        <w>Belebung</w>
+                        <w>der</w>
+                        <w>Fläche</w>
+                     </ab>
                      <pb xml:id="klee_crit_83092" n="49" facs="83092.jpg"/>
                      <ab n="1">
                         <l n="1">

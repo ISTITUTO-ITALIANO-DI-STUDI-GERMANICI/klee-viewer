@@ -13,14 +13,15 @@
 
   <xsl:strip-space elements="*"/>
   <xsl:param name="lang" select="'und'"/>
-  <!-- Set to true() to print, for every figure, the layout chosen and the rule that chose it
-       (xsl:message), e.g.  figure #5 of 83049: block (coverage 0.18 < 0.4) -->
 
-  <!-- Identity of the critical <text> (further <text> elements will get their own values) -->
+  <!-- Global edition IDs -->
+  <xsl:param name="diplomatic-id" select="'klee_dipl'"/>
   <xsl:param name="critical-id" select="'klee_crit'"/>
   <xsl:param name="critical-type" select="'critical'"/>
   <xsl:param name="critical-lang" select="'de'"/>
- 
+
+  <!-- Set to true() to print, for every figure, the layout chosen and the rule that chose it
+       (xsl:message), e.g.  figure #5 of 83049: block (coverage 0.18 < 0.4) -->
   <xsl:param name="debug-figures" select="false()"/>
 
   <xsl:key name="fig-by-id"
@@ -79,11 +80,17 @@
         else $page/numbZone//seg[matches(normalize-space(.), '^\d+$')][1])"/>
   </xsl:function>
 
+  <!-- ID of the scan of a source <page> (e.g. 83056) -->
+  <xsl:function name="kf:facs-id" as="xs:string">
+    <xsl:param name="page" as="element()"/>
+    <xsl:sequence select="normalize-space($page/facsimile/num)"/>
+  </xsl:function>
+
   <!-- ALTO document of a source <page>; empty sequence if the file is not available -->
   <xsl:function name="kf:alto" as="document-node()?">
     <xsl:param name="page" as="element()"/>
     <xsl:variable name="path"
-      select="concat('../../../data/', normalize-space($page/facsimile/num), '.xml')"/>
+      select="concat('../../../data/', kf:facs-id($page), '.xml')"/>
     <xsl:sequence select="if (doc-available($path)) then document($path) else ()"/>
   </xsl:function>
 
@@ -120,14 +127,33 @@
     </xsl:choose>
   </xsl:function>
 
+  <!-- True when the ALTO element lists (in @TAGREFS) at least one of the given tag ids -->
+  <xsl:function name="kf:has-tag" as="xs:boolean">
+    <xsl:param name="el" as="element()"/>
+    <xsl:param name="tagIds" as="xs:string*"/>
+    <xsl:sequence select="tokenize(normalize-space($el/@TAGREFS), '\s+') = $tagIds"/>
+  </xsl:function>
+
+  <!-- TextBlocks carrying one of the given tag ids -->
+  <xsl:function name="kf:blocks-tagged" as="element(alto:TextBlock)*">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="tagIds" as="xs:string*"/>
+    <xsl:sequence select="$altoDoc//alto:TextBlock[kf:has-tag(., $tagIds)]"/>
+  </xsl:function>
+
+  <!-- TextBlocks of the ALTO zone with the given label ('MainZone', 'GraphicZone:figure#3', ...) -->
+  <xsl:function name="kf:zone-blocks" as="element(alto:TextBlock)*">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="label" as="xs:string"/>
+    <xsl:sequence select="kf:blocks-tagged($altoDoc, $altoDoc//alto:OtherTag[@LABEL = $label]/@ID)"/>
+  </xsl:function>
+
   <!-- MainZone blocks belonging to the actual text column, filtering out
        short annotation-like blocks (e.g. a lone "do" ditto mark) that are
        much narrower than the page's real column. -->
   <xsl:function name="kf:column-blocks" as="element(alto:TextBlock)*">
     <xsl:param name="altoDoc"/>
-    <xsl:variable name="mainZoneTagIds" select="$altoDoc//alto:OtherTag[@LABEL = 'MainZone']/@ID"/>
-    <xsl:variable name="blocks"
-      select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $mainZoneTagIds]"/>
+    <xsl:variable name="blocks" select="kf:zone-blocks($altoDoc, 'MainZone')"/>
     <xsl:variable name="widths" select="for $b in $blocks return xs:double($b/@WIDTH)"/>
     <xsl:variable name="maxW" select="if (exists($widths)) then max($widths) else 0"/>
     <xsl:sequence select="$blocks[xs:double(@WIDTH) ge 0.5 * $maxW]"/>
@@ -198,10 +224,7 @@
   <xsl:function name="kf:fig-poly" as="xs:double*">
     <xsl:param name="altoDoc"/>
     <xsl:param name="ordinal" as="xs:integer"/>
-    <xsl:variable name="tagIds"
-      select="$altoDoc//alto:OtherTag[@LABEL = concat('GraphicZone:figure#', $ordinal)]/@ID"/>
-    <xsl:variable name="blocks"
-      select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds]"/>
+    <xsl:variable name="blocks" select="kf:zone-blocks($altoDoc, concat('GraphicZone:figure#', $ordinal))"/>
     <xsl:variable name="b" select="kf:fig-box($altoDoc, $ordinal)"/>
     <xsl:choose>
       <xsl:when test="count($blocks) eq 1 and $blocks/alto:Shape/alto:Polygon/@POINTS">
@@ -244,42 +267,31 @@
   <!-- TextLines of the main text column only (margins, music, graphics excluded) -->
   <xsl:function name="kf:main-lines" as="element(alto:TextLine)*">
     <xsl:param name="altoDoc"/>
-
-    <xsl:variable name="tagIds"
-      select="$altoDoc//alto:OtherTag[@LABEL = 'MainZone']/@ID"/>
-
-    <xsl:sequence
-      select="$altoDoc//alto:TextBlock[
-          tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds
-        ]//alto:TextLine"/>
+    <xsl:sequence select="kf:zone-blocks($altoDoc, 'MainZone')//alto:TextLine"/>
   </xsl:function>
 
-  <!-- Bounding box (x0, y0, x1, y1) of the first block of figure #ordinal; empty if missing -->
-
-  <xsl:function name="kf:fig-box" as="xs:double*">
+  <!-- Bounding box (x0, y0, x1, y1) of all the blocks of the ALTO zone with the given label;
+       empty if there is none -->
+  <xsl:function name="kf:zone-box" as="xs:double*">
     <xsl:param name="altoDoc"/>
-    <xsl:param name="ordinal" as="xs:integer"/>
-
-    <xsl:variable name="tagIds"
-      select="$altoDoc//alto:OtherTag[
-          @LABEL = concat('GraphicZone:figure#', $ordinal)
-        ]/@ID"/>
-
-    <xsl:variable name="blocks"
-      select="$altoDoc//alto:TextBlock[
-          tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds
-        ]"/>
+    <xsl:param name="label" as="xs:string"/>
+    <xsl:variable name="blocks" select="kf:zone-blocks($altoDoc, $label)"/>
 
     <xsl:if test="exists($blocks)">
       <xsl:sequence select="(
           min(for $b in $blocks return xs:double($b/@HPOS)),
           min(for $b in $blocks return xs:double($b/@VPOS)),
-          max(for $b in $blocks return
-              xs:double($b/@HPOS) + xs:double($b/@WIDTH)),
-          max(for $b in $blocks return
-              xs:double($b/@VPOS) + xs:double($b/@HEIGHT))
+          max(for $b in $blocks return xs:double($b/@HPOS) + xs:double($b/@WIDTH)),
+          max(for $b in $blocks return xs:double($b/@VPOS) + xs:double($b/@HEIGHT))
         )"/>
     </xsl:if>
+  </xsl:function>
+
+  <!-- Bounding box of figure #ordinal; empty if missing -->
+  <xsl:function name="kf:fig-box" as="xs:double*">
+    <xsl:param name="altoDoc"/>
+    <xsl:param name="ordinal" as="xs:integer"/>
+    <xsl:sequence select="kf:zone-box($altoDoc, concat('GraphicZone:figure#', $ordinal))"/>
   </xsl:function>
 
   <!-- ======================= Paragraphisms =======================
@@ -307,7 +319,7 @@
       select="$altoDoc//alto:OtherTag[matches(@LABEL, '^(HeadingLine|CustomLine:addition|CustomLine:textinfigure)')]/@ID"/>
     <xsl:variable name="ys" as="xs:double*">
       <xsl:perform-sort select="
-        for $l in kf:main-lines($altoDoc)[not(tokenize(normalize-space(@TAGREFS), '\s+') = $skipTags)]
+        for $l in kf:main-lines($altoDoc)[not(kf:has-tag(., $skipTags))]
         return kf:baseline-y($l)">
         <xsl:sort select="."/>
       </xsl:perform-sort>
@@ -320,22 +332,11 @@
       return avg($ys[position() gt $ends[$r] and position() le $ends[$r + 1]])"/>
   </xsl:function>
 
-  <!-- Bounding box (x0, y0, x1, y1) of paragraphism #ordinal; empty if missing -->
+  <!-- Bounding box of paragraphism #ordinal; empty if missing -->
   <xsl:function name="kf:par-box" as="xs:double*">
     <xsl:param name="altoDoc"/>
     <xsl:param name="ordinal" as="xs:integer"/>
-    <xsl:variable name="tagIds"
-      select="$altoDoc//alto:OtherTag[@LABEL = concat('GraphicZone:paragraphism#', $ordinal)]/@ID"/>
-    <xsl:variable name="blocks"
-      select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagIds]"/>
-    <xsl:if test="exists($blocks)">
-      <xsl:sequence select="(
-          min(for $b in $blocks return xs:double($b/@HPOS)),
-          min(for $b in $blocks return xs:double($b/@VPOS)),
-          max(for $b in $blocks return xs:double($b/@HPOS) + xs:double($b/@WIDTH)),
-          max(for $b in $blocks return xs:double($b/@VPOS) + xs:double($b/@HEIGHT))
-        )"/>
-    </xsl:if>
+    <xsl:sequence select="kf:zone-box($altoDoc, concat('GraphicZone:paragraphism#', $ordinal))"/>
   </xsl:function>
 
   <!-- Numbers N of the GraphicZone:paragraphism#N zones of the page that have a block, ascending -->
@@ -630,10 +631,10 @@
     <xsl:sequence select="$verdict"/>
   </xsl:function>
 
-  <xsl:function name="kf:fig-side" as="xs:string">
-    <xsl:param name="altoDoc"/>
-    <xsl:param name="ordinal" as="xs:integer"/>
-    <xsl:sequence select="string(kf:fig-layout($altoDoc, $ordinal)/@rend)"/>
+  <!-- 1-based number of a graphZoneFig among the figures of its page (the N of GraphicZone:figure#N) -->
+  <xsl:function name="kf:fig-ordinal" as="xs:integer">
+    <xsl:param name="fig" as="element()"/>
+    <xsl:sequence select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
   </xsl:function>
 
   <!-- Spacer (em) to put after a float so that the text beside it starts level with the first
@@ -642,7 +643,7 @@
     <xsl:param name="fig" as="element()"/>
     <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
     <xsl:variable name="altoDoc" select="kf:alto($page)"/>
-    <xsl:variable name="ordinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
+    <xsl:variable name="ordinal" select="kf:fig-ordinal($fig)"/>
     <xsl:variable name="v" select="if ($altoDoc) then kf:fig-layout($altoDoc, $ordinal) else ()"/>
     <xsl:sequence select="if ($v/@rend = ('float-left', 'float-right')) then xs:double($v/@gap) else 0"/>
   </xsl:function>
@@ -655,7 +656,7 @@
     <xsl:param name="fig" as="element()"/>
     <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
     <xsl:variable name="altoDoc" select="kf:alto($page)"/>
-    <xsl:variable name="ordinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
+    <xsl:variable name="ordinal" select="kf:fig-ordinal($fig)"/>
     <xsl:choose>
       <xsl:when test="empty($altoDoc) or $ordinal le 1">
         <xsl:sequence select="false()"/>
@@ -668,7 +669,7 @@
         <xsl:variable name="bottoms" select="
           for $p in $fig/preceding-sibling::graphZoneFig
           return if (kf:fig-rend($p) = ('float-left', 'float-right', 'row-start', 'row-next'))
-            then kf:fig-box($altoDoc, count($p/preceding-sibling::graphZoneFig) + 1)[4] else ()"/>
+            then kf:fig-box($altoDoc, kf:fig-ordinal($p))[4] else ()"/>
         <xsl:sequence select="
           $mine = ('float-left', 'float-right', 'row-start')
           and exists($box) and exists($bottoms)
@@ -685,7 +686,7 @@
   <xsl:function name="kf:fig-rend" as="xs:string">
     <xsl:param name="fig" as="element()"/>
     <xsl:variable name="page" select="$fig/ancestor::page[1]"/>
-    <xsl:variable name="figOrdinal" select="count($fig/preceding-sibling::graphZoneFig) + 1"/>
+    <xsl:variable name="figOrdinal" select="kf:fig-ordinal($fig)"/>
     <xsl:variable name="altoDoc" select="kf:alto($page)"/>
     <xsl:variable name="inMargin" select="
       if ($altoDoc and exists($page//mainZone//line[not(ancestor::sectionHeading)]) and exists(kf:text-rows($altoDoc)))
@@ -695,7 +696,7 @@
       else if ($inMargin != '') then $inMargin
       else if (kf:fig-row($altoDoc, $figOrdinal) != '') then kf:fig-row($altoDoc, $figOrdinal)
       else string(kf:fig-layout($altoDoc, $figOrdinal)/@rend)
-      "/>
+                    "/>
   </xsl:function>
 
   <!-- The <l> an inline figure must be attached to: the line right before it
@@ -764,7 +765,7 @@
   <xsl:function name="kf:counted-line" as="xs:boolean">
     <xsl:param name="l" as="element(tei:l)"/>
     <xsl:sequence select="not($l/parent::tei:label or $l/parent::tei:note
-        or $l/parent::tei:ab[@type = 'margin'])"/>
+        or $l/parent::tei:ab[@type = ('margin', 'reference')])"/>
   </xsl:function>
 
   <!-- Counted lines grouped by the page (<pb>) they stand on -->
@@ -847,6 +848,20 @@
     </pb>
   </xsl:template>
 
+  <!-- Reference <ab> (see template match="reference"): its xml:id and @corresp get the id of the
+       edition as prefix, like the <pb> ids, so that the ids stay unique across the editions -->
+  <xsl:template match="tei:ab[@type = 'reference']" mode="source-doc edition">
+    <xsl:param name="edition-id" tunnel="yes"/>
+    <ab>
+      <xsl:copy-of select="@* except (@xml:id, @corresp)"/>
+      <xsl:attribute name="xml:id" select="concat($edition-id, '_', @xml:id)"/>
+      <xsl:if test="@corresp">
+        <xsl:attribute name="corresp" select="concat('#', $edition-id, '_', substring-after(@corresp, '#'))"/>
+      </xsl:if>
+      <xsl:apply-templates mode="#current"/>
+    </ab>
+  </xsl:template>
+
   <!-- Deletions are omitted in critical edition (del from phiDel; sic from deletion / pencilDeletion).
        <sic> inside figure captions (deletion_app) is kept, as for supplied in the diplomatic. -->
   <xsl:template match="tei:del | tei:sic[not(ancestor::tei:figure)]" mode="edition"/>
@@ -886,7 +901,7 @@
           order="ascending"/>
 
         <xsl:sort
-          select="normalize-space(facsimile/num)"
+          select="kf:facs-id(.)"
           data-type="text"
           order="ascending"/>
       </xsl:perform-sort>
@@ -908,7 +923,7 @@
     <xsl:variable name="glued">
       <xsl:apply-templates select="$withInline/node()" mode="glue-bracket"/>
     </xsl:variable>
-      
+
     <xsl:variable name="nested">
       <xsl:call-template name="nest-headings">
         <xsl:with-param name="nodes" select="$glued/node()"/>
@@ -931,7 +946,7 @@
 
       <!-- teiHeader corpus -->
       <teiHeader>
-        
+
         <fileDesc>
           <titleStmt>
             <title>Beiträge zur bildnerischen Formlehre.</title>
@@ -984,8 +999,8 @@
                 then xs:integer(kf:page-number(.))
               else 999999"
             data-type="number"/>
-          
-          <xsl:variable name="fid" select="normalize-space(facsimile/num)"/>
+
+          <xsl:variable name="fid" select="kf:facs-id(.)"/>
           <xsl:variable name="altoDoc" select="kf:alto(.)"/>
           <!-- Content frame -->
           <xsl:variable name="contentUlx" select="kf:content-ulx($altoDoc)"/>
@@ -1015,8 +1030,7 @@
               <xsl:for-each select="$altoDoc//alto:OtherTag[@LABEL = 'MusicZone']">
                 <xsl:variable name="tagId" select="@ID"/>
                 <xsl:variable name="musicOrdinal" select="position()"/>
-                <xsl:variable name="blocks"
-                  select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                <xsl:variable name="blocks" select="kf:blocks-tagged($altoDoc, $tagId)"/>
                 <xsl:if test="exists($blocks)">
                   <xsl:call-template name="alto-zone">
                     <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_music', $musicOrdinal)"/>
@@ -1028,8 +1042,7 @@
                 <xsl:variable name="tagId" select="@ID"/>
                 <xsl:variable name="figOrdinal"
                   select="xs:integer(replace(@LABEL, '^GraphicZone:figure#(\d+)$', '$1'))"/>
-                <xsl:variable name="blocks"
-                  select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                <xsl:variable name="blocks" select="kf:blocks-tagged($altoDoc, $tagId)"/>
                 <xsl:if test="exists($blocks)">
                   <xsl:call-template name="alto-zone">
                     <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_fig', $figOrdinal)"/>
@@ -1051,7 +1064,7 @@
                 <xsl:call-template name="alto-zone">
                   <xsl:with-param name="zoneId" select="concat('zone_f', $fid, '_par', $parOrdinal)"/>
                   <xsl:with-param name="blocks"
-                    select="$altoDoc//alto:TextBlock[tokenize(normalize-space(@TAGREFS), '\s+') = $tagId]"/>
+                    select="kf:zone-blocks($altoDoc, concat('GraphicZone:paragraphism#', $parOrdinal))"/>
                   <xsl:with-param name="dy" select="kf:par-dy($altoDoc, $parOrdinal, $rows)"/>
                 </xsl:call-template>
               </xsl:for-each>
@@ -1072,15 +1085,17 @@
 
       <!-- Diplomatic edition -->
       <sourceDoc>
-        <xsl:attribute name="xml:id">klee_dipl</xsl:attribute>
+        <xsl:attribute name="xml:id" select="$diplomatic-id"/>
         <xsl:attribute name="type">diplomatic</xsl:attribute>
         <xsl:attribute name="xml:lang">de</xsl:attribute>
-        <xsl:apply-templates select="$numbered/node()" mode="source-doc"/>
+        <xsl:apply-templates select="$numbered/node()" mode="source-doc">
+          <xsl:with-param name="edition-id" select="$diplomatic-id" tunnel="yes"/>
+        </xsl:apply-templates>
       </sourceDoc>
 
       <!-- Empty standOff before TEI children -->
       <standOff/>
-        
+
       <!-- Single editions (critical, aligned, etc.) -->
       <!-- Critical edition -->
       <TEI xml:id="{$critical-id}" xml:lang="{$critical-lang}" type="{$critical-type}">
@@ -1119,7 +1134,8 @@
     </teiCorpus>
   </xsl:template>
 
-  <!-- Cleaning from Euporia symbols -->
+  <!-- Cleaning from Euporia symbols: text nodes of the editorial operations hold only the
+       DSL symbols (+{, +!{ ...), so they are dropped. Shared by the default and wordpart modes. -->
   <xsl:template match="
     deletion/text()           |
     replace/text()            |
@@ -1131,12 +1147,17 @@
     pencil/text()             |
     phiDel/text()             |
     phiAdd/text()             |
-    phiSub/text()             |
     operation/text()          |
-    substitution/text()       |
+    substitution/text()
+                  " mode="#default wordpart" />
+
+  <!-- Same cleaning, default mode only -->
+  <xsl:template match="
+    phiSub/text()             |
     mrgTextZoneUp/text()      |
     mrgTextZoneOut/text()     |
-    expl/text()               
+    expl/text()               |
+    reference/text()
                   "/>
 
   <xsl:template match="text()">
@@ -1189,7 +1210,6 @@
         <xsl:choose>
           <xsl:when test="$char = ('.', '!', '?', '…', '...')">strong</xsl:when>
           <xsl:when test="$char = (',', ';', ':')">weak</xsl:when>
-          <xsl:when test="$char = ('-', '–', '—', '/', '(', ')', '[', ']', '«', '»')">inter</xsl:when>
           <xsl:otherwise>inter</xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
@@ -1312,14 +1332,18 @@
         or self::mrgTextZoneOut
         or self::hdLineMargin
         or self::apparatoFigure
-      ]"/>
+      ]">
+      <!-- margin figures of this page, computed once (read by every line: see kf:margin-marks) -->
+      <xsl:with-param name="marks" select="kf:margin-marks(.)" tunnel="yes"/>
+    </xsl:apply-templates>
   </xsl:template>
 
   <xsl:template match="mainZone">
-    <xsl:for-each-group select="*" group-starting-with="openPar | sectionHeading">
+    <xsl:for-each-group select="*" group-starting-with="openPar | sectionHeading | reference">
       <xsl:choose>
         <xsl:when test="self::openPar">
-          <ab n="{position()}">
+          <!-- the references before this paragraph are groups of their own: not counted, so @n is unchanged -->
+          <ab n="{position() - count(preceding-sibling::reference[preceding-sibling::*])}">
             <xsl:apply-templates select="current-group()[not(self::openPar)]"/>
           </ab>
         </xsl:when>
@@ -1356,8 +1380,8 @@
     <xsl:param name="figRend" as="xs:string"/>
     <xsl:variable name="fid" select="normalize-space(replace(figId, '\s+', ''))"/>
     <xsl:variable name="item" select="key('fig-by-id', $fid)"/>
-    <xsl:variable name="pageNum" select="normalize-space(ancestor::page[1]/facsimile/num)"/>
-    <xsl:variable name="figOrdinal" select="count(preceding-sibling::graphZoneFig) + 1"/>
+    <xsl:variable name="pageNum" select="kf:facs-id(ancestor::page[1])"/>
+    <xsl:variable name="figOrdinal" select="kf:fig-ordinal(.)"/>
 
     <figure facs="#zone_f{$pageNum}_fig{$figOrdinal}" rend="{$figRend}">
       <xsl:if test="$item/label">
@@ -1374,7 +1398,7 @@
   </xsl:template>
 
   <xsl:template match="musicZone">
-    <xsl:variable name="pageNum" select="normalize-space(ancestor::page[1]/facsimile/num)"/>
+    <xsl:variable name="pageNum" select="kf:facs-id(ancestor::page[1])"/>
     <xsl:variable name="musicOrdinal" select="count(preceding-sibling::musicZone) + 1"/>
 
     <figure type="music" facs="#zone_f{$pageNum}_music{$musicOrdinal}">
@@ -1502,7 +1526,7 @@
   </xsl:template>
 
   <xsl:template match="hdLineMargin">
-    
+
     <!-- Navigate to get page number -->
     <xsl:variable name="pageNum" select="xs:integer(kf:page-number(ancestor::page[1]))"/>
     <xsl:variable name="marginPlace" select="kf:margin-place($pageNum, false())"/>
@@ -1531,43 +1555,66 @@
     </l>
   </xsl:template>
 
-  <!-- Figures in the outer margin standing beside this line: the paragraphisms and the small
-       figures kf:fig-margin finds beside the text column. Only lines of the main text qualify. Each
-       mark is tied to the ALTO text row nearest to it; row n is the n-th line of the page's mainZones
-       (kf:target-line scales the row when the ALTO and the source count lines differently). The
-       figure is the first child of the <l>; its side (rend="par-left" / "par-right" for
-       paragraphisms, "out-left" / "out-right" for figures) and its offset from the middle of the
-       line (zone/@dy) come from the ALTO, its place in the margin from klee.css. -->
+  <!-- Figures in the outer margin of a page, each tied to the line of the main text it stands
+       beside: the paragraphisms and the small figures kf:fig-margin finds beside the text column.
+       Each mark is tied to the ALTO text row nearest to it; row n is the n-th line of the page's
+       mainZones (kf:target-line scales the row when the ALTO and the source count lines differently).
+       Computed ONCE per page (template match="page" passes the result down as the tunnel parameter
+       $marks): doing it for every line was by far the slowest part of the stylesheet.
+       Returns <mark type="par" ordinal side line/> and <mark type="fig" ordinal rend line/>,
+       paragraphisms first, then figures in document order; @line is the number of the target line. -->
+  <xsl:function name="kf:margin-marks" as="element()*">
+    <xsl:param name="page" as="element()"/>
+    <xsl:variable name="altoDoc" select="kf:alto($page)"/>
+    <xsl:if test="$altoDoc">
+      <xsl:variable name="nLines" select="count($page//mainZone//line[not(ancestor::sectionHeading)])"/>
+      <xsl:variable name="rows" select="kf:text-rows($altoDoc)"/>
+      <xsl:for-each select="kf:par-ordinals($altoDoc)">
+        <xsl:variable name="parOrdinal" select="."/>
+        <xsl:variable name="target"
+          select="kf:target-line(kf:par-row($altoDoc, $parOrdinal, $rows), count($rows), $nLines)"/>
+        <xsl:if test="exists($target)">
+          <mark type="par" ordinal="{$parOrdinal}" side="{kf:par-side($altoDoc, $parOrdinal)}" line="{$target}"/>
+        </xsl:if>
+      </xsl:for-each>
+      <xsl:for-each select="$page/graphZoneFig">
+        <xsl:variable name="figRend" select="kf:fig-rend(.)"/>
+        <xsl:if test="starts-with($figRend, 'out-')">
+          <xsl:variable name="figOrdinal" select="kf:fig-ordinal(.)"/>
+          <xsl:variable name="target"
+            select="kf:target-line(kf:box-row($altoDoc, kf:fig-box($altoDoc, $figOrdinal), $rows), count($rows), $nLines)"/>
+          <xsl:if test="exists($target)">
+            <mark type="fig" ordinal="{$figOrdinal}" rend="{$figRend}" line="{$target}"/>
+          </xsl:if>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:if>
+  </xsl:function>
+
+  <!-- Marks of the page standing beside this line (see kf:margin-marks). The figure is the first
+       child of the <l>; its side (rend="par-left" / "par-right" for paragraphisms, "out-left" /
+       "out-right" for figures) and its offset from the middle of the line (zone/@dy) come from the
+       ALTO, its place in the margin from klee.css. Only lines of the main text qualify. -->
   <xsl:template name="paragraphism-marks">
-    <xsl:if test="ancestor::mainZone and not(ancestor::sectionHeading)">
+    <xsl:param name="marks" as="element()*" tunnel="yes" select="()"/>
+    <xsl:if test="exists($marks) and ancestor::mainZone and not(ancestor::sectionHeading)">
       <xsl:variable name="page" select="ancestor::page[1]"/>
-      <xsl:variable name="pageNum" select="normalize-space($page/facsimile/num)"/>
-      <xsl:variable name="altoDoc" select="kf:alto($page)"/>
-      <xsl:if test="$altoDoc">
-        <xsl:variable name="me" select="."/>
-        <xsl:variable name="mainLines" select="$page//mainZone//line[not(ancestor::sectionHeading)]"/>
-        <xsl:variable name="nLines" select="count($mainLines)"/>
-        <xsl:variable name="idx" select="count($mainLines[. &lt;&lt; $me]) + 1"/>
-        <xsl:variable name="rows" select="kf:text-rows($altoDoc)"/>
-        <xsl:for-each select="kf:par-ordinals($altoDoc)">
-          <xsl:variable name="parOrdinal" select="."/>
-          <xsl:variable name="row" select="kf:par-row($altoDoc, $parOrdinal, $rows)"/>
-          <xsl:if test="kf:target-line($row, count($rows), $nLines) eq $idx">
-            <figure type="paragraphism"
-                    facs="#zone_f{$pageNum}_par{$parOrdinal}"
-                    rend="par-{kf:par-side($altoDoc, $parOrdinal)}"/>
-          </xsl:if>
+      <xsl:variable name="me" select="."/>
+      <xsl:variable name="idx"
+        select="count($page//mainZone//line[not(ancestor::sectionHeading)][. &lt;&lt; $me]) + 1"/>
+      <xsl:for-each select="$marks[@type = 'par'][@line = $idx]">
+        <figure type="paragraphism"
+                facs="#zone_f{kf:facs-id($page)}_par{@ordinal}"
+                rend="par-{@side}"/>
+      </xsl:for-each>
+      <xsl:for-each select="$marks[@type = 'fig'][@line = $idx]">
+        <xsl:variable name="mark" select="."/>
+        <xsl:for-each select="$page/graphZoneFig[xs:integer($mark/@ordinal)]">
+          <xsl:call-template name="fig-element">
+            <xsl:with-param name="figRend" select="string($mark/@rend)"/>
+          </xsl:call-template>
         </xsl:for-each>
-        <xsl:for-each select="$page/graphZoneFig[starts-with(kf:fig-rend(.), 'out-')]">
-          <xsl:variable name="figOrdinal" select="count(preceding-sibling::graphZoneFig) + 1"/>
-          <xsl:variable name="row" select="kf:box-row($altoDoc, kf:fig-box($altoDoc, $figOrdinal), $rows)"/>
-          <xsl:if test="kf:target-line($row, count($rows), $nLines) eq $idx">
-            <xsl:call-template name="fig-element">
-              <xsl:with-param name="figRend" select="kf:fig-rend(.)"/>
-            </xsl:call-template>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:if>
+      </xsl:for-each>
     </xsl:if>
   </xsl:template>
 
@@ -1606,6 +1653,26 @@
       </label>
       <xsl:apply-templates select="line[position() > 1]"/>
     </note>
+  </xsl:template>
+
+  <!-- ||*ref ... ||: two instances per page, always paired. The first one (the call) points to the
+       second one (the text it refers to). Both hold lines, so they are an <ab> (a <ref> cannot hold
+       lines), linked by @xml:id / @corresp: ref_f{page}_{pair}a = call, ref_f{page}_{pair}b = text.
+       @rend (reference-call / reference-text) is the CSS hook, as for the margin texts. -->
+  <xsl:template match="reference">
+    <xsl:variable name="page" select="ancestor::page[1]"/>
+    <xsl:variable name="me" select="."/>
+    <xsl:variable name="pos" select="count($page//reference[. &lt;&lt; $me]) + 1"/>
+    <xsl:variable name="isCall" select="$pos mod 2 = 1"/>
+    <xsl:variable name="id" select="concat('ref_f', kf:facs-id($page), '_', ($pos + 1) idiv 2)"/>
+    <xsl:variable name="role" select="if ($isCall) then 'call' else 'text'"/>
+    <ab type="reference" subtype="{$role}" rend="reference-{$role}" xml:id="{$id}{if ($isCall) then 'a' else 'b'}">
+      <!-- the partner: the next reference of the page for a call, the previous one for a text -->
+      <xsl:if test="not($isCall) or count($page//reference) gt $pos">
+        <xsl:attribute name="corresp" select="concat('#', $id, if ($isCall) then 'b' else 'a')"/>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </ab>
   </xsl:template>
 
   <!--
@@ -1795,21 +1862,6 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-
-  <!-- strip the same Euporia editorial-symbol text nodes in wordpart mode -->
-  <xsl:template match="
-    deletion/text()           |
-    replace/text()            |
-    addition/text()           |
-    subspencilAddition/text() |
-    subspencilDeletion/text() |
-    pencilAddition/text()     |
-    pencilDeletion/text()     |
-    pencil/text()             |
-    phiDel/text()             |
-    phiAdd/text()             |
-    operation/text()          |
-    substitution/text()" mode="wordpart"/>
 
   <!-- fallback: plain text nodes pass through verbatim -->
   <xsl:template match="text()" mode="wordpart">
