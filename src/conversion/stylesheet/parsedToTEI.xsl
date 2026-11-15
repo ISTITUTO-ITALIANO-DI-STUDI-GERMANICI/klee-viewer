@@ -774,7 +774,7 @@
     use="generate-id(preceding::tei:pb[1])"/>
 
   <!-- Wraps the runs of orphan <l> among $nodes in <ab>, then converts everything -->
-  <xsl:template name="l-to-lb-children">
+  <xsl:template name="number-lines">
     <xsl:param name="nodes" as="node()*"/>
     <xsl:for-each-group select="$nodes" group-adjacent="exists(self::tei:l)">
       <xsl:choose>
@@ -793,7 +793,7 @@
   <xsl:template match="tei:div" mode="l-to-lb">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
-      <xsl:call-template name="l-to-lb-children">
+      <xsl:call-template name="number-lines">
         <xsl:with-param name="nodes" select="node()"/>
       </xsl:call-template>
     </xsl:copy>
@@ -937,7 +937,7 @@
 
     <!-- Numbering pass: runs once, feeds all editions -->
     <xsl:variable name="numbered">
-      <xsl:call-template name="l-to-lb-children">
+      <xsl:call-template name="number-lines">
         <xsl:with-param name="nodes" select="$marked/node()"/>
       </xsl:call-template>
     </xsl:variable>
