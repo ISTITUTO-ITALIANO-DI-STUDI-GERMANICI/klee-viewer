@@ -942,7 +942,7 @@
       </xsl:call-template>
     </xsl:variable>
 
-    <teiCorpus version="3.3.0">
+    <TEI version="3.3.0">
 
       <!-- teiHeader corpus -->
       <teiHeader>
@@ -1131,7 +1131,7 @@
 
       <!-- Other editions -->
 
-    </teiCorpus>
+    </TEI>
   </xsl:template>
 
   <!-- Cleaning from Euporia symbols: text nodes of the editorial operations hold only the
