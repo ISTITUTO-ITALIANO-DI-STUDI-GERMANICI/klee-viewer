@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="im-per-nocciole-it-1994">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Per nocciole</title>
+        <author>Attilio Bertolucci</author>
+      </titleStmt>
+      <publicationStmt>
+        <p>Private research import for DiScEPT. Not for public distribution.</p>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl>
+          <author>Attilio Bertolucci</author>
+          <title level="m">Imitazioni</title>
+          <title level="a">Per nocciole</title>
+          <pubPlace>Milano</pubPlace>
+          <publisher>Libri Scheiwiller</publisher>
+          <date when="1994">1994</date>
+          <biblScope unit="page">22–24</biblScope>
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <p>Transcribed from the researcher-provided PDF of the 1994 printed edition. Lineation checked against the PDF text layer; typographic verification against page images is advisable. Full text must remain restricted.</p>
+      <p>TEI P5; one l element per poetic verse, with stable xml:id. No automated alignments are implied. Verse-level input: word tokenization can be performed in DiScEPT.</p>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="it">Italian</language>
+      </langUsage>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-11-12">Prepared for DiScEPT import, 2026-11-12</change>
+    </revisionDesc>
+  </teiHeader>
+  <text xml:lang="it">
+    <body>
+      <div type="translation" xml:id="per-nocciole-1994">
+        <head>Per nocciole</head>
+        <l n="1" xml:id="bertolucci-it-l001">Era uno di quei celesti giorni</l>
+        <l n="2" xml:id="bertolucci-it-l002">(Parlo di un giorno scelto in mezzo a tanti)</l>
+        <l n="3" xml:id="bertolucci-it-l003">Che sembra mai non debbano morire.</l>
+        <l n="4" xml:id="bertolucci-it-l004">Così, ragazzo ardente di speranza,</l>
+        <l n="5" xml:id="bertolucci-it-l005">Lasciai la soglia della casa, un grande</l>
+        <l n="6" xml:id="bertolucci-it-l006">Sacco buttato sopra le mie spalle</l>
+        <l n="7" xml:id="bertolucci-it-l007">Ed in mano la pertica uncinata,</l>
+        <l n="8" xml:id="bertolucci-it-l008">E volsi i passi ad un remoto bosco,</l>
+        <l n="9" xml:id="bertolucci-it-l009">Strana figura in fiero abbigliamento</l>
+        <l n="10" xml:id="bertolucci-it-l010">Di vecchissimi cenci. (A quel servizio</l>
+        <l n="11" xml:id="bertolucci-it-l011">Li destinò la mia frugale Dama.)</l>
+        <l n="12" xml:id="bertolucci-it-l012">Abito senza tema di roveti</l>
+        <l n="13" xml:id="bertolucci-it-l013">E siepi e spini, invero più strappato</l>
+        <l n="14" xml:id="bertolucci-it-l014">Del necessario... E per balze selvagge,</l>
+        <l n="15" xml:id="bertolucci-it-l015">Letti di felci e macchie aggrovigliate</l>
+        <l n="16" xml:id="bertolucci-it-l016">Aprendomi una strada, arrivo a un caro</l>
+        <l n="17" xml:id="bertolucci-it-l017">Angolo solitario, dove un solo</l>
+        <l n="18" xml:id="bertolucci-it-l018">Ramo rotto non v'è con le sue foglie</l>
+        <l n="19" xml:id="bertolucci-it-l019">Vizze, testimonianza di saccheggio,</l>
+        <l n="20" xml:id="bertolucci-it-l020">Ma un alzarsi d’arbusti eretti, dolci</l>
+        <l n="21" xml:id="bertolucci-it-l021">A vedere nei grappoli pendenti.</l>
+        <l n="22" xml:id="bertolucci-it-l022">Vergine scena! Un istante ristetti,</l>
+        <l n="23" xml:id="bertolucci-it-l023">Con il cuore sospeso come quando</l>
+        <l n="24" xml:id="bertolucci-it-l024">Troppa gioia l’ingombra, e saggiamente</l>
+        <l n="25" xml:id="bertolucci-it-l025">In voluttuoso ritegno adocchiai</l>
+        <l n="26" xml:id="bertolucci-it-l026">Senza timor di rivali, il festino.</l>
+        <l n="27" xml:id="bertolucci-it-l027">Fra gli alberi sedetti, in mezzo ai fiori,</l>
+        <l n="28" xml:id="bertolucci-it-l028">E con essi mi trastullai in una</l>
+        <l n="29" xml:id="bertolucci-it-l029">Disposizione che conosce solo</l>
+        <l n="30" xml:id="bertolucci-it-l030">Chi dopo lunga attesa benedice</l>
+        <l n="31" xml:id="bertolucci-it-l031">Una gioia che vince ogni speranza.</l>
+        <l n="32" xml:id="bertolucci-it-l032">Forse era un pergolato sotto il quale</l>
+        <l n="33" xml:id="bertolucci-it-l033">Nascevano e sfiorivano violette</l>
+        <l n="34" xml:id="bertolucci-it-l034">Senza che occhio umano le mirasse</l>
+        <l n="35" xml:id="bertolucci-it-l035">Ed un’acqua incantata mormorava</l>
+        <l n="36" xml:id="bertolucci-it-l036">Eternamente. Vedevo la spuma</l>
+        <l n="37" xml:id="bertolucci-it-l037">Scintillare all’intorno, e con il capo</l>
+        <l n="38" xml:id="bertolucci-it-l038">Adagiato su uno di quei sassi</l>
+        <l n="39" xml:id="bertolucci-it-l039">Muschiosi sotto le fronzute piante</l>
+        <l n="40" xml:id="bertolucci-it-l040">E sparsi come pecore d’un gregge,</l>
+        <l n="41" xml:id="bertolucci-it-l041">Ascoltavo quel murmure, nel dolce</l>
+        <l n="42" xml:id="bertolucci-it-l042">Umore che ha il piacere quando paga</l>
+        <l n="43" xml:id="bertolucci-it-l043">Un tributo alla quiete, e della gioia</l>
+        <l n="44" xml:id="bertolucci-it-l044">Sicuro, il cuore gode delle cose</l>
+        <l n="45" xml:id="bertolucci-it-l045">Indifferenti e si consuma solo</l>
+        <l n="46" xml:id="bertolucci-it-l046">In rami e rocce la sua gentilezza.</l>
+        <l n="47" xml:id="bertolucci-it-l047">All'improvviso balzai sù, piegai</l>
+        <l n="48" xml:id="bertolucci-it-l048">Sino a terra quei rami, senza alcuna</l>
+        <l n="49" xml:id="bertolucci-it-l049">Pietà: l’ombrosa valle, il pergolato</l>
+        <l n="50" xml:id="bertolucci-it-l050">Muschioso di nocciole, tutto giacque</l>
+        <l n="51" xml:id="bertolucci-it-l051">Devastato e violato, tutto perse</l>
+        <l n="52" xml:id="bertolucci-it-l052">Quella sua quieta esistenza di prima.</l>
+        <l n="53" xml:id="bertolucci-it-l053">Se non confondo il mio presente stato</l>
+        <l n="54" xml:id="bertolucci-it-l054">Con il mio antico sentimento, allora</l>
+        <l n="55" xml:id="bertolucci-it-l055">Prima di ritornare esultante</l>
+        <l n="56" xml:id="bertolucci-it-l056">Dal saccheggiato bosco, ricco d’una</l>
+        <l n="57" xml:id="bertolucci-it-l057">Preda più grande d’ogni altra ricchezza,</l>
+        <l n="58" xml:id="bertolucci-it-l058">Penosamente mi strinse il cuore</l>
+        <l n="59" xml:id="bertolucci-it-l059">Alla vista degli alberi silenti</l>
+        <l n="60" xml:id="bertolucci-it-l060">E del cielo importuno. Così, cara</l>
+        <l n="61" xml:id="bertolucci-it-l061">Fanciulla, muovi lungo queste piante</l>
+        <l n="62" xml:id="bertolucci-it-l062">Con dolce cuore, con soave mano</l>
+        <l n="63" xml:id="bertolucci-it-l063">Toccale: v’è uno spirito nei boschi.</l>
+      </div>
+    </body>
+  </text>
+</TEI>

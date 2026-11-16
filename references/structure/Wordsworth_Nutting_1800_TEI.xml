@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="im-nutting-en-1800">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Nutting</title>
+        <author>William Wordsworth</author>
+      </titleStmt>
+      <publicationStmt>
+        <p>Research encoding of a public-domain poem; cite source edition.</p>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl>
+          <author>William Wordsworth</author>
+          <title>Nutting</title>
+          <title level="m">Lyrical Ballads, 2nd edition</title>
+          <date when="1800">1800</date>
+          <pubPlace>London</pubPlace>
+          <publisher>Longman</publisher>
+          <ref target="https://rpo.library.utoronto.ca/content/nutting">Representative Poetry Online, University of Toronto</ref>
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <p>The 56-line 1800 second-edition text is used as a documented modern reference for alignment. This is NOT a claim that Bertolucci consulted this exact historical edition. Other witnesses (including 1802) must be kept distinct.</p>
+      <p>TEI P5; one l element per poetic verse, with stable xml:id. No automated alignments are implied. Verse-level input: word tokenization can be performed in DiScEPT.</p>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="en">English</language>
+      </langUsage>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-11-12">Prepared for DiScEPT import, 2026-11-12</change>
+    </revisionDesc>
+  </teiHeader>
+  <text xml:lang="en">
+    <body>
+      <div type="poem" xml:id="nutting-1800">
+        <head>Nutting</head>
+        <l n="1" xml:id="nutting-en-l001">--It seems a day</l>
+        <l n="2" xml:id="nutting-en-l002">(I speak of one from many singled out)</l>
+        <l n="3" xml:id="nutting-en-l003">One of those heavenly days that cannot die;</l>
+        <l n="4" xml:id="nutting-en-l004">When, in the eagerness of boyish hope,</l>
+        <l n="5" xml:id="nutting-en-l005">I left our cottage-threshold, sallying forth</l>
+        <l n="6" xml:id="nutting-en-l006">With a huge wallet o'er my shoulders slung,</l>
+        <l n="7" xml:id="nutting-en-l007">A nutting-crook in hand; and turned my steps</l>
+        <l n="8" xml:id="nutting-en-l008">Tow'rd some far-distant wood, a Figure quaint,</l>
+        <l n="9" xml:id="nutting-en-l009">Tricked out in proud disguise of cast-off weeds</l>
+        <l n="10" xml:id="nutting-en-l010">Which for that service had been husbanded,</l>
+        <l n="11" xml:id="nutting-en-l011">By exhortation of my frugal Dame--</l>
+        <l n="12" xml:id="nutting-en-l012">Motley accoutrement, of power to smile</l>
+        <l n="13" xml:id="nutting-en-l013">At thorns, and brakes, and brambles,--and, in truth,</l>
+        <l n="14" xml:id="nutting-en-l014">More ragged than need was! O'er pathless rocks,</l>
+        <l n="15" xml:id="nutting-en-l015">Through beds of matted fern, and tangled thickets,</l>
+        <l n="16" xml:id="nutting-en-l016">Forcing my way, I came to one dear nook</l>
+        <l n="17" xml:id="nutting-en-l017">Unvisited, where not a broken bough</l>
+        <l n="18" xml:id="nutting-en-l018">Drooped with its withered leaves, ungracious sign</l>
+        <l n="19" xml:id="nutting-en-l019">Of devastation; but the hazels rose</l>
+        <l n="20" xml:id="nutting-en-l020">Tall and erect, with tempting clusters hung,</l>
+        <l n="21" xml:id="nutting-en-l021">A virgin scene!--A little while I stood,</l>
+        <l n="22" xml:id="nutting-en-l022">Breathing with such suppression of the heart</l>
+        <l n="23" xml:id="nutting-en-l023">As joy delights in; and, with wise restraint</l>
+        <l n="24" xml:id="nutting-en-l024">Voluptuous, fearless of a rival, eyed</l>
+        <l n="25" xml:id="nutting-en-l025">The banquet;--or beneath the trees I sate</l>
+        <l n="26" xml:id="nutting-en-l026">Among the flowers, and with the flowers I played;</l>
+        <l n="27" xml:id="nutting-en-l027">A temper known to those, who, after long</l>
+        <l n="28" xml:id="nutting-en-l028">And weary expectation, have been blest</l>
+        <l n="29" xml:id="nutting-en-l029">With sudden happiness beyond all hope.</l>
+        <l n="30" xml:id="nutting-en-l030">Perhaps it was a bower beneath whose leaves</l>
+        <l n="31" xml:id="nutting-en-l031">The violets of five seasons re-appear</l>
+        <l n="32" xml:id="nutting-en-l032">And fade, unseen by any human eye;</l>
+        <l n="33" xml:id="nutting-en-l033">Where fairy water-breaks do murmur on</l>
+        <l n="34" xml:id="nutting-en-l034">For ever; and I saw the sparkling foam,</l>
+        <l n="35" xml:id="nutting-en-l035">And--with my cheek on one of those green stones</l>
+        <l n="36" xml:id="nutting-en-l036">That, fleeced with moss, under the shady trees,</l>
+        <l n="37" xml:id="nutting-en-l037">Lay round me, scattered like a flock of sheep--</l>
+        <l n="38" xml:id="nutting-en-l038">I heard the murmur, and the murmuring sound,</l>
+        <l n="39" xml:id="nutting-en-l039">In that sweet mood when pleasure loves to pay</l>
+        <l n="40" xml:id="nutting-en-l040">Tribute to ease; and, of its joy secure,</l>
+        <l n="41" xml:id="nutting-en-l041">The heart luxuriates with indifferent things,</l>
+        <l n="42" xml:id="nutting-en-l042">Wasting its kindliness on stocks and stones,</l>
+        <l n="43" xml:id="nutting-en-l043">And on the vacant air. Then up I rose,</l>
+        <l n="44" xml:id="nutting-en-l044">And dragged to earth both branch and bough, with crash</l>
+        <l n="45" xml:id="nutting-en-l045">And merciless ravage: and the shady nook</l>
+        <l n="46" xml:id="nutting-en-l046">Of hazels, and the green and mossy bower,</l>
+        <l n="47" xml:id="nutting-en-l047">Deformed and sullied, patiently gave up</l>
+        <l n="48" xml:id="nutting-en-l048">Their quiet being: and, unless I now</l>
+        <l n="49" xml:id="nutting-en-l049">Confound my present feelings with the past;</l>
+        <l n="50" xml:id="nutting-en-l050">Ere from the mutilated bower I turned</l>
+        <l n="51" xml:id="nutting-en-l051">Exulting, rich beyond the wealth of kings,</l>
+        <l n="52" xml:id="nutting-en-l052">I felt a sense of pain when I beheld</l>
+        <l n="53" xml:id="nutting-en-l053">The silent trees, and saw the intruding sky.--</l>
+        <l n="54" xml:id="nutting-en-l054">Then, dearest Maiden, move along these shades</l>
+        <l n="55" xml:id="nutting-en-l055">In gentleness of heart; with gentle hand</l>
+        <l n="56" xml:id="nutting-en-l056">Touch--for there is a spirit in the woods.</l>
+      </div>
+    </body>
+  </text>
+</TEI>

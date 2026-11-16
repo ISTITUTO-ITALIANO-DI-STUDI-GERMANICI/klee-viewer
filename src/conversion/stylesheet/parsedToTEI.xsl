@@ -862,13 +862,33 @@
     </ab>
   </xsl:template>
 
-  <!-- Deletions are omitted in critical edition (del from phiDel; sic from deletion / pencilDeletion).
-       <sic> inside figure captions (deletion_app) is kept, as for supplied in the diplomatic. -->
-  <xsl:template match="tei:del | tei:sic[not(ancestor::tei:figure)]" mode="edition"/>
+  <!-- Critical edition: a substitution (<choice> made of <sic> + <corr>) becomes
+       <mod type="subst">, keeping both readings: the ODD decides what is shown.
+       Choices inside figure captions and phiSub choices are not touched. -->
+  <xsl:template match="tei:choice[not(@rend = 'phiSub')][not(ancestor::tei:figure)]" mode="edition">
+    <mod type="subst">
+      <xsl:apply-templates select="node()" mode="edition"/>
+    </mod>
+  </xsl:template>
 
-  <!-- Critical edition: additions and corrections are unwrapped (the <add> and <corr> tags is dropped, their content is kept).
-       <add> and <corr> inside figure captions keeps its markup so far, as for sic and supplied. -->
-  <xsl:template match="tei:add[not(ancestor::tei:figure)] | tei:corr[not(ancestor::tei:figure)]" mode="edition">
+  <!-- Critical edition: deletions are omitted (del from phiDel; sic from deletion / pencilDeletion).
+       A <sic> that is the replaced reading of a substitution (parent <choice>) is kept,
+       inside the <mod>. <sic> inside figure captions (deletion_app) is kept as well,
+       as for supplied in the diplomatic. -->
+  <xsl:template match="tei:del | tei:sic[not(ancestor::tei:figure)][not(parent::tei:choice)]" mode="edition"/>
+
+  <!-- Critical edition: additions are unwrapped (the <add> tag is dropped, its content is kept).
+       The same holds for a <corr> standing alone; a <corr> that is the new reading of a
+       substitution (parent <choice>) is kept, inside the <mod>.
+       <add> and <corr> inside figure captions keep their markup, as for sic and supplied. -->
+  <xsl:template match="tei:add[not(ancestor::tei:figure)] | tei:corr[not(ancestor::tei:figure)][not(parent::tei:choice)]" mode="edition">
+    <xsl:apply-templates select="node()" mode="edition"/>
+  </xsl:template>
+
+  <!-- Critical edition: the physical lines dissolve into the running text of their <ab>.
+     Only counted <l> reach this point (margin/note lines were already turned into <lb/>
+     by l-to-lb), so every <l> left in the numbered tree is unwrapped here. -->
+  <xsl:template match="tei:l" mode="edition">
     <xsl:apply-templates select="node()" mode="edition"/>
   </xsl:template>
 
